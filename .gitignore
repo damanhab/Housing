@@ -1,0 +1,66 @@
+# Dependencies
+node_modules/
+.pnp*
+.yarn/*
+!.yarn/releases
+
+# Build output
+build/
+dist/
+web-build/
+*.apk
+*.aab
+*.ipa
+
+# Android / Gradle
+.gradle/
+android/.gradle/
+android/build/
+android/app/build/
+android/app/release/
+android/app/debug/
+android/local.properties
+android/.idea/
+*.iml
+.cxx/
+.externalNativeBuild/
+
+# iOS
+ios/Pods/
+ios/build/
+*.xcuserstate
+xcuserdata/
+DerivedData/
+
+# Expo / Metro
+.expo/
+.expo-shared/
+.metro-health-check*
+
+# Secrets / signing (never commit)
+.env
+.env.*
+!.env.example
+*.keystore
+*.jks
+*.p8
+*.p12
+*.key
+*.pem
+*.mobileprovision
+google-services.json
+GoogleService-Info.plist
+android/keystore.properties
+
+# Logs & OS / editor junk
+*.log
+npm-debug.log*
+yarn-error.log*
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+# Astro / Cloudflare
+.astro/
+.wrangler/
+.dev.vars

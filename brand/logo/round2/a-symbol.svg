@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="t"><title id="t">SakanHub A v2: homes around a hub</title>
+<g fill="#000" stroke="#000" stroke-width="14" stroke-linejoin="round">
+<path d="M40 120 L118 52 L118 214 L40 214 Z"/>
+<path d="M216 120 L138 52 L138 214 L216 214 Z"/>
+</g>
+<circle cx="128" cy="150" r="36" fill="#fff"/>
+<circle cx="128" cy="150" r="24" fill="#000"/>
+</svg>

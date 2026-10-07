@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="t"><title id="t">SakanHub concept B: seen of homes</title>
+<g fill="#000">
+<path d="M200 160 L200 108 L218 88 L236 108 L236 160 Z"/>
+<path d="M152 160 L152 108 L170 88 L188 108 L188 160 Z"/>
+<path d="M104 160 L104 108 L122 88 L140 108 L140 160 Z"/>
+<rect x="104" y="140" width="132" height="22" rx="0"/>
+</g>
+<path fill="none" stroke="#000" stroke-width="22" stroke-linecap="round" d="M104 151 A38 38 0 0 1 28 151"/>
+</svg>

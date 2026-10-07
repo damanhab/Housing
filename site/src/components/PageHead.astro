@@ -1,0 +1,28 @@
+---
+import type { Lang } from "../lib/site";
+import { href, type PageKey } from "../lib/routes";
+interface Props { lang: Lang; title: string; lede?: string; crumbs?: { key: PageKey; name: string }[] }
+const { lang, title, lede, crumbs = [] } = Astro.props;
+---
+<section class="page-head">
+  <div class="container">
+    {crumbs.length > 0 && (
+      <nav class="crumbs" aria-label={lang === "ar" ? "مسار التصفح" : "Breadcrumb"}>
+        <a href={href("home", lang)}>{lang === "ar" ? "الرئيسية" : "Home"}</a>
+        {crumbs.slice(0, -1).map((c) => (<><span aria-hidden="true">/</span><a href={href(c.key, lang)}>{c.name}</a></>))}
+        <span aria-hidden="true">/</span><span aria-current="page">{crumbs[crumbs.length - 1].name}</span>
+      </nav>
+    )}
+    <h1>{title}</h1>
+    {lede && <p class="lede">{lede}</p>}
+    <slot />
+  </div>
+</section>
+<style>
+  .page-head { background: var(--sand); padding-block: var(--s8) var(--s7); border-block-end: 1px solid var(--line); }
+  .crumbs { display: flex; gap: var(--s2); font-size: var(--step--1); color: var(--ink-3); margin-block-end: var(--s4); }
+  .crumbs a { color: var(--ink-2); text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  h1 { font-size: var(--step-4); max-width: 20ch; }
+  .lede { font-size: var(--step-2); color: var(--ink-2); max-width: 36ch; margin-block-start: var(--s4); line-height: 1.4; }
+</style>

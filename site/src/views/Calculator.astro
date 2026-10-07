@@ -1,0 +1,117 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHead from "../components/PageHead.astro";
+import Icon from "../components/Icon.astro";
+import type { Lang } from "../lib/site";
+import { SITE_URL } from "../lib/site";
+import { href, absUrl } from "../lib/routes";
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const L = (ar: string, en: string) => (lang === "ar" ? ar : en);
+const crumbs = [{ key: "calculator" as const, name: L("حاسبة الطاقة الاستيعابية", "Capacity calculator") }];
+const jsonld = [{
+  "@context": "https://schema.org", "@type": "WebApplication",
+  name: L("حاسبة الطاقة الاستيعابية لسكن العمال", "Worker housing capacity calculator"),
+  applicationCategory: "BusinessApplication", operatingSystem: "Any", inLanguage: lang,
+  offers: { "@type": "Offer", price: "0", priceCurrency: "SAR" },
+  url: absUrl("calculator", lang, SITE_URL), provider: { "@id": `${SITE_URL}/#org` },
+}];
+---
+<Base lang={lang} pageKey="calculator" jsonld={jsonld} crumbs={crumbs}>
+  <PageHead lang={lang} crumbs={crumbs}
+    title={L("كم عاملاً يستوعب مبناك نظاماً؟", "How many workers can your building legally house?")}
+    lede={L("أدخل مساحات غرف النوم ودورات المياه. نحسب الطاقة وفق الاشتراطات.", "Enter bedroom areas and sanitary sets. We apply the rules.")} />
+  <div class="container calc-wrap">
+    <form class="calc" data-calc data-lang={lang} novalidate>
+      <div class="rooms" data-rooms>
+        <div class="room" data-room>
+          <label><span>{L("غرفة", "Room")} <b class="num" data-idx>1</b> — {L("المساحة الصافية (م²)", "net area (m²)")}</span>
+            <input class="num" type="number" inputmode="decimal" min="0" step="0.5" value="24" data-area /></label>
+          <button type="button" class="rm" data-rm aria-label={L("حذف الغرفة", "Remove room")}><Icon name="close" /></button>
+        </div>
+      </div>
+      <div class="calc-actions">
+        <button type="button" class="btn btn--ghost" data-add><Icon name="plus" />{L("أضف غرفة", "Add room")}</button>
+        <label class="inline">{L("عدد الغرف المتماثلة", "Identical rooms")} <input class="num small" type="number" min="1" value="1" data-mult /></label>
+      </div>
+      <label class="inline">{L("دورات المياه (مرحاض ومغسلة ودش)", "Sanitary sets (WC, basin, shower)")} <input class="num small" type="number" min="0" value="1" data-wc /></label>
+      <label class="inline">{L("مساحة صالة الطعام والراحة (م²)", "Dining / rest area (m²)")} <input class="num small" type="number" min="0" step="0.5" value="5" data-common /></label>
+    </form>
+    <div class="result" aria-live="polite">
+      <p class="r-label">{L("الطاقة النظامية التقديرية", "Estimated licensable capacity")}</p>
+      <p class="r-big num" data-total>6</p>
+      <p class="r-unit">{L("أفراد", "people")}</p>
+      <dl class="facts small">
+        <div><dt>{L("حسب مساحة الغرف", "By bedroom area")}</dt><dd class="num" data-by-area>6</dd></div>
+        <div><dt>{L("حسب دورات المياه", "By sanitary sets")}</dt><dd class="num" data-by-wc>8</dd></div>
+        <div><dt>{L("حسب صالة الطعام", "By dining area")}</dt><dd class="num" data-by-common>7</dd></div>
+      </dl>
+      <p class="source">{L("القاعدة: 4 م² لكل فرد وبحد أعلى 10 للغرفة، ودورة لكل 8، و0.7 م² لكل فرد في صالة الطعام. الأقل بينها هو الطاقة. تقدير إرشادي؛ الطاقة النهائية تحددها جهة الترخيص.", "Rules: 4 m² per person and max 10 per room; one set per 8; 0.7 m² per person dining. The lowest wins. Guidance only; the licensing authority sets the final figure.")}</p>
+      <a class="btn" href={href("request", lang)}>{L("اطلب سكناً بهذه الطاقة", "Request housing for this capacity")}<Icon name="arrow" class="flip" /></a>
+    </div>
+  </div>
+</Base>
+
+<script>
+  for (const form of document.querySelectorAll<HTMLFormElement>("[data-calc]")) {
+    const rooms = form.querySelector<HTMLElement>("[data-rooms]")!;
+    const tpl = rooms.querySelector<HTMLElement>("[data-room]")!.cloneNode(true) as HTMLElement;
+    const $ = (s: string) => document.querySelector<HTMLElement>(s)!;
+    const num = (el: HTMLInputElement | null) => Math.max(0, Number(el?.value) || 0);
+    function renumber() { rooms.querySelectorAll("[data-idx]").forEach((b, i) => (b.textContent = String(i + 1))); }
+    function calc() {
+      const mult = Math.max(1, Math.floor(num(form.querySelector("[data-mult]"))));
+      let byArea = 0;
+      rooms.querySelectorAll<HTMLInputElement>("[data-area]").forEach((i) => { byArea += Math.min(10, Math.floor(num(i) / 4)); });
+      byArea *= mult;
+      const byWc = Math.floor(num(form.querySelector("[data-wc]")) * 8);
+      const byCommon = Math.floor(num(form.querySelector("[data-common]")) / 0.7);
+      const total = Math.min(byArea, byWc, byCommon);
+      $("[data-total]").textContent = String(total);
+      $("[data-by-area]").textContent = String(byArea);
+      $("[data-by-wc]").textContent = String(byWc);
+      $("[data-by-common]").textContent = String(byCommon);
+      for (const [k, v] of [["by-area", byArea], ["by-wc", byWc], ["by-common", byCommon]] as const) {
+        $(`[data-${k}]`).parentElement!.classList.toggle("limit", v === total);
+      }
+    }
+    form.addEventListener("input", calc);
+    form.querySelector("[data-add]")!.addEventListener("click", () => {
+      const r = tpl.cloneNode(true) as HTMLElement; r.querySelector<HTMLInputElement>("[data-area]")!.value = "24";
+      rooms.append(r); renumber(); calc(); r.querySelector<HTMLInputElement>("input")!.focus();
+    });
+    rooms.addEventListener("click", (e) => {
+      const b = (e.target as HTMLElement).closest("[data-rm]"); if (!b) return;
+      if (rooms.children.length > 1) { b.closest("[data-room]")!.remove(); renumber(); calc(); }
+    });
+    calc();
+  }
+</script>
+
+<style>
+  .calc-wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 420px); gap: var(--s8); padding-block: var(--s8) var(--s9); align-items: start; }
+  .calc { display: grid; gap: var(--s5); }
+  .rooms { display: grid; gap: var(--s3); }
+  .room { display: flex; gap: var(--s3); align-items: end; }
+  .room label { flex: 1; display: grid; gap: var(--s2); font-weight: 800; font-size: 0.92rem; }
+  input { min-height: 48px; padding: 0 var(--s4); border: 1px solid var(--line-strong); border-radius: 10px; font: inherit; font-weight: 700; color: var(--ink); background: var(--white); width: 100%; }
+  input:focus-visible { outline: none; border-color: var(--clay); box-shadow: 0 0 0 3px var(--clay-wash); }
+  input.small { width: 7rem; }
+  .rm { width: 48px; height: 48px; border: 1px solid var(--line-strong); border-radius: 10px; background: var(--white); cursor: pointer; display: grid; place-items: center; color: var(--ink-2); }
+  .rm:hover { background: var(--sand); color: var(--ink); }
+  .rm :global(svg) { width: 18px; height: 18px; }
+  .calc-actions { display: flex; flex-wrap: wrap; gap: var(--s4); align-items: center; justify-content: space-between; }
+  .inline { display: flex; align-items: center; justify-content: space-between; gap: var(--s4); font-weight: 800; font-size: 0.92rem; }
+  .result { position: sticky; top: 96px; background: var(--ink); color: #E9ECF2; border-radius: var(--radius-lg); padding: var(--s6); display: grid; gap: var(--s3); }
+  .r-label { color: #B9C0CE; font-weight: 700; }
+  .r-big { font-size: clamp(3.5rem, 2.5rem + 4vw, 5.5rem); font-weight: 800; line-height: 1; color: var(--white); }
+  .r-unit { color: #B9C0CE; margin-block-start: -6px; }
+  .result .facts { border-color: #39425A; }
+  .result .facts > div { border-color: #39425A; grid-template-columns: 1fr auto; }
+  .result .facts dt { color: #B9C0CE; }
+  .result .facts dd { color: var(--white); }
+  .result .facts > div.limit dd { color: var(--clay-light); }
+  .result .source { color: #9AA3B5; }
+  .result .btn { margin-block-start: var(--s3); }
+  @media (max-width: 1000px) { .calc-wrap { grid-template-columns: 1fr; } .result { position: static; } }
+</style>

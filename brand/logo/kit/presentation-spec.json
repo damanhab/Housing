@@ -1,0 +1,35 @@
+{
+  "brand": "SakanHub",
+  "tagline": "All your crew housing. One hub.",
+  "brief": "A Saudi platform where companies find, book and manage housing for their workforce in one place. It should feel modern, techy, solid and trustworthy, and say 'housing' at a glance without clip-art.",
+  "adjectives": ["modern", "techy", "solid", "trustworthy"],
+  "criteria": "Success: says housing instantly, integrates with the name, readable at 16 px, works in one colour, bilingual (Latin + Arabic), avoids generic Saudi green and proptech blue.",
+  "mockups": ["website", "signage", "app-icon", "business-card", "social", "favicon-tab"],
+  "nav": ["For companies", "For owners", "Places"],
+  "brand_color": "#C8502A",
+  "greyscale": false,
+  "designer": "SakanHub brand team",
+  "round": 3,
+  "concepts": [
+    {
+      "name": "The n is a home",
+      "symbol": "sakanhub-symbol-color.svg",
+      "lockup": "sakanhub-horizontal-color.svg",
+      "symbol_on_tile": "sakanhub-symbol-white.svg",
+      "lockup_on_dark": "sakanhub-horizontal-reversed.svg",
+      "tile_color": "#C8502A",
+      "idea": "The n in sakan becomes a home, with the hub (a dot) at its door: the name is the logo.",
+      "rationale": [
+        "Built on the Noto Sans Bold grid: same stem, roof apex on the ascender line, inner roof on the x-height",
+        "Clay accent (#C8502A) owns a warm, Najdi-earth colour in a category of greens and blues",
+        "Bilingual lockups with Noto Kufi Arabic; dot-free favicon cut for 16 px"
+      ]
+    }
+  ],
+  "recommendation": "Approved direction. Ink #1D2433 for the wordmark, clay #C8502A for the home.",
+  "next_steps": [
+    "Trademark pre-search with an IP lawyer (combined mark, Arabic + Latin)",
+    "Register sakanhub.sa / .com / .com.sa and social handles",
+    "Apply to website, deck template and signage"
+  ]
+}

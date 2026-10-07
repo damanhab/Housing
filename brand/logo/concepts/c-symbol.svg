@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="t"><title id="t">SakanHub concept C: window hub</title>
+<g fill="#000">
+<rect x="28" y="28" width="56" height="56" rx="14"/><rect x="100" y="28" width="56" height="56" rx="14"/><rect x="172" y="28" width="56" height="56" rx="14"/>
+<rect x="28" y="100" width="56" height="56" rx="14"/><circle cx="128" cy="128" r="30"/><rect x="172" y="100" width="56" height="56" rx="14"/>
+<rect x="28" y="172" width="56" height="56" rx="14"/><rect x="100" y="172" width="56" height="56" rx="14"/><rect x="172" y="172" width="56" height="56" rx="14"/>
+</g></svg>

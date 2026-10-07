@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 256" width="980" height="256" role="img"><title>SakanHub lockup c (exploration, live text)</title>
+<g transform="translate(16,28) scale(0.78)">
+<g fill="#000">
+<rect x="28" y="28" width="56" height="56" rx="14"/><rect x="100" y="28" width="56" height="56" rx="14"/><rect x="172" y="28" width="56" height="56" rx="14"/>
+<rect x="28" y="100" width="56" height="56" rx="14"/><circle cx="128" cy="128" r="30"/><rect x="172" y="100" width="56" height="56" rx="14"/>
+<rect x="28" y="172" width="56" height="56" rx="14"/><rect x="100" y="172" width="56" height="56" rx="14"/><rect x="172" y="172" width="56" height="56" rx="14"/>
+</g></g>
+<text x="250" y="150" font-family="Segoe UI, Arial, sans-serif" font-size="104" font-weight="600" fill="#000" letter-spacing="-2">SakanHub</text>
+<text x="252" y="218" font-family="Segoe UI, Tahoma, Arial, sans-serif" font-size="52" fill="#000">سكن هب</text>
+</svg>

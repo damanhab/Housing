@@ -1,0 +1,68 @@
+---
+import type { Lang } from "../lib/site";
+import { CONTACT, BRAND } from "../lib/site";
+import { href } from "../lib/routes";
+import { CITIES, UI } from "../data/content";
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const L = (ar: string, en: string) => (lang === "ar" ? ar : en);
+---
+<footer class="site-footer">
+  <div class="container grid">
+    <div class="id">
+      <img src="/brand/sakanhub-horizontal-reversed.svg" alt={`${BRAND.name} ${BRAND.nameAr}`} width="260" height="50" />
+      <p>{L("سكن عمال مرخّص للشركات، بطلب واحد.", "Licensed worker housing for companies, one request away.")}</p>
+    </div>
+    <nav aria-label={L("الخدمات", "Services")}>
+      <h2>{L("الخدمات", "Services")}</h2>
+      <ul>
+        <li><a href={href("svc-housing", lang)}>{L("السكن", "Housing")}</a></li>
+        <li><a href={href("svc-transport", lang)}>{L("النقل", "Transport")}</a></li>
+        <li><a href={href("svc-catering", lang)}>{L("التموين", "Catering")}</a></li>
+        <li><a href={href("svc-management", lang)}>{L("إدارة السكن", "Management")}</a></li>
+        <li><a href={href("owners", lang)}>{UI.nav.owners[lang]}</a></li>
+      </ul>
+    </nav>
+    <nav aria-label={UI.nav.cities[lang]}>
+      <h2>{UI.nav.cities[lang]}</h2>
+      <ul>{CITIES.map((c) => <li><a href={href(c.key, lang)}>{L(`سكن عمال ${c.name.ar}`, `Worker housing ${c.name.en}`)}</a></li>)}</ul>
+    </nav>
+    <nav aria-label={L("الأدلة", "Guides")}>
+      <h2>{L("الأدلة", "Guides")}</h2>
+      <ul>
+        <li><a href={href("regulations", lang)}>{L("دليل الاشتراطات", "Regulations guide")}</a></li>
+        <li><a href={href("calculator", lang)}>{L("حاسبة الطاقة الاستيعابية", "Capacity calculator")}</a></li>
+        <li><a href={href("faq", lang)}>{UI.nav.faq[lang]}</a></li>
+        <li><a href={href("glossary", lang)}>{L("المصطلحات", "Glossary")}</a></li>
+        <li><a href={href("about", lang)}>{L("من نحن", "About")}</a></li>
+      </ul>
+    </nav>
+    <div class="contact">
+      <h2>{L("تواصل", "Contact")}</h2>
+      <ul>
+        <li><a href={`https://wa.me/${CONTACT.whatsapp}`} rel="noopener" target="_blank">{UI.nav.whatsapp[lang]}</a></li>
+        <li><a class="num" dir="ltr" href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}>{CONTACT.phone}</a></li>
+        <li><a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container legal">
+    <span>© {new Date().getFullYear()} {lang === "ar" ? BRAND.nameAr : BRAND.name}</span>
+    <span>{L("السجل التجاري", "CR")}: {CONTACT.cr}</span>
+    <a href={href("privacy", lang)}>{L("الخصوصية", "Privacy")}</a>
+    <a href={href("home", lang === "ar" ? "en" : "ar")} lang={lang === "ar" ? "en" : "ar"}>{UI.nav.langSwitch[lang]}</a>
+  </div>
+</footer>
+
+<style>
+  .site-footer { background: var(--ink); color: #B9C0CE; padding-block: var(--s8) var(--s6); font-size: 0.95rem; }
+  .grid { display: grid; grid-template-columns: 1.4fr repeat(4, 1fr); gap: var(--s6); }
+  .id img { height: 40px; width: auto; margin-block-end: var(--s4); }
+  .id p { max-width: 26ch; }
+  h2 { font-size: 0.95rem; color: var(--white); margin-block-end: var(--s3); }
+  ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s2); }
+  a { color: #DCE1EA; text-decoration: none; }
+  a:hover { color: var(--white); text-decoration: underline; }
+  .legal { display: flex; flex-wrap: wrap; gap: var(--s5); margin-block-start: var(--s7); padding-block-start: var(--s5); border-block-start: 1px solid #333C50; font-size: var(--step--1); }
+  @media (max-width: 960px) { .grid { grid-template-columns: 1fr 1fr; } .id { grid-column: 1 / -1; } }
+</style>

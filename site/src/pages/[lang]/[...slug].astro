@@ -1,0 +1,28 @@
+---
+import City from "../../views/City.astro";
+import Service from "../../views/Service.astro";
+import Regulations from "../../views/Regulations.astro";
+import Calculator from "../../views/Calculator.astro";
+import Companies from "../../views/Companies.astro";
+import Owners from "../../views/Owners.astro";
+import Misc from "../../views/Misc.astro";
+import { LANGS, type Lang } from "../../lib/site";
+import { ROUTES, type PageKey } from "../../lib/routes";
+import { CITIES } from "../../data/content";
+
+export function getStaticPaths() {
+  return LANGS.flatMap((lang) =>
+    ROUTES.filter((r) => r.slug[lang] !== "").map((r) => ({ params: { lang, slug: r.slug[lang] }, props: { key: r.key } })),
+  );
+}
+const lang = Astro.params.lang as Lang;
+const { key } = Astro.props as { key: PageKey };
+const city = CITIES.find((c) => c.key === key);
+---
+{city ? <City lang={lang} city={city} />
+  : key.startsWith("svc-") ? <Service lang={lang} pageKey={key} />
+  : key === "regulations" ? <Regulations lang={lang} />
+  : key === "calculator" ? <Calculator lang={lang} />
+  : key === "companies" ? <Companies lang={lang} />
+  : key === "owners" ? <Owners lang={lang} />
+  : <Misc lang={lang} pageKey={key} />}

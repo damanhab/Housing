@@ -1,0 +1,108 @@
+{
+  "title": "Choose the visual world for SakanHub",
+  "question": "The roll assigned The Licence Plaque. Keep it, take my pick, or re-roll.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "The Licence Plaque",
+      "kicker": "THE ROLL",
+      "lineage": "The bilingual municipal licence plate fixed beside every licensed Saudi building: enamel plate, four screws, licence number, activity, capacity, QR",
+      "thesis": "The request IS a plaque: the HR manager fills in city, workers and start date on a licence-style plate, and gets beds back. Every section is a plate screwed to a clay plaster wall.",
+      "palette": ["#C8502A", "#1D2433", "#F6F3EE", "#FFFFFF", "#F08A5D"],
+      "materials": ["clay-plaster wall (flat, drenched brand clay)", "white enamel plates, four screw dots, rounded corners", "bilingual field rows (Arabic right, English left), stamped reference numbers"],
+      "viewport": "A clay wall fills the screen. One large white plaque, screwed at four corners, carries the hook «سكن عمّالك… بطلب واحد» and three working fields — City · Workers · Start date — plus the Request beds action, set like the capacity rows of a real licence plate. The logo sits top-right as the building's name sign.",
+      "risk": "Can tip into bureaucratic or 'government form' if the plates get dense; Nunito's rounded type and the warm clay wall have to keep it human.",
+      "raised": [
+        {"from": "challenger-manga", "raise": "Decisive beat: full-strength clay is reserved for one element per viewport, the primary action; everything else stays plate-white and ink."},
+        {"from": "challenger-deco", "raise": "Staged arrival: the scroll steps closer, city → building → room → bed, each plate tighter in scale than the last."},
+        {"from": "challenger-indoor-sun", "raise": "Total palette commitment: stock photos are duotoned into clay and ink, so no foreign colour enters the wall."}
+      ]
+    },
+    {
+      "id": "model-pick",
+      "label": "The Key Board",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "The pigeonhole key cabinet and bed-allocation board in every Saudi labour-camp office",
+      "thesis": "Availability made physical: a grid of rooms and beds, keys hanging where a bed is free; requesting beds lifts keys off hooks.",
+      "palette": ["#1D2433", "#F6F3EE", "#C8502A", "#E4DDD2"],
+      "materials": ["painted plywood board", "numbered brass-tag keys on hooks", "chalk-white room labels"],
+      "viewport": "A wide key board fills the screen; choosing city and headcount lifts that many keys and drops them into a request tray with the Request beds action.",
+      "risk": "Implies live availability data we don't have yet; must be clearly illustrative until real inventory exists. It's also a more familiar 'grid of items' layout."
+    },
+    {
+      "id": "challenger-teletext",
+      "label": "Teletext Service",
+      "verdict": "declined",
+      "lineage": "broadcast teletext magazines",
+      "palette": ["#000000", "#FFFF00", "#00FFFF", "#FFFFFF"],
+      "materials": ["block mosaic", "40×24 cell grid"],
+      "case": "Fuses poorly: retro broadcast novelty undercuts B2B trust; the cell grid fights bilingual RTL text.",
+      "kept": "Addressable plates: every plaque carries a short reference code (RUH-01), and a request returns one.",
+      "hero": "https://impeccable.style/worlds/cards/broadcast-programming-teletext-service-hero.webp"
+    },
+    {
+      "id": "challenger-deco",
+      "label": "Deco Cinema Lobby",
+      "verdict": "declined",
+      "lineage": "Art Deco cinema lobbies",
+      "palette": ["#14110F", "#C9A55B", "#8E1B1B"],
+      "materials": ["lacquer", "brass sunbursts"],
+      "case": "Fuses poorly: premiere glamour has nothing to do with worker housing.",
+      "kept": "Staged arrival thresholds (raised into the plaque direction).",
+      "hero": "https://impeccable.style/worlds/cards/design-canon-deco-cinema-lobby-hero.webp"
+    },
+    {
+      "id": "challenger-manga",
+      "label": "Manga Screentone Page",
+      "verdict": "declined",
+      "lineage": "weekly manga pages",
+      "palette": ["#000000", "#FFFFFF"],
+      "materials": ["screentone", "speed lines"],
+      "case": "Fuses poorly: an HR buyer doesn't identify with it; RTL panels are tempting but off-brand.",
+      "kept": "Decisive beat: solid colour reserved for one element (raised).",
+      "hero": "https://impeccable.style/worlds/cards/pop-culture-shelf-manga-screentone-page-hero.webp"
+    },
+    {
+      "id": "challenger-indoor-sun",
+      "label": "Indoor Weather Sun",
+      "verdict": "declined",
+      "lineage": "monofrequency light installations",
+      "palette": ["#E8A23A", "#000000"],
+      "materials": ["haze", "mirrored ceiling"],
+      "case": "Fuses poorly: atmospheric art piece, no product clarity.",
+      "kept": "Total palette commitment: duotone every photo (raised).",
+      "hero": "https://impeccable.style/worlds/cards/light-shadow-caustics-indoor-weather-sun-hero.webp"
+    },
+    {
+      "id": "challenger-cracktro",
+      "label": "Cracktro Scroller Queue",
+      "verdict": "declined",
+      "lineage": "demoscene title screens",
+      "palette": ["#000000", "#F2EBD9", "#F0A020"],
+      "materials": ["bitmap type", "drifting dust"],
+      "case": "Fuses poorly: a night-time hacker aesthetic for a daytime ops buyer.",
+      "kept": "Rank is depth: hierarchy by scale and stillness, not by boxes."
+    },
+    {
+      "id": "challenger-brine",
+      "label": "Pickling Brine Calendar",
+      "verdict": "declined",
+      "lineage": "seasonal pickling jars",
+      "palette": ["#E8735A", "#9B1B30", "#B9A27A"],
+      "materials": ["jar glass", "kraft labels"],
+      "case": "Fuses poorly: food craft, no link to housing.",
+      "kept": "Label banding: every listing plate banded with the same fields (city · licensing track · capacity)."
+    }
+  ],
+  "reroll": { "registers": ["safer", "bolder"] },
+  "canon": true,
+  "canonCard": {
+    "label": "The category standard",
+    "thesis": "What worker-housing and proptech sites ship, executed impeccably.",
+    "palette": ["#FFFFFF", "#1D2433", "#C8502A"],
+    "materials": ["clean grid", "compound photography"],
+    "viewport": "Photo of a compound, headline and request form, then a row of service cards.",
+    "risk": "Indistinguishable from Mnzil and every AI-generated site, which is exactly what you said would feel wrong."
+  },
+  "steer": true
+}

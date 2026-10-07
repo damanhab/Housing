@@ -1,0 +1,85 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHead from "../components/PageHead.astro";
+import RequestPanel from "../components/RequestPanel.astro";
+import type { Lang } from "../lib/site";
+import { SITE_URL } from "../lib/site";
+import { href, absUrl } from "../lib/routes";
+import { RULES, TRACK_LABEL, CITIES } from "../data/content";
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const L = (ar: string, en: string) => (lang === "ar" ? ar : en);
+const crumbs = [{ key: "regulations" as const, name: L("دليل الاشتراطات", "Regulations guide") }];
+const updated = "2026-10-06";
+const jsonld = [{
+  "@context": "https://schema.org", "@type": "Article",
+  headline: L("دليل اشتراطات السكن الجماعي للأفراد في السعودية", "Saudi group-housing (worker housing) regulations guide"),
+  inLanguage: lang, dateModified: updated, datePublished: updated,
+  author: { "@id": `${SITE_URL}/#org` }, publisher: { "@id": `${SITE_URL}/#org` },
+  mainEntityOfPage: absUrl("regulations", lang, SITE_URL),
+}];
+---
+<Base lang={lang} pageKey="regulations" jsonld={jsonld} crumbs={crumbs}>
+  <PageHead lang={lang} crumbs={crumbs}
+    title={L("اشتراطات السكن الجماعي للأفراد", "Saudi worker housing regulations")}
+    lede={L("كل منشأة لديها 20 عاملاً فأكثر تحتاج سكناً مرخّصاً يطابق عدد عمالتها في قوى. هذا الدليل يلخّص القواعد.", "Every establishment with 20+ workers needs licensed housing matching its Qiwa headcount. This guide summarises the rules.")}>
+    <p class="source">{L("آخر تحديث", "Last updated")}: <time datetime={updated} class="num">{updated}</time></p>
+  </PageHead>
+  <div class="container body-grid">
+    <article class="doc">
+      <section>
+        <h2>{L("من يلزمه الترخيص", "Who must comply")}</h2>
+        <ul class="list-check">
+          <li>{L("كل منشأة لديها 20 عاملاً فأكثر، وكل فروعها.", "Every establishment with 20+ workers, including all its branches.")}</li>
+          <li>{L("السكن المرخّص يجب أن يتناسب مع عدد العمالة المسجّل في قوى.", "Licensed housing must be proportionate to the workforce registered on Qiwa.")}</li>
+          <li>{L("صرف بدل سكن لا يعفي المنشأة من الترخيص.", "Paying a housing allowance does not exempt the establishment.")}</li>
+        </ul>
+      </section>
+      <section>
+        <h2>{L("ماذا يحدث دون ترخيص", "What happens without a licence")}</h2>
+        <ul class="list-check">
+          <li>{L("الربط الإلكتروني بين بلدي وقوى يكشف عدم المطابقة.", "The Balady–Qiwa electronic link flags the mismatch.")}</li>
+          <li>{L("تتوقف خدمات قوى مثل التأشيرات ونقل العمالة.", "Qiwa services such as visas and worker transfers stop.")}</li>
+          <li>{L("قد يُعلّق السجل التجاري للمنشأة.", "The commercial registration can be suspended.")}</li>
+        </ul>
+      </section>
+      <section>
+        <h2>{L("الأرقام الأساسية", "The key numbers")}</h2>
+        <dl class="facts">{RULES.map((r) => (<div><dt>{r.label[lang]}</dt><dd>{r.value[lang]}</dd></div>))}</dl>
+        <p class="source">{L("الطاقة الاستيعابية تُحسب من المساحات والمرافق، لا من عدد الأسرّة. غرفة نوم صافية 24 م² تستوعب 6 أفراد لا 10.", "Capacity is calculated from areas and facilities, not beds. A 24 m² net bedroom licenses 6 people, not 10.")} <a href={href("calculator", lang)}>{L("استخدم الحاسبة", "Use the calculator")}</a></p>
+      </section>
+      <section>
+        <h2>{L("الرخصة وشهادة إثبات السكن", "Licence vs housing proof certificate")}</h2>
+        <dl class="facts">
+          <div><dt>{L("رخصة سكن جماعي", "Group-housing licence")}</dt><dd>{L("يحملها مالك المبنى أو مستأجره بالكامل. تثبت أن العقار مرخّص بطاقة محددة.", "Held by the owner or whole-building lessee. Proves the property is licensed at a set capacity.")}</dd></div>
+          <div><dt>{L("شهادة إثبات سكن", "Housing proof certificate")}</dt><dd>{L("تصدرها المنشأة المستأجرة لوحدات داخل عقار مرخّص، بموافقة صاحب الرخصة.", "Issued by a tenant company renting units inside a licensed property, with the licence holder's approval.")}</dd></div>
+          <div><dt>{L("جزء من مبنى", "Part of a building")}</dt><dd>{L("لا تصدر رخصة مستقلة لجزء من مبنى.", "No separate licence can be issued for part of a building.")}</dd></div>
+        </dl>
+      </section>
+      <section>
+        <h2>{L("مسار الترخيص حسب المدينة", "Licensing track by city")}</h2>
+        <dl class="facts">{CITIES.map((c) => (<div><dt><a href={href(c.key, lang)}>{c.name[lang]}</a></dt><dd>{TRACK_LABEL[c.track][lang]} — {c.trackNote[lang]}</dd></div>))}</dl>
+      </section>
+      <section>
+        <h2>{L("خطوات الترخيص عبر بلدي", "Licensing steps on Balady")}</h2>
+        <ol class="ordered">
+          <li>{L("الدخول عبر النفاذ الوطني واختيار خدمة رخصة السكن الجماعي.", "Sign in with National SSO and choose the group-housing licence service.")}</li>
+          <li>{L("إدخال الموقع والعقار والملكية أو عقد الإيجار والطاقة.", "Enter location, property, ownership or lease, and capacity.")}</li>
+          <li>{L("رفع المستندات: السجل التجاري، صك أو عقد، صور، شهادة إتمام البناء، موافقة الدفاع المدني.", "Upload: CR, deed or lease, photos, completion certificate, Civil Defense approval.")}</li>
+          <li>{L("تحقق البلدية من الاشتراطات المكانية ثم موافقة مبدئية.", "The municipality checks spatial rules and gives initial approval.")}</li>
+          <li>{L("90 يوماً لاستكمال المتطلبات، ثم الفحص الفني وسداد الرسوم.", "90 days to complete requirements, then inspection and fees.")}</li>
+        </ol>
+      </section>
+      <section>
+        <h2>{L("المصادر", "Sources")}</h2>
+        <ul class="list-check source">
+          <li>{L("وزارة البلديات والإسكان: الشروط الصحية والفنية والسلامة للمساكن الجماعية للأفراد", "MOMAH: health, technical and safety conditions for group housing")}</li>
+          <li>{L("البرنامج الوطني لتطوير السكن الجماعي للأفراد (بلدي)", "National Program for Developing Group Housing for Individuals (Balady)")}</li>
+          <li>{L("الهيئة الملكية للجبيل وينبع، والهيئة السعودية للمدن الصناعية «مدن»", "RCJY and MODON")}</li>
+        </ul>
+        <p class="source">{L("هذا ملخص إرشادي وليس استشارة قانونية؛ راجع النص الرسمي المعتمد قبل أي قرار.", "A guidance summary, not legal advice; check the official gazetted text before acting.")}</p>
+      </section>
+    </article>
+    <aside><RequestPanel lang={lang} id="reg-request" /></aside>
+  </div>
+</Base>

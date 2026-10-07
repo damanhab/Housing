@@ -1,0 +1,45 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHead from "../components/PageHead.astro";
+import RequestPanel from "../components/RequestPanel.astro";
+import type { Lang } from "../lib/site";
+import { href } from "../lib/routes";
+import { CITIES } from "../data/content";
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const L = (ar: string, en: string) => (lang === "ar" ? ar : en);
+const crumbs = [{ key: "companies" as const, name: L("للشركات", "For companies") }];
+---
+<Base lang={lang} pageKey="companies" crumbs={crumbs}>
+  <PageHead lang={lang} crumbs={crumbs}
+    title={L("سكن عمالك، دون أن تديره بنفسك", "Your workers housed, without running housing")}
+    lede={L("ترسل المدينة وعدد العمال وتاريخ البدء. نحن نرتّب الباقي.", "You send city, headcount and start date. We handle the rest.")} />
+  <div class="container body-grid">
+    <div class="doc">
+      <section>
+        <h2>{L("ما نتولاه عنك", "What we take off your desk")}</h2>
+        <ul class="list-check">
+          <li>{L("إيجاد مبنى مرخّص بطاقة تكفي عمالتك", "Finding a licensed building sized for your crew")}</li>
+          <li>{L("مطابقة السكن مع عدد العمالة في قوى", "Matching housing to your Qiwa headcount")}</li>
+          <li>{L("تجهيز شهادة إثبات السكن", "Preparing the housing proof certificate")}</li>
+          <li>{L("النقل اليومي والتموين عند الطلب", "Daily transport and catering, on request")}</li>
+          <li>{L("التشغيل والصيانة وتجديد الرخصة", "Operations, maintenance and licence renewal")}</li>
+        </ul>
+      </section>
+      <section>
+        <h2>{L("كيف يعمل", "How it works")}</h2>
+        <ol class="ordered">
+          <li>{L("أرسل الطلب: المدينة، عدد العمال، تاريخ البدء.", "Send the request: city, headcount, start date.")}</li>
+          <li>{L("نتواصل معك لتأكيد الاحتياج والخدمات.", "We call to confirm needs and services.")}</li>
+          <li>{L("نعرض الخيار المرخّص والعقد.", "We present the licensed option and contract.")}</li>
+          <li>{L("يسكن عمّالك، ونتابع التشغيل يومياً.", "Your crew moves in; we run it daily.")}</li>
+        </ol>
+      </section>
+      <section>
+        <h2>{L("المدن", "Cities")}</h2>
+        <ul class="list-check">{CITIES.map((c) => <li><a href={href(c.key, lang)}>{L(`سكن عمال ${c.name.ar}`, `Worker housing in ${c.name.en}`)}</a></li>)}</ul>
+      </section>
+    </div>
+    <aside><RequestPanel lang={lang} id="co-request" /></aside>
+  </div>
+</Base>

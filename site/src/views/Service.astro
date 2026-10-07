@@ -1,0 +1,77 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHead from "../components/PageHead.astro";
+import RequestPanel from "../components/RequestPanel.astro";
+import type { Lang } from "../lib/site";
+import { SITE_URL } from "../lib/site";
+import { href, absUrl, type PageKey } from "../lib/routes";
+interface Props { lang: Lang; pageKey: PageKey }
+const { lang, pageKey } = Astro.props;
+type T = { ar: string; en: string };
+const S: Record<string, { title: T; lede: T; points: T[]; rule?: T }> = {
+  "svc-housing": {
+    title: { ar: "سكن عمال مرخّص ومجهّز", en: "Licensed, furnished worker housing" },
+    lede: { ar: "غرف جاهزة في مبانٍ مرخّصة للسكن الجماعي، بطاقة تكفي عمالتك.", en: "Ready rooms in buildings licensed for group housing, sized for your crew." },
+    points: [
+      { ar: "سرير ومفرش وخزانة بقفل لكل فرد", en: "A bed, bedding and a lockable wardrobe per person" },
+      { ar: "غرف بحد أعلى 10 أفراد و4 م² لكل فرد", en: "Rooms of 10 people maximum, 4 m² per person" },
+      { ar: "دورة مياه لكل 8 أفراد", en: "One sanitary set per 8 people" },
+      { ar: "تكييف، ومياه شرب آمنة، وكاميرات أمن", en: "Air conditioning, safe drinking water, security cameras" },
+      { ar: "مشرف سعودي متفرغ ونظافة دورية", en: "A full-time Saudi supervisor and periodic cleaning" },
+      { ar: "شهادة إثبات سكن لمنشأتك", en: "A housing proof certificate for your company" },
+    ],
+    rule: { ar: "المساحات والأعداد من الشروط الصحية والفنية والسلامة للمساكن الجماعية للأفراد (وزارة البلديات والإسكان).", en: "Figures from MOMAH's health, technical and safety conditions for group housing." },
+  },
+  "svc-transport": {
+    title: { ar: "نقل العمال من السكن إلى الموقع", en: "Worker transport to site" },
+    lede: { ar: "رحلات يومية على ورديات شركتك، مرتبطة بطلب السكن نفسه.", en: "Daily trips on your shift pattern, arranged with the housing itself." },
+    points: [
+      { ar: "جدول رحلات حسب الورديات", en: "Trip schedules built around your shifts" },
+      { ar: "مواقف حافلات ضمن السكن", en: "Bus parking within the housing site" },
+      { ar: "طلب واحد للسكن والنقل", en: "One request for housing and transport" },
+    ],
+  },
+  "svc-catering": {
+    title: { ar: "تموين ووجبات للعمال", en: "Catering for workers" },
+    lede: { ar: "وجبات يومية تناسب جنسيات عمالتك، عبر مطبخ مركزي أو مقدم تموين.", en: "Daily meals suited to your workforce, from a central kitchen or a caterer." },
+    points: [
+      { ar: "فطور وغداء وعشاء حسب الحاجة", en: "Breakfast, lunch and dinner as needed" },
+      { ar: "قوائم تناسب جنسيات العمالة", en: "Menus suited to your workforce's nationalities" },
+      { ar: "صالة طعام بمساحة 0.7 م² لكل فرد", en: "A dining area of 0.7 m² per person" },
+    ],
+    rule: { ar: "توفير مطبخ مركزي أو خدمة تموين شرط في المساكن الجماعية.", en: "A central kitchen or catering service is a group-housing requirement." },
+  },
+  "svc-management": {
+    title: { ar: "إدارة وتشغيل سكن العمال", en: "Worker housing management" },
+    lede: { ar: "نشغّل السكن يومياً ونبقي رخصته وشهاداته سارية.", en: "We run the housing daily and keep its licence and certificates current." },
+    points: [
+      { ar: "إشراف وأمن على مدار الساعة", en: "Supervision and security around the clock" },
+      { ar: "صيانة ونظافة دورية", en: "Maintenance and periodic cleaning" },
+      { ar: "تجديد الرخصة السنوية", en: "Annual licence renewal" },
+      { ar: "مطابقة الطاقة مع عدد العمالة في قوى", en: "Capacity kept matched to your Qiwa headcount" },
+    ],
+  },
+};
+const d = S[pageKey];
+const crumbs = [{ key: pageKey, name: d.title[lang] }];
+const jsonld = [{ "@context": "https://schema.org", "@type": "Service", name: d.title[lang], provider: { "@id": `${SITE_URL}/#org` }, areaServed: { "@type": "Country", name: lang === "ar" ? "السعودية" : "Saudi Arabia" }, url: absUrl(pageKey, lang, SITE_URL) }];
+---
+<Base lang={lang} pageKey={pageKey} jsonld={jsonld} crumbs={crumbs}>
+  <PageHead lang={lang} crumbs={crumbs} title={d.title[lang]} lede={d.lede[lang]} />
+  <div class="container body-grid">
+    <div class="doc">
+      <section>
+        <h2>{lang === "ar" ? "ما تحصل عليه" : "What you get"}</h2>
+        <ul class="list-check">{d.points.map((p) => <li>{p[lang]}</li>)}</ul>
+        {d.rule && <p class="source">{d.rule[lang]}</p>}
+      </section>
+      <section>
+        <h2>{lang === "ar" ? "خدمات أخرى" : "Other services"}</h2>
+        <ul class="list-check">
+          {Object.keys(S).filter((k) => k !== pageKey).map((k) => <li><a href={href(k as PageKey, lang)}>{S[k].title[lang]}</a></li>)}
+        </ul>
+      </section>
+    </div>
+    <aside><RequestPanel lang={lang} id="svc-request" /></aside>
+  </div>
+</Base>

@@ -1,0 +1,96 @@
+---
+// FAQ, glossary, about, request, thanks and privacy: simple pages sharing one view.
+import Base from "../layouts/Base.astro";
+import PageHead from "../components/PageHead.astro";
+import RequestPanel from "../components/RequestPanel.astro";
+import Icon from "../components/Icon.astro";
+import type { Lang } from "../lib/site";
+import { CONTACT, BRAND } from "../lib/site";
+import { href, type PageKey } from "../lib/routes";
+import { FAQ, GLOSSARY, CITIES } from "../data/content";
+interface Props { lang: Lang; pageKey: PageKey }
+const { lang, pageKey } = Astro.props;
+const L = (ar: string, en: string) => (lang === "ar" ? ar : en);
+const titles: Partial<Record<PageKey, [string, string]>> = {
+  faq: [L("أسئلة شائعة عن سكن العمال", "Worker housing FAQ"), L("إجابات مباشرة.", "Direct answers.")],
+  glossary: [L("مصطلحات السكن الجماعي", "Worker housing glossary"), L("المعنى، بسطر واحد.", "Each term, in one line.")],
+  about: [L("عن سكن هب", "About SakanHub"), L("منصة ومشغّل سعودي لسكن العمال.", "A Saudi worker-housing platform and operator.")],
+  request: [L("اطلب سكناً لعمالك", "Request worker housing"), L("أربع معلومات، ونعود إليك بخيار مرخّص.", "Four details, and we come back with a licensed option.")],
+  thanks: [L("استلمنا طلبك", "We have your request"), L("سنتواصل معك على الرقم الذي أرسلته.", "We will contact you on the number you sent.")],
+  privacy: [L("سياسة الخصوصية", "Privacy policy"), L("كيف نتعامل مع بيانات طلبك.", "How we handle your request data.")],
+};
+const [title, lede] = titles[pageKey]!;
+const crumbs = pageKey === "thanks" ? [] : [{ key: pageKey, name: title }];
+const jsonld = pageKey === "faq" ? [{
+  "@context": "https://schema.org", "@type": "FAQPage",
+  mainEntity: FAQ.map((f) => ({ "@type": "Question", name: f.q[lang], acceptedAnswer: { "@type": "Answer", text: f.a[lang] } })),
+}] : pageKey === "glossary" ? [{
+  "@context": "https://schema.org", "@type": "DefinedTermSet", name: title,
+  hasDefinedTerm: GLOSSARY.map((g) => ({ "@type": "DefinedTerm", name: g.term[lang], description: g.def[lang] })),
+}] : [];
+---
+<Base lang={lang} pageKey={pageKey} crumbs={crumbs} jsonld={jsonld}>
+  <PageHead lang={lang} crumbs={crumbs} title={title} lede={lede} />
+  <div class="container body-grid">
+    <div class="doc">
+      {pageKey === "faq" && (
+        <section class="qa">
+          {FAQ.map((f) => (<div><h2>{f.q[lang]}</h2><p>{f.a[lang]}</p></div>))}
+        </section>
+      )}
+      {pageKey === "glossary" && (
+        <dl class="facts">{GLOSSARY.map((g) => (<div><dt><b>{g.term[lang]}</b></dt><dd class="plain">{g.def[lang]}</dd></div>))}</dl>
+      )}
+      {pageKey === "about" && (
+        <section>
+          <dl class="facts">
+            <div><dt>{L("الاسم", "Name")}</dt><dd>{BRAND.name} — {BRAND.nameAr}</dd></div>
+            <div><dt>{L("ما نقدمه", "What we do")}</dt><dd>{L("سكن عمال مرخّص للشركات، مع النقل والتموين وإدارة السكن، وتشغيل المباني لملاكها.", "Licensed worker housing for companies, with transport, catering and management; building operation for owners.")}</dd></div>
+            <div><dt>{L("المدن", "Cities")}</dt><dd>{CITIES.map((c) => c.name[lang]).join(L("، ", ", "))}</dd></div>
+            <div><dt>{L("الموقع", "Website")}</dt><dd dir="ltr">sakanhub.sa</dd></div>
+            <div><dt>{L("السجل التجاري", "CR")}</dt><dd>{CONTACT.cr}</dd></div>
+          </dl>
+        </section>
+      )}
+      {pageKey === "request" && (
+        <section>
+          <h2>{L("بعد الإرسال", "After you send")}</h2>
+          <ol class="ordered">
+            <li>{L("نتصل بك لتأكيد الاحتياج.", "We call to confirm your needs.")}</li>
+            <li>{L("نعرض الخيار المرخّص والعقد.", "We present the licensed option and contract.")}</li>
+            <li>{L("نجهّز شهادة إثبات السكن ونبدأ.", "We prepare the housing proof certificate and start.")}</li>
+          </ol>
+        </section>
+      )}
+      {pageKey === "thanks" && (
+        <section>
+          <ul class="list-check">
+            <li>{L("جهّز السجل التجاري للمنشأة ورقمها في قوى.", "Have your CR and Qiwa establishment number ready.")}</li>
+            <li>{L("للاستعجال، راسلنا على واتساب.", "In a hurry? Message us on WhatsApp.")}</li>
+          </ul>
+          <p style="margin-block-start: var(--s5)"><a class="btn" href={`https://wa.me/${CONTACT.whatsapp}`} rel="noopener" target="_blank"><Icon name="chat" />{L("واتساب", "WhatsApp")}</a></p>
+        </section>
+      )}
+      {pageKey === "privacy" && (
+        <section>
+          <dl class="facts">
+            <div><dt>{L("ما نجمعه", "What we collect")}</dt><dd class="plain">{L("المدينة، عدد العمال، تاريخ البدء، رقم الجوال، واسم المنشأة إن أرسلته.", "City, headcount, start date, mobile number, and company name if provided.")}</dd></div>
+            <div><dt>{L("لماذا", "Why")}</dt><dd class="plain">{L("للرد على طلبك وترتيب السكن فقط.", "Only to answer your request and arrange housing.")}</dd></div>
+            <div><dt>{L("المشاركة", "Sharing")}</dt><dd class="plain">{L("لا نبيع بياناتك. نشاركها مع مالك المبنى أو مزود الخدمة بقدر ما يلزم لتنفيذ طلبك.", "We never sell your data. We share it with the building owner or service provider only as needed to fulfil your request.")}</dd></div>
+            <div><dt>{L("النظام", "Law")}</dt><dd class="plain">{L("نلتزم بنظام حماية البيانات الشخصية في المملكة.", "We comply with Saudi Arabia's Personal Data Protection Law (PDPL).")}</dd></div>
+            <div><dt>{L("حقوقك", "Your rights")}</dt><dd class="plain">{L("اطلب الاطلاع على بياناتك أو تصحيحها أو حذفها عبر", "Ask to access, correct or delete your data at")} <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></dd></div>
+          </dl>
+          <p class="source">{L("نسخة مبدئية تحتاج مراجعة قانونية قبل الإطلاق.", "Draft — needs legal review before launch.")}</p>
+        </section>
+      )}
+    </div>
+    {pageKey === "request"
+      ? <aside><RequestPanel lang={lang} id="main-request" full /></aside>
+      : pageKey !== "thanks" && <aside><RequestPanel lang={lang} id={`${pageKey}-request`} /></aside>}
+  </div>
+</Base>
+<style>
+  .qa { display: grid; gap: var(--s6); }
+  .qa h2 { font-size: var(--step-1); margin-block-end: var(--s2); }
+  .facts dd.plain { font-weight: 400; color: var(--ink-2); }
+</style>
