@@ -63,7 +63,7 @@ const jsonld = [
         <p class="eyebrow">{L("تعرّف علينا", "Who we are")}</p>
         <h2 id="intro-h">{L("نهتم بسكن طاقمك من أول يوم", "We look after your crew's housing from day one")}</h2>
         <p class="lead">{L("سكن هب شركة سعودية متخصّصة في سكن العمّال. نختار لك المبنى المناسب في مدينتك، ونتأكد من ترخيصه، ونتابع السكن بعد ما يستلمه طاقمك.", "SakanHub is a Saudi workforce-housing company. We find the right building in your city, make sure it's licensed, and keep looking after it once your crew moves in.")}</p>
-        <ul class="facts-row">
+        <ul class="facts-row stagger">
           <li><b>{L("مبانٍ شريكة", "Partner buildings")}</b><span>{L("ومبانٍ نشغّلها بأنفسنا", "plus buildings we run ourselves")}</span></li>
           <li><b>{L("طلب واحد", "One request")}</b><span>{L("وفريق واحد يتابع معك", "and one team on your side")}</span></li>
           <li><b>{L("الرياض والخبر والدمام", "Riyadh, Khobar, Dammam")}</b><span>{L("والمزيد قريباً", "with more to come")}</span></li>
@@ -78,7 +78,7 @@ const jsonld = [
         <h2 id="svc-h">{L("كل اللي يحتاجه طاقمك", "Everything your crew needs")}</h2>
         <p>{L("خذ السكن لوحده، أو أضف له اللي تحتاجه.", "Take the housing on its own, or add what you need.")}</p>
       </div>
-      <ul class="svc-grid">
+      <ul class="svc-grid stagger">
         {services.map((s) => (
           <li>
             <a href={href(s.key, lang)}>
@@ -107,7 +107,7 @@ const jsonld = [
   <section class="section section--sand" aria-labelledby="how-h">
     <div class="container">
       <div class="section-head"><h2 id="how-h">{L("كيف نبدأ", "How it works")}</h2></div>
-      <ol class="steps">
+      <ol class="steps stagger">
         {steps.map((s, i) => (
           <li><span class="step-n num" aria-hidden="true">{i + 1}</span><h3>{s.t}</h3><p>{s.d}</p></li>
         ))}
@@ -118,7 +118,7 @@ const jsonld = [
   <section class="section" id="cities" aria-labelledby="cities-h">
     <div class="container">
       <div class="section-head"><h2 id="cities-h">{L("وين نخدمك", "Where we are")}</h2></div>
-      <ul class="cities">
+      <ul class="cities stagger">
         {CITIES.map((c) => c.active ? (
           <li>
             <a href={href(c.key, lang)}>
@@ -167,7 +167,7 @@ const jsonld = [
         <ul class="ticks">
           <li><Icon name="check" />{L("نحسب كم عامل يستوعب نظاماً", "We work out its licensed capacity")}</li>
           <li><Icon name="check" />{L("نجهّزه للترخيص", "We get it ready for licensing")}</li>
-          <li><Icon name="check" />{L("نشغّله ونملؤه بشركات تحتاج سكن", "We run it and fill it with companies that need beds")}</li>
+          <li><Icon name="check" />{L("نشغّله عنك، ونجيب له شركات تسكّن فيه عمّالها", "We run it and fill it with companies that need beds")}</li>
         </ul>
         <a class="btn btn--ink" href={href("owners", lang)}>{L("سجّل عقارك", "List your building")}<Icon name="arrow" class="flip" /></a>
       </div>

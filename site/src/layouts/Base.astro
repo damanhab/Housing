@@ -60,11 +60,28 @@ const graph = [org, ...(breadcrumb ? [breadcrumb] : []), ...jsonld];
   <meta property="og:image" content={`${SITE_URL}/icon-512.png`} />
   <meta name="twitter:card" content="summary" />
   <script type="application/ld+json" set:html={JSON.stringify(graph.length === 1 ? graph[0] : graph)} />
+  <script is:inline>
+    // Reveal-on-scroll: only switch it on when the browser supports it and the visitor hasn't asked for reduced motion.
+    if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("js-reveal");
+  </script>
 </head>
 <body>
   <a class="skip" href="#main">{lang === "ar" ? "انتقل إلى المحتوى" : "Skip to content"}</a>
   <Header lang={lang} pageKey={pageKey} />
   <main id="main"><slot /></main>
   <Footer lang={lang} />
+  <script>
+    // Sections below the first one fade up as they scroll into view; list items inside them follow one after another.
+    if (document.documentElement.classList.contains("js-reveal")) {
+      const targets = document.querySelectorAll<HTMLElement>("main > :not(:first-child), [data-reveal]");
+      const io = new IntersectionObserver((entries) => {
+        for (const e of entries) if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); }
+      }, { rootMargin: "0px 0px -10% 0px", threshold: 0.08 });
+      targets.forEach((t) => {
+        t.querySelectorAll<HTMLElement>(":scope .stagger > *").forEach((c, i) => c.style.setProperty("--i", String(i)));
+        io.observe(t);
+      });
+    }
+  </script>
 </body>
 </html>

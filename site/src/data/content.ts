@@ -200,7 +200,7 @@ export const FAQ: QA[] = [
   {
     q: { ar: "عندي عمارة، أقدر أشتغل معكم؟", en: "I own a building. Can I work with you?" },
     a: {
-      ar: "أكيد. نحسب طاقتها النظامية، ونجهّزها للترخيص، ونشغّلها ونملؤها بشركات تحتاج سكناً.",
+      ar: "أكيد. نحسب كم عامل تستوعب نظاماً، ونجهّزها للترخيص، ونشغّلها عنك، ونجيب لها شركات تسكّن فيها عمّالها.",
       en: "Yes. We work out its licensed capacity, get it ready for licensing, then run it and fill it.",
     },
   },
@@ -274,8 +274,8 @@ export const UI = {
     bedArea: { ar: "م² للنوم", en: "m² sleeping area" },
     track: { ar: "جهة الترخيص", en: "Licensing track" },
     note: {
-      ar: "تقدير حسب الاشتراطات: 10 أشخاص للغرفة كحدّ أقصى، و4 م² لكل شخص، ودورة مياه لكل 8.",
-      en: "Estimate from the rules: max 10 per room, 4 m² per person, one set per 8.",
+      ar: "تقدير مبدئي حسب اشتراطات السكن الجماعي.",
+      en: "A first estimate, based on the official group-housing rules.",
     },
   },
   complianceLine: {

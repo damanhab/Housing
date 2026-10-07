@@ -19,6 +19,9 @@ const groups = [
   { id: "services", label: UI.nav.services[lang], items: services },
   { id: "cities", label: UI.nav.cities[lang], items: cities },
 ];
+const lead: { key: PageKey; label: string }[] = [
+  { key: "companies", label: UI.nav.companies[lang] },
+];
 const links: { key: PageKey; label: string }[] = [
   { key: "owners", label: UI.nav.owners[lang] },
   { key: "regulations", label: UI.nav.regulations[lang] },
@@ -34,6 +37,9 @@ const wa = `https://wa.me/${CONTACT.whatsapp}`;
     </a>
     <nav class="nav" aria-label={lang === "ar" ? "القائمة الرئيسية" : "Main"}>
       <ul>
+        {lead.map((l) => (
+          <li><a class="top" href={href(l.key, lang)} aria-current={l.key === pageKey ? "page" : undefined}>{l.label}</a></li>
+        ))}
         {groups.map((g) => (
           <li>
             <details class="dd" data-dd>
@@ -56,6 +62,7 @@ const wa = `https://wa.me/${CONTACT.whatsapp}`;
       <details class="menu" data-dd>
         <summary aria-label={UI.nav.menu[lang]}><Icon name="menu" /></summary>
         <div class="menu-panel">
+          <ul><li><a href={href("companies", lang)}>{UI.nav.companies[lang]}</a></li></ul>
           {groups.map((g) => (
             <div class="m-group">
               <p class="m-label">{g.label}</p>
@@ -64,7 +71,6 @@ const wa = `https://wa.me/${CONTACT.whatsapp}`;
           ))}
           <ul>
             {links.map((l) => <li><a href={href(l.key, lang)}>{l.label}</a></li>)}
-            <li><a href={href("companies", lang)}>{UI.nav.companies[lang]}</a></li>
             <li><a href={href(pageKey, other)} hreflang={other} lang={other}>{UI.nav.langSwitch[lang]}</a></li>
           </ul>
           <a class="btn btn--ghost" href={wa} rel="noopener" target="_blank"><Icon name="chat" />{UI.nav.whatsapp[lang]}</a>
@@ -89,13 +95,13 @@ const wa = `https://wa.me/${CONTACT.whatsapp}`;
   .brand img { height: 30px; width: auto; }
   .nav { flex: 1; }
   .nav > ul { display: flex; gap: var(--s5); list-style: none; margin: 0; padding: 0; align-items: center; }
-  .top, .dd summary { text-decoration: none; color: var(--ink-2); font-weight: 700; font-size: 0.95rem; padding-block: var(--s2); cursor: pointer; }
+  .top, .dd summary { white-space: nowrap; text-decoration: none; color: var(--ink-2); font-weight: 700; font-size: 0.95rem; padding-block: var(--s2); cursor: pointer; }
   .top:hover, .dd summary:hover, .top[aria-current="page"], .dd summary.current { color: var(--ink); }
   .top[aria-current="page"], .dd summary.current { box-shadow: inset 0 -2px 0 var(--clay); }
   .dd { position: relative; }
   .dd summary { list-style: none; display: inline-flex; align-items: center; gap: 4px; }
   .dd summary::-webkit-details-marker { display: none; }
-  .dd :global(.dd-chev) { width: 16px; height: 16px; transition: transform 160ms var(--ease-out); }
+  .dd :global(.dd-chev) { flex: none; width: 16px; height: 16px; transition: transform 160ms var(--ease-out); }
   .dd[open] :global(.dd-chev) { transform: rotate(180deg); }
   .dd-panel { position: absolute; inset-inline-start: calc(-1 * var(--s3)); top: calc(100% + 10px); min-width: 13rem; list-style: none; margin: 0; padding: var(--s2); background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-2); display: grid; }
   .dd-panel a { display: block; padding: var(--s2) var(--s3); border-radius: 8px; text-decoration: none; font-weight: 700; color: var(--ink); }
@@ -113,6 +119,6 @@ const wa = `https://wa.me/${CONTACT.whatsapp}`;
   .menu-panel ul { list-style: none; margin: 0; padding: 0; display: grid; }
   .menu-panel li a { display: block; padding: var(--s3) var(--s2); text-decoration: none; font-weight: 700; border-block-end: 1px solid var(--line); }
   .m-label { font-size: 0.8rem; font-weight: 800; color: var(--ink-3); padding-inline: var(--s2); }
-  @media (max-width: 1080px) { .nav { display: none; } .bar { justify-content: space-between; } .menu { display: block; } }
+  @media (max-width: 1240px) { .nav { display: none; } .bar { justify-content: space-between; } .menu { display: block; } }
   @media (max-width: 720px) { .actions .wa { display: none; } .actions .cta { min-height: 40px; padding-inline: var(--s3); font-size: 0.88rem; } .lang { display: none; } .bar { gap: var(--s3); } .brand img { height: 26px; } }
 </style>

@@ -46,7 +46,7 @@ export const ROUTES: Route[] = [
     slug: { ar: "لملاك-العقارات", en: "owners" },
     title: { ar: "حوّل عمارتك إلى سكن عمّال مرخّص | سكن هب", en: "Turn your building into licensed worker housing | SakanHub" },
     description: {
-      ar: "عندك عمارة أو مجمّع؟ نحسب طاقته النظامية، ونجهّزه للترخيص، ونشغّله ونملؤه بشركات تحتاج سكناً.",
+      ar: "عندك عمارة أو مجمّع؟ نرخّصه سكن عمّال، ونشغّله عنك، ونجيب له شركات تسكّن فيه عمّالها.",
       en: "Own a building or compound? We work out its licensed capacity, get it ready for licensing, then run it and fill it.",
     },
     summary: { ar: "لملاك العقارات: الترخيص والتشغيل والإشغال.", en: "For building owners: licensing, operation and occupancy." },

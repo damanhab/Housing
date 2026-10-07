@@ -173,7 +173,7 @@ A warm-neutral system with one decisive accent, taken directly from the final br
 - **Home order:** hero (slogan, one human line, two buttons, photo) → who we are → services (2×2 photo cards) → crew wellbeing → how it works → cities → compliance band (ink) → request section → owners → FAQ. The company and its services come first; the request form sits further down (founder, 7 Oct 2026).
 - **Inner pages:** content plus a sticky photo aside (max 420px), then a sand request section at the bottom. Text-only pages (regulations, FAQ, glossary, resources) use a single 46rem column. Stacks to one column below 1000px.
 - **Section rhythm:** white, sand and ink bands alternate. Ink is reserved for the rules band and the footer, and two ink bands never touch.
-- **Breakpoints:** 1080px (desktop nav becomes a menu), 1000px (two columns stack), 720px (phone header: logo, request button, menu; language switch and WhatsApp move into the menu), 560px (form rows stack).
+- **Breakpoints:** 1240px (desktop nav becomes a menu), 1000px (two columns stack), 720px (phone header: logo, request button, menu; language switch and WhatsApp move into the menu), 560px (form rows stack).
 - **Phone first screen:** headline, support line and both buttons before the fold.
 
 ## Elevation & Depth
@@ -219,13 +219,17 @@ Firm and friendly: heavy labels, solid fills, clear states.
 - **Stepper:** for worker count, a minus/plus on sand flanking a centred number.
 
 ### Navigation
-- **Desktop:** sticky white header, logo at the start, then Services ▾ and Cities ▾ (lifted dropdown panels; Cities lists only launched cities), Building owners, Regulations, Resources. Active page marked by a 2px clay underline. The language switch, WhatsApp (ghost) and Request housing (primary) sit at the end.
-- **Phone (under 1080px):** logo, compact request button and a menu button. The menu opens as a lifted panel with grouped services and cities, links, language and WhatsApp.
+- **Desktop:** sticky white header, logo at the start, then Companies, Services ▾ and Cities ▾ (lifted dropdown panels; Cities lists only launched cities), Building owners, Regulations, Resources. Active page marked by a 2px clay underline. The language switch, WhatsApp (ghost) and Request housing (primary) sit at the end.
+- **Under 1240px:** logo, compact request button and a menu button. The menu opens as a lifted panel with grouped services and cities, links, language and WhatsApp.
 
 ### Photos
 - Rounded frame (18px; 12px inside cards), `object-fit: cover`, set ratios (hero 5:4, cards 16:10, asides 4:5).
 - Until a file exists, a sand gradient block with a faint house mark holds the space.
 - Openly licensed stock or our own photos only, credited in `site/public/images/CREDITS.md`. Never AI-generated images presented as our buildings.
+
+### Reveal on scroll
+- Every section after the first fades up (28px, 700ms ease-out) as it enters the viewport; lists marked `stagger` follow item by item (90ms apart). Founder request, 7 Oct 2026.
+- Switched on only by JS, and never under `prefers-reduced-motion`, so the page is always fully readable without it.
 
 ### Not-yet-launched items
 - Shown greyed with a dashed "TBD" pill (cities) or "Soon" pill (planned articles). They never link anywhere.
