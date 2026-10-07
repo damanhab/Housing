@@ -10,7 +10,7 @@ export type Slot =
 
 export const IMAGES: Record<Slot, { file: string; alt: Record<Lang, string>; want: string }> = {
   hero:            { file: "hero.jpg",            want: "Crew of workers in hi-vis at golden hour, relaxed, outdoors near a residential building", alt: { ar: "طاقم عمّال بالخوذ والسترات العاكسة", en: "A crew of workers in hard hats and hi-vis vests" } },
-  intro:           { file: "intro.jpg",           want: "Clean, bright shared bedroom with neatly made single beds", alt: { ar: "غرفة مرتّبة بسريرين فرديين", en: "A tidy room with two single beds" } },
+  intro:           { file: "intro.jpg",           want: "Plain, clean shared room with bunk beds: realistic worker housing, never hotel-like, never grim", alt: { ar: "غرفة سكن بسيطة بأسرّة بطابقين", en: "A plain shared room with bunk beds" } },
   living:          { file: "living.jpg",          want: "Workers sharing a meal or relaxing together after a shift", alt: { ar: "عاملان يرتاحان بعد الدوام", en: "Two workers taking a break" } },
   owners:          { file: "owners.jpg",          want: "Exterior of a mid-rise residential building in a Gulf city", alt: { ar: "عمارة سكنية في مدينة سعودية", en: "A residential building in a Saudi city" } },
   "svc-housing":   { file: "svc-housing.jpg",     want: "Furnished worker room: beds, lockers, air conditioning", alt: { ar: "غرفة سكن بأسرّة بطابقين", en: "A shared room with bunk beds" } },

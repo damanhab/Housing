@@ -33,7 +33,7 @@ Read this first if you're picking up the project, reviewing a pull request or co
 13. **Reveal on scroll:** sections fade up as they come into view (founder request); off for reduced-motion users.
 9. **No internal notes on pages** (no "placeholder"/"draft" banners). The one exception is the Resources page, which says it will hold SEO articles once the site is built.
 10. **Regulations page** carries a short source note under the title (MOMAH requirements + Balady), plus a full Sources section.
-11. **Photos:** Unsplash stock, fetched through the official Unsplash API and credited in `site/public/images/CREDITS.md`, with a "Photos from Unsplash" footer link. To be replaced with our own buildings later. No AI images presented as our buildings. API keys are never committed; the founder holds them.
+11. **Photos:** Unsplash stock, fetched through the official Unsplash API and credited in `site/public/images/CREDITS.md`; no on-page credit (founder decision; the Unsplash License doesn't require one). To be replaced with our own buildings later. No AI images presented as our buildings. API keys are never committed; the founder holds them.
 12. **Visual direction:** "the category standard at full craft" (Stripe / Careem / Tabby bar). Clay `#C8502A` is only for buttons, the logo house and active states. Pages are flat; only the request panel and menus lift.
 
 ## Open items
@@ -59,6 +59,8 @@ Read this first if you're picking up the project, reviewing a pull request or co
 - Reveal on scroll now triggers later (once a section is ~22% into the viewport) and moves a little slower.
 - 11 Unsplash photos added via the official API (download events registered, credits recorded). The first transport photo was swapped because it showed religious statues and a foreign plate.
 - The internal preview link now opens straight on the Arabic home page.
+- Who-we-are room photo replaced twice: the first was hotel-like ("too nice, no worker housing looks like this"), the second looked like a prison. Now a plain white room with metal bunk beds and curtains. Rule of thumb: realistic and decent, never luxury, never grim.
+- Removed the footer photo credit at the founder's request.
 
 ### 7 Oct 2026: second round of founder feedback
 - Rewrote the owners lines that read as stiff MSA («ونملؤها بشركات…») into the site's conversational Arabic. Changed «وش نشيل عنك» on the Companies page, because it closely echoed Mnzil's own wording.

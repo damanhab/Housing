@@ -6,7 +6,6 @@ These are placeholders until we have photos of our own buildings. File names and
 | File | Photo | Photographer |
 |---|---|---|
 | hero.jpg | [7TR0TGS7zqg](https://unsplash.com/photos/man-in-orange-vest-wearing-yellow-hard-hat-7TR0TGS7zqg?utm_source=sakanhub&utm_medium=referral) | [Mufid Majnun](https://unsplash.com/@mufidpwt?utm_source=sakanhub&utm_medium=referral) |
-| intro.jpg | [gTbaxaVLvsg](https://unsplash.com/photos/gray-bed-with-white-pillows-gTbaxaVLvsg?utm_source=sakanhub&utm_medium=referral) | [Fred Kleber](https://unsplash.com/@flaken?utm_source=sakanhub&utm_medium=referral) |
 | living.jpg | [GWJvfgUPGuM](https://unsplash.com/photos/two-people-in-yellow-jackets-sitting-on-steps-GWJvfgUPGuM?utm_source=sakanhub&utm_medium=referral) | [billow926](https://unsplash.com/@billow926?utm_source=sakanhub&utm_medium=referral) |
 | owners.jpg | [ND5MBOLA6PQ](https://unsplash.com/photos/a-parking-lot-with-cars-and-buildings-ND5MBOLA6PQ?utm_source=sakanhub&utm_medium=referral) | [Yousef Hussain](https://unsplash.com/@usefieee?utm_source=sakanhub&utm_medium=referral) |
 | svc-housing.jpg | [ypE9DgHdEYo](https://unsplash.com/photos/bunk-beds-fill-a-dimly-lit-dormitory-room-ypE9DgHdEYo?utm_source=sakanhub&utm_medium=referral) | [Adem Percem](https://unsplash.com/@adempercem?utm_source=sakanhub&utm_medium=referral) |
@@ -16,3 +15,4 @@ These are placeholders until we have photos of our own buildings. File names and
 | city-khobar.jpg | [Ma-uMYGL9OQ](https://unsplash.com/photos/a-very-tall-tower-with-a-clock-on-its-side-Ma-uMYGL9OQ?utm_source=sakanhub&utm_medium=referral) | [Haider AlMarri](https://unsplash.com/@haideralmarri?utm_source=sakanhub&utm_medium=referral) |
 | city-dammam.jpg | [G6Mbil33Rmw](https://unsplash.com/photos/a-body-of-water-with-a-city-in-the-background-G6Mbil33Rmw?utm_source=sakanhub&utm_medium=referral) | [Usama Fakhry](https://unsplash.com/@usama_f?utm_source=sakanhub&utm_medium=referral) |
 | svc-transport.jpg | [2GkRMcHPrRI](https://unsplash.com/photos/white-bus-parked-outside-during-daytime-2GkRMcHPrRI?utm_source=sakanhub&utm_medium=referral) | [John T](https://unsplash.com/@john_thng?utm_source=sakanhub&utm_medium=referral) |
+| intro.jpg | [7-nlXvnjo7E](https://unsplash.com/photos/black-metal-framed-glass-window-7-nlXvnjo7E?utm_source=sakanhub&utm_medium=referral) | [Dmitriy Frantsev](https://unsplash.com/@vapricot?utm_source=sakanhub&utm_medium=referral) |
