@@ -1,0 +1,354 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-07T04:44:16.406756Z",
+  "title": "Design System: SakanHub",
+  "extensions": {
+    "colorMeta": {
+      "clay": {
+        "role": "primary",
+        "displayName": "Clay",
+        "canonical": "#C8502A",
+        "tonalRamp": [
+          "#3F190D",
+          "#692A16",
+          "#943B1F",
+          "#BE4C28",
+          "#D76541",
+          "#E49981",
+          "#F2CCC0",
+          "#FBEEEA"
+        ]
+      },
+      "clay-light": {
+        "role": "primary",
+        "displayName": "Light Clay",
+        "canonical": "#F08A5D",
+        "tonalRamp": [
+          "#461A06",
+          "#752B0B",
+          "#A33D0F",
+          "#D24E13",
+          "#EC672D",
+          "#F29A73",
+          "#F9CCB9",
+          "#FDEEE8"
+        ]
+      },
+      "clay-wash": {
+        "role": "primary",
+        "displayName": "Clay Wash",
+        "canonical": "#FBEDE7",
+        "tonalRamp": [
+          "#421B0B",
+          "#6D2E12",
+          "#994019",
+          "#C55221",
+          "#DE6B3A",
+          "#E99D7C",
+          "#F4CEBD",
+          "#FBEFE9"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#1D2433",
+        "tonalRamp": [
+          "#1C2231",
+          "#2E3951",
+          "#415072",
+          "#536792",
+          "#6D81AC",
+          "#9DABC8",
+          "#CED5E3",
+          "#EFF1F6"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Slate Ink",
+        "canonical": "#4A5265",
+        "tonalRamp": [
+          "#20242C",
+          "#363C4A",
+          "#4B5467",
+          "#616C84",
+          "#7B859E",
+          "#A7AEBE",
+          "#D3D6DF",
+          "#F0F1F4"
+        ]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Mist Ink",
+        "canonical": "#6B7283",
+        "tonalRamp": [
+          "#22252A",
+          "#393D46",
+          "#505662",
+          "#676E7E",
+          "#818798",
+          "#ABAFBA",
+          "#D5D7DD",
+          "#F1F2F4"
+        ]
+      },
+      "sand": {
+        "role": "neutral",
+        "displayName": "Sand",
+        "canonical": "#F6F3EE",
+        "tonalRamp": [
+          "#32291A",
+          "#53452C",
+          "#75603E",
+          "#967C4F",
+          "#B09569",
+          "#CAB89B",
+          "#E5DCCD",
+          "#F6F3EE"
+        ]
+      },
+      "sand-2": {
+        "role": "neutral",
+        "displayName": "Deep Sand",
+        "canonical": "#EDE8E0",
+        "tonalRamp": [
+          "#30291C",
+          "#51442F",
+          "#715F42",
+          "#917A54",
+          "#AB936E",
+          "#C7B79E",
+          "#E3DBCF",
+          "#F6F3EF"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "#E3DED6",
+        "tonalRamp": [
+          "#2D281F",
+          "#4C4334",
+          "#6A5D48",
+          "#88785D",
+          "#A29177",
+          "#C1B6A4",
+          "#E0DAD2",
+          "#F5F3F0"
+        ]
+      },
+      "line-strong": {
+        "role": "neutral",
+        "displayName": "Strong Hairline",
+        "canonical": "#CFC8BD",
+        "tonalRamp": [
+          "#2C2820",
+          "#4A4236",
+          "#675C4B",
+          "#857761",
+          "#9E907A",
+          "#BFB5A6",
+          "#DFDAD3",
+          "#F4F3F0"
+        ]
+      },
+      "ok": {
+        "role": "status",
+        "displayName": "Licence Green",
+        "canonical": "#2E7D5B",
+        "tonalRamp": [
+          "#153829",
+          "#225D44",
+          "#30825F",
+          "#3EA87A",
+          "#57C194",
+          "#8FD6B7",
+          "#C7EADB",
+          "#ECF8F3"
+        ]
+      },
+      "err": {
+        "role": "status",
+        "displayName": "Error Red",
+        "canonical": "#B3261E",
+        "tonalRamp": [
+          "#420E0B",
+          "#6D1712",
+          "#99201A",
+          "#C52A21",
+          "#DE433A",
+          "#E9827C",
+          "#F4C0BD",
+          "#FBEAE9"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "One H1 per page."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Card/list headings and section supports."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text, 64ch max on guides."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Form labels, readout title, chips."
+      }
+    },
+    "shadows": [
+      {
+        "name": "lifted-panel",
+        "value": "0 2px 4px rgb(29 36 51 / 0.05), 0 18px 40px -12px rgb(29 36 51 / 0.18)",
+        "purpose": "Request panel and pop-over menus only."
+      },
+      {
+        "name": "resting-hint",
+        "value": "0 1px 2px rgb(29 36 51 / 0.06), 0 2px 8px rgb(29 36 51 / 0.05)",
+        "purpose": "Small floating elements; not cards."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "All state transitions (150–200ms)."
+      },
+      {
+        "name": "tick",
+        "value": "180ms fade-up 3px",
+        "purpose": "Readout figures settling."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "menu",
+        "value": "1080px"
+      },
+      {
+        "name": "stack",
+        "value": "1000px"
+      },
+      {
+        "name": "phone-header",
+        "value": "720px"
+      },
+      {
+        "name": "form-rows",
+        "value": "560px"
+      },
+      {
+        "name": "readout-2x2",
+        "value": "460px container"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one clay action per view.",
+      "html": "<button class=\"ds-btn\">Request housing</button>",
+      "css": ":host{--clay:#C8502A;--clay-hover:#B34522;--clay-wash:#FBEDE7;--ink:#1D2433;--ink-2:#4A5265;--ink-3:#6B7283;--sand:#F6F3EE;--line:#E3DED6;--line-strong:#CFC8BD;font-family:Nunito,Almarai,system-ui,sans-serif} .ds-btn{display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:10px;border:1px solid transparent;background:var(--clay);color:#fff;font:inherit;font-weight:800;cursor:pointer;box-shadow:0 1px 2px rgb(158 60 29/.25);transition:background-color 160ms cubic-bezier(.16,1,.3,1),transform 160ms}.ds-btn:hover{background:var(--clay-hover)}.ds-btn:active{background:#9E3C1D;transform:translateY(1px)}.ds-btn:focus-visible{outline:2.5px solid var(--clay);outline-offset:3px}"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary actions such as WhatsApp.",
+      "html": "<button class=\"ds-ghost\">WhatsApp</button>",
+      "css": ":host{--clay:#C8502A;--clay-hover:#B34522;--clay-wash:#FBEDE7;--ink:#1D2433;--ink-2:#4A5265;--ink-3:#6B7283;--sand:#F6F3EE;--line:#E3DED6;--line-strong:#CFC8BD;font-family:Nunito,Almarai,system-ui,sans-serif} .ds-ghost{min-height:48px;padding:0 24px;border-radius:10px;border:1px solid var(--line-strong);background:transparent;color:var(--ink);font:inherit;font-weight:800;cursor:pointer}.ds-ghost:hover{background:var(--sand)}.ds-ghost:focus-visible{outline:2.5px solid var(--clay);outline-offset:3px}"
+    },
+    {
+      "name": "City Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Single-choice city selector; selected is ink.",
+      "html": "<div class=\"ds-chips\"><button class=\"ds-chip\" aria-pressed=\"true\">Jubail</button><button class=\"ds-chip\">Dammam</button></div>",
+      "css": ":host{--clay:#C8502A;--clay-hover:#B34522;--clay-wash:#FBEDE7;--ink:#1D2433;--ink-2:#4A5265;--ink-3:#6B7283;--sand:#F6F3EE;--line:#E3DED6;--line-strong:#CFC8BD;font-family:Nunito,Almarai,system-ui,sans-serif} .ds-chips{display:flex;gap:8px}.ds-chip{min-height:40px;padding:0 16px;border-radius:999px;border:1px solid var(--line-strong);background:#fff;color:var(--ink);font:inherit;font-weight:700;cursor:pointer}.ds-chip:hover{border-color:var(--ink-3)}.ds-chip[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:#fff}.ds-chip:focus-visible{outline:2.5px solid var(--clay);outline-offset:2px}"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Form field with clay focus halo.",
+      "html": "<input class=\"ds-input\" placeholder=\"05XXXXXXXX\">",
+      "css": ":host{--clay:#C8502A;--clay-hover:#B34522;--clay-wash:#FBEDE7;--ink:#1D2433;--ink-2:#4A5265;--ink-3:#6B7283;--sand:#F6F3EE;--line:#E3DED6;--line-strong:#CFC8BD;font-family:Nunito,Almarai,system-ui,sans-serif} .ds-input{width:100%;min-height:48px;padding:0 16px;border:1px solid var(--line-strong);border-radius:10px;background:#fff;color:var(--ink);font:inherit;font-weight:700}.ds-input::placeholder{color:var(--ink-3);font-weight:400}.ds-input:hover{border-color:var(--ink-3)}.ds-input:focus-visible{outline:none;border-color:var(--clay);box-shadow:0 0 0 3px var(--clay-wash)}"
+    },
+    {
+      "name": "Request Readout",
+      "kind": "custom",
+      "refersTo": "readout",
+      "description": "Signature: rule-derived estimate for the visitor's request.",
+      "html": "<div class=\"ds-ro\"><p>What your request needs</p><dl><div><dt>4</dt><dd>rooms minimum</dd></div><div><dt>5</dt><dd>sanitary sets</dd></div><div><dt>160</dt><dd>m² sleeping area</dd></div><div><dt>RCJY / Balady</dt><dd>Licensing track</dd></div></dl></div>",
+      "css": ":host{--clay:#C8502A;--clay-hover:#B34522;--clay-wash:#FBEDE7;--ink:#1D2433;--ink-2:#4A5265;--ink-3:#6B7283;--sand:#F6F3EE;--line:#E3DED6;--line-strong:#CFC8BD;font-family:Nunito,Almarai,system-ui,sans-serif} .ds-ro{background:var(--sand);border-radius:12px;padding:16px;color:var(--ink)}.ds-ro p{margin:0 0 12px;font-weight:800;font-size:.92rem}.ds-ro dl{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0}.ds-ro dt{font-weight:800;font-size:1.6rem;line-height:1.1;font-variant-numeric:tabular-nums}.ds-ro div:last-child dt{font-size:1rem;padding-top:6px}.ds-ro dd{margin:0;font-size:.86rem;color:var(--ink-2)}"
+    },
+    {
+      "name": "Rules Table",
+      "kind": "card",
+      "refersTo": "rules",
+      "description": "Label/value rows with hairlines and a source line.",
+      "html": "<dl class=\"ds-rules\"><div><dt>Floor space</dt><dd>4 m² per person</dd></div><div><dt>Room limit</dt><dd>Max 10 per room</dd></div></dl>",
+      "css": ":host{--clay:#C8502A;--clay-hover:#B34522;--clay-wash:#FBEDE7;--ink:#1D2433;--ink-2:#4A5265;--ink-3:#6B7283;--sand:#F6F3EE;--line:#E3DED6;--line-strong:#CFC8BD;font-family:Nunito,Almarai,system-ui,sans-serif} .ds-rules{margin:0;border-top:1px solid var(--line)}.ds-rules div{display:grid;grid-template-columns:.8fr 1.2fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}.ds-rules dt{color:var(--ink-2)}.ds-rules dd{margin:0;font-weight:800;color:var(--ink)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Licensed Request",
+    "overview": "Every page should feel like a clear, correctly filled official request: calm grounds, exact rules and numbers, and one clay action that says what to do next. Trust comes from precision, not volume.",
+    "keyCharacteristics": [
+      "White and sand grounds, ink type, hairline borders.",
+      "Clay used only where something should be pressed or recognised as the brand.",
+      "Rounded, heavy-weight type (Almarai / Nunito ExtraBold) for headings and labels.",
+      "One lifted object per screen: the request panel.",
+      "Rule-derived numbers set large, sources set small."
+    ],
+    "rules": [
+      {
+        "name": "The One Clay Rule",
+        "body": "Clay marks an action or the brand, nothing else.",
+        "section": "colors"
+      },
+      {
+        "name": "The Light Clay Rule",
+        "body": "Light clay appears only on ink.",
+        "section": "colors"
+      },
+      {
+        "name": "The Weight-Not-Size Rule",
+        "body": "If something needs to be found at a glance, make it 800; don't add a new size.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Lifted Object Rule",
+        "body": "Only one thing per screen floats, and it's the thing the visitor should use.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** keep clay to buttons, the logo house, active and focus states.",
+      "**Do** show regulation numbers exactly (4 m² per person, max 10 per room, 1 sanitary set per 8) with their source (MOMAH / Balady, RCJY / MODON).",
+      "**Do** use logical properties (inline-start/end) so every component mirrors between Arabic and English.",
+      "**Do** keep text contrast at WCAG 2.2 AA or better, including small notes.",
+      "**Do** use the final logo files from `brand/logo/final/` as they are."
+    ],
+    "donts": [
+      "**Don't** add icon tiles above headings, gradient blobs, cream-and-serif styling or rows of three identical cards.",
+      "**Don't** put light clay on white or sand.",
+      "**Don't** add shadows to cards or sections; only the request panel and menus lift.",
+      "**Don't** add browsing or listing patterns (building grids, availability boards); the site takes requests.",
+      "**Don't** retype or redraw the logo."
+    ]
+  }
+}
