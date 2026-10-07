@@ -1,5 +1,5 @@
 import { LANGS, type Lang } from "../../lib/site";
-import { ROUTES, type PageKey } from "../../lib/routes";
+import { LIVE_ROUTES as ROUTES, type PageKey } from "../../lib/routes";
 import { pageMarkdown } from "../../lib/markdown";
 export function getStaticPaths() {
   return LANGS.flatMap((lang) => ROUTES.filter((r) => r.slug[lang] !== "" && r.inSitemap !== false)

@@ -1,35 +1,38 @@
 ---
 import Base from "../layouts/Base.astro";
-import RequestPanel from "../components/RequestPanel.astro";
+import RequestSection from "../components/RequestSection.astro";
+import Photo from "../components/Photo.astro";
 import Icon from "../components/Icon.astro";
 import type { Lang } from "../lib/site";
 import { SITE_URL, CONTACT } from "../lib/site";
-import { href, absUrl } from "../lib/routes";
-import { CITIES, RULES, RULES_SOURCE, FAQ, UI, trackOf } from "../data/content";
+import { href, absUrl, type PageKey } from "../lib/routes";
+import { CITIES, ACTIVE_CITIES, RULES, RULES_SOURCE, FAQ, UI, TBD, trackOf } from "../data/content";
+import type { Slot } from "../data/images";
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const L = (ar: string, en: string) => (lang === "ar" ? ar : en);
 const faqs = FAQ.filter((f) => f.home);
+const S = UI.services;
 
-const steps = [
-  { t: L("أرسل الطلب", "Send the request"), d: L("المدينة، عدد العمال، تاريخ البدء.", "City, headcount, start date.") },
-  { t: L("نرتّب السكن", "We arrange it"), d: L("مبنى مرخّص بطاقة تكفي عمالتك، ومعه النقل والتموين عند الحاجة.", "A licensed building sized for your crew, with transport and catering if you need them.") },
-  { t: L("يسكن عمّالك", "Your crew moves in"), d: L("نجهّز شهادة إثبات السكن، ونتابع التشغيل يومياً.", "We prepare the housing proof certificate and run operations daily.") },
+const services: { key: PageKey; slot: Slot; t: string; d: string }[] = [
+  { key: "svc-housing", slot: "svc-housing", t: S.housing[lang], d: L("غرف مؤثّثة في مبانٍ مرخّصة، مع مشرف سعودي ونظافة دورية.", "Furnished rooms in licensed buildings, with a Saudi supervisor and periodic cleaning.") },
+  { key: "svc-transport", slot: "svc-transport", t: S.transport[lang], d: L("باصات توصل طاقمك للموقع وترجّعه، على مواعيد ورديّاتك.", "Buses to site and back, timed to your shifts.") },
+  { key: "svc-catering", slot: "svc-catering", t: S.catering[lang], d: L("وجبات تناسب أذواق عمّالك، من الفطور إلى العشاء.", "Meals planned around your crew's tastes, breakfast to dinner.") },
+  { key: "svc-management", slot: "svc-management", t: S.management[lang], d: L("صيانة وأمن، وتجديد الرخصة والشهادات في وقتها.", "Maintenance, security, and licence renewals on time.") },
 ];
-const services = [
-  { key: "svc-housing" as const, icon: "bed" as const, t: L("السكن", "Housing"), d: L("غرف مجهّزة في مبانٍ مرخّصة، ومشرف سعودي، ونظافة دورية.", "Furnished rooms in licensed buildings, a Saudi supervisor, periodic cleaning.") },
-  { key: "svc-transport" as const, icon: "bus" as const, t: L("النقل", "Transport"), d: L("رحلات يومية بين السكن والموقع على ورديات شركتك.", "Daily trips between housing and site on your shifts.") },
-  { key: "svc-catering" as const, icon: "meal" as const, t: L("التموين", "Catering"), d: L("وجبات يومية تناسب جنسيات عمالتك.", "Daily meals suited to your workforce.") },
-  { key: "svc-management" as const, icon: "keys" as const, t: L("إدارة السكن", "Management"), d: L("صيانة وأمن وتجديد الرخصة والشهادات.", "Maintenance, security, licence and certificate renewals.") },
+const steps = [
+  { t: L("قل لنا وش تحتاج", "Tell us what you need"), d: L("المدينة، وكم عامل، ومتى.", "Where, how many, and from when.") },
+  { t: L("نجهّز لك السكن", "We line up a place"), d: L("مبنى مرخّص يكفي طاقمك، وعرض واضح.", "A licensed building that fits your crew, and a clear quote.") },
+  { t: L("يستلم طاقمك سكنه", "Your crew moves in"), d: L("نصدر شهادة إثبات السكن، ونبقى معك بعدها.", "We sort the housing certificate and stay on it after.") },
 ];
 
 const jsonld = [
   { "@context": "https://schema.org", "@type": "WebSite", "@id": `${SITE_URL}/#site`, url: absUrl("home", lang, SITE_URL), name: L("سكن هب", "SakanHub"), inLanguage: lang, publisher: { "@id": `${SITE_URL}/#org` } },
   {
     "@context": "https://schema.org", "@type": "Service",
-    serviceType: L("سكن العمال", "Worker accommodation"),
+    serviceType: L("سكن العمّال", "Worker accommodation"),
     provider: { "@id": `${SITE_URL}/#org` },
-    areaServed: CITIES.map((c) => ({ "@type": "City", name: c.name[lang] })),
+    areaServed: ACTIVE_CITIES.map((c) => ({ "@type": "City", name: c.name[lang] })),
     availableChannel: { "@type": "ServiceChannel", serviceUrl: absUrl("request", lang, SITE_URL) },
   },
   {
@@ -42,25 +45,68 @@ const jsonld = [
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-copy">
-        <h1>{L("سكن عمّالك… بطلب واحد", "Your workforce housed. One request.")}</h1>
-        <p class="lede">{L("حدّد المدينة وعدد العمال، ونرتّب السكن المرخّص والنقل والتموين.", "Tell us the city and headcount. We arrange licensed housing, transport and catering.")}</p>
+        <h1>{L("كل سكن عمّالك في مكان واحد", "All your crew housing. One hub.")}</h1>
+        <p class="lede">{L("سكن مريح ومرخّص لطاقمك، ومعه النقل والإعاشة. وأنت تتفرّغ لشغلك.", "Comfortable, licensed housing for your crew, with transport and meals sorted. You get back to running the job.")}</p>
+        <div class="hero-cta">
+          <a class="btn" href={href("request", lang)}>{UI.nav.request[lang]}<Icon name="arrow" class="flip" /></a>
+          <a class="btn btn--ghost" href={`https://wa.me/${CONTACT.whatsapp}`} rel="noopener" target="_blank"><Icon name="chat" />{L("كلّمنا واتساب", "Chat on WhatsApp")}</a>
+        </div>
       </div>
-      <RequestPanel lang={lang} id="hero-request" />
-      <div class="hero-rules">
-        <p class="hr-title">{L("القواعد التي نطبّقها على طلبك", "The rules we apply to your request")}</p>
-        <dl>
-          <div><dt class="num">4 m²</dt><dd>{L("لكل فرد في غرفة النوم", "per person, bedroom")}</dd></div>
-          <div><dt class="num">10</dt><dd>{L("حد أعلى للغرفة", "max per room")}</dd></div>
-          <div><dt class="num">1 / 8</dt><dd>{L("دورة مياه لكل 8 أفراد", "sanitary set per 8")}</dd></div>
-        </dl>
-        <p class="hr-src">{RULES_SOURCE[lang]} <a href={href("regulations", lang)}>{L("الدليل الكامل", "Full guide")}</a></p>
+      <Photo slot="hero" lang={lang} eager ratio="5 / 4" class="hero-photo" />
+    </div>
+  </section>
+
+  <section class="section intro" aria-labelledby="intro-h">
+    <div class="container intro-grid">
+      <Photo slot="intro" lang={lang} ratio="4 / 3" />
+      <div class="intro-copy">
+        <p class="eyebrow">{L("تعرّف علينا", "Who we are")}</p>
+        <h2 id="intro-h">{L("نهتم بسكن طاقمك من أول يوم", "We look after your crew's housing from day one")}</h2>
+        <p class="lead">{L("سكن هب شركة سعودية متخصّصة في سكن العمّال. نختار لك المبنى المناسب في مدينتك، ونتأكد من ترخيصه، ونتابع السكن بعد ما يستلمه طاقمك.", "SakanHub is a Saudi workforce-housing company. We find the right building in your city, make sure it's licensed, and keep looking after it once your crew moves in.")}</p>
+        <ul class="facts-row">
+          <li><b>{L("مبانٍ شريكة", "Partner buildings")}</b><span>{L("ومبانٍ نشغّلها بأنفسنا", "plus buildings we run ourselves")}</span></li>
+          <li><b>{L("طلب واحد", "One request")}</b><span>{L("وفريق واحد يتابع معك", "and one team on your side")}</span></li>
+          <li><b>{L("الرياض والخبر والدمام", "Riyadh, Khobar, Dammam")}</b><span>{L("والمزيد قريباً", "with more to come")}</span></li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <section class="section steps-section" aria-labelledby="how">
+  <section class="section section--sand" aria-labelledby="svc-h">
     <div class="container">
-      <div class="section-head"><h2 id="how">{L("ثلاث خطوات من الطلب إلى السكن", "From request to move-in")}</h2></div>
+      <div class="section-head">
+        <h2 id="svc-h">{L("كل اللي يحتاجه طاقمك", "Everything your crew needs")}</h2>
+        <p>{L("خذ السكن لوحده، أو أضف له اللي تحتاجه.", "Take the housing on its own, or add what you need.")}</p>
+      </div>
+      <ul class="svc-grid">
+        {services.map((s) => (
+          <li>
+            <a href={href(s.key, lang)}>
+              <Photo slot={s.slot} lang={lang} ratio="16 / 10" />
+              <span class="svc-body">
+                <span class="svc-t">{s.t}<Icon name="arrow" class="svc-go flip" /></span>
+                <span class="svc-d">{s.d}</span>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section living" aria-labelledby="living-h">
+    <div class="container living-grid">
+      <div class="living-copy">
+        <h2 id="living-h">{L("طاقم مرتاح… شغل أحسن", "A rested crew does better work")}</h2>
+        <p class="lead">{L("النوم الزين والأكل النظيف والمكان المرتّب يبان أثرها في الموقع. وهذا اللي نشتغل عليه كل يوم.", "Good sleep, decent food and a tidy place to come home to show up on site. That's what we work on every day.")}</p>
+      </div>
+      <Photo slot="living" lang={lang} ratio="3 / 2" />
+    </div>
+  </section>
+
+  <section class="section section--sand" aria-labelledby="how-h">
+    <div class="container">
+      <div class="section-head"><h2 id="how-h">{L("كيف نبدأ", "How it works")}</h2></div>
       <ol class="steps">
         {steps.map((s, i) => (
           <li><span class="step-n num" aria-hidden="true">{i + 1}</span><h3>{s.t}</h3><p>{s.d}</p></li>
@@ -69,82 +115,69 @@ const jsonld = [
     </div>
   </section>
 
-  <section class="section section--sand" aria-labelledby="svc">
-    <div class="container split">
-      <div class="section-head sticky">
-        <h2 id="svc">{L("كل ما حول السرير", "Everything around the bed")}</h2>
-        <p>{L("اطلب السكن وحده، أو معه ما تحتاجه.", "Book housing alone, or with what you need.")}</p>
-      </div>
-      <ul class="svc-list">
-        {services.map((s) => (
-          <li>
-            <a href={href(s.key, lang)}>
-              <Icon name={s.icon} class="svc-ic" />
-              <span class="svc-t">{s.t}</span>
-              <span class="svc-d">{s.d}</span>
-              <Icon name="arrow" class="svc-go flip" />
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </section>
-
-  <section class="section section--ink" aria-labelledby="rules">
-    <div class="container split">
-      <div class="section-head">
-        <h2 id="rules">{L("السكن غير المرخّص يوقف قوى", "Unlicensed housing stops Qiwa")}</h2>
-        <p>{L("لا تأشيرات ولا نقل عمالة، وقد يُعلَّق السجل. نتولى الامتثال عنك.", "No visas, no transfers, and your CR at risk. We handle compliance.")}</p>
-        <div class="rules-cta">
-          <a class="btn btn--light" href={href("calculator", lang)}>{L("احسب الطاقة الاستيعابية", "Calculate capacity")}</a>
-          <a class="link-arrow light" href={href("regulations", lang)}>{L("دليل الاشتراطات", "Regulations guide")}<Icon name="arrow" class="flip" /></a>
-        </div>
-      </div>
-      <dl class="rules">
-        {RULES.map((r) => (<div><dt>{r.label[lang]}</dt><dd>{r.value[lang]}</dd></div>))}
-        <p class="rules-src">{RULES_SOURCE[lang]}</p>
-      </dl>
-    </div>
-  </section>
-
   <section class="section" id="cities" aria-labelledby="cities-h">
     <div class="container">
-      <div class="section-head">
-        <h2 id="cities-h">{L("خمس مدن، ومسار الترخيص الصحيح لكل منها", "Five cities. The right licensing track in each.")}</h2>
-      </div>
+      <div class="section-head"><h2 id="cities-h">{L("وين نخدمك", "Where we are")}</h2></div>
       <ul class="cities">
-        {CITIES.map((c) => (
+        {CITIES.map((c) => c.active ? (
           <li>
             <a href={href(c.key, lang)}>
               <span class="c-name">{c.name[lang]}</span>
               <span class="c-areas">{c.areas.slice(0, 3).map((a) => a.name[lang]).join(L("، ", " · "))}</span>
-              <span class={`c-track t-${c.track}`}>{trackOf(c, lang)}</span>
+              <span class="c-track">{trackOf(c, lang)}</span>
               <Icon name="arrow" class="c-go flip" />
             </a>
+          </li>
+        ) : (
+          <li class="c-off" aria-disabled="true">
+            <span class="c-name">{c.name[lang]}</span>
+            <span class="c-areas"></span>
+            <span class="c-tbd">{TBD[lang]}</span>
           </li>
         ))}
       </ul>
     </div>
   </section>
 
-  <section class="section section--sand" aria-labelledby="owners-h">
-    <div class="container owners">
-      <div>
-        <h2 id="owners-h">{L("تملك عمارة أو مجمعاً؟", "Own a building or compound?")}</h2>
-        <ul class="ticks">
-          <li><Icon name="check" />{L("نقيّم طاقتها المرخّصة", "We assess its licensable capacity")}</li>
-          <li><Icon name="check" />{L("نجهّزها للترخيص", "We prepare it for licensing")}</li>
-          <li><Icon name="check" />{L("نشغّلها لشركات تحتاج سكناً", "We operate it for companies that need housing")}</li>
-        </ul>
+  <section class="section section--ink" aria-labelledby="rules-h">
+    <div class="container split">
+      <div class="section-head">
+        <h2 id="rules-h">{L("السكن غير المرخّص يوقف خدماتك في قوى", "Unlicensed housing can freeze your Qiwa services")}</h2>
+        <p>{L("كل سرير عندنا مرخّص ومطابق لعدد عمّالك في قوى، فما تتوقف تأشيراتك ولا نقل خدمات عمّالك.", "Every bed we provide is licensed and matched to your Qiwa headcount, so visas and transfers keep moving.")}</p>
+        <div class="rules-cta">
+          <a class="link-arrow light" href={href("regulations", lang)}>{L("دليل الاشتراطات", "Regulations guide")}<Icon name="arrow" class="flip" /></a>
+          <a class="link-arrow light" href={href("calculator", lang)}>{UI.nav.calculator[lang]}<Icon name="arrow" class="flip" /></a>
+        </div>
       </div>
-      <a class="btn btn--ink" href={href("owners", lang)}>{L("سجّل عقارك", "List your building")}<Icon name="arrow" class="flip" /></a>
+      <div>
+        <dl class="rules">{RULES.map((r) => (<div><dt>{r.label[lang]}</dt><dd>{r.value[lang]}</dd></div>))}</dl>
+        <p class="rules-src">{RULES_SOURCE[lang]}</p>
+      </div>
     </div>
   </section>
 
-  <section class="section" aria-labelledby="faq-h">
+  <RequestSection lang={lang} id="home-request" />
+
+  <section class="section" aria-labelledby="owners-h">
+    <div class="container owners">
+      <Photo slot="owners" lang={lang} ratio="4 / 3" />
+      <div class="owners-copy">
+        <p class="eyebrow">{L("لملّاك العقارات", "For building owners")}</p>
+        <h2 id="owners-h">{L("مبناك مليان، وبالك مرتاح", "A full building, without the headache")}</h2>
+        <ul class="ticks">
+          <li><Icon name="check" />{L("نحسب كم عامل يستوعب نظاماً", "We work out its licensed capacity")}</li>
+          <li><Icon name="check" />{L("نجهّزه للترخيص", "We get it ready for licensing")}</li>
+          <li><Icon name="check" />{L("نشغّله ونملؤه بشركات تحتاج سكن", "We run it and fill it with companies that need beds")}</li>
+        </ul>
+        <a class="btn btn--ink" href={href("owners", lang)}>{L("سجّل عقارك", "List your building")}<Icon name="arrow" class="flip" /></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sand" aria-labelledby="faq-h">
     <div class="container split">
       <div class="section-head">
-        <h2 id="faq-h">{L("أسئلة شائعة", "Questions, answered")}</h2>
+        <h2 id="faq-h">{L("أسئلة تتكرّر علينا", "Questions we get a lot")}</h2>
         <a class="link-arrow" href={href("faq", lang)}>{L("كل الأسئلة", "All questions")}<Icon name="arrow" class="flip" /></a>
       </div>
       <div class="faq">
@@ -157,59 +190,52 @@ const jsonld = [
       </div>
     </div>
   </section>
-
-  <section class="closing" aria-labelledby="close-h">
-    <div class="container closing-inner">
-      <div>
-        <h2 id="close-h">{L("عمّالك يحتاجون سكناً؟ ابدأ بطلب واحد.", "Need housing for your crew? Start with one request.")}</h2>
-        <p class="closing-sub">{L("شريك السكن لشركات رائدة.", "The housing partner for industry leaders.")}</p>
-      </div>
-      <div class="closing-cta">
-        <a class="btn" href={href("request", lang)}>{UI.nav.request[lang]}<Icon name="arrow" class="flip" /></a>
-        <a class="btn btn--ghost" href={`https://wa.me/${CONTACT.whatsapp}`} rel="noopener" target="_blank"><Icon name="chat" />{UI.nav.whatsapp[lang]}</a>
-      </div>
-    </div>
-  </section>
 </Base>
 
 <style>
   .hero { background: var(--sand); padding-block: var(--s8); border-block-end: 1px solid var(--line); }
-  .hero + .steps-section { padding-block-start: var(--s8); }
-  .hero-grid { display: grid; grid-template-columns: 1fr minmax(0, 520px); grid-template-rows: auto 1fr; column-gap: var(--s8); row-gap: var(--s6); align-items: start; }
-  .hero-grid > :global(form) { grid-column: 2; grid-row: 1 / span 2; }
-  .hero-rules { grid-column: 1; grid-row: 2; align-self: end; max-width: 30rem; }
-  .hr-title { font-weight: 800; font-size: 0.92rem; margin-block-end: var(--s3); }
-  .hero-rules dl { margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s4); border-block-start: 1px solid var(--line-strong); padding-block-start: var(--s4); }
-  .hero-rules dl div { display: grid; gap: 2px; align-content: start; }
-  .hero-rules dt { font-weight: 800; font-size: var(--step-2); line-height: 1.1; color: var(--ink); }
-  html[lang="ar"] .hero-rules dt { direction: ltr; text-align: right; }
-  .hero-rules dd { margin: 0; font-size: 0.86rem; color: var(--ink-2); line-height: 1.35; }
-  .hr-src { font-size: 0.8rem; color: var(--ink-2); margin-block-start: var(--s3); }
-  .hero-copy { padding-block-start: var(--s7); display: grid; gap: var(--s5); align-content: start; }
-  .hero h1 { font-size: clamp(2.6rem, 1.6rem + 3.6vw, 4.4rem); max-width: 12ch; }
-  html[lang="en"] .hero h1 { max-width: 13ch; }
-  .lede { font-size: var(--step-2); color: var(--ink-2); max-width: 26ch; line-height: 1.4; }
-  .ticks :global(svg) { width: 20px; height: 20px; color: var(--ok); flex: none; }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--s8); align-items: center; }
+  .hero-copy { display: grid; gap: var(--s5); align-content: center; }
+  .hero h1 { font-size: clamp(2.5rem, 1.5rem + 3.6vw, 4.3rem); max-width: 13ch; }
+  html[lang="en"] .hero h1 { max-width: 14ch; }
+  .lede { font-size: var(--step-2); color: var(--ink-2); max-width: 30ch; line-height: 1.45; }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: var(--s3); padding-block-start: var(--s2); }
+  .hero-cta :global(.btn) { min-height: 52px; padding-inline: var(--s6); }
 
-  .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s6); counter-reset: s; position: relative; }
+  .eyebrow { font-weight: 800; font-size: 0.9rem; color: var(--clay); }
+  html[lang="en"] .eyebrow { letter-spacing: 0.02em; }
+  .lead { font-size: var(--step-1); color: var(--ink-2); max-width: 40ch; line-height: 1.6; }
+
+  .intro-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: var(--s8); align-items: center; }
+  .intro-copy { display: grid; gap: var(--s4); }
+  .facts-row { list-style: none; margin: var(--s3) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s4); border-block-start: 1px solid var(--line); padding-block-start: var(--s5); }
+  .facts-row li { display: grid; gap: 2px; }
+  .facts-row b { font-weight: 800; font-size: var(--step-0); }
+  .facts-row span { color: var(--ink-2); font-size: 0.92rem; }
+
+  .svc-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s5); }
+  .svc-grid a { display: grid; gap: var(--s4); text-decoration: none; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: var(--s3); transition: border-color 150ms var(--ease-out); }
+  .svc-grid a:hover { border-color: var(--line-strong); }
+  .svc-grid :global(.photo) { border-radius: var(--radius); }
+  .svc-body { display: grid; gap: var(--s1); padding: 0 var(--s3) var(--s3); }
+  .svc-t { font-weight: 800; font-size: var(--step-2); display: flex; align-items: center; justify-content: space-between; gap: var(--s3); }
+  .svc-d { color: var(--ink-2); }
+  :global(.svc-go) { width: 20px; height: 20px; color: var(--ink-3); transition: transform 200ms var(--ease-out); }
+  .svc-grid a:hover :global(.svc-go) { color: var(--ink); }
+
+  .living-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: var(--s8); align-items: center; }
+  .living-copy { display: grid; gap: var(--s4); }
+  .living h2 { font-size: var(--step-4); max-width: 14ch; }
+
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s6); position: relative; }
   .steps::before { content: ""; position: absolute; inset-inline: 22px calc(33% - 22px); top: 22px; height: 1px; background: var(--line-strong); }
-  .steps li { position: relative; display: grid; gap: var(--s3); align-content: start; }
-  .step-n { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--white); border: 1px solid var(--line-strong); font-weight: 800; position: relative; }
+  .steps li { position: relative; display: grid; gap: var(--s2); align-content: start; }
+  .step-n { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--white); border: 1px solid var(--line-strong); font-weight: 800; position: relative; margin-block-end: var(--s2); }
   .steps li:first-child .step-n { background: var(--ink); color: var(--white); border-color: var(--ink); }
   .steps p { color: var(--ink-2); max-width: 30ch; }
 
   .split { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: var(--s8); align-items: start; }
-  .sticky { position: sticky; top: 100px; }
-  .svc-list { list-style: none; margin: 0; padding: 0; border-block-start: 1px solid var(--line-strong); }
-  .svc-list a { display: grid; grid-template-columns: 28px 9rem 1fr 20px; gap: var(--s4); align-items: center; padding-block: var(--s5); border-block-end: 1px solid var(--line-strong); text-decoration: none; transition: background-color 150ms var(--ease-out); padding-inline: var(--s3); }
-  .svc-list a:hover { background: rgb(255 255 255 / 0.7); }
-  :global(.svc-ic) { color: var(--ink) !important; width: 26px; height: 26px; color: var(--clay); }
-  .svc-t { font-weight: 800; font-size: var(--step-1); }
-  .svc-d { color: var(--ink-2); }
-  :global(.svc-go) { width: 18px; height: 18px; color: var(--ink-3); }
-  .svc-list a:hover :global(.svc-go) { color: var(--ink); }
-
-  .rules-cta { display: flex; flex-wrap: wrap; gap: var(--s4); align-items: center; padding-block-start: var(--s3); }
+  .rules-cta { display: flex; flex-wrap: wrap; gap: var(--s5); align-items: center; padding-block-start: var(--s3); }
   .link-arrow.light { color: var(--white); }
   .rules { margin: 0; display: grid; border-block-start: 1px solid #39425A; }
   .rules div { display: grid; grid-template-columns: minmax(9rem, 0.8fr) 1.2fr; gap: var(--s4); padding-block: var(--s4); border-block-end: 1px solid #39425A; }
@@ -218,20 +244,24 @@ const jsonld = [
   .rules-src { font-size: 0.8rem; color: #9AA3B5; padding-block-start: var(--s3); }
 
   .cities { list-style: none; margin: 0; padding: 0; border-block-start: 1px solid var(--line); }
-  .cities a { display: grid; grid-template-columns: 12rem 1fr auto 20px; gap: var(--s5); align-items: center; padding: var(--s5) var(--s3); border-block-end: 1px solid var(--line); text-decoration: none; border-radius: 0; transition: background-color 150ms; }
+  .cities a, .c-off { display: grid; grid-template-columns: 12rem 1fr auto 20px; gap: var(--s5); align-items: center; padding: var(--s5) var(--s3); border-block-end: 1px solid var(--line); text-decoration: none; transition: background-color 150ms; }
   .cities a:hover { background: var(--sand); }
   .c-name { font-weight: 800; font-size: var(--step-2); }
   .c-areas { color: var(--ink-2); }
   .c-track { font-weight: 800; font-size: 0.85rem; padding: 6px 12px; border-radius: 999px; background: var(--sand-2); color: var(--ink); white-space: nowrap; }
-  .c-track.t-rcjy { background: var(--ink); color: var(--white); }
   :global(.c-go) { width: 18px; height: 18px; color: var(--ink-3); }
+  .c-off { color: var(--ink-3); }
+  .c-off .c-name { color: var(--ink-3); font-weight: 700; }
+  .c-tbd { font-family: var(--font-en); font-weight: 800; font-size: 0.8rem; letter-spacing: 0.04em; padding: 5px 12px; border-radius: 999px; border: 1px dashed var(--line-strong); color: var(--ink-3); }
 
-  .owners { display: flex; justify-content: space-between; align-items: center; gap: var(--s6); flex-wrap: wrap; }
-  .ticks { list-style: none; margin: var(--s4) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--s3) var(--s6); }
+  .owners { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--s8); align-items: center; }
+  .owners-copy { display: grid; gap: var(--s4); justify-items: start; }
+  .ticks { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s3); }
   .ticks li { display: flex; gap: var(--s2); align-items: center; font-weight: 700; }
+  .ticks :global(svg) { width: 20px; height: 20px; color: var(--ok); flex: none; }
 
-  .faq { border-block-start: 1px solid var(--line); }
-  .faq details { border-block-end: 1px solid var(--line); }
+  .faq { border-block-start: 1px solid var(--line-strong); }
+  .faq details { border-block-end: 1px solid var(--line-strong); }
   .faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: var(--s4); padding-block: var(--s5); }
   .faq summary::-webkit-details-marker { display: none; }
   .faq summary h3 { font-size: var(--step-1); }
@@ -239,34 +269,23 @@ const jsonld = [
   .faq details[open] :global(.chev) { transform: rotate(180deg); }
   .faq details p { color: var(--ink-2); padding-block-end: var(--s5); max-width: 60ch; }
 
-  .closing { background: var(--sand); padding-block: var(--s9); border-block-start: 1px solid var(--line); }
-  .closing h2 { max-width: 22ch; }
-  .closing-sub { color: var(--ink-2); margin-block-start: var(--s3); font-weight: 700; }
-  .closing-inner { display: flex; justify-content: space-between; align-items: center; gap: var(--s6); flex-wrap: wrap; }
-  .closing-cta { display: flex; gap: var(--s3); flex-wrap: wrap; }
-
   @media (max-width: 1000px) {
-    .hero-grid, .split { grid-template-columns: 1fr; gap: var(--s6); }
-    .hero-copy { padding-block-start: 0; gap: var(--s3); }
-    .hero-grid > :global(form) { grid-column: auto; grid-row: auto; }
-    .hero-rules { display: none; }
-    .hero-grid { grid-template-rows: none; }
-    .sticky { position: static; }
-    .hero { padding-block: var(--s4) var(--s7); }
-    .hero-grid { row-gap: var(--s5); }
-    .hero h1 { font-size: clamp(2.1rem, 1.6rem + 3vw, 3rem); }
+    .hero-grid, .split, .intro-grid, .living-grid, .owners { grid-template-columns: 1fr; gap: var(--s6); }
+    .hero { padding-block: var(--s6) var(--s7); }
+    .hero h1 { font-size: clamp(2.2rem, 1.6rem + 3vw, 3.2rem); }
     .lede { font-size: var(--step-1); }
+    .living-grid :global(.photo) { order: -1; }
   }
   @media (max-width: 760px) {
+    .svc-grid { grid-template-columns: 1fr; }
+    .facts-row { grid-template-columns: 1fr; }
     .steps { grid-template-columns: 1fr; gap: var(--s5); }
     .steps::before { inset-inline: 21.5px auto; width: 1px; height: auto; top: 22px; bottom: 22px; }
     .steps li { grid-template-columns: 44px 1fr; column-gap: var(--s4); row-gap: var(--s1); }
-    .step-n { grid-row: 1 / span 2; }
-    .svc-list a { grid-template-columns: 28px 1fr 20px; }
-    .svc-d { grid-column: 2 / 3; }
-    :global(.svc-go) { grid-row: 1; grid-column: 3; }
-    .cities a { grid-template-columns: 1fr auto; }
+    .step-n { grid-row: 1 / span 2; margin: 0; }
+    .cities a, .c-off { grid-template-columns: 1fr auto; }
     .c-areas { grid-column: 1 / -1; grid-row: 2; }
+    .c-off .c-areas { display: none; }
     :global(.c-go) { display: none; }
     .rules div { grid-template-columns: 1fr; gap: var(--s1); }
     .section { padding-block: var(--s8); }

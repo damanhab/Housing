@@ -120,6 +120,7 @@ Arabic is the primary language and English is its mirror. Every layout is writte
 - Clay used only where something should be pressed or recognised as the brand.
 - Rounded, heavy-weight type (Almarai / Nunito ExtraBold) for headings and labels.
 - One lifted object per screen: the request panel.
+- Real photography (openly licensed stock until we have our own buildings) in rounded frames, carrying the human side of the brand.
 - Rule-derived numbers set large, sources set small.
 
 ## Colors
@@ -169,11 +170,11 @@ A warm-neutral system with one decisive accent, taken directly from the final br
 
 - **Container:** max 1200px, 24px side gutter.
 - **Spacing:** an 8-point scale (4, 8, 12, 16, 24, 32, 48, 64, 96, 128). Sections breathe at 96px vertical padding; groups inside use gap, not margins.
-- **Home hero:** two columns, headline and support at the start, the request panel at the end at equal weight. A single row of three rule figures sits under the headline on desktop only.
-- **Inner pages:** content plus a sticky request panel aside (max 420px). This stacks to one column below 1000px.
+- **Home order:** hero (slogan, one human line, two buttons, photo) → who we are → services (2×2 photo cards) → crew wellbeing → how it works → cities → compliance band (ink) → request section → owners → FAQ. The company and its services come first; the request form sits further down (founder, 7 Oct 2026).
+- **Inner pages:** content plus a sticky photo aside (max 420px), then a sand request section at the bottom. Text-only pages (regulations, FAQ, glossary, resources) use a single 46rem column. Stacks to one column below 1000px.
 - **Section rhythm:** white, sand and ink bands alternate. Ink is reserved for the rules band and the footer, and two ink bands never touch.
 - **Breakpoints:** 1080px (desktop nav becomes a menu), 1000px (two columns stack), 720px (phone header: logo, request button, menu; language switch and WhatsApp move into the menu), 560px (form rows stack).
-- **Phone first screen:** headline, then city, workers, start date and the live readout, all before the fold.
+- **Phone first screen:** headline, support line and both buttons before the fold.
 
 ## Elevation & Depth
 
@@ -218,8 +219,16 @@ Firm and friendly: heavy labels, solid fills, clear states.
 - **Stepper:** for worker count, a minus/plus on sand flanking a centred number.
 
 ### Navigation
-- **Desktop:** sticky white header at 92% opacity with blur, logo at the start, five text links in Slate Ink (800 on hover), and the active page marked by a 2px clay underline. The language switch, WhatsApp (ghost) and Request housing (primary) sit at the end.
-- **Phone:** logo, compact request button and a menu button. The menu opens as a lifted panel holding links, language and WhatsApp.
+- **Desktop:** sticky white header, logo at the start, then Services ▾ and Cities ▾ (lifted dropdown panels; Cities lists only launched cities), Building owners, Regulations, Resources. Active page marked by a 2px clay underline. The language switch, WhatsApp (ghost) and Request housing (primary) sit at the end.
+- **Phone (under 1080px):** logo, compact request button and a menu button. The menu opens as a lifted panel with grouped services and cities, links, language and WhatsApp.
+
+### Photos
+- Rounded frame (18px; 12px inside cards), `object-fit: cover`, set ratios (hero 5:4, cards 16:10, asides 4:5).
+- Until a file exists, a sand gradient block with a faint house mark holds the space.
+- Openly licensed stock or our own photos only, credited in `site/public/images/CREDITS.md`. Never AI-generated images presented as our buildings.
+
+### Not-yet-launched items
+- Shown greyed with a dashed "TBD" pill (cities) or "Soon" pill (planned articles). They never link anywhere.
 
 ### Request Panel with Live Readout (signature)
 The page's working centre: city chips, worker stepper, start date, phone, add-on checkboxes and the primary submit. Inside it, a sand **readout** shows "what your request needs": minimum rooms, sanitary sets, sleeping area and licensing track, recalculated as the visitor types. It's labelled as an estimate from the rules and names its source.
@@ -245,4 +254,6 @@ Label/value rows divided by hairlines, label in Slate Ink, value at 800. On ink 
 - **Don't** put light clay on white or sand.
 - **Don't** add shadows to cards or sections; only the request panel and menus lift.
 - **Don't** add browsing or listing patterns (building grids, availability boards); the site takes requests.
+- **Don't** put the request form at the top of pages or in a sticky sidebar; it lives in its own section lower down.
+- **Don't** add internal or meta notes to pages ("placeholder", "draft"); the only exception is the Resources page note.
 - **Don't** retype or redraw the logo.

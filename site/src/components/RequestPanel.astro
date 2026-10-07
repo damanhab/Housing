@@ -2,7 +2,7 @@
 import type { Lang } from "../lib/site";
 import { CONTACT } from "../lib/site";
 import { href } from "../lib/routes";
-import { CITIES, UI, trackOf } from "../data/content";
+import { ACTIVE_CITIES as CITIES, UI, trackOf } from "../data/content";
 import Icon from "./Icon.astro";
 interface Props { lang: Lang; city?: string; full?: boolean; id?: string }
 const { lang, city = "riyadh", full = false, id = "request" } = Astro.props;

@@ -4,7 +4,6 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { IS_PROD, SITE_URL, BRAND, CONTACT, type Lang } from "../lib/site";
 import { routeByKey, absUrl, href, type PageKey } from "../lib/routes";
-import { UI } from "../data/content";
 
 interface Props { lang: Lang; pageKey: PageKey; jsonld?: object[]; crumbs?: { key: PageKey; name: string }[] }
 const { lang, pageKey, jsonld = [], crumbs = [] } = Astro.props;
@@ -63,8 +62,7 @@ const graph = [org, ...(breadcrumb ? [breadcrumb] : []), ...jsonld];
   <script type="application/ld+json" set:html={JSON.stringify(graph.length === 1 ? graph[0] : graph)} />
 </head>
 <body>
-  {!IS_PROD && <div class="review-strip" role="note">{UI.placeholderNote[lang]}</div>}
-  <a class="skip" href="#main">{lang === "ar" ? "تخطَّ إلى المحتوى" : "Skip to content"}</a>
+  <a class="skip" href="#main">{lang === "ar" ? "انتقل إلى المحتوى" : "Skip to content"}</a>
   <Header lang={lang} pageKey={pageKey} />
   <main id="main"><slot /></main>
   <Footer lang={lang} />

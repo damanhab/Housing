@@ -1,55 +1,63 @@
 ---
 import Base from "../layouts/Base.astro";
 import PageHead from "../components/PageHead.astro";
+import Photo from "../components/Photo.astro";
 import Icon from "../components/Icon.astro";
 import type { Lang } from "../lib/site";
 import { CONTACT } from "../lib/site";
 import { href } from "../lib/routes";
-import { CITIES } from "../data/content";
+import { CITIES, TBD } from "../data/content";
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const L = (ar: string, en: string) => (lang === "ar" ? ar : en);
-const crumbs = [{ key: "owners" as const, name: L("لملاك العقارات", "For building owners") }];
+const crumbs = [{ key: "owners" as const, name: L("لملّاك العقارات", "For building owners") }];
+const wa = `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(L("السلام عليكم، عندي عقار وأبي تقييمه لسكن العمّال.", "Hello SakanHub, I own a building and would like it assessed for worker housing."))}`;
 ---
 <Base lang={lang} pageKey="owners" crumbs={crumbs}>
   <PageHead lang={lang} crumbs={crumbs}
-    title={L("عمارتك، مرخّصة ومشغّلة لشركات", "Your building, licensed and run for companies")}
-    lede={L("نقيّم طاقتها المرخّصة، ونجهّزها للترخيص، ونشغّلها.", "We assess its licensable capacity, prepare it for licensing and operate it.")} />
+    title={L("مبناك مليان، وبالك مرتاح", "A full building, without the headache")}
+    lede={L("نرخّص عمارتك سكناً للعمّال، ونشغّلها، ونملؤها بشركات تحتاج سكن.", "We get your building licensed for worker housing, run it, and fill it with companies that need beds.")} />
   <div class="container body-grid">
     <div class="doc">
       <section>
-        <h2>{L("ما نقدمه للمالك", "What owners get")}</h2>
+        <h2>{L("وش نسوي لك", "What we do for you")}</h2>
         <ul class="list-check">
-          <li>{L("تقييم الطاقة الاستيعابية النظامية للمبنى", "An assessment of the building's licensable capacity")}</li>
-          <li>{L("قائمة بالأعمال المطلوبة للترخيص", "A list of works needed for licensing")}</li>
-          <li>{L("متابعة الترخيص عبر بلدي أو الجهة المختصة", "Licensing through Balady or the relevant authority")}</li>
-          <li>{L("تشغيل المبنى لشركات تحتاج سكناً", "Operating the building for companies that need housing")}</li>
+          <li>{L("نحسب كم عامل يستوعب مبناك نظاماً", "Work out how many workers your building can legally house")}</li>
+          <li>{L("نعطيك قائمة بالأعمال المطلوبة للترخيص", "Give you a list of the works needed for licensing")}</li>
+          <li>{L("نتابع الترخيص في بلدي أو الجهة المختصّة", "Handle licensing with Balady or the relevant authority")}</li>
+          <li>{L("نشغّل المبنى لشركات تحتاج سكن", "Run the building for companies that need housing")}</li>
         </ul>
       </section>
       <section>
-        <h2>{L("ما الذي يجعل المبنى قابلاً للترخيص", "What makes a building licensable")}</h2>
+        <h2>{L("متى يكون المبنى قابل للترخيص؟", "When can a building be licensed?")}</h2>
         <ul class="list-check">
-          <li>{L("موقع على شارع تجاري معتمد بعرض 20 م فأكثر، أو ضمن مخطط ورش ومستودعات وصناعات خفيفة", "A site on an approved commercial street 20 m or wider, or inside a workshop / warehouse / light-industry plan")}</li>
-          <li>{L("بعد 300 م على الأقل عن المدارس والمستشفيات", "At least 300 m from schools and hospitals")}</li>
-          <li>{L("المبنى كاملاً: لا ترخيص لجزء من مبنى", "The whole building: no licence for part of one")}</li>
-          <li>{L("موافقة الدفاع المدني قبل الرخصة", "Civil Defense approval before the licence")}</li>
+          <li>{L("على شارع تجاري معتمد عرضه 20 م أو أكثر، أو داخل مخطط ورش ومستودعات وصناعات خفيفة", "It's on an approved commercial street 20 m or wider, or inside a workshop, warehouse or light-industry plan")}</li>
+          <li>{L("يبعد 300 م على الأقل عن المدارس والمستشفيات", "It's at least 300 m from schools and hospitals")}</li>
+          <li>{L("الترخيص للمبنى كاملاً، لا لجزء منه", "The whole building is licensed, not part of it")}</li>
+          <li>{L("موافقة الدفاع المدني قبل الرخصة", "Civil Defense approves it first")}</li>
         </ul>
-        <p class="source"><a href={href("calculator", lang)}>{L("احسب طاقة مبناك", "Calculate your building's capacity")}</a> · <a href={href("regulations", lang)}>{L("دليل الاشتراطات", "Regulations guide")}</a></p>
+        <p class="source"><a href={href("calculator", lang)}>{L("احسب طاقة مبناك", "Work out your building's capacity")}</a> · <a href={href("regulations", lang)}>{L("دليل الاشتراطات", "Regulations guide")}</a></p>
       </section>
       <section>
         <h2>{L("المدن", "Cities")}</h2>
-        <p>{CITIES.map((c) => c.name[lang]).join(L("، ", ", "))}</p>
+        <ul class="list-check">{CITIES.map((c) => c.active
+          ? <li>{c.name[lang]}</li>
+          : <li class="off">{c.name[lang]}<span class="tbd">{TBD[lang]}</span></li>)}</ul>
       </section>
     </div>
-    <aside class="owner-cta">
-      <h2>{L("سجّل عقارك", "List your building")}</h2>
-      <p>{L("أرسل موقع العقار ونوعه وعدد غرفه عبر واتساب، ونعود إليك بالتقييم.", "Send the location, type and room count on WhatsApp; we come back with an assessment.")}</p>
-      <a class="btn" href={`https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(L("مرحباً سكن هب، أملك عقاراً وأرغب في تقييمه لسكن العمال.", "Hello SakanHub, I own a building and would like it assessed for worker housing."))}`} rel="noopener" target="_blank"><Icon name="chat" />{L("أرسل عبر واتساب", "Send on WhatsApp")}</a>
-      <a class="btn btn--ghost" href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
+    <aside class="owner-side">
+      <Photo slot="owners" lang={lang} ratio="4 / 3" />
+      <div class="owner-cta">
+        <h2>{L("سجّل عقارك", "List your building")}</h2>
+        <p>{L("أرسل لنا موقع العقار ونوعه وعدد غرفه على واتساب، ونرجع لك بالتقييم.", "Send us the location, type and number of rooms on WhatsApp, and we'll come back with an assessment.")}</p>
+        <a class="btn" href={wa} rel="noopener" target="_blank"><Icon name="chat" />{L("أرسل على واتساب", "Send on WhatsApp")}</a>
+        <a class="btn btn--ghost" href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
+      </div>
     </aside>
   </div>
 </Base>
 <style>
+  .owner-side { display: grid; gap: var(--s5); }
   .owner-cta { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow-2); padding: var(--s6); display: grid; gap: var(--s4); }
   .owner-cta h2 { font-size: var(--step-2); }
   .owner-cta p { color: var(--ink-2); }

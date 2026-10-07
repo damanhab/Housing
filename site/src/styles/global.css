@@ -109,6 +109,7 @@ html[dir="rtl"] .link-arrow:hover svg { transform: translateX(-3px) scaleX(-1); 
 /* Inner pages: a two-column body (content + sticky request aside) */
 .body-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 420px); gap: var(--s8); align-items: start; padding-block: var(--s8) var(--s9); }
 .body-grid > aside { position: sticky; top: 96px; }
+.body-grid--solo { grid-template-columns: minmax(0, 46rem); }
 .doc { display: grid; gap: var(--s7); }
 .doc h2 { font-size: var(--step-2); margin-block-end: var(--s4); }
 .doc p { color: var(--ink-2); max-width: 64ch; }
@@ -120,6 +121,9 @@ html[dir="rtl"] .link-arrow:hover svg { transform: translateX(-3px) scaleX(-1); 
 .list-check { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s3); }
 .list-check li { display: flex; gap: var(--s3); align-items: baseline; }
 .list-check li::before { content: ""; flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--ink); transform: translateY(-2px); }
+.list-check li.off { color: var(--ink-3); }
+.list-check li.off::before { background: var(--line-strong); }
+.tbd { font-family: var(--font-en); font-weight: 800; font-size: 0.75rem; letter-spacing: 0.04em; padding: 2px 9px; border-radius: 999px; border: 1px dashed var(--line-strong); color: var(--ink-3); margin-inline-start: var(--s2); }
 .source { font-size: var(--step--1); color: var(--ink-3); }
 .ordered { margin: 0; padding: 0; list-style: none; counter-reset: o; display: grid; gap: var(--s4); }
 .ordered li { counter-increment: o; display: grid; grid-template-columns: 36px 1fr; gap: var(--s3); align-items: start; }
@@ -127,5 +131,3 @@ html[dir="rtl"] .link-arrow:hover svg { transform: translateX(-3px) scaleX(-1); 
 @media (max-width: 1000px) { .body-grid { grid-template-columns: 1fr; } .body-grid > aside { position: static; } }
 @media (max-width: 640px) { .facts > div { grid-template-columns: 1fr; gap: var(--s1); } }
 
-/* Test-mode strip */
-.review-strip { background: var(--ink); color: #DCE1EA; font-size: var(--step--1); text-align: center; padding: 6px var(--s4); }

@@ -1,30 +1,32 @@
 ---
 import Base from "../layouts/Base.astro";
 import PageHead from "../components/PageHead.astro";
-import RequestPanel from "../components/RequestPanel.astro";
+import RequestSection from "../components/RequestSection.astro";
+import Photo from "../components/Photo.astro";
 import type { Lang } from "../lib/site";
 import { SITE_URL } from "../lib/site";
 import { href, absUrl } from "../lib/routes";
-import { CITIES, TRACK_LABEL, RULES } from "../data/content";
+import { CITIES, TRACK_LABEL, RULES, RULES_SOURCE, TBD } from "../data/content";
 import type { City } from "../data/content";
+import type { Slot } from "../data/images";
 interface Props { lang: Lang; city: City }
 const { lang, city } = Astro.props;
 const L = (ar: string, en: string) => (lang === "ar" ? ar : en);
 const n = city.name[lang];
 const others = CITIES.filter((c) => c.id !== city.id);
-const crumbs = [{ key: city.key, name: L(`سكن عمال ${n}`, `Worker housing in ${n}`) }];
+const crumbs = [{ key: city.key, name: L(`سكن عمّال ${n}`, `Worker housing in ${n}`) }];
 const included = [
-  L("غرف مجهّزة في مبنى مرخّص للسكن الجماعي", "Furnished rooms in a building licensed for group housing"),
-  L("طاقة استيعابية محسوبة وفق الاشتراطات", "Capacity calculated to the rules"),
+  L("غرف مؤثّثة في مبنى مرخّص للسكن الجماعي", "Furnished rooms in a building licensed for group housing"),
+  L("طاقة استيعابية محسوبة حسب الاشتراطات", "Capacity worked out to the rules"),
   L("شهادة إثبات سكن لمنشأتك", "A housing proof certificate for your company"),
-  L("نقل يومي إلى مواقع العمل عند الطلب", "Daily transport to your sites, on request"),
-  L("تموين يومي عند الطلب", "Daily catering, on request"),
+  L("نقل إلى مواقع العمل، إذا احتجته", "Transport to your sites, if you need it"),
+  L("إعاشة، إذا احتجتها", "Meals, if you need them"),
   L("مشرف سعودي ونظافة دورية", "A Saudi supervisor and periodic cleaning"),
 ];
 const jsonld = [{
   "@context": "https://schema.org", "@type": "Service",
-  name: L(`سكن عمال ${n}`, `Worker housing in ${n}`),
-  serviceType: L("سكن العمال", "Worker accommodation"),
+  name: L(`سكن عمّال ${n}`, `Worker housing in ${n}`),
+  serviceType: L("سكن العمّال", "Worker accommodation"),
   provider: { "@id": `${SITE_URL}/#org` },
   areaServed: { "@type": "City", name: n, containedInPlace: { "@type": "State", name: city.region[lang] } },
   url: absUrl(city.key, lang, SITE_URL),
@@ -32,38 +34,41 @@ const jsonld = [{
 ---
 <Base lang={lang} pageKey={city.key} jsonld={jsonld} crumbs={crumbs}>
   <PageHead lang={lang} crumbs={crumbs}
-    title={L(`سكن عمال ${n} للشركات`, `Worker housing in ${n}`)}
-    lede={L(`سكن مرخّص لعمال شركتك في ${n}، مع النقل والتموين. أرسل المدينة وعدد العمال وتاريخ البدء.`, `Licensed housing for your workers in ${n}, with transport and catering. Send headcount and start date.`)} />
+    title={L(`سكن عمّال في ${n}`, `Worker housing in ${n}`)}
+    lede={L(`سكن مرخّص لطاقمك في ${n}، قريب من مواقع شغلك، ومعه النقل والإعاشة.`, `Licensed housing for your crew in ${n}, close to your sites, with transport and meals.`)} />
   <div class="container body-grid">
     <div class="doc">
       <section>
-        <h2>{L("مسار الترخيص في", "Licensing in")} {n}</h2>
-        <dl class="facts">
-          <div><dt>{L("الجهة", "Authority")}</dt><dd>{TRACK_LABEL[city.track][lang]}</dd></div>
-          <div><dt>{L("ملاحظة", "Note")}</dt><dd>{city.trackNote[lang]}</dd></div>
-          <div><dt>{L("المنطقة", "Region")}</dt><dd>{city.region[lang]}</dd></div>
-        </dl>
-      </section>
-      <section>
-        <h2>{L("المناطق التي نخدمها", "Areas we serve")}</h2>
+        <h2>{L("وين نوفّر السكن", "Where we house crews")}</h2>
         <dl class="facts">
           {city.areas.map((a) => (<div><dt>{a.name[lang]}</dt><dd>{a.note[lang]}</dd></div>))}
         </dl>
       </section>
       <section>
-        <h2>{L("ما يشمله الطلب", "What a request includes")}</h2>
+        <h2>{L("وش يشمل السكن", "What's included")}</h2>
         <ul class="list-check">{included.map((i) => <li>{i}</li>)}</ul>
+      </section>
+      <section>
+        <h2>{L(`الترخيص في ${n}`, `Licensing in ${n}`)}</h2>
+        <dl class="facts">
+          <div><dt>{L("الجهة", "Authority")}</dt><dd>{TRACK_LABEL[city.track][lang]}</dd></div>
+          <div><dt>{L("التفاصيل", "Details")}</dt><dd>{city.trackNote[lang]}</dd></div>
+        </dl>
       </section>
       <section>
         <h2>{L("الاشتراطات باختصار", "The rules, briefly")}</h2>
         <dl class="facts">{RULES.slice(0, 5).map((r) => (<div><dt>{r.label[lang]}</dt><dd>{r.value[lang]}</dd></div>))}</dl>
-        <p class="source"><a href={href("regulations", lang)}>{L("الدليل الكامل للاشتراطات", "Full regulations guide")}</a> · <a href={href("calculator", lang)}>{L("حاسبة الطاقة الاستيعابية", "Capacity calculator")}</a></p>
+        <p class="source">{RULES_SOURCE[lang]} <a href={href("regulations", lang)}>{L("الدليل الكامل", "Full guide")}</a></p>
       </section>
       <section>
         <h2>{L("مدن أخرى", "Other cities")}</h2>
-        <ul class="list-check">{others.map((c) => <li><a href={href(c.key, lang)}>{L(`سكن عمال ${c.name.ar}`, `Worker housing in ${c.name.en}`)}</a></li>)}</ul>
+        <ul class="list-check">{others.map((c) => c.active
+          ? <li><a href={href(c.key, lang)}>{c.name[lang]}</a></li>
+          : <li class="off">{c.name[lang]}<span class="tbd">{TBD[lang]}</span></li>)}</ul>
       </section>
     </div>
-    <aside><RequestPanel lang={lang} city={city.id} id="city-request" /></aside>
+    <aside><Photo slot={`city-${city.id}` as Slot} lang={lang} ratio="4 / 5" /></aside>
   </div>
+  <RequestSection lang={lang} id="city-request" city={city.id}
+    title={L(`تحتاج سكن في ${n}؟`, `Need housing in ${n}?`)} />
 </Base>

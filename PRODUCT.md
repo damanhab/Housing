@@ -36,6 +36,7 @@ Success means a company gets licensed beds in the right city quickly, and owners
 - **The main competitor, Mnzil, is operator-first** and fund-backed for large purpose-built compounds.
 - **Compliance is built in:** every bed is licensed on Balady (or the RCJY/MODON track in industrial cities) and matched to Qiwa. It is a quiet trust line, not the headline.
 - **Launch cities:** Riyadh, Khobar, Dammam, Jubail, Ras Al Khair. The Eastern Province industrial belt (Jubail, Ras Al Khair) is a deliberate focus.
+- **Internal preview (7 Oct 2026):** only Riyadh, Khobar and Dammam are live. Jubail and Ras Al Khair appear greyed with "TBD" and have no pages until the founder re-enables them (`active` flag in `site/src/data/content.ts`).
 
 ## Operating Context
 
@@ -77,6 +78,9 @@ Success means a company gets licensed beds in the right city quickly, and owners
   - **Quality bar, in order: Stripe, Careem, Tabby.** Airbnb was explicitly rejected (listing/marketplace feel doesn't fit a service).
   - Must still not read as "generic AI output".
 - **Arabic copy:** written natively (drafted by Claude, edited by the team), never machine-translated from English. The same facts in both languages.
+- **Arabic voice (7 Oct 2026):** a light Saudi white dialect for conversational lines (questions, buttons, short supports, e.g. «وش»، «تبي»، «خلّ»), clean MSA for regulation facts. Write it as Arabic first; never translate sentence by sentence.
+- **Slogans in use:** «كل سكن عمّالك في مكان واحد» / "All your crew housing. One hub." (home); «مبناك مليان، وبالك مرتاح» / "A full building, without the headache" (owners). From `research/brand-sakanhub.md`.
+- **No over-explaining:** cut lines that restate the form ("You send city, headcount and start date. We handle the rest."). Say the benefit like a person would.
 
 ## Evidence on Hand
 

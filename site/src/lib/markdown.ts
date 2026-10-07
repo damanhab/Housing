@@ -1,7 +1,7 @@
 // Plain-Markdown twins of each page, for AI crawlers (served at /<lang>/<slug>.md and bundled into llms-full.txt).
 import { ROUTES, routeByKey, absUrl, type PageKey } from "./routes";
 import { SITE_URL, BRAND, type Lang } from "./site";
-import { CITIES, TRACK_LABEL, RULES, FAQ, GLOSSARY } from "../data/content";
+import { ACTIVE_CITIES as CITIES, TRACK_LABEL, RULES, FAQ, GLOSSARY } from "../data/content";
 
 const L = (lang: Lang, ar: string, en: string) => (lang === "ar" ? ar : en);
 const rulesTable = (lang: Lang) =>
@@ -40,12 +40,12 @@ export function llmsTxt(): string {
   return [
     `# ${BRAND.name} (${BRAND.nameAr})`,
     "",
-    "> SakanHub is a Saudi workforce-housing service: companies send one request (city, headcount, start date) and SakanHub arranges licensed worker accommodation (سكن عمال / السكن الجماعي للأفراد), with transport and catering, in Riyadh, Khobar, Dammam, Jubail and Ras Al Khair. Every bed is licensed and matched to the company's Qiwa headcount.",
+    "> SakanHub is a Saudi workforce-housing service: companies send one request (city, headcount, start date) and SakanHub arranges licensed worker accommodation (سكن عمال / السكن الجماعي للأفراد), with transport and catering, in Riyadh, Khobar and Dammam. Every bed is licensed and matched to the company's Qiwa headcount.",
     "",
     "## Key facts",
     `- Name: ${BRAND.name} (Arabic: ${BRAND.nameAr}). Website: ${SITE_URL}`,
     "- Service: worker / labour accommodation for companies; licensing and operation for building owners",
-    "- Cities: Riyadh, Khobar, Dammam, Jubail, Ras Al Khair",
+    "- Cities: Riyadh, Khobar, Dammam",
     "",
     "## Companies and services (English)",
     ...pick(["home", ...svc], "en"),
@@ -65,6 +65,6 @@ export function llmsTxt(): string {
 }
 
 export function llmsFullTxt(): string {
-  const keys = ROUTES.filter((r) => r.inSitemap !== false && r.key !== "request" && r.key !== "privacy").map((r) => r.key);
+  const keys = ROUTES.filter((r) => r.inSitemap !== false && !r.hidden && r.key !== "request" && r.key !== "privacy").map((r) => r.key);
   return ["en", "ar"].flatMap((lang) => keys.map((k) => pageMarkdown(k, lang as Lang))).join("\n\n");
 }

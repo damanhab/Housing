@@ -33,3 +33,6 @@ Typing "40 workers · Jubail" instantly shows "4+ rooms · 5 sanitary sets · RC
 
 ## Unresolved
 Real phone, WhatsApp, email and CR (TBD placeholders); real photos (openly licensed stock allowed, duotone treatment optional).
+
+## Amendment (founder, 7 Oct 2026)
+Supersedes FIRST VIEWPORT and the "first viewport *is* the request" thesis. The home page now opens with the company and its services: slogan «كل سكن عمّالك في مكان واحد» / "All your crew housing. One hub.", one human support line, Request + WhatsApp buttons, and a photo. The request panel with its live readout moves to its own section lower on the page and is no longer in the hero or in sticky sidebars. Stock photography is required. Copy must sound human, not over-explained; Arabic written natively.

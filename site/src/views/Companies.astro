@@ -1,10 +1,11 @@
 ---
 import Base from "../layouts/Base.astro";
 import PageHead from "../components/PageHead.astro";
-import RequestPanel from "../components/RequestPanel.astro";
+import RequestSection from "../components/RequestSection.astro";
+import Photo from "../components/Photo.astro";
 import type { Lang } from "../lib/site";
 import { href } from "../lib/routes";
-import { CITIES } from "../data/content";
+import { CITIES, TBD } from "../data/content";
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const L = (ar: string, en: string) => (lang === "ar" ? ar : en);
@@ -12,34 +13,37 @@ const crumbs = [{ key: "companies" as const, name: L("للشركات", "For comp
 ---
 <Base lang={lang} pageKey="companies" crumbs={crumbs}>
   <PageHead lang={lang} crumbs={crumbs}
-    title={L("سكن عمالك، دون أن تديره بنفسك", "Your workers housed, without running housing")}
-    lede={L("ترسل المدينة وعدد العمال وتاريخ البدء. نحن نرتّب الباقي.", "You send city, headcount and start date. We handle the rest.")} />
+    title={L("طاقمك في سكن مرتّب، وأنت مرتاح", "Your crew well housed. One less thing on your plate.")}
+    lede={L("نتولّى سكن عمّالك من البداية للنهاية، وأنت تركّز على شغلك.", "We take care of your workers' housing end to end, so you can focus on the work.")} />
   <div class="container body-grid">
     <div class="doc">
       <section>
-        <h2>{L("ما نتولاه عنك", "What we take off your desk")}</h2>
+        <h2>{L("وش نشيل عنك", "What we take off your desk")}</h2>
         <ul class="list-check">
-          <li>{L("إيجاد مبنى مرخّص بطاقة تكفي عمالتك", "Finding a licensed building sized for your crew")}</li>
-          <li>{L("مطابقة السكن مع عدد العمالة في قوى", "Matching housing to your Qiwa headcount")}</li>
-          <li>{L("تجهيز شهادة إثبات السكن", "Preparing the housing proof certificate")}</li>
-          <li>{L("النقل اليومي والتموين عند الطلب", "Daily transport and catering, on request")}</li>
-          <li>{L("التشغيل والصيانة وتجديد الرخصة", "Operations, maintenance and licence renewal")}</li>
+          <li>{L("نلقى لك مبنى مرخّص يكفي طاقمك", "Finding a licensed building that fits your crew")}</li>
+          <li>{L("نطابق السكن مع عدد عمّالك في قوى", "Keeping housing matched to your Qiwa headcount")}</li>
+          <li>{L("نجهّز شهادة إثبات السكن", "Preparing the housing proof certificate")}</li>
+          <li>{L("النقل والإعاشة، إذا احتجتها", "Transport and meals, if you want them")}</li>
+          <li>{L("التشغيل والصيانة وتجديد الرخصة", "Running, maintenance and licence renewal")}</li>
         </ul>
       </section>
       <section>
-        <h2>{L("كيف يعمل", "How it works")}</h2>
+        <h2>{L("كيف نشتغل معك", "How we work with you")}</h2>
         <ol class="ordered">
-          <li>{L("أرسل الطلب: المدينة، عدد العمال، تاريخ البدء.", "Send the request: city, headcount, start date.")}</li>
-          <li>{L("نتواصل معك لتأكيد الاحتياج والخدمات.", "We call to confirm needs and services.")}</li>
-          <li>{L("نعرض الخيار المرخّص والعقد.", "We present the licensed option and contract.")}</li>
-          <li>{L("يسكن عمّالك، ونتابع التشغيل يومياً.", "Your crew moves in; we run it daily.")}</li>
+          <li>{L("ترسل لنا طلبك أو تكلّمنا واتساب.", "You send a request or message us on WhatsApp.")}</li>
+          <li>{L("نتصل فيك ونتأكد من احتياجك.", "We call to check what you need.")}</li>
+          <li>{L("نرسل لك الخيار المرخّص والعقد.", "We send you the licensed option and the contract.")}</li>
+          <li>{L("يستلم طاقمك السكن، ونتابع معك بعدها.", "Your crew moves in, and we stay on it.")}</li>
         </ol>
       </section>
       <section>
         <h2>{L("المدن", "Cities")}</h2>
-        <ul class="list-check">{CITIES.map((c) => <li><a href={href(c.key, lang)}>{L(`سكن عمال ${c.name.ar}`, `Worker housing in ${c.name.en}`)}</a></li>)}</ul>
+        <ul class="list-check">{CITIES.map((c) => c.active
+          ? <li><a href={href(c.key, lang)}>{c.name[lang]}</a></li>
+          : <li class="off">{c.name[lang]}<span class="tbd">{TBD[lang]}</span></li>)}</ul>
       </section>
     </div>
-    <aside><RequestPanel lang={lang} id="co-request" /></aside>
+    <aside><Photo slot="intro" lang={lang} ratio="4 / 5" /></aside>
   </div>
+  <RequestSection lang={lang} id="co-request" />
 </Base>

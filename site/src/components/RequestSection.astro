@@ -1,0 +1,28 @@
+---
+// The request form, placed lower on a page with its own heading. Used on the home page and inner pages.
+import RequestPanel from "./RequestPanel.astro";
+import Icon from "./Icon.astro";
+import type { Lang } from "../lib/site";
+import { CONTACT } from "../lib/site";
+import { UI } from "../data/content";
+interface Props { lang: Lang; id: string; city?: string; title?: string; lede?: string }
+const { lang, id, city, title, lede } = Astro.props;
+const L = (ar: string, en: string) => (lang === "ar" ? ar : en);
+---
+<section class="section section--sand req" aria-labelledby={`${id}-h`}>
+  <div class="container req-grid">
+    <div class="req-copy">
+      <h2 id={`${id}-h`}>{title ?? L("جاهزين متى ما كنت جاهز", "Ready when you are")}</h2>
+      <p>{lede ?? L("عطنا التفاصيل، ونرجع لك بخيار يناسب طاقمك.", "Give us the details and we'll come back with a place that fits your crew.")}</p>
+      <a class="link-arrow" href={`https://wa.me/${CONTACT.whatsapp}`} rel="noopener" target="_blank"><Icon name="chat" />{L("تفضّل الكلام؟ راسلنا على واتساب", "Rather talk? Message us on WhatsApp")}</a>
+    </div>
+    <RequestPanel lang={lang} id={id} city={city} />
+  </div>
+</section>
+<style>
+  .req-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 520px); gap: var(--s8); align-items: center; }
+  .req-copy { display: grid; gap: var(--s4); align-content: center; max-width: 28rem; }
+  .req-copy p { color: var(--ink-2); font-size: var(--step-1); }
+  .req-copy :global(.link-arrow svg) { width: 18px; height: 18px; }
+  @media (max-width: 1000px) { .req-grid { grid-template-columns: 1fr; gap: var(--s6); } }
+</style>

@@ -1,26 +1,36 @@
 ---
-// FAQ, glossary, about, request, thanks and privacy: simple pages sharing one view.
+// FAQ, glossary, about, resources, request, thanks and privacy: simple pages sharing one view.
 import Base from "../layouts/Base.astro";
 import PageHead from "../components/PageHead.astro";
 import RequestPanel from "../components/RequestPanel.astro";
+import RequestSection from "../components/RequestSection.astro";
 import Icon from "../components/Icon.astro";
 import type { Lang } from "../lib/site";
 import { CONTACT, BRAND } from "../lib/site";
-import { href, type PageKey } from "../lib/routes";
-import { FAQ, GLOSSARY, CITIES } from "../data/content";
+import { type PageKey } from "../lib/routes";
+import { FAQ, GLOSSARY, ACTIVE_CITIES } from "../data/content";
 interface Props { lang: Lang; pageKey: PageKey }
 const { lang, pageKey } = Astro.props;
 const L = (ar: string, en: string) => (lang === "ar" ? ar : en);
-const titles: Partial<Record<PageKey, [string, string]>> = {
-  faq: [L("أسئلة شائعة عن سكن العمال", "Worker housing FAQ"), L("إجابات مباشرة.", "Direct answers.")],
-  glossary: [L("مصطلحات السكن الجماعي", "Worker housing glossary"), L("المعنى، بسطر واحد.", "Each term, in one line.")],
-  about: [L("عن سكن هب", "About SakanHub"), L("منصة ومشغّل سعودي لسكن العمال.", "A Saudi worker-housing platform and operator.")],
-  request: [L("اطلب سكناً لعمالك", "Request worker housing"), L("أربع معلومات، ونعود إليك بخيار مرخّص.", "Four details, and we come back with a licensed option.")],
-  thanks: [L("استلمنا طلبك", "We have your request"), L("سنتواصل معك على الرقم الذي أرسلته.", "We will contact you on the number you sent.")],
+const titles: Partial<Record<PageKey, [string, string, string?]>> = {
+  faq: [L("أسئلة شائعة عن سكن العمّال", "Worker housing FAQ"), L("أكثر الأسئلة اللي تجينا، وإجاباتها باختصار.", "The questions we hear most, answered briefly."), L("أسئلة شائعة", "FAQ")],
+  glossary: [L("مصطلحات السكن الجماعي", "Worker housing glossary"), L("كل مصطلح بسطر واحد.", "Each term in one line."), L("المصطلحات", "Glossary")],
+  about: [L("من نحن", "About SakanHub"), L("شركة سعودية متخصّصة في سكن العمّال.", "A Saudi workforce-housing company.")],
+  resources: [L("مقالات وأدلة", "Resources"), L("أدلة عملية عن سكن العمّال في السعودية.", "Practical guides on worker housing in Saudi Arabia.")],
+  request: [L("اطلب سكن لطاقمك", "Request housing for your crew"), L("أربع معلومات بس، ونتواصل معك.", "Four details, and we'll be in touch.")],
+  thanks: [L("وصلنا طلبك", "We have your request"), L("بنتصل فيك على الرقم اللي أرسلته.", "We'll call you on the number you sent.")],
   privacy: [L("سياسة الخصوصية", "Privacy policy"), L("كيف نتعامل مع بيانات طلبك.", "How we handle your request data.")],
 };
-const [title, lede] = titles[pageKey]!;
-const crumbs = pageKey === "thanks" ? [] : [{ key: pageKey, name: title }];
+const [title, lede, crumb] = titles[pageKey]!;
+const crumbs = pageKey === "thanks" ? [] : [{ key: pageKey, name: crumb ?? title }];
+const planned = [
+  L("دليل رخصة السكن الجماعي خطوة بخطوة", "The group-housing licence, step by step"),
+  L("كم تكلفة سرير سكن العمّال شهرياً؟", "What does a worker bed cost per month?"),
+  L("كيف تحوّل عمارتك إلى سكن عمّال مرخّص", "Turning a building into licensed worker housing"),
+  L("الربط بين بلدي وقوى: وش يعني لمنشأتك", "The Balady–Qiwa link: what it means for you"),
+  L("اشتراطات الإعاشة في السكن الجماعي", "Catering requirements in group housing"),
+  L("عقد سكن العمّال: وش لازم يتضمّن", "Worker housing contracts: what to include"),
+];
 const jsonld = pageKey === "faq" ? [{
   "@context": "https://schema.org", "@type": "FAQPage",
   mainEntity: FAQ.map((f) => ({ "@type": "Question", name: f.q[lang], acceptedAnswer: { "@type": "Answer", text: f.a[lang] } })),
@@ -28,10 +38,11 @@ const jsonld = pageKey === "faq" ? [{
   "@context": "https://schema.org", "@type": "DefinedTermSet", name: title,
   hasDefinedTerm: GLOSSARY.map((g) => ({ "@type": "DefinedTerm", name: g.term[lang], description: g.def[lang] })),
 }] : [];
+const solo = pageKey !== "request";
 ---
 <Base lang={lang} pageKey={pageKey} crumbs={crumbs} jsonld={jsonld}>
   <PageHead lang={lang} crumbs={crumbs} title={title} lede={lede} />
-  <div class="container body-grid">
+  <div class:list={["container body-grid", { "body-grid--solo": solo }]}>
     <div class="doc">
       {pageKey === "faq" && (
         <section class="qa">
@@ -44,29 +55,34 @@ const jsonld = pageKey === "faq" ? [{
       {pageKey === "about" && (
         <section>
           <dl class="facts">
-            <div><dt>{L("الاسم", "Name")}</dt><dd>{BRAND.name} — {BRAND.nameAr}</dd></div>
-            <div><dt>{L("ما نقدمه", "What we do")}</dt><dd>{L("سكن عمال مرخّص للشركات، مع النقل والتموين وإدارة السكن، وتشغيل المباني لملاكها.", "Licensed worker housing for companies, with transport, catering and management; building operation for owners.")}</dd></div>
-            <div><dt>{L("المدن", "Cities")}</dt><dd>{CITIES.map((c) => c.name[lang]).join(L("، ", ", "))}</dd></div>
+            <div><dt>{L("الاسم", "Name")}</dt><dd>{BRAND.name} · {BRAND.nameAr}</dd></div>
+            <div><dt>{L("وش نسوي", "What we do")}</dt><dd>{L("نوفّر للشركات سكن عمّال مرخّص، مع النقل والإعاشة وإدارة السكن، ونشغّل المباني لملّاكها.", "Licensed worker housing for companies, with transport, meals and management, and building operation for owners.")}</dd></div>
+            <div><dt>{L("المدن", "Cities")}</dt><dd>{ACTIVE_CITIES.map((c) => c.name[lang]).join(L("، ", ", "))}</dd></div>
             <div><dt>{L("الموقع", "Website")}</dt><dd dir="ltr">sakanhub.sa</dd></div>
-            <div><dt>{L("السجل التجاري", "CR")}</dt><dd>{CONTACT.cr}</dd></div>
           </dl>
+        </section>
+      )}
+      {pageKey === "resources" && (
+        <section class="res">
+          <p class="res-note">{L("هذه الصفحة ستضم مقالات السيو (SEO) بعد اكتمال بناء الموقع. العناوين أدناه أمثلة على ما نخطّط لكتابته.", "This page will hold our SEO articles once the site is built. The titles below are examples of what we plan to write.")}</p>
+          <ul class="res-list">{planned.map((p) => <li><span class="res-t">{p}</span><span class="tbd">{L("قريباً", "Soon")}</span></li>)}</ul>
         </section>
       )}
       {pageKey === "request" && (
         <section>
-          <h2>{L("بعد الإرسال", "After you send")}</h2>
+          <h2>{L("بعد ما ترسل", "After you send it")}</h2>
           <ol class="ordered">
-            <li>{L("نتصل بك لتأكيد الاحتياج.", "We call to confirm your needs.")}</li>
-            <li>{L("نعرض الخيار المرخّص والعقد.", "We present the licensed option and contract.")}</li>
-            <li>{L("نجهّز شهادة إثبات السكن ونبدأ.", "We prepare the housing proof certificate and start.")}</li>
+            <li>{L("نتصل فيك ونتأكد من احتياجك.", "We call to check what you need.")}</li>
+            <li>{L("نرسل لك الخيار المرخّص والعقد.", "We send the licensed option and the contract.")}</li>
+            <li>{L("نجهّز شهادة إثبات السكن، ويستلم طاقمك السكن.", "We sort the housing certificate and your crew moves in.")}</li>
           </ol>
         </section>
       )}
       {pageKey === "thanks" && (
         <section>
           <ul class="list-check">
-            <li>{L("جهّز السجل التجاري للمنشأة ورقمها في قوى.", "Have your CR and Qiwa establishment number ready.")}</li>
-            <li>{L("للاستعجال، راسلنا على واتساب.", "In a hurry? Message us on WhatsApp.")}</li>
+            <li>{L("جهّز السجل التجاري ورقم المنشأة في قوى.", "Have your CR and Qiwa establishment number ready.")}</li>
+            <li>{L("مستعجل؟ راسلنا واتساب.", "In a hurry? Message us on WhatsApp.")}</li>
           </ul>
           <p style="margin-block-start: var(--s5)"><a class="btn" href={`https://wa.me/${CONTACT.whatsapp}`} rel="noopener" target="_blank"><Icon name="chat" />{L("واتساب", "WhatsApp")}</a></p>
         </section>
@@ -74,23 +90,27 @@ const jsonld = pageKey === "faq" ? [{
       {pageKey === "privacy" && (
         <section>
           <dl class="facts">
-            <div><dt>{L("ما نجمعه", "What we collect")}</dt><dd class="plain">{L("المدينة، عدد العمال، تاريخ البدء، رقم الجوال، واسم المنشأة إن أرسلته.", "City, headcount, start date, mobile number, and company name if provided.")}</dd></div>
-            <div><dt>{L("لماذا", "Why")}</dt><dd class="plain">{L("للرد على طلبك وترتيب السكن فقط.", "Only to answer your request and arrange housing.")}</dd></div>
-            <div><dt>{L("المشاركة", "Sharing")}</dt><dd class="plain">{L("لا نبيع بياناتك. نشاركها مع مالك المبنى أو مزود الخدمة بقدر ما يلزم لتنفيذ طلبك.", "We never sell your data. We share it with the building owner or service provider only as needed to fulfil your request.")}</dd></div>
+            <div><dt>{L("وش نجمع", "What we collect")}</dt><dd class="plain">{L("المدينة، وعدد العمّال، وموعد البدء، ورقم الجوال، واسم المنشأة إن أرسلته.", "City, headcount, start date, mobile number, and company name if you give it.")}</dd></div>
+            <div><dt>{L("ليش", "Why")}</dt><dd class="plain">{L("للرد على طلبك وترتيب السكن فقط.", "Only to answer your request and arrange housing.")}</dd></div>
+            <div><dt>{L("مع مين نشاركها", "Sharing")}</dt><dd class="plain">{L("ما نبيع بياناتك. نشاركها مع مالك المبنى أو مزوّد الخدمة بقدر ما يلزم لتنفيذ طلبك.", "We never sell your data. We share it with the building owner or service provider only as needed for your request.")}</dd></div>
             <div><dt>{L("النظام", "Law")}</dt><dd class="plain">{L("نلتزم بنظام حماية البيانات الشخصية في المملكة.", "We comply with Saudi Arabia's Personal Data Protection Law (PDPL).")}</dd></div>
-            <div><dt>{L("حقوقك", "Your rights")}</dt><dd class="plain">{L("اطلب الاطلاع على بياناتك أو تصحيحها أو حذفها عبر", "Ask to access, correct or delete your data at")} <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></dd></div>
+            <div><dt>{L("حقوقك", "Your rights")}</dt><dd class="plain">{L("تقدر تطلب الاطلاع على بياناتك أو تصحيحها أو حذفها عبر", "Ask to see, correct or delete your data at")} <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></dd></div>
           </dl>
-          <p class="source">{L("نسخة مبدئية تحتاج مراجعة قانونية قبل الإطلاق.", "Draft — needs legal review before launch.")}</p>
         </section>
       )}
     </div>
-    {pageKey === "request"
-      ? <aside><RequestPanel lang={lang} id="main-request" full /></aside>
-      : pageKey !== "thanks" && <aside><RequestPanel lang={lang} id={`${pageKey}-request`} /></aside>}
+    {pageKey === "request" && <aside><RequestPanel lang={lang} id="main-request" full /></aside>}
   </div>
+  {(pageKey === "faq" || pageKey === "about") && <RequestSection lang={lang} id={`${pageKey}-request`} />}
 </Base>
 <style>
   .qa { display: grid; gap: var(--s6); }
   .qa h2 { font-size: var(--step-1); margin-block-end: var(--s2); }
   .facts dd.plain { font-weight: 400; color: var(--ink-2); }
+  .res { display: grid; gap: var(--s6); }
+  .res-note { background: var(--sand); border: 1px dashed var(--line-strong); border-radius: var(--radius); padding: var(--s4) var(--s5); color: var(--ink-2); }
+  .res-list { list-style: none; margin: 0; padding: 0; border-block-start: 1px solid var(--line); }
+  .res-list li { display: flex; justify-content: space-between; align-items: center; gap: var(--s4); padding-block: var(--s4); border-block-end: 1px solid var(--line); }
+  .res-t { font-weight: 800; color: var(--ink-3); }
+  .res-list .tbd { font-family: inherit; letter-spacing: 0; white-space: nowrap; }
 </style>

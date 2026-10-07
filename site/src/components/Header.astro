@@ -2,29 +2,50 @@
 import type { Lang } from "../lib/site";
 import { CONTACT } from "../lib/site";
 import { href, type PageKey } from "../lib/routes";
-import { UI } from "../data/content";
+import { UI, ACTIVE_CITIES } from "../data/content";
 import Icon from "./Icon.astro";
 interface Props { lang: Lang; pageKey: PageKey }
 const { lang, pageKey } = Astro.props;
 const other: Lang = lang === "ar" ? "en" : "ar";
-const links: { key: PageKey; label: string }[] = [
-  { key: "companies", label: UI.nav.companies[lang] },
-  { key: "owners", label: UI.nav.owners[lang] },
-  { key: "city-riyadh", label: UI.nav.cities[lang] },
-  { key: "regulations", label: UI.nav.regulations[lang] },
-  { key: "calculator", label: UI.nav.calculator[lang] },
+const S = UI.services;
+const services: { key: PageKey; label: string }[] = [
+  { key: "svc-housing", label: S.housing[lang] },
+  { key: "svc-transport", label: S.transport[lang] },
+  { key: "svc-catering", label: S.catering[lang] },
+  { key: "svc-management", label: S.management[lang] },
 ];
+const cities = ACTIVE_CITIES.map((c) => ({ key: c.key, label: c.name[lang] }));
+const groups = [
+  { id: "services", label: UI.nav.services[lang], items: services },
+  { id: "cities", label: UI.nav.cities[lang], items: cities },
+];
+const links: { key: PageKey; label: string }[] = [
+  { key: "owners", label: UI.nav.owners[lang] },
+  { key: "regulations", label: UI.nav.regulations[lang] },
+  { key: "resources", label: UI.nav.resources[lang] },
+];
+const inGroup = (items: { key: PageKey }[]) => items.some((i) => i.key === pageKey);
 const wa = `https://wa.me/${CONTACT.whatsapp}`;
 ---
 <header class="site-header">
   <div class="container bar">
-    <a class="brand" href={href("home", lang)} aria-label={lang === "ar" ? "سكن هب — الرئيسية" : "SakanHub — home"}>
+    <a class="brand" href={href("home", lang)} aria-label={lang === "ar" ? "سكن هب، الرئيسية" : "SakanHub home"}>
       <img src="/brand/sakanhub-wordmark-color.svg" alt="" width="148" height="36" />
     </a>
-    <nav class="nav" aria-label={lang === "ar" ? "الرئيسية" : "Main"}>
+    <nav class="nav" aria-label={lang === "ar" ? "القائمة الرئيسية" : "Main"}>
       <ul>
+        {groups.map((g) => (
+          <li>
+            <details class="dd" data-dd>
+              <summary class:list={{ current: inGroup(g.items) }}>{g.label}<Icon name="chevron" class="dd-chev" /></summary>
+              <ul class="dd-panel">
+                {g.items.map((i) => <li><a href={href(i.key, lang)} aria-current={i.key === pageKey ? "page" : undefined}>{i.label}</a></li>)}
+              </ul>
+            </details>
+          </li>
+        ))}
         {links.map((l) => (
-          <li><a href={l.key === "city-riyadh" ? `${href("home", lang)}#cities` : href(l.key, lang)} aria-current={l.key === pageKey ? "page" : undefined}>{l.label}</a></li>
+          <li><a class="top" href={href(l.key, lang)} aria-current={l.key === pageKey ? "page" : undefined}>{l.label}</a></li>
         ))}
       </ul>
     </nav>
@@ -32,15 +53,20 @@ const wa = `https://wa.me/${CONTACT.whatsapp}`;
       <a class="lang" href={href(pageKey, other)} hreflang={other} lang={other}>{UI.nav.langSwitch[lang]}</a>
       <a class="btn btn--ghost wa" href={wa} rel="noopener" target="_blank"><Icon name="chat" />{UI.nav.whatsapp[lang]}</a>
       <a class="btn cta" href={href("request", lang)}>{UI.nav.request[lang]}</a>
-      <details class="menu">
+      <details class="menu" data-dd>
         <summary aria-label={UI.nav.menu[lang]}><Icon name="menu" /></summary>
         <div class="menu-panel">
+          {groups.map((g) => (
+            <div class="m-group">
+              <p class="m-label">{g.label}</p>
+              <ul>{g.items.map((i) => <li><a href={href(i.key, lang)}>{i.label}</a></li>)}</ul>
+            </div>
+          ))}
           <ul>
-            {links.map((l) => <li><a href={l.key === "city-riyadh" ? `${href("home", lang)}#cities` : href(l.key, lang)}>{l.label}</a></li>)}
-            <li><a href={href("faq", lang)}>{UI.nav.faq[lang]}</a></li>
+            {links.map((l) => <li><a href={href(l.key, lang)}>{l.label}</a></li>)}
+            <li><a href={href("companies", lang)}>{UI.nav.companies[lang]}</a></li>
             <li><a href={href(pageKey, other)} hreflang={other} lang={other}>{UI.nav.langSwitch[lang]}</a></li>
           </ul>
-          <a class="btn" href={href("request", lang)}>{UI.nav.request[lang]}</a>
           <a class="btn btn--ghost" href={wa} rel="noopener" target="_blank"><Icon name="chat" />{UI.nav.whatsapp[lang]}</a>
         </div>
       </details>
@@ -48,16 +74,32 @@ const wa = `https://wa.me/${CONTACT.whatsapp}`;
   </div>
 </header>
 
+<script>
+  // Close any open dropdown when another opens, on outside click, or on Escape.
+  const dds = [...document.querySelectorAll<HTMLDetailsElement>("[data-dd]")];
+  dds.forEach((d) => d.addEventListener("toggle", () => { if (d.open) dds.forEach((o) => o !== d && (o.open = false)); }));
+  document.addEventListener("click", (e) => dds.forEach((d) => { if (d.open && !d.contains(e.target as Node)) d.open = false; }));
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") dds.forEach((d) => { if (d.open) { d.open = false; d.querySelector("summary")?.focus(); } }); });
+</script>
+
 <style>
-  .site-header { position: sticky; top: 0; z-index: 20; background: rgb(255 255 255 / 0.92); backdrop-filter: saturate(1.4) blur(10px); border-block-end: 1px solid var(--line); }
+  .site-header { position: sticky; top: 0; z-index: 20; background: rgb(255 255 255 / 0.94); backdrop-filter: saturate(1.4) blur(10px); border-block-end: 1px solid var(--line); }
   .bar { display: flex; align-items: center; gap: var(--s6); min-height: 68px; }
   .brand { flex: none; }
   .brand img { height: 30px; width: auto; }
   .nav { flex: 1; }
-  .nav ul { display: flex; gap: var(--s5); list-style: none; margin: 0; padding: 0; }
-  .nav a { text-decoration: none; color: var(--ink-2); font-weight: 700; font-size: 0.95rem; padding-block: var(--s2); }
-  .nav a:hover, .nav a[aria-current="page"] { color: var(--ink); }
-  .nav a[aria-current="page"] { box-shadow: inset 0 -2px 0 var(--clay); }
+  .nav > ul { display: flex; gap: var(--s5); list-style: none; margin: 0; padding: 0; align-items: center; }
+  .top, .dd summary { text-decoration: none; color: var(--ink-2); font-weight: 700; font-size: 0.95rem; padding-block: var(--s2); cursor: pointer; }
+  .top:hover, .dd summary:hover, .top[aria-current="page"], .dd summary.current { color: var(--ink); }
+  .top[aria-current="page"], .dd summary.current { box-shadow: inset 0 -2px 0 var(--clay); }
+  .dd { position: relative; }
+  .dd summary { list-style: none; display: inline-flex; align-items: center; gap: 4px; }
+  .dd summary::-webkit-details-marker { display: none; }
+  .dd :global(.dd-chev) { width: 16px; height: 16px; transition: transform 160ms var(--ease-out); }
+  .dd[open] :global(.dd-chev) { transform: rotate(180deg); }
+  .dd-panel { position: absolute; inset-inline-start: calc(-1 * var(--s3)); top: calc(100% + 10px); min-width: 13rem; list-style: none; margin: 0; padding: var(--s2); background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-2); display: grid; }
+  .dd-panel a { display: block; padding: var(--s2) var(--s3); border-radius: 8px; text-decoration: none; font-weight: 700; color: var(--ink); }
+  .dd-panel a:hover, .dd-panel a[aria-current="page"] { background: var(--sand); }
   .actions { display: flex; align-items: center; gap: var(--s3); }
   .lang { font-weight: 800; text-decoration: none; color: var(--ink); font-size: 0.95rem; padding: var(--s2); }
   html[lang="ar"] .lang { font-family: var(--font-en); }
@@ -67,9 +109,10 @@ const wa = `https://wa.me/${CONTACT.whatsapp}`;
   .menu summary { list-style: none; cursor: pointer; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 10px; border: 1px solid var(--line-strong); }
   .menu summary::-webkit-details-marker { display: none; }
   .menu summary :global(svg) { width: 22px; height: 22px; }
-  .menu-panel { position: absolute; inset-inline-end: 0; top: calc(100% + 8px); width: min(86vw, 320px); background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-2); padding: var(--s4); display: grid; gap: var(--s3); }
+  .menu-panel { position: absolute; inset-inline-end: 0; top: calc(100% + 8px); width: min(88vw, 320px); max-height: 80vh; overflow: auto; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-2); padding: var(--s4); display: grid; gap: var(--s3); }
   .menu-panel ul { list-style: none; margin: 0; padding: 0; display: grid; }
   .menu-panel li a { display: block; padding: var(--s3) var(--s2); text-decoration: none; font-weight: 700; border-block-end: 1px solid var(--line); }
-  @media (max-width: 1080px) { .nav { display: none; } .bar { justify-content: space-between; } }
-  @media (max-width: 720px) { .actions .wa { display: none; } .actions .cta { min-height: 40px; padding-inline: var(--s3); font-size: 0.88rem; } .lang { display: none; } .menu { display: block; } .bar { gap: var(--s3); } .brand img { height: 26px; } }
+  .m-label { font-size: 0.8rem; font-weight: 800; color: var(--ink-3); padding-inline: var(--s2); }
+  @media (max-width: 1080px) { .nav { display: none; } .bar { justify-content: space-between; } .menu { display: block; } }
+  @media (max-width: 720px) { .actions .wa { display: none; } .actions .cta { min-height: 40px; padding-inline: var(--s3); font-size: 0.88rem; } .lang { display: none; } .bar { gap: var(--s3); } .brand img { height: 26px; } }
 </style>
