@@ -66,6 +66,7 @@ Read this first if you're picking up the project, reviewing a pull request or co
 ### 7 Oct 2026: redesign merged to main; Cloudflare preview
 - Founder approved the redesign: `redesign` was fast-forwarded into `main`. The remote `redesign` branch still needs deleting on GitHub (the session's git proxy refused branch deletion).
 - Preview hosting moves from Claude artifacts to Cloudflare Pages (Git integration on `main`). Settings: root directory `site`, build command `npm run build`, output `dist`, Node 22 (`site/.node-version`), env vars `REVIEW_USER` / `REVIEW_PASS` for the password gate in `site/functions/_middleware.js`. Test builds stay noindex with a disallow-all robots file.
+- Live preview: **https://housing-4v1.pages.dev/ar/** (deploys on every push to `main`). Checked 7 Oct 2026: all 36 pages load with no broken links, noindex headers and the disallow-all robots file are served, and the request API works. `REVIEW_PASS` is not set yet, so the site is open to anyone with the link.
 
 ### 7 Oct 2026: redesign branch (`redesign`), first critique round
 - The founder asked for a slight redesign on its own branch, reviewed side by side with the current preview (separate artifact). The current design stays on `claude/sharp-newton-335b82`.
