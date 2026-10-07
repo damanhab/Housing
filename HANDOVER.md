@@ -45,7 +45,7 @@ Read this first if you're picking up the project, reviewing a pull request or co
 - **Pricing guide** page from the SEO plan is not built.
 - **Resources** has planned titles only; articles come after the site is built.
 
-- **Source links:** the regulations page links to three official MOMAH pages (checked 7 Oct 2026). Re-check them every quarter, and link the Balady and MODON pages once someone in Saudi Arabia confirms the URLs (they don't respond from outside the Kingdom).
+- **Source links:** the regulations page links to three official MOMAH pages (checked 7 Oct 2026). Re-check them every quarter, The Balady licence-service and MODON user-guide links are added but **unverified**: they don't respond from outside the Kingdom, and the founder is testing them from Saudi Arabia.
 
 ## How to work on it
 
@@ -57,6 +57,7 @@ Read this first if you're picking up the project, reviewing a pull request or co
 
 ### 7 Oct 2026: sources and meals
 - Meals stay (founder decision, for now).
+- Balady and MODON links added at the founder's request for testing in Saudi Arabia (unverified from outside).
 - The regulations page now links to the official sources: the MOMAH conditions PDF, the MOMAH group-housing programme page and the MOMAH housing-certificate service. Only official government pages, opening in a new tab; no news or competitor links.
 
 ### 7 Oct 2026: brand spread
