@@ -57,6 +57,7 @@ const S = UI.services;
     <span>© {new Date().getFullYear()} {lang === "ar" ? BRAND.nameAr : BRAND.name}</span>
     {!CONTACT.isPlaceholder && <span>{L("السجل التجاري", "CR")}: {CONTACT.cr}</span>}
     <a href={href("privacy", lang)}>{L("الخصوصية", "Privacy")}</a>
+    <a href="https://unsplash.com/?utm_source=sakanhub&utm_medium=referral" rel="noopener" target="_blank">{L("الصور من Unsplash", "Photos from Unsplash")}</a>
     <a href={href("home", lang === "ar" ? "en" : "ar")} lang={lang === "ar" ? "en" : "ar"}>{UI.nav.langSwitch[lang]}</a>
   </div>
 </footer>

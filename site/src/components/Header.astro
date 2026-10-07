@@ -19,10 +19,9 @@ const groups = [
   { id: "services", label: UI.nav.services[lang], items: services },
   { id: "cities", label: UI.nav.cities[lang], items: cities },
 ];
-const lead: { key: PageKey; label: string }[] = [
-  { key: "companies", label: UI.nav.companies[lang] },
-];
+const lead: { key: PageKey; label: string }[] = [];
 const links: { key: PageKey; label: string }[] = [
+  { key: "companies", label: UI.nav.companies[lang] },
   { key: "owners", label: UI.nav.owners[lang] },
   { key: "regulations", label: UI.nav.regulations[lang] },
   { key: "resources", label: UI.nav.resources[lang] },
@@ -62,7 +61,6 @@ const wa = `https://wa.me/${CONTACT.whatsapp}`;
       <details class="menu" data-dd>
         <summary aria-label={UI.nav.menu[lang]}><Icon name="menu" /></summary>
         <div class="menu-panel">
-          <ul><li><a href={href("companies", lang)}>{UI.nav.companies[lang]}</a></li></ul>
           {groups.map((g) => (
             <div class="m-group">
               <p class="m-label">{g.label}</p>

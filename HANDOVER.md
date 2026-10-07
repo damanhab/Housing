@@ -29,16 +29,15 @@ Read this first if you're picking up the project, reviewing a pull request or co
 5. **Arabic is written natively,** never translated line by line: light Saudi white dialect for conversational lines, clean MSA for regulation facts. Catering is «الإعاشة».
 6. **Never invent facts:** no client names, counts, prices, testimonials or SLAs. Qualitative claims only. Cleaning is "periodic", never "daily".
 7. **Cities in this preview:** Riyadh, Khobar, Dammam are live. Jubail and Ras Al Khair show greyed with "TBD" and have no pages (`active: false` in `site/src/data/content.ts`).
-8. **Navigation:** Companies, Services ▾, Cities ▾ (dropdowns), Building owners, Regulations, Resources. Under 1240px it collapses into the menu button.
+8. **Navigation:** Services ▾, Cities ▾ (dropdowns), Companies, Building owners, Regulations, Resources. Under 1240px it collapses into the menu button.
 13. **Reveal on scroll:** sections fade up as they come into view (founder request); off for reduced-motion users.
 9. **No internal notes on pages** (no "placeholder"/"draft" banners). The one exception is the Resources page, which says it will hold SEO articles once the site is built.
 10. **Regulations page** carries a short source note under the title (MOMAH requirements + Balady), plus a full Sources section.
-11. **Photos:** openly licensed stock (Unsplash / Pexels) until we have our own buildings; credited in `site/public/images/CREDITS.md`. No AI images presented as our buildings.
+11. **Photos:** Unsplash stock, fetched through the official Unsplash API and credited in `site/public/images/CREDITS.md`, with a "Photos from Unsplash" footer link. To be replaced with our own buildings later. No AI images presented as our buildings. API keys are never committed; the founder holds them.
 12. **Visual direction:** "the category standard at full craft" (Stripe / Careem / Tabby bar). Clay `#C8502A` is only for buttons, the logo house and active states. Pages are flat; only the request panel and menus lift.
 
 ## Open items
 
-- **Stock photos not in yet.** Internet access now works, but Unsplash shows a bot check to automated requests and Pexels blocks them; the open catalogue that does work (Openverse) only has low-quality, amateur photos with identifiable people. Options: an Unsplash API access key (free developer account), or the founder downloads chosen photos into `site/public/images/` using the file names in `site/src/data/images.ts`.
 - **Meals (الإعاشة) under discussion:** the founder is considering dropping meals as a service. Regulation only requires a central kitchen *or* a catering service (`research/background/regulation-block-a.md` §3.2), so buildings with a shared kitchen stay compliant without it. Don't remove it until the founder decides.
 - **Contact details:** phone, WhatsApp, email and CR number are still placeholders (`site/src/lib/site.ts`).
 - **Arabic voice:** the founder should confirm the light Saudi dialect level.
@@ -53,6 +52,13 @@ Read this first if you're picking up the project, reviewing a pull request or co
 - Branches: work on a feature branch and open a PR to `main`; the founder pulls locally with `git pull` / `git switch <branch>`.
 
 ## Log
+
+### 7 Oct 2026: third round
+- Owners lede shortened to «نرخّص عمارتك لسكن عمّال، ونشغّلها عنك.»
+- Menu order: Services, Cities, Companies, Building owners, Regulations, Resources.
+- Reveal on scroll now triggers later (once a section is ~22% into the viewport) and moves a little slower.
+- 11 Unsplash photos added via the official API (download events registered, credits recorded). The first transport photo was swapped because it showed religious statues and a foreign plate.
+- The internal preview link now opens straight on the Arabic home page.
 
 ### 7 Oct 2026: second round of founder feedback
 - Rewrote the owners lines that read as stiff MSA («ونملؤها بشركات…») into the site's conversational Arabic. Changed «وش نشيل عنك» on the Companies page, because it closely echoed Mnzil's own wording.

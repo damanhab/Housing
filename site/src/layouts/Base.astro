@@ -76,7 +76,7 @@ const graph = [org, ...(breadcrumb ? [breadcrumb] : []), ...jsonld];
       const targets = document.querySelectorAll<HTMLElement>("main > :not(:first-child), [data-reveal]");
       const io = new IntersectionObserver((entries) => {
         for (const e of entries) if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); }
-      }, { rootMargin: "0px 0px -10% 0px", threshold: 0.08 });
+      }, { rootMargin: "0px 0px -22% 0px", threshold: 0.12 });
       targets.forEach((t) => {
         t.querySelectorAll<HTMLElement>(":scope .stagger > *").forEach((c, i) => c.style.setProperty("--i", String(i)));
         io.observe(t);
