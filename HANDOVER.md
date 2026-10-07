@@ -79,7 +79,7 @@ Read this first if you're picking up the project, reviewing a pull request or co
 - Reveal on scroll now triggers later (once a section is ~22% into the viewport) and moves a little slower.
 - 11 Unsplash photos added via the official API (download events registered, credits recorded). The first transport photo was swapped because it showed religious statues and a foreign plate.
 - The internal preview link now opens straight on the Arabic home page.
-- Who-we-are room photo replaced twice: the first was hotel-like ("too nice, no worker housing looks like this"), the second looked like a prison. Now a plain white room with metal bunk beds and curtains. Rule of thumb: realistic and decent, never luxury, never grim.
+- Who-we-are room photo replaced twice: the first was hotel-like ("too nice, no worker housing looks like this"), the second looked like a prison. Now a plain white room with metal bunk beds and curtains. Rule of thumb: realistic and decent, never luxury, never grim. People and places should look Saudi / Gulf / South Asian, not Western stock (founder, 7 Oct 2026).
 - Removed the footer photo credit at the founder's request.
 
 ### 7 Oct 2026: second round of founder feedback

@@ -20,5 +20,5 @@ export const IMAGES: Record<Slot, { file: string; alt: Record<Lang, string>; wan
   "city-riyadh":   { file: "city-riyadh.jpg",     want: "Riyadh skyline or industrial edge", alt: { ar: "مدينة الرياض من الأعلى", en: "Riyadh from above" } },
   "city-khobar":   { file: "city-khobar.jpg",     want: "Khobar waterfront or streets", alt: { ar: "برج المياه في الخبر", en: "The Khobar water tower" } },
   "city-dammam":   { file: "city-dammam.jpg",     want: "Dammam city or port", alt: { ar: "واجهة الدمام البحرية", en: "The Dammam waterfront" } },
-  regulations:     { file: "regulations.jpg",     want: "Site inspection: people in hard hats and hi-vis checking a building or site", alt: { ar: "مفتّشان في موقع بناء", en: "Two inspectors on a building site" } },
+  regulations:     { file: "regulations.jpg",     want: "A Saudi or Gulf construction site (local people and places, not Western stock)", alt: { ar: "موقع بناء في الرياض", en: "A construction site in Riyadh" } },
 };
