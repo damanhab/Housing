@@ -85,6 +85,9 @@ const graph = [org, ...(breadcrumb ? [breadcrumb] : []), ...jsonld];
         io.observe(t);
       });
     }
+    // Once the page has loaded, fetch the remaining photos in the background so they're ready before their section reveals.
+    const warm = () => document.querySelectorAll<HTMLImageElement>('img[loading="lazy"]').forEach((img) => { img.loading = "eager"; });
+    if (document.readyState === "complete") warm(); else addEventListener("load", warm, { once: true });
   </script>
 </body>
 </html>

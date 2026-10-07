@@ -63,6 +63,10 @@ Read this first if you're picking up the project, reviewing a pull request or co
 
 ## Log
 
+### 7 Oct 2026: faster photos
+- Founder noticed photos loading late as sections revealed. Fixes: every photo now has a WebP twin (1200px wide, about 70% lighter; the JPEG stays as fallback and as the file named in `CREDITS.md`), and once the page has loaded, the remaining lazy photos are fetched in the background so they're ready before their section reveals (`site/src/layouts/Base.astro`).
+- When adding a photo, also save its `.webp` twin next to the `.jpg` (1200px wide, quality ~72). `Photo.astro` picks it up automatically.
+
 ### 7 Oct 2026: city guides on Resources
 - Founder asked for a guide per city as a placeholder. The Resources page now has two groups: "City guides" (one "Soon" entry per live city, generated from `ACTIVE_CITIES`, so Jubail and Ras Al Khair appear when they go live) and "Articles" (the six planned titles).
 

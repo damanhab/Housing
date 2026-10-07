@@ -7,16 +7,23 @@ interface Props { slot: Slot; lang: Lang; class?: string; eager?: boolean; ratio
 const { slot, lang, class: cls, eager = false, ratio = "4 / 3" } = Astro.props;
 const img = IMAGES[slot];
 const has = existsSync(join(process.cwd(), "public", "images", img.file));
+// A lighter WebP twin (same name) is served where it exists; the JPEG stays as the fallback.
+const webp = img.file.replace(/\.jpe?g$/i, ".webp");
+const hasWebp = webp !== img.file && existsSync(join(process.cwd(), "public", "images", webp));
 ---
 <figure class:list={["photo", cls]} style={`aspect-ratio: ${ratio}`}>
   {has
-    ? <img src={`/images/${img.file}`} alt={img.alt[lang]} loading={eager ? "eager" : "lazy"} decoding="async" fetchpriority={eager ? "high" : undefined} />
+    ? <picture>
+        {hasWebp && <source type="image/webp" srcset={`/images/${webp}`} />}
+        <img src={`/images/${img.file}`} alt={img.alt[lang]} loading={eager ? "eager" : "lazy"} decoding="async" fetchpriority={eager ? "high" : undefined} />
+      </picture>
     : <div class="ph" role="img" aria-label={img.alt[lang]}>
         <svg viewBox="0 0 120 80" aria-hidden="true"><path d="M44 62V40l16-14 16 14v22" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="60" cy="58" r="4.5" fill="currentColor"/></svg>
       </div>}
 </figure>
 <style>
   .photo { margin: 0; border-radius: var(--radius-lg); overflow: hidden; background: var(--sand-2); max-width: 100%; }
+  .photo picture { display: block; width: 100%; height: 100%; }
   .photo img { width: 100%; height: 100%; object-fit: cover; }
   .ph { width: 100%; height: 100%; display: grid; place-items: center; color: var(--line-strong); background: linear-gradient(160deg, var(--sand-2), var(--sand)); }
   .ph svg { width: 22%; min-width: 64px; }
