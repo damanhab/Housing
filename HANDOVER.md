@@ -53,6 +53,11 @@ Read this first if you're picking up the project, reviewing a pull request or co
 
 ## Log
 
+### 7 Oct 2026: brand spread
+- Founder asked to show the brand more. Done: bilingual header lockup, a clay closing band with the on-clay logo and «سكّن طاقمك بضغطة», house-icon step markers, a faint house watermark in the ink band, and WhatsApp/social share cards (`site/scripts/make-og.mjs`). Declined: the resident-dot nav marker. Details in `DESIGN.md` → Brand marks.
+- Corrected the regulation citations to the exact official title: «الشروط الصحية والفنية والسلامة اللازم توافرها في المساكن الجماعية للأفراد» (the site had paraphrased it as «الاشتراطات…»).
+- The share cards still list «الإعاشة / Meals»; regenerate them if meals are dropped.
+
 ### 7 Oct 2026: third round
 - Owners lede shortened to «نرخّص عمارتك لسكن عمّال، ونشغّلها عنك.»
 - Menu order: Services, Cities, Companies, Building owners, Regulations, Resources.

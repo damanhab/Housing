@@ -227,6 +227,14 @@ Firm and friendly: heavy labels, solid fills, clear states.
 - Until a file exists, a sand gradient block with a faint house mark holds the space.
 - Openly licensed stock or our own photos only, credited in `site/public/images/CREDITS.md`. Never AI-generated images presented as our buildings.
 
+### Brand marks (7 Oct 2026)
+- **Header:** the bilingual horizontal lockup (SakanHub | سكن هب) from 1360px wide; the Latin wordmark below that.
+- **Clay brand band:** the one full-clay section, closing the home page: stacked on-clay lockup, «سكّن طاقمك بضغطة» / "House your crew in a tap", a white button and a white-outline WhatsApp button.
+- **Step markers:** the brand house (icon file used unaltered as a CSS mask) with the step number inside, above the resident dot. Clay for step 1, ink for the rest.
+- **Watermark:** one very faint white house (4.5% opacity) bleeding off the corner of the ink rules band. Nowhere else.
+- **Share cards:** `site/public/og-ar.jpg` / `og-en.jpg` (1200×630), made by `site/scripts/make-og.mjs`. Regenerate after changing the logo, slogan or hero photo.
+- Not used: the resident dot as a nav marker (founder declined).
+
 ### Reveal on scroll
 - Every section after the first fades up (28px, 700ms ease-out) as it enters the viewport; lists marked `stagger` follow item by item (90ms apart). Founder request, 7 Oct 2026.
 - Switched on only by JS, and never under `prefers-reduced-motion`, so the page is always fully readable without it.

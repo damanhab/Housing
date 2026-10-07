@@ -109,7 +109,7 @@ const jsonld = [
       <div class="section-head"><h2 id="how-h">{L("كيف نبدأ", "How it works")}</h2></div>
       <ol class="steps stagger">
         {steps.map((s, i) => (
-          <li><span class="step-n num" aria-hidden="true">{i + 1}</span><h3>{s.t}</h3><p>{s.d}</p></li>
+          <li><span class="step-n num" aria-hidden="true"><span>{i + 1}</span></span><h3>{s.t}</h3><p>{s.d}</p></li>
         ))}
       </ol>
     </div>
@@ -139,7 +139,7 @@ const jsonld = [
     </div>
   </section>
 
-  <section class="section section--ink" aria-labelledby="rules-h">
+  <section class="section section--ink rules-band" aria-labelledby="rules-h">
     <div class="container split">
       <div class="section-head">
         <h2 id="rules-h">{L("السكن غير المرخّص يوقف خدماتك في قوى", "Unlicensed housing can freeze your Qiwa services")}</h2>
@@ -190,6 +190,19 @@ const jsonld = [
       </div>
     </div>
   </section>
+
+  <section class="brand-band" aria-labelledby="band-h">
+    <div class="container band-inner">
+      <img class="band-logo" src="/brand/sakanhub-stacked-on-clay.svg" alt={L("سكن هب SakanHub", "SakanHub سكن هب")} width="804" height="337" loading="lazy" />
+      <div class="band-copy">
+        <h2 id="band-h">{L("سكّن طاقمك بضغطة", "House your crew in a tap")}</h2>
+        <div class="band-cta">
+          <a class="btn btn--light" href={href("request", lang)}>{UI.nav.request[lang]}<Icon name="arrow" class="flip" /></a>
+          <a class="btn band-ghost" href={`https://wa.me/${CONTACT.whatsapp}`} rel="noopener" target="_blank"><Icon name="chat" />{UI.nav.whatsapp[lang]}</a>
+        </div>
+      </div>
+    </div>
+  </section>
 </Base>
 
 <style>
@@ -228,10 +241,19 @@ const jsonld = [
   .living h2 { font-size: var(--step-4); max-width: 14ch; }
 
   .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s6); position: relative; }
-  .steps::before { content: ""; position: absolute; inset-inline: 22px calc(33% - 22px); top: 22px; height: 1px; background: var(--line-strong); }
+  .steps::before { content: ""; position: absolute; inset-inline: 32px calc(33% - 32px); top: 34px; height: 1px; background: var(--line-strong); }
   .steps li { position: relative; display: grid; gap: var(--s2); align-content: start; }
-  .step-n { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--white); border: 1px solid var(--line-strong); font-weight: 800; position: relative; margin-block-end: var(--s2); }
-  .steps li:first-child .step-n { background: var(--ink); color: var(--white); border-color: var(--ink); }
+  /* Step markers: the brand house (icon file, unaltered, used as a mask) with the step number set inside, above the resident dot. */
+  .step-n { width: 64px; height: 64px; position: relative; margin-block-end: var(--s2); background: var(--sand); }
+  .step-n::before { content: ""; position: absolute; inset: 0; background: var(--ink); -webkit-mask: url("/brand/sakanhub-icon-white.svg") center / contain no-repeat; mask: url("/brand/sakanhub-icon-white.svg") center / contain no-repeat; }
+  .steps li:first-child .step-n::before { background: var(--clay); }
+  .step-n span { position: absolute; inset-inline: 0; top: 28px; text-align: center; font-weight: 800; font-size: 13px; line-height: 1; color: var(--ink); }
+  .steps li:first-child .step-n span { color: var(--clay); }
+
+  /* Faint brand house behind the compliance band */
+  .rules-band { position: relative; overflow: hidden; }
+  .rules-band::after { content: ""; position: absolute; inset-inline-end: -80px; bottom: -120px; width: 520px; height: 520px; background: url("/brand/sakanhub-icon-white.svg") center / contain no-repeat; opacity: 0.045; pointer-events: none; }
+  .rules-band > .container { position: relative; z-index: 1; }
   .steps p { color: var(--ink-2); max-width: 30ch; }
 
   .split { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: var(--s8); align-items: start; }
@@ -269,6 +291,17 @@ const jsonld = [
   .faq details[open] :global(.chev) { transform: rotate(180deg); }
   .faq details p { color: var(--ink-2); padding-block-end: var(--s5); max-width: 60ch; }
 
+  /* The one full clay section: brand sign-off with the on-clay lockup (brand/logo/final/guidelines.md: "Clay banners, hero blocks"). */
+  .brand-band { background: var(--clay); color: var(--white); padding-block: var(--s9); }
+  .band-inner { display: flex; align-items: center; justify-content: space-between; gap: var(--s7); flex-wrap: wrap; }
+  .band-logo { height: clamp(96px, 7vw + 60px, 150px); width: auto; }
+  .band-copy { display: grid; gap: var(--s5); justify-items: start; }
+  .brand-band h2 { color: var(--white); font-size: var(--step-4); max-width: 14ch; }
+  .band-cta { display: flex; flex-wrap: wrap; gap: var(--s3); }
+  .band-ghost { --bg: transparent; --fg: var(--white); border-color: rgb(255 255 255 / 0.6); box-shadow: none; }
+  .band-ghost:hover { background: rgb(255 255 255 / 0.12); }
+  .brand-band :global(.btn--light) { --fg: var(--clay-press); }
+
   @media (max-width: 1000px) {
     .hero-grid, .split, .intro-grid, .living-grid, .owners { grid-template-columns: 1fr; gap: var(--s6); }
     .hero { padding-block: var(--s6) var(--s7); }
@@ -280,8 +313,8 @@ const jsonld = [
     .svc-grid { grid-template-columns: 1fr; }
     .facts-row { grid-template-columns: 1fr; }
     .steps { grid-template-columns: 1fr; gap: var(--s5); }
-    .steps::before { inset-inline: 21.5px auto; width: 1px; height: auto; top: 22px; bottom: 22px; }
-    .steps li { grid-template-columns: 44px 1fr; column-gap: var(--s4); row-gap: var(--s1); }
+    .steps::before { inset-inline: 31.5px auto; width: 1px; height: auto; top: 34px; bottom: 34px; }
+    .steps li { grid-template-columns: 64px 1fr; column-gap: var(--s4); row-gap: var(--s1); }
     .step-n { grid-row: 1 / span 2; margin: 0; }
     .cities a, .c-off { grid-template-columns: 1fr auto; }
     .c-areas { grid-column: 1 / -1; grid-row: 2; }

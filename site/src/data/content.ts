@@ -287,6 +287,6 @@ export const UI = {
 export const t = (s: T, lang: Lang) => s[lang];
 export const trackOf = (c: City, lang: Lang) => (c.trackShort ?? TRACK_LABEL[c.track])[lang];
 export const RULES_SOURCE: T = {
-  ar: "المصدر: الاشتراطات الصحية والفنية والسلامة للمساكن الجماعية للأفراد، وزارة البلديات والإسكان (بلدي).",
-  en: "Source: MOMAH health, technical and safety requirements for group housing (Balady).",
+  ar: "المصدر: «الشروط الصحية والفنية والسلامة اللازم توافرها في المساكن الجماعية للأفراد»، وزارة البلديات والإسكان (بلدي).",
+  en: "Source: MOMAH, Health, Technical and Safety Conditions Required in Group Housing for Individuals (Balady).",
 };

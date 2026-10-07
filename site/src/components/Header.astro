@@ -32,7 +32,10 @@ const wa = `https://wa.me/${CONTACT.whatsapp}`;
 <header class="site-header">
   <div class="container bar">
     <a class="brand" href={href("home", lang)} aria-label={lang === "ar" ? "سكن هب، الرئيسية" : "SakanHub home"}>
-      <img src="/brand/sakanhub-wordmark-color.svg" alt="" width="148" height="36" />
+      <picture>
+        <source media="(min-width: 1360px)" srcset="/brand/sakanhub-horizontal-color.svg" width="1448" height="202" />
+        <img src="/brand/sakanhub-wordmark-color.svg" alt="" width="804" height="165" />
+      </picture>
     </a>
     <nav class="nav" aria-label={lang === "ar" ? "القائمة الرئيسية" : "Main"}>
       <ul>
@@ -90,7 +93,9 @@ const wa = `https://wa.me/${CONTACT.whatsapp}`;
   .site-header { position: sticky; top: 0; z-index: 20; background: rgb(255 255 255 / 0.94); backdrop-filter: saturate(1.4) blur(10px); border-block-end: 1px solid var(--line); }
   .bar { display: flex; align-items: center; gap: var(--s6); min-height: 68px; }
   .brand { flex: none; }
-  .brand img { height: 30px; width: auto; }
+  .brand { display: block; }
+  .brand img { height: 30px; width: auto; display: block; }
+  @media (min-width: 1360px) { .brand img { height: 34px; } }
   .nav { flex: 1; }
   .nav > ul { display: flex; gap: var(--s5); list-style: none; margin: 0; padding: 0; align-items: center; }
   .top, .dd summary { white-space: nowrap; text-decoration: none; color: var(--ink-2); font-weight: 700; font-size: 0.95rem; padding-block: var(--s2); cursor: pointer; }
