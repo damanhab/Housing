@@ -43,7 +43,7 @@ Read this first if you're picking up the project, reviewing a pull request or co
 - **Arabic voice:** the founder should confirm the light Saudi dialect level.
 - **Differentiation vs Mnzil** is still open (see `research/opportunity-summary.md`).
 - **Pricing guide** page from the SEO plan is not built.
-- **Resources** has planned titles only; articles come after the site is built.
+- **Resources** has planned titles only (a guide per live city plus six articles); articles come after the site is built.
 
 - **Source links:** the regulations page links to three official MOMAH pages (checked 7 Oct 2026). Re-check them every quarter, The Balady licence-service and MODON user-guide links are added but **unverified**: they don't respond from outside the Kingdom, and the founder is testing them from Saudi Arabia.
 
@@ -62,6 +62,9 @@ Read this first if you're picking up the project, reviewing a pull request or co
 - Branches: work on a feature branch and open a PR to `main`; the founder pulls locally with `git pull` / `git switch <branch>`.
 
 ## Log
+
+### 7 Oct 2026: city guides on Resources
+- Founder asked for a guide per city as a placeholder. The Resources page now has two groups: "City guides" (one "Soon" entry per live city, generated from `ACTIVE_CITIES`, so Jubail and Ras Al Khair appear when they go live) and "Articles" (the six planned titles).
 
 ### 7 Oct 2026: regulations photo
 - The regulations page now has a photo, at the founder's request. Two picks were rejected: Western inspectors ("clearly Caucasian") and a Riyadh construction site ("no relation to the discussion").

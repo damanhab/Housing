@@ -23,6 +23,7 @@ const titles: Partial<Record<PageKey, [string, string, string?]>> = {
 };
 const [title, lede, crumb] = titles[pageKey]!;
 const crumbs = pageKey === "thanks" ? [] : [{ key: pageKey, name: crumb ?? title }];
+const cityGuides = ACTIVE_CITIES.map((c) => L(`دليل سكن العمّال في ${c.name.ar}`, `Worker housing in ${c.name.en}: a guide`));
 const planned = [
   L("دليل رخصة السكن الجماعي خطوة بخطوة", "The group-housing licence, step by step"),
   L("كم تكلفة سرير سكن العمّال شهرياً؟", "What does a worker bed cost per month?"),
@@ -65,6 +66,9 @@ const solo = pageKey !== "request";
       {pageKey === "resources" && (
         <section class="res">
           <p class="res-note">{L("هذه الصفحة ستضم مقالات السيو (SEO) بعد اكتمال بناء الموقع. العناوين أدناه أمثلة على ما نخطّط لكتابته.", "This page will hold our SEO articles once the site is built. The titles below are examples of what we plan to write.")}</p>
+          <h2 class="res-h">{L("أدلة المدن", "City guides")}</h2>
+          <ul class="res-list">{cityGuides.map((p) => <li><span class="res-t">{p}</span><span class="tbd">{L("قريباً", "Soon")}</span></li>)}</ul>
+          <h2 class="res-h">{L("مقالات", "Articles")}</h2>
           <ul class="res-list">{planned.map((p) => <li><span class="res-t">{p}</span><span class="tbd">{L("قريباً", "Soon")}</span></li>)}</ul>
         </section>
       )}
@@ -109,6 +113,7 @@ const solo = pageKey !== "request";
   .facts dd.plain { font-weight: 400; color: var(--ink-2); }
   .res { display: grid; gap: var(--s6); }
   .res-note { background: var(--sand); border: 1px dashed var(--line-strong); border-radius: var(--radius); padding: var(--s4) var(--s5); color: var(--ink-2); }
+  .res-h { font-size: var(--step-1); margin-block: var(--s6) var(--s3); }
   .res-list { list-style: none; margin: 0; padding: 0; border-block-start: 1px solid var(--line); }
   .res-list li { display: flex; justify-content: space-between; align-items: center; gap: var(--s4); padding-block: var(--s4); border-block-end: 1px solid var(--line); }
   .res-t { font-weight: 800; color: var(--ink-3); }
