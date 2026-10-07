@@ -63,6 +63,10 @@ Read this first if you're picking up the project, reviewing a pull request or co
 
 ## Log
 
+### 7 Oct 2026: redesign merged to main; Cloudflare preview
+- Founder approved the redesign: `redesign` was fast-forwarded into `main`. The remote `redesign` branch still needs deleting on GitHub (the session's git proxy refused branch deletion).
+- Preview hosting moves from Claude artifacts to Cloudflare Pages (Git integration on `main`). Settings: root directory `site`, build command `npm run build`, output `dist`, Node 22 (`site/.node-version`), env vars `REVIEW_USER` / `REVIEW_PASS` for the password gate in `site/functions/_middleware.js`. Test builds stay noindex with a disallow-all robots file.
+
 ### 7 Oct 2026: redesign branch (`redesign`), first critique round
 - The founder asked for a slight redesign on its own branch, reviewed side by side with the current preview (separate artifact). The current design stays on `claude/sharp-newton-335b82`.
 - Impeccable critique of the home page scored **22/32** (snapshot in `.impeccable/critique/`). The founder chose to fix all 4 major and 2 minor issues, keep the "living" band with a new photo, and left everything open.
