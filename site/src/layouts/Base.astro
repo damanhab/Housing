@@ -79,10 +79,12 @@ const graph = [org, ...(breadcrumb ? [breadcrumb] : []), ...jsonld];
       const targets = document.querySelectorAll<HTMLElement>("main > :not(:first-child), [data-reveal]");
       const io = new IntersectionObserver((entries) => {
         for (const e of entries) if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); }
-      }, { rootMargin: "0px 0px -22% 0px", threshold: 0.12 });
+      }, { rootMargin: "0px 0px -15% 0px", threshold: 0 });
       targets.forEach((t) => {
         t.querySelectorAll<HTMLElement>(":scope .stagger > *").forEach((c, i) => c.style.setProperty("--i", String(i)));
-        io.observe(t);
+        // Anything already on screen at load shows straight away, so the first view never ends in a blank band.
+        if (t.getBoundingClientRect().top < innerHeight) t.classList.add("is-in");
+        else io.observe(t);
       });
     }
     // Once the page has loaded, fetch the remaining photos in the background so they're ready before their section reveals.

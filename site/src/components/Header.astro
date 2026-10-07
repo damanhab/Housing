@@ -33,8 +33,10 @@ const wa = `https://wa.me/${CONTACT.whatsapp}`;
   <div class="container bar">
     <a class="brand" href={href("home", lang)} aria-label={lang === "ar" ? "سكن هب، الرئيسية" : "SakanHub home"}>
       <picture>
-        <source media="(min-width: 1360px)" srcset="/brand/sakanhub-horizontal-color.svg" width="1448" height="202" />
-        <img src="/brand/sakanhub-wordmark-color.svg" alt="" width="804" height="165" />
+        <source media="(min-width: 1480px)" srcset="/brand/sakanhub-horizontal-color.svg" width="1448" height="202" />
+        {lang === "ar"
+          ? <img src="/brand/sakanhub-arabic-color.svg" alt="" width="635" height="189" />
+          : <img src="/brand/sakanhub-wordmark-color.svg" alt="" width="804" height="165" />}
       </picture>
     </a>
     <nav class="nav" aria-label={lang === "ar" ? "القائمة الرئيسية" : "Main"}>
@@ -59,11 +61,12 @@ const wa = `https://wa.me/${CONTACT.whatsapp}`;
     </nav>
     <div class="actions">
       <a class="lang" href={href(pageKey, other)} hreflang={other} lang={other}>{UI.nav.langSwitch[lang]}</a>
-      <a class="btn btn--ghost wa" href={wa} rel="noopener" target="_blank"><Icon name="chat" />{UI.nav.whatsapp[lang]}</a>
-      <a class="btn cta" href={href("request", lang)}>{UI.nav.request[lang]}</a>
+      <a class="btn btn--ghost wa" href={wa} rel="noopener" target="_blank" aria-label={UI.nav.whatsapp[lang]}><Icon name="chat" /><span class="wa-t">{UI.nav.whatsapp[lang]}</span></a>
+      <a class="btn cta" href={href("request", lang)} aria-label={UI.nav.request[lang]}><span class="cta-l">{UI.nav.request[lang]}</span><span class="cta-s" aria-hidden="true">{UI.nav.requestShort[lang]}</span></a>
       <details class="menu" data-dd>
         <summary aria-label={UI.nav.menu[lang]}><Icon name="menu" /></summary>
         <div class="menu-panel">
+          <a class="btn btn--ghost" href={wa} rel="noopener" target="_blank"><Icon name="chat" />{UI.nav.whatsappLong[lang]}</a>
           {groups.map((g) => (
             <div class="m-group">
               <p class="m-label">{g.label}</p>
@@ -74,7 +77,6 @@ const wa = `https://wa.me/${CONTACT.whatsapp}`;
             {links.map((l) => <li><a href={href(l.key, lang)}>{l.label}</a></li>)}
             <li><a href={href(pageKey, other)} hreflang={other} lang={other}>{UI.nav.langSwitch[lang]}</a></li>
           </ul>
-          <a class="btn btn--ghost" href={wa} rel="noopener" target="_blank"><Icon name="chat" />{UI.nav.whatsapp[lang]}</a>
         </div>
       </details>
     </div>
@@ -95,7 +97,14 @@ const wa = `https://wa.me/${CONTACT.whatsapp}`;
   .brand { flex: none; }
   .brand { display: block; }
   .brand img { height: 30px; width: auto; display: block; }
-  @media (min-width: 1360px) { .brand img { height: 34px; } }
+  html[lang="ar"] .brand img { height: 34px; }
+  @media (min-width: 1480px) {
+    .brand img, html[lang="ar"] .brand img { height: 34px; }
+    /* English labels run longer: tighter gaps and a slightly smaller lockup keep the bar inside the 1200px container. */
+    html[lang="en"] .bar { gap: var(--s5); }
+    html[lang="en"] .nav > ul { gap: var(--s4); }
+    html[lang="en"] .brand img { height: 28px; }
+  }
   .nav { flex: 1; }
   .nav > ul { display: flex; gap: var(--s5); list-style: none; margin: 0; padding: 0; align-items: center; }
   .top, .dd summary { white-space: nowrap; text-decoration: none; color: var(--ink-2); font-weight: 700; font-size: 0.95rem; padding-block: var(--s2); cursor: pointer; }
@@ -113,6 +122,7 @@ const wa = `https://wa.me/${CONTACT.whatsapp}`;
   .lang { font-weight: 800; text-decoration: none; color: var(--ink); font-size: 0.95rem; padding: var(--s2); }
   html[lang="ar"] .lang { font-family: var(--font-en); }
   html[lang="en"] .lang { font-family: var(--font-ar); }
+  .cta-s { display: none; }
   .actions .btn { min-height: 40px; padding-inline: var(--s4); font-size: 0.95rem; }
   .menu { display: none; position: relative; }
   .menu summary { list-style: none; cursor: pointer; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 10px; border: 1px solid var(--line-strong); }
@@ -123,5 +133,15 @@ const wa = `https://wa.me/${CONTACT.whatsapp}`;
   .menu-panel li a { display: block; padding: var(--s3) var(--s2); text-decoration: none; font-weight: 700; border-block-end: 1px solid var(--line); }
   .m-label { font-size: 0.8rem; font-weight: 800; color: var(--ink-3); padding-inline: var(--s2); }
   @media (max-width: 1240px) { .nav { display: none; } .bar { justify-content: space-between; } .menu { display: block; } }
-  @media (max-width: 720px) { .actions .wa { display: none; } .actions .cta { min-height: 40px; padding-inline: var(--s3); font-size: 0.88rem; } .lang { display: none; } .bar { gap: var(--s3); } .brand img { height: 26px; } }
+  /* Phones: WhatsApp stays in the bar as a 44px icon button (KSA buyers' first channel); everything else is in the menu. */
+  @media (max-width: 720px) {
+    .actions { gap: var(--s2); }
+    .actions .wa { width: 44px; min-height: 44px; padding: 0; justify-content: center; }
+    .wa-t { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+    .actions .cta { min-height: 44px; padding-inline: var(--s3); font-size: 0.88rem; }
+    .lang { display: none; } .bar { gap: var(--s3); }
+    .brand img { height: 26px; } html[lang="ar"] .brand img { height: 30px; }
+  }
+  @media (max-width: 440px) { html[lang="en"] .cta-l { display: none; } html[lang="en"] .cta-s { display: inline; } }
+  @media (max-width: 360px) { .actions .cta { font-size: 0.82rem; padding-inline: var(--s2); } }
 </style>

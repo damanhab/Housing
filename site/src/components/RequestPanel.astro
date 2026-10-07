@@ -2,26 +2,44 @@
 import type { Lang } from "../lib/site";
 import { CONTACT } from "../lib/site";
 import { href } from "../lib/routes";
-import { ACTIVE_CITIES as CITIES, UI, trackOf } from "../data/content";
+import { ACTIVE_CITIES as CITIES, UI, TRACK_LABEL, trackOf } from "../data/content";
 import Icon from "./Icon.astro";
 interface Props { lang: Lang; city?: string; full?: boolean; id?: string }
-const { lang, city = "riyadh", full = false, id = "request" } = Astro.props;
+// No city is pre-selected unless the page is about one city, so a request never goes out for the wrong place.
+const { lang, city, full = false, id = "request" } = Astro.props;
 const F = UI.form, R = UI.readout;
 const tracks = Object.fromEntries(CITIES.map((c) => [c.id, trackOf(c, lang)]));
 const names = Object.fromEntries(CITIES.map((c) => [c.id, c.name[lang]]));
+// Cities with two licensing tracks: one question resolves which applies (Balady in the city, MODON inside its industrial cities).
+const mixed = CITIES.filter((c) => c.track === "mixed").map((c) => c.id);
+const resolved = { yes: lang === "ar" ? "مدن" : "MODON", no: TRACK_LABEL.balady[lang] };
 ---
 <form class="panel" id={id} method="post" action="/api/request" data-request-form
   data-lang={lang} data-thanks={href("thanks", lang)} data-wa={CONTACT.whatsapp}
-  data-tracks={JSON.stringify(tracks)} data-names={JSON.stringify(names)} novalidate>
+  data-tracks={JSON.stringify(tracks)} data-names={JSON.stringify(names)}
+  data-mixed={JSON.stringify(mixed)} data-resolved={JSON.stringify(resolved)} novalidate>
   <input type="hidden" name="lang" value={lang} />
 
-  <fieldset class="field">
+  <fieldset class="field" aria-describedby={`${id}-city-err`}>
     <legend>{F.city[lang]}</legend>
     <div class="chips">
       {CITIES.map((c) => (
         <label class="chip">
           <input type="radio" name="city" value={c.id} checked={c.id === city} />
           <span>{c.name[lang]}</span>
+        </label>
+      ))}
+    </div>
+    <p class="err" id={`${id}-city-err`} data-err="city" hidden>{F.errCity[lang]}</p>
+  </fieldset>
+
+  <fieldset class="field" data-industrial hidden={!(city && mixed.includes(city))}>
+    <legend>{F.industrial[lang]}</legend>
+    <div class="chips">
+      {(["yes", "no", "unsure"] as const).map((v) => (
+        <label class="chip chip--sm">
+          <input type="radio" name="industrial" value={v} />
+          <span>{F[v === "yes" ? "industrialYes" : v === "no" ? "industrialNo" : "industrialUnsure"][lang]}</span>
         </label>
       ))}
     </div>
@@ -32,28 +50,30 @@ const names = Object.fromEntries(CITIES.map((c) => [c.id, c.name[lang]]));
       <label for={`${id}-workers`}>{F.workers[lang]}</label>
       <div class="stepper">
         <button type="button" data-step="-10" aria-label={lang === "ar" ? "إنقاص 10" : "Minus 10"}><Icon name="minus" /></button>
-        <input class="num" id={`${id}-workers`} name="workers" type="number" inputmode="numeric" min="1" max="100000" value="40" required />
+        <input class="num" id={`${id}-workers`} name="workers" type="text" inputmode="numeric" autocomplete="off" placeholder={F.workersHint[lang]} required aria-describedby={`${id}-workers-err`} />
         <button type="button" data-step="10" aria-label={lang === "ar" ? "زيادة 10" : "Plus 10"}><Icon name="plus" /></button>
       </div>
-      <p class="err" data-err="workers" hidden>{F.errWorkers[lang]}</p>
+      <p class="err" id={`${id}-workers-err`} data-err="workers" hidden>{F.errWorkers[lang]}</p>
     </div>
     <div class="field">
       <label for={`${id}-start`}>{F.start[lang]}</label>
-      <select id={`${id}-start`} name="start">
+      <select id={`${id}-start`} name="start" required aria-describedby={`${id}-start-err`}>
+        <option value="" selected disabled>{F.startPick[lang]}</option>
         <option value="now">{F.startNow[lang]}</option>
         <option value="1m">{F.start1[lang]}</option>
         <option value="3m">{F.start3[lang]}</option>
       </select>
+      <p class="err" id={`${id}-start-err`} data-err="start" hidden>{F.errStart[lang]}</p>
     </div>
   </div>
 
   <div class="readout" aria-live="polite">
     <p class="readout-title">{R.title[lang]}</p>
     <dl>
-      <div><dt class="num" data-out="rooms">4</dt><dd>{R.rooms[lang]}</dd></div>
-      <div><dt class="num" data-out="sanitary">5</dt><dd>{R.sanitary[lang]}</dd></div>
-      <div><dt class="num" data-out="area">160</dt><dd>{R.bedArea[lang]}</dd></div>
-      <div><dt data-out="track">{tracks[city]}</dt><dd>{R.track[lang]}</dd></div>
+      <div><dt class="num" data-out="rooms">—</dt><dd>{R.rooms[lang]}</dd></div>
+      <div><dt class="num" data-out="sanitary">—</dt><dd>{R.sanitary[lang]}</dd></div>
+      <div><dt class="num" data-out="area">—</dt><dd>{R.bedArea[lang]}</dd></div>
+      <div><dt data-out="track">{city ? tracks[city] : "—"}</dt><dd>{R.track[lang]}</dd></div>
     </dl>
     <p class="readout-note">{R.note[lang]}</p>
   </div>
@@ -83,6 +103,7 @@ const names = Object.fromEntries(CITIES.map((c) => [c.id, c.name[lang]]));
 
 
   <button class="btn submit" type="submit">{F.submit[lang]}<Icon name="arrow" class="flip" /></button>
+  <p class="next">{F.nextStep[lang]}</p>
   <p class="compliance"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>{UI.complianceLine[lang]}</p>
   <a class="wa-link" data-wa-link href={`https://wa.me/${CONTACT.whatsapp}`} rel="noopener" target="_blank"><Icon name="chat" />{F.orWhatsapp[lang]}</a>
   <p class="consent">{F.consent[lang]} <a href={href("privacy", lang)}>{lang === "ar" ? "الخصوصية" : "Privacy"}</a></p>
@@ -93,10 +114,22 @@ const names = Object.fromEntries(CITIES.map((c) => [c.id, c.name[lang]]));
     ar: (c: string, n: number, s: string) => `مرحباً سكن هب، أحتاج سكناً لـ ${n} عامل في ${c} (${s}).`,
     en: (c: string, n: number, s: string) => `Hello SakanHub, I need housing for ${n} workers in ${c} (${s}).`,
   };
+  const hello = { ar: "مرحباً سكن هب، أحتاج سكن لعمّالي.", en: "Hello SakanHub, I need housing for my crew." };
+  // Arabic-Indic and Persian digits become ASCII; other characters are left for the caller to strip.
+  const ascii = (v: string) => v.replace(/[\u0660-\u0669\u06F0-\u06F9]/g, (d) => String(d.charCodeAt(0) & 0xf));
+  // Accepts 05XXXXXXXX, 5XXXXXXXX, +966/00966/966 5XXXXXXXX, with spaces or dashes; returns 05XXXXXXXX or "".
+  function normPhone(v: string) {
+    let p = ascii(v).replace(/[^\d+]/g, "").replace(/^(\+|00)?966/, "0");
+    if (/^5\d{8}$/.test(p)) p = "0" + p;
+    return /^05\d{8}$/.test(p) ? p : "";
+  }
   for (const form of document.querySelectorAll<HTMLFormElement>("[data-request-form]")) {
     const lang = form.dataset.lang as "ar" | "en";
     const tracks = JSON.parse(form.dataset.tracks || "{}");
     const names = JSON.parse(form.dataset.names || "{}");
+    const mixed: string[] = JSON.parse(form.dataset.mixed || "[]");
+    const resolved = JSON.parse(form.dataset.resolved || "{}");
+    const industrialBox = form.querySelector<HTMLElement>("[data-industrial]")!;
     const workers = form.querySelector<HTMLInputElement>('input[name="workers"]')!;
     const phone = form.querySelector<HTMLInputElement>('input[name="phone"]')!;
     const start = form.querySelector<HTMLSelectElement>('select[name="start"]')!;
@@ -104,8 +137,14 @@ const names = Object.fromEntries(CITIES.map((c) => [c.id, c.name[lang]]));
     const waLink = form.querySelector<HTMLAnchorElement>("[data-wa-link]")!;
     const fmt = new Intl.NumberFormat("en-US");
 
-    const city = () => (form.querySelector<HTMLInputElement>('input[name="city"]:checked')?.value) || "riyadh";
-    const n = () => Math.max(0, Math.floor(Number(workers.value) || 0));
+    const city = () => form.querySelector<HTMLInputElement>('input[name="city"]:checked')?.value || "";
+    const n = () => Math.max(0, Math.floor(Number(ascii(workers.value).replace(/\D/g, "")) || 0));
+    function trackFor(c: string) {
+      if (!c) return "—";
+      if (!mixed.includes(c)) return tracks[c];
+      const a = form.querySelector<HTMLInputElement>('input[name="industrial"]:checked')?.value;
+      return a === "yes" ? resolved.yes : a === "no" ? resolved.no : tracks[c];
+    }
 
     function setNum(el: HTMLElement, v: string) {
       if (el.textContent === v) return;
@@ -113,32 +152,44 @@ const names = Object.fromEntries(CITIES.map((c) => [c.id, c.name[lang]]));
       el.classList.remove("tick"); void el.offsetWidth; el.classList.add("tick");
     }
     function update() {
+      // Keep the typed headcount in plain digits so Arabic-keyboard input works.
+      const clean = ascii(workers.value).replace(/\D/g, "");
+      if (clean !== workers.value) workers.value = clean;
       const w = n();
+      industrialBox.hidden = !mixed.includes(city());
       setNum(out("rooms"), w ? fmt.format(Math.ceil(w / 10)) : "—");
       setNum(out("sanitary"), w ? fmt.format(Math.ceil(w / 8)) : "—");
       setNum(out("area"), w ? fmt.format(w * 4) : "—");
-      setNum(out("track"), tracks[city()]);
-      const startTxt = start.options[start.selectedIndex].text;
-      waLink.href = `https://wa.me/${form.dataset.wa}?text=${encodeURIComponent(msg[lang](names[city()], w || 0, startTxt))}`;
+      setNum(out("track"), trackFor(city()));
+      // Pre-write the WhatsApp message only once there's something real to say.
+      const text = city() && w ? msg[lang](names[city()], w, start.value ? start.options[start.selectedIndex].text : "") .replace(" ()", "") : hello[lang];
+      waLink.href = `https://wa.me/${form.dataset.wa}?text=${encodeURIComponent(text)}`;
     }
     form.addEventListener("input", update);
     form.addEventListener("change", update);
     for (const b of form.querySelectorAll<HTMLButtonElement>("[data-step]")) {
-      b.addEventListener("click", () => { workers.value = String(Math.max(1, n() + Number(b.dataset.step))); update(); });
+      b.addEventListener("click", () => { workers.value = String(Math.max(1, n() + Number(b.dataset.step))); showErr("workers", false); update(); });
     }
     const showErr = (k: string, on: boolean) => {
       const e = form.querySelector<HTMLElement>(`[data-err="${k}"]`); if (e) e.hidden = !on;
-      const input = k === "phone" ? phone : workers; input.setAttribute("aria-invalid", on ? "true" : "false");
+      const input = k === "phone" ? phone : k === "workers" ? workers : k === "start" ? start : null;
+      input?.setAttribute("aria-invalid", on ? "true" : "false");
     };
     phone.addEventListener("input", () => showErr("phone", false));
     workers.addEventListener("input", () => showErr("workers", false));
+    start.addEventListener("change", () => showErr("start", false));
+    form.querySelectorAll('input[name="city"]').forEach((r) => r.addEventListener("change", () => showErr("city", false)));
     form.addEventListener("submit", async (ev) => {
       ev.preventDefault();
-      const badPhone = !/^05\d{8}$/.test(phone.value.replace(/\s/g, ""));
-      const badWorkers = n() < 1;
-      showErr("phone", badPhone); showErr("workers", badWorkers);
-      if (badPhone) { phone.focus(); return; }
-      if (badWorkers) { workers.focus(); return; }
+      const p = normPhone(phone.value);
+      const bad = { city: !city(), workers: n() < 1, start: !start.value, phone: !p };
+      (Object.keys(bad) as (keyof typeof bad)[]).forEach((k) => showErr(k, bad[k]));
+      const first = (["city", "workers", "start", "phone"] as const).find((k) => bad[k]);
+      if (first) {
+        const el = first === "city" ? form.querySelector<HTMLInputElement>('input[name="city"]') : first === "workers" ? workers : first === "start" ? start : phone;
+        el?.focus(); return;
+      }
+      phone.value = p;
       const btn = form.querySelector<HTMLButtonElement>(".submit")!;
       btn.setAttribute("aria-busy", "true"); btn.disabled = true;
       try {
@@ -159,6 +210,7 @@ const names = Object.fromEntries(CITIES.map((c) => [c.id, c.name[lang]]));
   .panel { container-type: inline-size; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow-2); padding: var(--s5); display: grid; gap: var(--s4); }
   fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
   .field { display: grid; gap: var(--s2); }
+  .field[hidden] { display: none; }
   .field > label, legend { font-weight: 800; font-size: 0.92rem; color: var(--ink); padding: 0; margin-block-end: var(--s2); }
   .row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s4); }
   .chips { display: flex; flex-wrap: wrap; gap: var(--s2); }
@@ -168,6 +220,7 @@ const names = Object.fromEntries(CITIES.map((c) => [c.id, c.name[lang]]));
   .chip:hover span { border-color: var(--ink-3); }
   .chip input:checked + span { background: var(--ink); border-color: var(--ink); color: var(--white); }
   .chip input:focus-visible + span { outline: 2.5px solid var(--clay); outline-offset: 2px; }
+  .chip--sm span { min-height: 36px; font-size: 0.9rem; }
   input[type="text"], input[type="tel"], input[type="number"], select {
     width: 100%; min-height: 48px; padding: 0 var(--s4); border: 1px solid var(--line-strong); border-radius: 10px;
     background: var(--white); color: var(--ink); font: inherit; font-weight: 700; transition: border-color 150ms;
@@ -175,7 +228,9 @@ const names = Object.fromEntries(CITIES.map((c) => [c.id, c.name[lang]]));
   input::placeholder { color: var(--ink-3); font-weight: 400; }
   input:hover, select:hover { border-color: var(--ink-3); }
   input:focus-visible, select:focus-visible { outline: none; border-color: var(--clay); box-shadow: 0 0 0 3px var(--clay-wash); }
-  input[aria-invalid="true"] { border-color: var(--err); }
+  input[aria-invalid="true"], select[aria-invalid="true"] { border-color: var(--err); }
+  select:invalid { color: var(--ink-3); font-weight: 400; }
+  select option { color: var(--ink); }
   input[type="tel"] { text-align: start; }
   html[dir="rtl"] input[type="tel"] { text-align: right; }
   select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231D2433' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-size: 16px; background-position: right 14px center; padding-inline-end: 40px; }
@@ -199,18 +254,19 @@ const names = Object.fromEntries(CITIES.map((c) => [c.id, c.name[lang]]));
   .readout dt { font-weight: 800; font-size: var(--step-2); line-height: 1.1; color: var(--ink); }
   .readout dt[data-out="track"] { font-size: var(--step-0); line-height: 1.35; padding-block-start: 6px; }
   .readout dd { margin: 0; font-size: 0.86rem; color: var(--ink-2); line-height: 1.3; }
-  .readout-note { font-size: 0.8rem; color: var(--ink-2); margin-block-start: var(--s3); }
+  .readout-note { font-size: 0.85rem; color: var(--ink-2); margin-block-start: var(--s3); }
   :global(.tick) { animation: tick 180ms var(--ease-out); }
   :global(dt[data-out="track"].tick) { animation: tick 180ms var(--ease-out), mark 900ms var(--ease-out); border-radius: 6px; }
   @keyframes tick { from { opacity: 0.35; transform: translateY(3px); } to { opacity: 1; transform: none; } }
   @keyframes mark { from { background: var(--clay-wash); box-shadow: 0 0 0 4px var(--clay-wash); } to { background: transparent; box-shadow: 0 0 0 4px transparent; } }
   .submit { width: 100%; min-height: 54px; font-size: var(--step-1); }
+  .next { font-size: 0.9rem; color: var(--ink-2); text-align: center; margin-block-start: calc(-1 * var(--s2)); }
   .compliance { display: flex; gap: var(--s2); align-items: flex-start; font-size: 0.86rem; font-weight: 700; color: var(--ink); }
   .compliance svg { flex: none; margin-block-start: 3px; color: var(--ok); }
   .wa-link { display: inline-flex; align-items: center; justify-content: center; gap: var(--s2); font-weight: 800; color: var(--ink); text-decoration: none; }
   .wa-link :global(svg) { width: 18px; height: 18px; }
   .wa-link:hover { text-decoration: underline; }
-  .consent { font-size: 0.78rem; color: var(--ink-3); text-align: center; }
+  .consent { font-size: 0.82rem; color: var(--ink-3); text-align: center; }
   @container (max-width: 460px) { .readout dl { grid-template-columns: repeat(2, 1fr); row-gap: var(--s4); } }
   @media (max-width: 560px) { .row { grid-template-columns: 1fr; } .panel { padding: var(--s4); } }
 </style>

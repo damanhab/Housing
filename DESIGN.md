@@ -170,10 +170,12 @@ A warm-neutral system with one decisive accent, taken directly from the final br
 
 - **Container:** max 1200px, 24px side gutter.
 - **Spacing:** an 8-point scale (4, 8, 12, 16, 24, 32, 48, 64, 96, 128). Sections breathe at 96px vertical padding; groups inside use gap, not margins.
-- **Home order:** hero (slogan, one human line, two buttons, photo) → who we are → services (2×2 photo cards) → crew wellbeing → how it works → cities → compliance band (ink) → request section → owners → FAQ. The company and its services come first; the request form sits further down (founder, 7 Oct 2026).
+- **Home order (redesign, 7 Oct 2026):** hero (slogan, one human line, two buttons, a three-item proof line, photo) → who we are → services (2×2 photo cards) → compliance band (ink) → crew wellbeing → how it works → cities → request section → owners → FAQ → clay band. The company and its services still come first and the form still sits lower down; the compliance proof moved up so a buyer sees "licensed, Qiwa-matched, in my city" within two screens.
+- **Hero proof line:** three short ticked items under the buttons: licensed on Balady and MODON · matched to your Qiwa headcount · the live cities. Facts only, no numbers we don't have.
+- **Request buttons on the home page** jump to the on-page form (`#home-request`); the header button still opens the request page.
 - **Inner pages:** content plus a sticky photo aside (max 420px), then a sand request section at the bottom. Text-only pages (regulations, FAQ, glossary, resources) use a single 46rem column. Stacks to one column below 1000px.
 - **Section rhythm:** white, sand and ink bands alternate. Ink is reserved for the rules band and the footer, and two ink bands never touch.
-- **Breakpoints:** 1240px (desktop nav becomes a menu), 1000px (two columns stack), 720px (phone header: logo, request button, menu; language switch and WhatsApp move into the menu), 560px (form rows stack).
+- **Breakpoints:** 1240px (desktop nav becomes a menu), 1000px (two columns stack), 720px (phone header: logo, a 44px WhatsApp icon button, request button, menu; the language switch moves into the menu), 560px (form rows stack).
 - **Phone first screen:** headline, support line and both buttons before the fold.
 
 ## Elevation & Depth
@@ -220,15 +222,18 @@ Firm and friendly: heavy labels, solid fills, clear states.
 
 ### Navigation
 - **Desktop:** sticky white header, logo at the start, then Companies, Services ▾ and Cities ▾ (lifted dropdown panels; Cities lists only launched cities), Building owners, Regulations, Resources. Active page marked by a 2px clay underline. The language switch, WhatsApp (ghost) and Request housing (primary) sit at the end.
-- **Under 1240px:** logo, compact request button and a menu button. The menu opens as a lifted panel with grouped services and cities, links, language and WhatsApp.
+- **Under 1240px:** logo, compact request button and a menu button. The menu opens as a lifted panel with WhatsApp first, then grouped services and cities, links and language.
+- **Phones:** WhatsApp stays in the bar as an icon button; under 440px the English request button reads "Request". Every tap target is at least 44px, footer links included.
 
 ### Photos
-- Rounded frame (18px; 12px inside cards), `object-fit: cover`, set ratios (hero 5:4, cards 16:10, asides 4:5).
+- Rounded frame (18px; 12px inside cards), `object-fit: cover`, set ratios (hero 5:4, cards 16:10, asides 4:5). A slot can set `pos` (object-position) when the subject sits off-centre.
+- Every photo ships as a 1200px WebP twin next to the JPEG.
+- **Art direction:** realistic and decent (never luxury, never grim), people and places that read Saudi / Gulf / South Asian, and on topic for the section it sits in.
 - Until a file exists, a sand gradient block with a faint house mark holds the space.
 - Openly licensed stock or our own photos only, credited in `site/public/images/CREDITS.md`. Never AI-generated images presented as our buildings.
 
 ### Brand marks (7 Oct 2026)
-- **Header:** the bilingual horizontal lockup (SakanHub | سكن هب) from 1360px wide; the Latin wordmark below that.
+- **Header:** the bilingual horizontal lockup (SakanHub | سكن هب) from 1480px wide (28px tall in English so the bar stays inside the container); below that, the Arabic wordmark on Arabic pages and the Latin wordmark on English pages.
 - **Clay brand band:** the one full-clay section, closing the home page: stacked on-clay lockup, «سكّن طاقمك بضغطة» / "House your crew in a tap", a white button and a white-outline WhatsApp button.
 - **Step markers:** the brand house (icon file used unaltered as a CSS mask) with the step number inside, above the resident dot. Clay for step 1, ink for the rest.
 - **Watermark:** one very faint white house (4.5% opacity) bleeding off the corner of the ink rules band. Nowhere else.
@@ -236,7 +241,8 @@ Firm and friendly: heavy labels, solid fills, clear states.
 - Not used: the resident dot as a nav marker (founder declined).
 
 ### Reveal on scroll
-- Every section after the first fades up (28px, 700ms ease-out) as it enters the viewport; lists marked `stagger` follow item by item (90ms apart). Founder request, 7 Oct 2026.
+- Every section after the first fades up (20px, 600ms ease-out) once it is 15% into the viewport; lists marked `stagger` follow item by item (70ms apart, after 120ms). Founder request, 7 Oct 2026.
+- Anything already on screen when the page loads shows immediately, so the first view never ends in a blank band.
 - Switched on only by JS, and never under `prefers-reduced-motion`, so the page is always fully readable without it.
 
 ### Not-yet-launched items
@@ -246,7 +252,10 @@ Firm and friendly: heavy labels, solid fills, clear states.
 The page's working centre: city chips, worker stepper, start date, phone, add-on checkboxes and the primary submit. Inside it, a sand **readout** shows "what your request needs": minimum rooms, sanitary sets, sleeping area and licensing track, recalculated as the visitor types. It's labelled as an estimate from the rules and names its source.
 - Figures settle in under 200ms (a short fade-up); a change of licensing track briefly washes clay.
 - Four columns in wide panels, 2×2 when the panel is under 460px.
-- A compliance line with a green tick sits under the submit button.
+- Nothing is pre-filled on the home page: city, headcount ("e.g. 40") and start date are chosen by the visitor and checked inline. City pages pre-select their own city.
+- For a city with two licensing tracks (Dammam), one question («موقع شغلكم داخل مدينة صناعية؟») resolves the readout to Balady or MODON.
+- Phone and headcount accept Arabic-Indic digits, +966 / 966 / 00966 and dashes; they are normalised to 05XXXXXXXX before sending.
+- Under the submit button: "We'll call you to confirm the details first", then the compliance line with a green tick.
 - A failed send never shows a false "thank you"; it reopens the request in WhatsApp.
 
 ### Rules Table
@@ -262,6 +271,7 @@ Label/value rows divided by hairlines, label in Slate Ink, value at 800. On ink 
 - **Do** use the final logo files from `brand/logo/final/` as they are.
 
 ### Don't:
+- **Don't** put a kicker or eyebrow label above a heading; the heading carries itself.
 - **Don't** add icon tiles above headings, gradient blobs, cream-and-serif styling or rows of three identical cards.
 - **Don't** put light clay on white or sand.
 - **Don't** add shadows to cards or sections; only the request panel and menus lift.

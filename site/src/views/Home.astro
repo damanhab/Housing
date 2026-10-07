@@ -20,6 +20,13 @@ const services: { key: PageKey; slot: Slot; t: string; d: string }[] = [
   { key: "svc-catering", slot: "svc-catering", t: S.catering[lang], d: L("وجبات تناسب أذواق عمّالك، من الفطور إلى العشاء.", "Meals planned around your crew's tastes, breakfast to dinner.") },
   { key: "svc-management", slot: "svc-management", t: S.management[lang], d: L("صيانة وأمن، وتجديد الرخصة والشهادات في وقتها.", "Maintenance, security, and licence renewals on time.") },
 ];
+// The three things a buyer needs to believe in the first screen: licensed, Qiwa-matched, and in their city.
+const proof = [
+  L("مرخّص على بلدي و«مدن»", "Licensed on Balady and MODON"),
+  L("مطابق لعدد عمّالك في قوى", "Matched to your Qiwa headcount"),
+  ACTIVE_CITIES.map((c) => c.name[lang]).join(L("، ", ", ")),
+];
+const comingSoon = CITIES.filter((c) => !c.active);
 const steps = [
   { t: L("قل لنا وش تحتاج", "Tell us what you need"), d: L("المدينة، وكم عامل، ومتى.", "Where, how many, and from when.") },
   { t: L("نجهّز لك السكن", "We line up a place"), d: L("مبنى مرخّص يكفي طاقمك، وعرض واضح.", "A licensed building that fits your crew, and a clear quote.") },
@@ -48,9 +55,12 @@ const jsonld = [
         <h1>{L("كل سكن عمّالك في مكان واحد", "All your crew housing. One hub.")}</h1>
         <p class="lede">{L("سكن مريح ومرخّص لطاقمك، ومعه النقل والإعاشة. وأنت تتفرّغ لشغلك.", "Comfortable, licensed housing for your crew, with transport and meals sorted. You get back to running the job.")}</p>
         <div class="hero-cta">
-          <a class="btn" href={href("request", lang)}>{UI.nav.request[lang]}<Icon name="arrow" class="flip" /></a>
-          <a class="btn btn--ghost" href={`https://wa.me/${CONTACT.whatsapp}`} rel="noopener" target="_blank"><Icon name="chat" />{L("كلّمنا واتساب", "Chat on WhatsApp")}</a>
+          <a class="btn" href="#home-request">{UI.nav.request[lang]}<Icon name="arrow" class="flip" /></a>
+          <a class="btn btn--ghost" href={`https://wa.me/${CONTACT.whatsapp}`} rel="noopener" target="_blank"><Icon name="chat" />{UI.nav.whatsappLong[lang]}</a>
         </div>
+        <ul class="proof">
+          {proof.map((p) => <li><Icon name="check" />{p}</li>)}
+        </ul>
       </div>
       <Photo slot="hero" lang={lang} eager ratio="5 / 4" class="hero-photo" />
     </div>
@@ -60,13 +70,12 @@ const jsonld = [
     <div class="container intro-grid">
       <Photo slot="intro" lang={lang} ratio="4 / 3" />
       <div class="intro-copy">
-        <p class="eyebrow">{L("تعرّف علينا", "Who we are")}</p>
         <h2 id="intro-h">{L("نهتم بسكن طاقمك من أول يوم", "We look after your crew's housing from day one")}</h2>
         <p class="lead">{L("سكن هب شركة سعودية متخصّصة في سكن العمّال. نختار لك المبنى المناسب في مدينتك، ونتأكد من ترخيصه، ونتابع السكن بعد ما يستلمه طاقمك.", "SakanHub is a Saudi workforce-housing company. We find the right building in your city, make sure it's licensed, and keep looking after it once your crew moves in.")}</p>
         <ul class="facts-row stagger">
           <li><b>{L("مبانٍ شريكة", "Partner buildings")}</b><span>{L("ومبانٍ نشغّلها بأنفسنا", "plus buildings we run ourselves")}</span></li>
           <li><b>{L("طلب واحد", "One request")}</b><span>{L("وفريق واحد يتابع معك", "and one team on your side")}</span></li>
-          <li><b>{L("الرياض والخبر والدمام", "Riyadh, Khobar, Dammam")}</b><span>{L("والمزيد قريباً", "with more to come")}</span></li>
+          <li><b>{L("سكن ونقل وإعاشة", "Housing, transport, meals")}</b><span>{L("مع بعض، أو كل وحدة لحالها", "together, or each on its own")}</span></li>
         </ul>
       </div>
     </div>
@@ -91,6 +100,23 @@ const jsonld = [
           </li>
         ))}
       </ul>
+    </div>
+  </section>
+
+  <section class="section section--ink rules-band" aria-labelledby="rules-h">
+    <div class="container split">
+      <div class="section-head">
+        <h2 id="rules-h">{L("السكن غير المرخّص يوقف خدماتك في قوى", "Unlicensed housing can freeze your Qiwa services")}</h2>
+        <p>{L("كل سرير عندنا مرخّص ومطابق لعدد عمّالك في قوى، فما تتوقف تأشيراتك ولا نقل خدمات عمّالك.", "Every bed we provide is licensed and matched to your Qiwa headcount, so visas and transfers keep moving.")}</p>
+        <div class="rules-cta">
+          <a class="link-arrow light" href={href("regulations", lang)}>{L("دليل الاشتراطات", "Regulations guide")}<Icon name="arrow" class="flip" /></a>
+          <a class="link-arrow light" href={href("calculator", lang)}>{UI.nav.calculator[lang]}<Icon name="arrow" class="flip" /></a>
+        </div>
+      </div>
+      <div>
+        <dl class="rules">{RULES.map((r) => (<div><dt>{r.label[lang]}</dt><dd>{r.value[lang]}</dd></div>))}</dl>
+        <p class="rules-src">{RULES_SOURCE[lang]}</p>
+      </div>
     </div>
   </section>
 
@@ -119,7 +145,7 @@ const jsonld = [
     <div class="container">
       <div class="section-head"><h2 id="cities-h">{L("وين نخدمك", "Where we are")}</h2></div>
       <ul class="cities stagger">
-        {CITIES.map((c) => c.active ? (
+        {ACTIVE_CITIES.map((c) => (
           <li>
             <a href={href(c.key, lang)}>
               <span class="c-name">{c.name[lang]}</span>
@@ -128,31 +154,15 @@ const jsonld = [
               <Icon name="arrow" class="c-go flip" />
             </a>
           </li>
-        ) : (
+        ))}
+        {comingSoon.length > 0 && (
           <li class="c-off" aria-disabled="true">
-            <span class="c-name">{c.name[lang]}</span>
+            <span class="c-name">{comingSoon.map((c) => c.name[lang]).join(L(" · ", " · "))}</span>
             <span class="c-areas"></span>
             <span class="c-tbd">{TBD[lang]}</span>
           </li>
-        ))}
+        )}
       </ul>
-    </div>
-  </section>
-
-  <section class="section section--ink rules-band" aria-labelledby="rules-h">
-    <div class="container split">
-      <div class="section-head">
-        <h2 id="rules-h">{L("السكن غير المرخّص يوقف خدماتك في قوى", "Unlicensed housing can freeze your Qiwa services")}</h2>
-        <p>{L("كل سرير عندنا مرخّص ومطابق لعدد عمّالك في قوى، فما تتوقف تأشيراتك ولا نقل خدمات عمّالك.", "Every bed we provide is licensed and matched to your Qiwa headcount, so visas and transfers keep moving.")}</p>
-        <div class="rules-cta">
-          <a class="link-arrow light" href={href("regulations", lang)}>{L("دليل الاشتراطات", "Regulations guide")}<Icon name="arrow" class="flip" /></a>
-          <a class="link-arrow light" href={href("calculator", lang)}>{UI.nav.calculator[lang]}<Icon name="arrow" class="flip" /></a>
-        </div>
-      </div>
-      <div>
-        <dl class="rules">{RULES.map((r) => (<div><dt>{r.label[lang]}</dt><dd>{r.value[lang]}</dd></div>))}</dl>
-        <p class="rules-src">{RULES_SOURCE[lang]}</p>
-      </div>
     </div>
   </section>
 
@@ -162,7 +172,6 @@ const jsonld = [
     <div class="container owners">
       <Photo slot="owners" lang={lang} ratio="4 / 3" />
       <div class="owners-copy">
-        <p class="eyebrow">{L("لملّاك العقارات", "For building owners")}</p>
         <h2 id="owners-h">{L("مبناك مليان، وبالك مرتاح", "A full building, without the headache")}</h2>
         <ul class="ticks">
           <li><Icon name="check" />{L("نحسب كم عامل يستوعب نظاماً", "We work out its licensed capacity")}</li>
@@ -197,7 +206,7 @@ const jsonld = [
       <div class="band-copy">
         <h2 id="band-h">{L("سكّن طاقمك بضغطة", "House your crew in a tap")}</h2>
         <div class="band-cta">
-          <a class="btn btn--light" href={href("request", lang)}>{UI.nav.request[lang]}<Icon name="arrow" class="flip" /></a>
+          <a class="btn btn--light" href="#home-request">{UI.nav.request[lang]}<Icon name="arrow" class="flip" /></a>
           <a class="btn band-ghost" href={`https://wa.me/${CONTACT.whatsapp}`} rel="noopener" target="_blank"><Icon name="chat" />{UI.nav.whatsapp[lang]}</a>
         </div>
       </div>
@@ -214,9 +223,10 @@ const jsonld = [
   .lede { font-size: var(--step-2); color: var(--ink-2); max-width: 30ch; line-height: 1.45; }
   .hero-cta { display: flex; flex-wrap: wrap; gap: var(--s3); padding-block-start: var(--s2); }
   .hero-cta :global(.btn) { min-height: 52px; padding-inline: var(--s6); }
+  .proof { list-style: none; margin: 0; padding: var(--s4) 0 0; display: flex; flex-wrap: wrap; gap: var(--s2) var(--s5); border-block-start: 1px solid var(--line-strong); }
+  .proof li { display: inline-flex; align-items: center; gap: var(--s2); font-weight: 700; font-size: 0.95rem; color: var(--ink); }
+  .proof :global(svg) { width: 18px; height: 18px; color: var(--ok); flex: none; }
 
-  .eyebrow { font-weight: 800; font-size: 0.9rem; color: var(--clay); }
-  html[lang="en"] .eyebrow { letter-spacing: 0.02em; }
   .lead { font-size: var(--step-1); color: var(--ink-2); max-width: 40ch; line-height: 1.6; }
 
   .intro-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: var(--s8); align-items: center; }
@@ -224,7 +234,7 @@ const jsonld = [
   .facts-row { list-style: none; margin: var(--s3) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s4); border-block-start: 1px solid var(--line); padding-block-start: var(--s5); }
   .facts-row li { display: grid; gap: 2px; }
   .facts-row b { font-weight: 800; font-size: var(--step-0); }
-  .facts-row span { color: var(--ink-2); font-size: 0.92rem; }
+  .facts-row span { color: var(--ink-2); font-size: 0.95rem; }
 
   .svc-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s5); }
   .svc-grid a { display: grid; gap: var(--s4); text-decoration: none; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: var(--s3); transition: border-color 150ms var(--ease-out); }
@@ -263,7 +273,7 @@ const jsonld = [
   .rules div { display: grid; grid-template-columns: minmax(9rem, 0.8fr) 1.2fr; gap: var(--s4); padding-block: var(--s4); border-block-end: 1px solid #39425A; }
   .rules dt { color: #B9C0CE; }
   .rules dd { margin: 0; color: var(--white); font-weight: 800; }
-  .rules-src { font-size: 0.8rem; color: #9AA3B5; padding-block-start: var(--s3); }
+  .rules-src { font-size: 0.875rem; color: #A9B1C2; padding-block-start: var(--s3); }
 
   .cities { list-style: none; margin: 0; padding: 0; border-block-start: 1px solid var(--line); }
   .cities a, .c-off { display: grid; grid-template-columns: 12rem 1fr auto 20px; gap: var(--s5); align-items: center; padding: var(--s5) var(--s3); border-block-end: 1px solid var(--line); text-decoration: none; transition: background-color 150ms; }
@@ -272,7 +282,9 @@ const jsonld = [
   .c-areas { color: var(--ink-2); }
   .c-track { font-weight: 800; font-size: 0.85rem; padding: 6px 12px; border-radius: 999px; background: var(--sand-2); color: var(--ink); white-space: nowrap; }
   :global(.c-go) { width: 18px; height: 18px; color: var(--ink-3); }
-  .c-off { color: var(--ink-3); }
+  .c-off { color: var(--ink-3); grid-template-columns: 1fr auto; }
+  .c-off .c-areas { display: none; }
+  .c-off .c-name { font-size: var(--step-1); white-space: nowrap; }
   .c-off .c-name { color: var(--ink-3); font-weight: 700; }
   .c-tbd { font-family: var(--font-en); font-weight: 800; font-size: 0.8rem; letter-spacing: 0.04em; padding: 5px 12px; border-radius: 999px; border: 1px dashed var(--line-strong); color: var(--ink-3); }
 
@@ -308,6 +320,10 @@ const jsonld = [
     .hero h1 { font-size: clamp(2.2rem, 1.6rem + 3vw, 3.2rem); }
     .lede { font-size: var(--step-1); }
     .living-grid :global(.photo) { order: -1; }
+  }
+  @media (max-width: 560px) {
+    .hero-cta :global(.btn) { flex: 1 1 100%; }
+    .proof { flex-direction: column; }
   }
   @media (max-width: 760px) {
     .svc-grid { grid-template-columns: 1fr; }

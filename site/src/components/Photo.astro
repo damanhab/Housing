@@ -15,7 +15,7 @@ const hasWebp = webp !== img.file && existsSync(join(process.cwd(), "public", "i
   {has
     ? <picture>
         {hasWebp && <source type="image/webp" srcset={`/images/${webp}`} />}
-        <img src={`/images/${img.file}`} alt={img.alt[lang]} loading={eager ? "eager" : "lazy"} decoding="async" fetchpriority={eager ? "high" : undefined} />
+        <img src={`/images/${img.file}`} alt={img.alt[lang]} style={img.pos ? `object-position: ${img.pos}` : undefined} loading={eager ? "eager" : "lazy"} decoding="async" fetchpriority={eager ? "high" : undefined} />
       </picture>
     : <div class="ph" role="img" aria-label={img.alt[lang]}>
         <svg viewBox="0 0 120 80" aria-hidden="true"><path d="M44 62V40l16-14 16 14v22" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="60" cy="58" r="4.5" fill="currentColor"/></svg>

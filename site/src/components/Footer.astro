@@ -71,7 +71,14 @@ const S = UI.services;
   a { color: #DCE1EA; text-decoration: none; }
   a:hover { color: var(--white); text-decoration: underline; }
   .off { color: #8A93A6; }
-  .tbd { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.04em; border: 1px solid #4A5468; border-radius: 999px; padding: 1px 7px; margin-inline-start: 4px; font-family: var(--font-en); }
+  .tbd { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.04em; border: 1px solid #4A5468; border-radius: 999px; padding: 1px 7px; margin-inline-start: 4px; font-family: var(--font-en); color: #B9C0CE; }
   .legal { display: flex; flex-wrap: wrap; gap: var(--s5); margin-block-start: var(--s7); padding-block-start: var(--s5); border-block-start: 1px solid #333C50; font-size: var(--step--1); }
   @media (max-width: 960px) { .grid { grid-template-columns: 1fr 1fr; } .id { grid-column: 1 / -1; } }
+  /* Touch: every footer link gets a 44px-tall target. */
+  @media (pointer: coarse), (max-width: 720px) {
+    ul { gap: 0; }
+    ul a, .legal a { display: inline-flex; align-items: center; min-height: 44px; }
+    .off { min-height: 44px; display: flex; align-items: center; }
+    .legal { gap: 0 var(--s5); }
+  }
 </style>

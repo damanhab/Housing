@@ -62,6 +62,9 @@ a { color: inherit; text-decoration-color: color-mix(in srgb, currentColor 35%, 
 a:hover { text-decoration-color: currentColor; }
 img, svg { display: block; max-width: 100%; }
 .num { font-variant-numeric: tabular-nums lining-nums; }
+/* Dates and numbers inside Arabic text stay one left-to-right unit (no "2026-" wrapping onto its own line). */
+time, [dir="rtl"] .num { unicode-bidi: isolate; }
+time { white-space: nowrap; direction: ltr; display: inline-block; }
 
 :focus-visible { outline: 2.5px solid var(--clay); outline-offset: 3px; border-radius: 6px; }
 
@@ -133,7 +136,7 @@ html[dir="rtl"] .link-arrow:hover svg { transform: translateX(-3px) scaleX(-1); 
 
 
 /* Reveal on scroll (see Base.astro). Without JS, or with reduced motion, everything is simply visible. */
-.js-reveal main > :not(:first-child) { opacity: 0; transform: translateY(32px); transition: opacity 900ms var(--ease-out), transform 900ms var(--ease-out); }
+.js-reveal main > :not(:first-child) { opacity: 0; transform: translateY(20px); transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out); }
 .js-reveal main > .is-in { opacity: 1; transform: none; }
-.js-reveal main > :not(:first-child) .stagger > * { opacity: 0; transform: translateY(16px); transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out); transition-delay: calc(200ms + var(--i, 0) * 110ms); }
+.js-reveal main > :not(:first-child) .stagger > * { opacity: 0; transform: translateY(16px); transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out); transition-delay: calc(120ms + var(--i, 0) * 70ms); }
 .js-reveal main > .is-in .stagger > * { opacity: 1; transform: none; }

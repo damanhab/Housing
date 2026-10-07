@@ -63,6 +63,16 @@ Read this first if you're picking up the project, reviewing a pull request or co
 
 ## Log
 
+### 7 Oct 2026: redesign branch (`redesign`), first critique round
+- The founder asked for a slight redesign on its own branch, reviewed side by side with the current preview (separate artifact). The current design stays on `claude/sharp-newton-335b82`.
+- Impeccable critique of the home page scored **22/32** (snapshot in `.impeccable/critique/`). The founder chose to fix all 4 major and 2 minor issues, keep the "living" band with a new photo, and left everything open.
+- **Page order:** compliance band moved up to straight after services; hero gets a three-item proof line (licensed on Balady and MODON · matched to Qiwa · the live cities); home request buttons jump to the on-page form; eyebrow labels removed.
+- **Form:** no pre-selected city, headcount or start date on the home page (city pages keep their city); Arabic digits, +966 and dashes accepted (form and `functions/api/request.js`); a Balady-or-MODON question for Dammam resolves the licensing track; "We'll call you to confirm" under the button.
+- **Header and mobile:** English header no longer overflows (lockup from 1480px, tighter English spacing); Arabic pages use the Arabic wordmark below 1480px; WhatsApp stays in the phone header as an icon; 44px tap targets in the footer; footer TBD pill contrast fixed.
+- **Photos:** new living (worker resting in the shade), housing card (plain accommodation block), transport (white crew minibus) and Dammam (corniche mosque) photos, credited in `CREDITS.md`, with WebP twins.
+- **Smaller:** reveal shows on-screen content at load and moves faster (20px/600ms); WhatsApp labels cut to two ("WhatsApp", "Chat on WhatsApp"); city pages no longer repeat the rules table; dates in Arabic text no longer split.
+- `DESIGN.md` updated to match.
+
 ### 7 Oct 2026: faster photos
 - Founder noticed photos loading late as sections revealed. Fixes: every photo now has a WebP twin (1200px wide, about 70% lighter; the JPEG stays as fallback and as the file named in `CREDITS.md`), and once the page has loaded, the remaining lazy photos are fetched in the background so they're ready before their section reveals (`site/src/layouts/Base.astro`).
 - When adding a photo, also save its `.webp` twin next to the `.jpg` (1200px wide, quality ~72). `Photo.astro` picks it up automatically.

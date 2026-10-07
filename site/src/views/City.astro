@@ -6,7 +6,7 @@ import Photo from "../components/Photo.astro";
 import type { Lang } from "../lib/site";
 import { SITE_URL } from "../lib/site";
 import { href, absUrl } from "../lib/routes";
-import { CITIES, TRACK_LABEL, RULES, RULES_SOURCE, TBD } from "../data/content";
+import { CITIES, TRACK_LABEL, TBD } from "../data/content";
 import type { City } from "../data/content";
 import type { Slot } from "../data/images";
 interface Props { lang: Lang; city: City }
@@ -53,12 +53,8 @@ const jsonld = [{
         <dl class="facts">
           <div><dt>{L("الجهة", "Authority")}</dt><dd>{TRACK_LABEL[city.track][lang]}</dd></div>
           <div><dt>{L("التفاصيل", "Details")}</dt><dd>{city.trackNote[lang]}</dd></div>
+          <div><dt>{L("الاشتراطات", "The rules")}</dt><dd>{L("نفسها في كل المدن: مساحة النوم، وعدد الأشخاص في الغرفة، ودورات المياه.", "The same in every city: sleeping area, people per room, sanitary sets.")} <a href={href("regulations", lang)}>{L("دليل الاشتراطات", "Regulations guide")}</a></dd></div>
         </dl>
-      </section>
-      <section>
-        <h2>{L("الاشتراطات باختصار", "The rules, briefly")}</h2>
-        <dl class="facts">{RULES.slice(0, 5).map((r) => (<div><dt>{r.label[lang]}</dt><dd>{r.value[lang]}</dd></div>))}</dl>
-        <p class="source">{RULES_SOURCE[lang]} <a href={href("regulations", lang)}>{L("الدليل الكامل", "Full guide")}</a></p>
       </section>
       <section>
         <h2>{L("مدن أخرى", "Other cities")}</h2>
