@@ -11,6 +11,12 @@ const { lang } = Astro.props;
 const L = (ar: string, en: string) => (lang === "ar" ? ar : en);
 const crumbs = [{ key: "regulations" as const, name: L("دليل الاشتراطات", "Regulations guide") }];
 const updated = "2026-10-06";
+// Official sources, checked 7 Oct 2026. Re-check quarterly (HANDOVER.md). Balady and MODON pages could not be reached from outside Saudi Arabia, so they stay unlinked until checked.
+const SRC = {
+  conditions: "https://momah.gov.sa/sites/default/files/2024-04/dlyl-alshrwt-alshyt-walfnyt-walslamt-allazm-twafrha-fy-almsakn-aljmayt-llafrad-.pdf",
+  program: lang === "ar" ? "https://momah.gov.sa/ar/node/16267" : "https://momah.gov.sa/en/node/16267",
+  certificate: "https://momah.gov.sa/ar/e-services/asdar-shhadt-athbat-skn-jmay",
+};
 const jsonld = [{
   "@context": "https://schema.org", "@type": "Article",
   headline: L("دليل اشتراطات السكن الجماعي للأفراد في السعودية", "Saudi group-housing (worker housing) regulations guide"),
@@ -24,7 +30,7 @@ const jsonld = [{
     title={L("اشتراطات السكن الجماعي للأفراد", "Saudi worker housing regulations")}
     lede={L("كل منشأة عندها 20 عاملاً أو أكثر تحتاج سكناً مرخّصاً يكفي عدد عمّالها في قوى. هنا أهم القواعد باختصار.", "Every establishment with 20+ workers needs licensed housing that covers its Qiwa headcount. Here are the main rules, briefly.")}>
     <p class="src-note">
-      {L("مصدر المعلومات: «الشروط الصحية والفنية والسلامة اللازم توافرها في المساكن الجماعية للأفراد» الصادرة عن وزارة البلديات والإسكان، وخدمات منصة بلدي. آخر مراجعة:", "Source: the Ministry of Municipalities and Housing (MOMAH) Health, Technical and Safety Conditions Required in Group Housing for Individuals, and the Balady platform. Last reviewed:")} <time datetime={updated} class="num">{updated}</time>
+      {L("مصدر المعلومات:", "Source:")} <a href={SRC.conditions} rel="noopener" target="_blank">{L("«الشروط الصحية والفنية والسلامة اللازم توافرها في المساكن الجماعية للأفراد»", "MOMAH Health, Technical and Safety Conditions Required in Group Housing for Individuals")}</a>{L(" الصادرة عن وزارة البلديات والإسكان، وخدمات منصة بلدي. آخر مراجعة:", ", and the Balady platform. Last reviewed:")} <time datetime={updated} class="num">{updated}</time>
     </p>
   </PageHead>
   <div class="container body-grid body-grid--solo">
@@ -77,8 +83,10 @@ const jsonld = [{
       <section>
         <h2>{L("المصادر", "Sources")}</h2>
         <ul class="list-check source">
-          <li>{L("وزارة البلديات والإسكان: «الشروط الصحية والفنية والسلامة اللازم توافرها في المساكن الجماعية للأفراد»", "MOMAH: Health, Technical and Safety Conditions Required in Group Housing for Individuals")}</li>
-          <li>{L("البرنامج الوطني لتطوير السكن الجماعي للأفراد (بلدي)", "National Program for Developing Group Housing for Individuals (Balady)")}</li>
+          <li><a href={SRC.conditions} rel="noopener" target="_blank">{L("وزارة البلديات والإسكان: «الشروط الصحية والفنية والسلامة اللازم توافرها في المساكن الجماعية للأفراد» (PDF)", "MOMAH: Health, Technical and Safety Conditions Required in Group Housing for Individuals (PDF, Arabic)")}</a></li>
+          <li><a href={SRC.program} rel="noopener" target="_blank">{L("وزارة البلديات والإسكان: البرنامج الوطني لتطوير السكن الجماعي للأفراد", "MOMAH: National Program for the Development of Group Housing for Individuals")}</a></li>
+          <li><a href={SRC.certificate} rel="noopener" target="_blank">{L("وزارة البلديات والإسكان: خدمة إصدار شهادة إثبات سكن جماعي للأفراد", "MOMAH: Group housing proof certificate service (Arabic)")}</a></li>
+          <li>{L("منصة بلدي: خدمة إصدار رخصة سكن جماعي للأفراد", "Balady: group housing licence service")}</li>
           <li>{L("الهيئة الملكية للجبيل وينبع، والهيئة السعودية للمدن الصناعية ومناطق التقنية «مدن»", "RCJY and MODON")}</li>
         </ul>
         <p class="source">{L("ملخّص إرشادي، وليس استشارة قانونية. ارجع للنص الرسمي قبل أي قرار.", "A guidance summary, not legal advice. Check the official text before acting.")}</p>

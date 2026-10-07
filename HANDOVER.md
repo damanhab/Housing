@@ -38,12 +38,14 @@ Read this first if you're picking up the project, reviewing a pull request or co
 
 ## Open items
 
-- **Meals (الإعاشة) under discussion:** the founder is considering dropping meals as a service. Regulation only requires a central kitchen *or* a catering service (`research/background/regulation-block-a.md` §3.2), so buildings with a shared kitchen stay compliant without it. Don't remove it until the founder decides.
+- **Meals (الإعاشة): kept for now** (founder, 7 Oct 2026). Earlier the founder considered dropping meals as a service. Regulation only requires a central kitchen *or* a catering service (`research/background/regulation-block-a.md` §3.2), so buildings with a shared kitchen stay compliant without it. Revisit with the founder before changing.
 - **Contact details:** phone, WhatsApp, email and CR number are still placeholders (`site/src/lib/site.ts`).
 - **Arabic voice:** the founder should confirm the light Saudi dialect level.
 - **Differentiation vs Mnzil** is still open (see `research/opportunity-summary.md`).
 - **Pricing guide** page from the SEO plan is not built.
 - **Resources** has planned titles only; articles come after the site is built.
+
+- **Source links:** the regulations page links to three official MOMAH pages (checked 7 Oct 2026). Re-check them every quarter, and link the Balady and MODON pages once someone in Saudi Arabia confirms the URLs (they don't respond from outside the Kingdom).
 
 ## How to work on it
 
@@ -52,6 +54,10 @@ Read this first if you're picking up the project, reviewing a pull request or co
 - Branches: work on a feature branch and open a PR to `main`; the founder pulls locally with `git pull` / `git switch <branch>`.
 
 ## Log
+
+### 7 Oct 2026: sources and meals
+- Meals stay (founder decision, for now).
+- The regulations page now links to the official sources: the MOMAH conditions PDF, the MOMAH group-housing programme page and the MOMAH housing-certificate service. Only official government pages, opening in a new tab; no news or competitor links.
 
 ### 7 Oct 2026: brand spread
 - Founder asked to show the brand more. Done: bilingual header lockup, a clay closing band with the on-clay logo and «سكّن طاقمك بضغطة», house-icon step markers, a faint house watermark in the ink band, and WhatsApp/social share cards (`site/scripts/make-og.mjs`). Declined: the resident-dot nav marker. Details in `DESIGN.md` → Brand marks.
