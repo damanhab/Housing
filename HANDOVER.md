@@ -47,6 +47,14 @@ Read this first if you're picking up the project, reviewing a pull request or co
 
 - **Source links:** the regulations page links to three official MOMAH pages (checked 7 Oct 2026). Re-check them every quarter, The Balady licence-service and MODON user-guide links are added but **unverified**: they don't respond from outside the Kingdom, and the founder is testing them from Saudi Arabia.
 
+## Next-session tasks (local agent, from Saudi Arabia)
+
+- [ ] **Verify and fix two source links** on the regulations page (`site/src/views/Regulations.astro`, the `SRC` object). The cloud agent couldn't reach these from outside the Kingdom:
+  - `SRC.balady`, currently `https://balady.gov.sa/ar/services/إصدار-رخصة-سكن-جماعي-للأفراد`. It should open Balady's **group-housing licence service** («إصدار رخصة سكن جماعي للأفراد»).
+  - `SRC.modon`, currently `https://modon.gov.sa/ar/Eservices/UsageGuides/`. It should open MODON's **e-service user guides**, ideally the group-housing licence guide itself (via the Shareek platform).
+  - For each one: open it in a browser, confirm it is the right official page, and replace the URL with the correct one if it redirects, 404s or lands somewhere generic. Prefer an English URL for the English site where one exists (as `SRC.program` does).
+  - Then rebuild (`cd site && npm run build`), delete the "not reachable from outside Saudi Arabia" comment above the two links, mark this task done here, and add a log entry.
+
 ## How to work on it
 
 - Build: `cd site && npm ci && npm run build` (output in `site/dist/`). Preview: `npm run preview`.
