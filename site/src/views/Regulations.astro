@@ -2,6 +2,7 @@
 import Base from "../layouts/Base.astro";
 import PageHead from "../components/PageHead.astro";
 import RequestSection from "../components/RequestSection.astro";
+import Photo from "../components/Photo.astro";
 import type { Lang } from "../lib/site";
 import { SITE_URL } from "../lib/site";
 import { href, absUrl } from "../lib/routes";
@@ -36,7 +37,7 @@ const jsonld = [{
       {L("مصدر المعلومات:", "Source:")} <a href={SRC.conditions} rel="noopener" target="_blank">{L("«الشروط الصحية والفنية والسلامة اللازم توافرها في المساكن الجماعية للأفراد»", "MOMAH Health, Technical and Safety Conditions Required in Group Housing for Individuals")}</a>{L(" الصادرة عن وزارة البلديات والإسكان، وخدمات منصة بلدي. آخر مراجعة:", ", and the Balady platform. Last reviewed:")} <time datetime={updated} class="num">{updated}</time>
     </p>
   </PageHead>
-  <div class="container body-grid body-grid--solo">
+  <div class="container body-grid">
     <article class="doc">
       <section>
         <h2>{L("مَن يلزمه الترخيص", "Who must comply")}</h2>
@@ -96,6 +97,7 @@ const jsonld = [{
         <p class="source">{L("ملخّص إرشادي، وليس استشارة قانونية. ارجع للنص الرسمي قبل أي قرار.", "A guidance summary, not legal advice. Check the official text before acting.")}</p>
       </section>
     </article>
+    <aside><Photo slot="regulations" lang={lang} ratio="4 / 5" /></aside>
   </div>
   <RequestSection lang={lang} id="reg-request"
     title={L("خلّ الترخيص علينا", "Leave the licensing to us")}

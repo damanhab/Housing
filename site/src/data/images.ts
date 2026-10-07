@@ -6,7 +6,7 @@ import type { Lang } from "../lib/site";
 export type Slot =
   | "hero" | "intro" | "living" | "owners"
   | "svc-housing" | "svc-transport" | "svc-catering" | "svc-management"
-  | "city-riyadh" | "city-khobar" | "city-dammam";
+  | "city-riyadh" | "city-khobar" | "city-dammam" | "regulations";
 
 export const IMAGES: Record<Slot, { file: string; alt: Record<Lang, string>; want: string }> = {
   hero:            { file: "hero.jpg",            want: "Crew of workers in hi-vis at golden hour, relaxed, outdoors near a residential building", alt: { ar: "طاقم عمّال بالخوذ والسترات العاكسة", en: "A crew of workers in hard hats and hi-vis vests" } },
@@ -20,4 +20,5 @@ export const IMAGES: Record<Slot, { file: string; alt: Record<Lang, string>; wan
   "city-riyadh":   { file: "city-riyadh.jpg",     want: "Riyadh skyline or industrial edge", alt: { ar: "مدينة الرياض من الأعلى", en: "Riyadh from above" } },
   "city-khobar":   { file: "city-khobar.jpg",     want: "Khobar waterfront or streets", alt: { ar: "برج المياه في الخبر", en: "The Khobar water tower" } },
   "city-dammam":   { file: "city-dammam.jpg",     want: "Dammam city or port", alt: { ar: "واجهة الدمام البحرية", en: "The Dammam waterfront" } },
+  regulations:     { file: "regulations.jpg",     want: "Site inspection: people in hard hats and hi-vis checking a building or site", alt: { ar: "مفتّشان في موقع بناء", en: "Two inspectors on a building site" } },
 };
