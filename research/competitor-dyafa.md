@@ -27,7 +27,7 @@ There is **no worker or staff housing anywhere in the profile.** Dyafa is a hosp
 
 ## How Dyafa intersects with SakanHub and Mnzil
 
-See the chat summary of 7 Oct 2026 in `HANDOVER.md`. In short:
+In short:
 1. **Customer:** they employ 600+ staff plus 300+ O&M manpower, with ~1,440 rooms opening in 2026–27. That workforce needs licensed group housing, much of it in Khobar/Dammam.
 2. **Supplier or partner:** catering (ISO 22000/HACCP), O&M manpower, procurement, the Fandaqah PMS, and Ejar brokerage are all things SakanHub would otherwise buy or build.
 3. **Supply of buildings:** their economy residences in Khobar/Dammam are the kind of stock that could be licensed as group housing if hotel-style occupancy is weak.

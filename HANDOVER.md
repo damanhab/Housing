@@ -63,6 +63,10 @@ Read this first if you're picking up the project, reviewing a pull request or co
 
 ## Log
 
+### 7 Oct 2026: Dyafa profile
+- The founder shared Dyafa's 2026 company profile; it's stored at `research/sources/dyafa-company-profile.pdf`, with a summary note in `research/competitor-dyafa.md`.
+- Reading: Dyafa is a hotel operator (not worker housing) concentrated in Khobar/Dammam. Most useful to us as a **customer** (their own staff need licensed housing) and a **partner** (catering, O&M manpower, PMS); also a source of convertible economy buildings and a possible future entrant. No direct overlap with Mnzil today.
+
 ### 7 Oct 2026: redesign merged to main; Cloudflare preview
 - Founder approved the redesign: `redesign` was fast-forwarded into `main`. The remote `redesign` branch still needs deleting on GitHub (the session's git proxy refused branch deletion).
 - Preview hosting moves from Claude artifacts to Cloudflare Pages (Git integration on `main`). Settings: root directory `site`, build command `npm run build`, output `dist`, Node 22 (`site/.node-version`), env vars `REVIEW_USER` / `REVIEW_PASS` for the password gate in `site/functions/_middleware.js`. Test builds stay noindex with a disallow-all robots file.
