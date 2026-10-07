@@ -63,6 +63,10 @@ Read this first if you're picking up the project, reviewing a pull request or co
 
 ## Log
 
+### 7 Oct 2026: regulations photo
+- The regulations page now has a photo, at the founder's request. Two picks were rejected: Western inspectors ("clearly Caucasian") and a Riyadh construction site ("no relation to the discussion").
+- It is now two engineers going over a building plan (ThisisEngineering on Unsplash). Rule: the photo on a topic page must relate to that topic (here plans, licensing, compliance) as well as follow the people/places rule.
+
 ### 7 Oct 2026: sources and meals
 - Meals stay (founder decision, for now).
 - Balady and MODON links added at the founder's request for testing in Saudi Arabia (unverified from outside).
