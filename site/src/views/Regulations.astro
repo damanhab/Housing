@@ -17,9 +17,11 @@ const SRC = {
   conditions: "https://momah.gov.sa/sites/default/files/2024-04/dlyl-alshrwt-alshyt-walfnyt-walslamt-allazm-twafrha-fy-almsakn-aljmayt-llafrad-.pdf",
   program: lang === "ar" ? "https://momah.gov.sa/ar/node/16267" : "https://momah.gov.sa/en/node/16267",
   certificate: "https://momah.gov.sa/ar/e-services/asdar-shhadt-athbat-skn-jmay",
-  // Not reachable from outside Saudi Arabia when checked; the founder is testing these from inside the Kingdom.
-  balady: "https://balady.gov.sa/ar/services/" + encodeURIComponent("إصدار-رخصة-سكن-جماعي-للأفراد"),
-  modon: "https://modon.gov.sa/ar/Eservices/UsageGuides/",
+  // Balady licence service and MODON's group-housing licence service: checked from inside Saudi Arabia on 8 Oct 2026.
+  balady: lang === "ar"
+    ? "https://balady.gov.sa/ar/services/" + encodeURIComponent("إصدار-رخصة-سكن-جماعي-للأفراد")
+    : "https://balady.gov.sa/en/services/issuing-collective-housing-license-individuals",
+  modon: lang === "ar" ? "https://modon.gov.sa/ar-SA/Services/Service-37" : "https://modon.gov.sa/en/Services/Service-37",
 };
 const jsonld = [{
   "@context": "https://schema.org", "@type": "Article",
@@ -90,8 +92,8 @@ const jsonld = [{
           <li><a href={SRC.conditions} rel="noopener" target="_blank">{L("وزارة البلديات والإسكان: «الشروط الصحية والفنية والسلامة اللازم توافرها في المساكن الجماعية للأفراد» (PDF)", "MOMAH: Health, Technical and Safety Conditions Required in Group Housing for Individuals (PDF, Arabic)")}</a></li>
           <li><a href={SRC.program} rel="noopener" target="_blank">{L("وزارة البلديات والإسكان: البرنامج الوطني لتطوير السكن الجماعي للأفراد", "MOMAH: National Program for the Development of Group Housing for Individuals")}</a></li>
           <li><a href={SRC.certificate} rel="noopener" target="_blank">{L("وزارة البلديات والإسكان: خدمة إصدار شهادة إثبات سكن جماعي للأفراد", "MOMAH: Group housing proof certificate service (Arabic)")}</a></li>
-          <li><a href={SRC.balady} rel="noopener" target="_blank">{L("منصة بلدي: خدمة إصدار رخصة سكن جماعي للأفراد", "Balady: group housing licence service (Arabic)")}</a></li>
-          <li><a href={SRC.modon} rel="noopener" target="_blank">{L("«مدن»: أدلة استخدام الخدمات الإلكترونية، ومنها رخصة السكن الجماعي", "MODON: e-service user guides, including the group housing licence (Arabic)")}</a></li>
+          <li><a href={SRC.balady} rel="noopener" target="_blank">{L("منصة بلدي: خدمة إصدار رخصة سكن جماعي للأفراد", "Balady: Issuing a Collective Housing License for Individuals")}</a></li>
+          <li><a href={SRC.modon} rel="noopener" target="_blank">{L("«مدن»: خدمة إصدار وتجديد رخصة السكن الجماعي (عبر منصة شريك)", "MODON: Collective Accommodation License Issuance and Renewal Service (via Shareek)")}</a></li>
           <li>{L("الهيئة الملكية للجبيل وينبع", "RCJY (Royal Commission for Jubail and Yanbu)")}</li>
         </ul>
         <p class="source">{L("ملخّص إرشادي، وليس استشارة قانونية. ارجع للنص الرسمي قبل أي قرار.", "A guidance summary, not legal advice. Check the official text before acting.")}</p>
