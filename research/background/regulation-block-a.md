@@ -5,6 +5,7 @@
 **Status:** Working research note. See "Caveats and Verification Required" before relying on any figure in a bid or investment memo.
 
 > **Revision log**
+> - 2026-10-08: §9 MODON source updated. The old `Eservices/UsageGuides` page returns 404 after MODON's site rebuild; replaced with its group-housing licence service page (Service-37), checked from inside Saudi Arabia.
 > - 2026-10-06: §2.1 now covers both enforcement consequences: CR suspension per MOMAH, and suspension of Qiwa services per Okaz/SPA. §2 adds that a housing allowance does not exempt an employer (Al-Watan, 29 Dec 2025). §7.5 updated to match.
 
 ---
@@ -329,7 +330,7 @@ labour accommodation KSA · workers accommodation Saudi Arabia · staff accommod
 | Ghran News — spatial planning requirements | https://ghrannews.com/372800/ |
 | Slaati — penalty schedule | https://slaati.com/2025/04/14/p2667455.html |
 | MODON — FAQs (industrial land use restriction) | https://modon.gov.sa/ar/Pages/FAQs.aspx |
-| MODON — group housing licence user guide (Shareek) | https://modon.gov.sa/ar/Eservices/UsageGuides/ |
+| MODON — group housing licence issue and renewal service (submitted via Shareek) | https://modon.gov.sa/ar-SA/Services/Service-37 (English: https://modon.gov.sa/en/Services/Service-37) |
 | Al Tamimi — 2025 Labour Law amendments | https://www.tamimi.com/news/key-amendments-to-saudi-arabias-labour-law/ |
 | Okaz — 20+ workers must license; Qiwa services suspended (17 Sep 2025) | https://www.okaz.com.sa/news/local/2213779 |
 | Okaz — field tours, enforcement (18 Sep 2025) | https://www.okaz.com.sa/news/local/2213863 |

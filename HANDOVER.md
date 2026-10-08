@@ -45,15 +45,11 @@ Read this first if you're picking up the project, reviewing a pull request or co
 - **Pricing guide** page from the SEO plan is not built.
 - **Resources** has planned titles only (a guide per live city plus six articles); articles come after the site is built.
 
-- **Source links:** the regulations page links to three official MOMAH pages (checked 7 Oct 2026). Re-check them every quarter, The Balady licence-service and MODON user-guide links are added but **unverified**: they don't respond from outside the Kingdom, and the founder is testing them from Saudi Arabia.
+- **Source links:** the regulations page links to three official MOMAH pages (checked 7 Oct 2026) plus the Balady licence service and MODON's group-housing licence service (checked 8 Oct 2026 from inside Saudi Arabia). Re-check all five every quarter. Balady and MODON only respond from inside the Kingdom, so check them from a local session.
 
-## Next-session tasks (local agent, from Saudi Arabia)
+## Next-session tasks
 
-- [ ] **Verify and fix two source links** on the regulations page (`site/src/views/Regulations.astro`, the `SRC` object). The cloud agent couldn't reach these from outside the Kingdom:
-  - `SRC.balady`, currently `https://balady.gov.sa/ar/services/إصدار-رخصة-سكن-جماعي-للأفراد`. It should open Balady's **group-housing licence service** («إصدار رخصة سكن جماعي للأفراد»).
-  - `SRC.modon`, currently `https://modon.gov.sa/ar/Eservices/UsageGuides/`. It should open MODON's **e-service user guides**, ideally the group-housing licence guide itself (via the Shareek platform).
-  - For each one: open it in a browser, confirm it is the right official page, and replace the URL with the correct one if it redirects, 404s or lands somewhere generic. Prefer an English URL for the English site where one exists (as `SRC.program` does).
-  - Then rebuild (`cd site && npm run build`), delete the "not reachable from outside Saudi Arabia" comment above the two links, mark this task done here, and add a log entry.
+- [x] **Verify the Balady and MODON source links** on the regulations page. Done 8 Oct 2026, from inside Saudi Arabia (see log).
 
 ## How to work on it
 
@@ -62,6 +58,13 @@ Read this first if you're picking up the project, reviewing a pull request or co
 - Branches: work on a feature branch and open a PR to `main`; the founder pulls locally with `git pull` / `git switch <branch>`.
 
 ## Log
+
+### 8 Oct 2026: Balady and MODON source links verified (local session, Saudi Arabia)
+- **Balady:** the Arabic licence-service link was correct («إصدار رخصة سكن جماعي للأفراد | منصة بلدي»). English pages now use Balady's own English twin, `/en/services/issuing-collective-housing-license-individuals`, instead of the Arabic page.
+- **MODON:** the old `/ar/Eservices/UsageGuides/` link was **dead (404)**. MODON has rebuilt its site under `/ar-SA/…` and `/en/…`. The link now points to MODON's **Collective Accommodation License Issuance and Renewal Service** («خدمة إصدار وتجديد رخصة السكن الجماعي»): `/ar-SA/Services/Service-37` (Arabic) and `/en/Services/Service-37` (English). The page lists the steps and documents, and its "go to service" button opens the Shareek portal (`partner.modon.gov.sa`).
+- Labels updated: "(Arabic)" dropped now that English pages exist; the MODON label names the service.
+- The same dead MODON link was fixed in `research/background/regulation-block-a.md` §9.
+- **Note:** MODON's new site renders in the browser, so `curl` sees empty pages. Verify MODON links in a real browser.
 
 ### 7 Oct 2026: Dyafa profile
 - The founder shared Dyafa's 2026 company profile; it's stored at `research/sources/dyafa-company-profile.pdf`, with a summary note in `research/competitor-dyafa.md`.
