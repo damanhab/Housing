@@ -39,7 +39,7 @@ Read this first if you're picking up the project, reviewing a pull request or co
 
 ## Open items
 
-- **SKN corporate name** (what the letters stand for), domains and social handles: not decided or checked. The site uses `skn.sa` / `hello@skn.sa` as marked placeholders (`site/src/lib/site.ts`, `site/astro.config.mjs`) until a domain is chosen.
+- **SKN corporate name** (what the letters stand for) and social handles: not decided or checked. **Domain chosen: `sknliving`** (not registered yet); the site uses `https://sknliving.sa` and `hello@sknliving.sa` (`site/src/lib/site.ts`, `site/astro.config.mjs`).
 - **Product names and slogans after the rename:** "SakanHub Places" and "One hub" came from the old name. Use "SKN" plainly until the founder decides.
 
 - **Meals (الإعاشة): kept for now** (founder, 7 Oct 2026). Earlier the founder considered dropping meals as a service. Regulation only requires a central kitchen *or* a catering service (`research/background/regulation-block-a.md` §3.2), so buildings with a shared kitchen stay compliant without it. Revisit with the founder before changing.
@@ -66,6 +66,11 @@ Read this first if you're picking up the project, reviewing a pull request or co
 - Branches: work on a feature branch and open a PR to `main`; the founder pulls locally with `git pull` / `git switch <branch>`.
 
 ## Log
+
+### 14 Oct 2026: domain chosen, sknliving
+- The founder chose **`sknliving`**. It is free on `.sa`, `.com.sa`, `.com` and every other ending checked (`docs/domain-and-hosting.md`). Plan: `sknliving.sa` main (the founder registers it through a Saudi registrar: CR + Nafath), `sknliving.com` defensive (an agent can buy it through Cloudflare's Registrar API), both on Cloudflare nameservers.
+- The site's canonical URL and contact email now use `sknliving.sa` / `hello@sknliving.sa` (still marked TBD until registered).
+- The SKN Clinics trademark check is still open.
 
 ### 14 Oct 2026: domain and hosting check
 - Notes in `docs/domain-and-hosting.md`. `skn.sa` is held by «شركة ان المحدودة» with only a "Hello World!" placeholder, a possible purchase; `skn.com.sa` is **SKN Clinics (عيادات SKN للتجميل)**, an established Saudi brand: a trademark question for the IP lawyer before committing to "SKN". `skn.com` is for sale through a broker.

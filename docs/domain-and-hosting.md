@@ -1,5 +1,17 @@
 # Domain and hosting options for SKN
 
+> **Decision (founder, 14 Oct 2026): the domain name is `sknliving`.** Register `sknliving.sa` (main, via a Saudi registrar with CR + Nafath) and `sknliving.com` (defensive, ~$10/yr at Cloudflare), then point both at Cloudflare. The site already uses `https://sknliving.sa` and `hello@sknliving.sa`.
+
+### `sknliving` availability (checked 14 Oct 2026)
+
+| Ending | Status |
+|---|---|
+| `.sa`, `.com.sa`, `.net.sa` | Free by DNS (no delegation). Confirm at the registrar. |
+| `.com`, `.net`, `.co`, `.io`, `.app`, `.me`, `.homes`, `.xyz`, `.work`, `.online` | Free (registry RDAP: not found) |
+| `.ai`, `.org`, `.live`, `.house`, `.company`, `.group`, `.services` | Registry wouldn't answer the lookup; no DNS at all, so almost certainly free |
+
+Buy now: `sknliving.sa` and `sknliving.com`. Optional: `sknliving.com.sa` (redirect, stops a squatter).
+
 **Checked:** 14 Oct 2026, by the cloud agent. Availability for gTLDs comes from the registries' RDAP. For `.sa`, the SaudiNIC WHOIS is behind a CAPTCHA, so `.sa` names were checked by DNS only (NXDOMAIN = no delegation, very likely free). Confirm at a registrar before paying.
 
 ## Domains

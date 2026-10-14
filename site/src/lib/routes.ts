@@ -219,6 +219,6 @@ export function href(key: PageKey, lang: Lang): string {
 }
 
 /** Percent-encoded absolute URL (for sitemap, canonical, hreflang). */
-export function absUrl(key: PageKey, lang: Lang, site = "https://skn.sa"): string {
+export function absUrl(key: PageKey, lang: Lang, site = "https://sknliving.sa"): string {
   return site + encodeURI(href(key, lang));
 }
