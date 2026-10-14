@@ -3,8 +3,8 @@ export const SITE_MODE: "test" | "production" =
   (process.env.SITE_MODE as "production") === "production" ? "production" : "test";
 export const IS_PROD = SITE_MODE === "production";
 
-// Domain chosen by the founder (14 Oct 2026): sknliving.sa (+ sknliving.com). [TBD] Not registered yet; see docs/domain-and-hosting.md.
-export const SITE_URL = "https://sknliving.sa";
+// Domain chosen by the founder (14 Oct 2026): sknliving.com is the main domain. [TBD] Not registered yet; see docs/domain-and-hosting.md.
+export const SITE_URL = "https://sknliving.com";
 
 export type Lang = "ar" | "en";
 export const LANGS: Lang[] = ["ar", "en"];
@@ -13,7 +13,7 @@ export const LANGS: Lang[] = ["ar", "en"];
 export const CONTACT = {
   phone: "+966 5X XXX XXXX",          // [TBD]
   whatsapp: "9665XXXXXXXX",            // [TBD] digits only, used in wa.me links
-  email: "hello@sknliving.sa",         // [TBD] mailbox not set up yet
+  email: "hello@sknliving.com",        // [TBD] mailbox not set up yet
   cr: "[TBD]",
   isPlaceholder: true,
 };

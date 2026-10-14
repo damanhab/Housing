@@ -39,7 +39,7 @@ Read this first if you're picking up the project, reviewing a pull request or co
 
 ## Open items
 
-- **SKN corporate name** (what the letters stand for) and social handles: not decided or checked. **Domain chosen: `sknliving`** (not registered yet); the site uses `https://sknliving.sa` and `hello@sknliving.sa` (`site/src/lib/site.ts`, `site/astro.config.mjs`).
+- **SKN corporate name** (what the letters stand for) and social handles: not decided or checked. **Main domain: `sknliving.com`**, not registered yet; the site uses `https://sknliving.com` and `hello@sknliving.com` (`site/src/lib/site.ts`, `site/astro.config.mjs`).
 - **Product names and slogans after the rename:** "SakanHub Places" and "One hub" came from the old name. Use "SKN" plainly until the founder decides.
 
 - **Meals (الإعاشة): kept for now** (founder, 7 Oct 2026). Earlier the founder considered dropping meals as a service. Regulation only requires a central kitchen *or* a catering service (`research/background/regulation-block-a.md` §3.2), so buildings with a shared kitchen stay compliant without it. Revisit with the founder before changing.
@@ -66,6 +66,11 @@ Read this first if you're picking up the project, reviewing a pull request or co
 - Branches: work on a feature branch and open a PR to `main`; the founder pulls locally with `git pull` / `git switch <branch>`.
 
 ## Log
+
+### 14 Oct 2026: main domain is sknliving.com
+- The founder chose **`sknliving.com`** as the main domain (still free when re-checked). The site's canonical URL and email now use `https://sknliving.com` / `hello@sknliving.com`.
+- To do (founder, needs the Cloudflare account): register it at Cloudflare Registrar, then add it under the Pages project → Custom domains. The cloud agent has no Cloudflare credentials, so it can't buy it. With an API token stored as an environment secret, an agent could use the Registrar API.
+- `.sa` is optional later, redirected to the .com.
 
 ### 14 Oct 2026: SKN site on main
 - The founder approved: `claude/sharp-newton-335b82` fast-forwarded into `main`. The production preview https://housing-4v1.pages.dev/ar/ now shows the SKN site (checked: Arabic and English pages, favicon and fonts load; no SakanHub left).

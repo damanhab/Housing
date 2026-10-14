@@ -1,6 +1,6 @@
 # Domain and hosting options for SKN
 
-> **Decision (founder, 14 Oct 2026): the domain name is `sknliving`.** Register `sknliving.sa` (main, via a Saudi registrar with CR + Nafath) and `sknliving.com` (defensive, ~$10/yr at Cloudflare), then point both at Cloudflare. The site already uses `https://sknliving.sa` and `hello@sknliving.sa`.
+> **Decision (founder, 14 Oct 2026): the main domain is `sknliving.com`.** Register it at Cloudflare Registrar (~$10.46/yr, at cost) in the same account as the Pages project, then add it as the Pages custom domain. `sknliving.sa` stays free to add later (Saudi registrar, CR + Nafath) and redirect to the .com. The site already uses `https://sknliving.com` and `hello@sknliving.com`.
 
 ### `sknliving` availability (checked 14 Oct 2026)
 
@@ -10,7 +10,7 @@
 | `.com`, `.net`, `.co`, `.io`, `.app`, `.me`, `.homes`, `.xyz`, `.work`, `.online` | Free (registry RDAP: not found) |
 | `.ai`, `.org`, `.live`, `.house`, `.company`, `.group`, `.services` | Registry wouldn't answer the lookup; no DNS at all, so almost certainly free |
 
-Buy now: `sknliving.sa` and `sknliving.com`. Optional: `sknliving.com.sa` (redirect, stops a squatter).
+Buy now: `sknliving.com`. Later, optional: `sknliving.sa` / `sknliving.com.sa`, redirected to the .com.
 
 **Checked:** 14 Oct 2026, by the cloud agent. Availability for gTLDs comes from the registries' RDAP. For `.sa`, the SaudiNIC WHOIS is behind a CAPTCHA, so `.sa` names were checked by DNS only (NXDOMAIN = no delegation, very likely free). Confirm at a registrar before paying.
 
