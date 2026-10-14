@@ -1,4 +1,4 @@
-# SKN (سكن) — Brand Guide v1
+# SKN — Brand Guide v1
 
 **Version 1.0 · 14 October 2026.** Replaces the SakanHub identity in `../logo/final/` (now superseded).
 **Status:** brand name, logo, colours and typeface approved by the founder. Formal company name behind "SKN" is still open.
@@ -6,7 +6,8 @@
 ## 1. Name
 
 - **SKN** is the brand. It is «سكن» (sakan, "home / housing") written in three Latin capitals.
-- Write it **SKN** in Latin text (all caps, no dots) and **سكن** in Arabic text.
+- Write it **SKN** everywhere, in Arabic text too (all caps, no dots, set left-to-right inside Arabic sentences). Founder decision, 14 Oct 2026.
+- «سكن» appears in **one place only**: the bilingual lockup (`skn-bilingual-*`), the wide logo with both "SKN" and «سكن». Don't write «سكن» as the brand name in copy, titles or other logos.
 - The full corporate name behind the letters is not decided yet. Don't expand the acronym anywhere until it is.
 
 ## 2. The logo
@@ -26,11 +27,10 @@
 
 | Use | File | Background |
 |---|---|---|
-| Website header, documents, decks (default) | `skn-horizontal-color.svg` | White or Sand |
+| Website header (Arabic and English pages), documents, decks (default) | `skn-horizontal-color.svg` | White or Sand |
 | Dark sections, video end cards | `skn-horizontal-reversed.svg` | Ink |
 | Clay banners | `skn-horizontal-on-clay.svg` | Clay |
-| Arabic and English together (signage, official papers, footer) | `skn-bilingual-*.svg` | as above |
-| Arabic-only contexts (RTL: symbol on the right) | `skn-arabic-*.svg` | as above |
+| The one place «سكن» appears: signage, official papers, website footer | `skn-bilingual-*.svg` | as above |
 | Letters only (tight spaces, partner logos) | `skn-wordmark-*.svg` | as above |
 | Symbol only (stamps, patterns, small UI) | `skn-symbol-*.svg` | as above |
 | App icon, social avatar (primary) | `skn-app-icon.svg` (Ink tile) | — |

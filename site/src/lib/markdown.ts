@@ -28,7 +28,7 @@ export function pageMarkdown(key: PageKey, lang: Lang): string {
       "طريقة الحساب: لكل غرفة الأقل بين (المساحة ÷ 4) و10. المجموع يقارن مع (دورات المياه × 8) ومع (مساحة صالة الطعام ÷ 0.7)، والأقل هو الطاقة.",
       "Method: per room, the lower of (area ÷ 4) and 10. The total is compared with (sanitary sets × 8) and (dining area ÷ 0.7); the lowest is the capacity."), "");
   }
-  out.push(`---`, `${BRAND.name} (${BRAND.nameAr}) · ${SITE_URL}`);
+  out.push(`---`, `${BRAND.name} · ${SITE_URL}`);
   return out.join("\n");
 }
 
@@ -38,12 +38,12 @@ export function llmsTxt(): string {
   const cities = CITIES.map((c) => c.key);
   const svc: PageKey[] = ["svc-housing", "svc-transport", "svc-catering", "svc-management"];
   return [
-    `# ${BRAND.name} (${BRAND.nameAr})`,
+    `# ${BRAND.name}`,
     "",
-    "> SKN (سكن) is a Saudi workforce-housing service: companies send one request (city, headcount, start date) and SKN arranges licensed worker accommodation (سكن عمال / السكن الجماعي للأفراد), with transport and catering, in Riyadh, Khobar and Dammam. Every bed is licensed and matched to the company's Qiwa headcount.",
+    "> SKN is a Saudi workforce-housing service: companies send one request (city, headcount, start date) and SKN arranges licensed worker accommodation (سكن عمال / السكن الجماعي للأفراد), with transport and catering, in Riyadh, Khobar and Dammam. Every bed is licensed and matched to the company's Qiwa headcount.",
     "",
     "## Key facts",
-    `- Name: ${BRAND.name} (Arabic: ${BRAND.nameAr}). Website: ${SITE_URL}`,
+    `- Name: ${BRAND.name} (used in Arabic too). Website: ${SITE_URL}`,
     "- Service: worker / labour accommodation for companies; licensing and operation for building owners",
     "- Cities: Riyadh, Khobar, Dammam",
     "",

@@ -11,7 +11,7 @@ const S = UI.services;
 <footer class="site-footer">
   <div class="container grid">
     <div class="id">
-      <img src="/brand/skn-bilingual-reversed.svg" alt={`${BRAND.name} ${BRAND.nameAr}`} width="1091" height="256" />
+      <img src="/brand/skn-bilingual-reversed.svg" alt={`${BRAND.name} ${BRAND.logoAr}`} width="1091" height="256" />
       <p>{L("كل سكن عمّالك في مكان واحد.", "All your crew housing. One hub.")}</p>
     </div>
     <nav aria-label={UI.nav.services[lang]}>
@@ -54,7 +54,7 @@ const S = UI.services;
     </div>
   </div>
   <div class="container legal">
-    <span>© {new Date().getFullYear()} {lang === "ar" ? BRAND.nameAr : BRAND.name}</span>
+    <span>© {new Date().getFullYear()} {BRAND.name}</span>
     {!CONTACT.isPlaceholder && <span>{L("السجل التجاري", "CR")}: {CONTACT.cr}</span>}
     <a href={href("privacy", lang)}>{L("الخصوصية", "Privacy")}</a>
     <a href={href("home", lang === "ar" ? "en" : "ar")} lang={lang === "ar" ? "en" : "ar"}>{UI.nav.langSwitch[lang]}</a>

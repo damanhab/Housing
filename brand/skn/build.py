@@ -106,6 +106,7 @@ def wordmark(ink):
     return letters, box
 
 
+# «سكن» appears in one lockup only: the bilingual logo. Everywhere else the brand is "SKN", in Arabic contexts too.
 AR_SCALE = 1.06                # Arabic sits visually smaller at the same size; lift it to match the caps
 
 
@@ -124,13 +125,6 @@ def bilingual(top, low, ink):
     rule = f'<rect x="{rule_x:.2f}" y="{-CAP * 0.95:.2f}" width="{rule_w:.2f}" height="{CAP * 0.90:.2f}" rx="{CAP * 0.035:.2f}" fill="{ink}"/>'
     ar, (_, ay0, ax1, ay1) = arabic(rule_x + rule_w + RULE_GAP, ink)
     return body + rule + ar, (x0, min(y0, ay0), ax1, max(y1, ay1))
-
-
-def arabic_lockup(top, low, ink):
-    """RTL: symbol on the right, «سكن» to its left, the same ink-to-ink gap as the Latin lockup."""
-    ar, (ax0, ay0, ax1, ay1) = arabic(0, ink)
-    t, l = floors(ax1 + GAP, -SYM, SYM)
-    return ar + rects_svg(t, top) + rects_svg(l, low), (ax0, min(-SYM, ay0), ax1 + GAP + SYM, max(0, ay1))
 
 
 def write(name, body_box, height_px, title):
@@ -220,7 +214,6 @@ if __name__ == "__main__":
     for cw, (top, low, ink) in COLORWAYS.items():
         write(f"skn-horizontal-{cw}.svg", horizontal(top, low, ink), 256, "SKN logo")
         write(f"skn-bilingual-{cw}.svg", bilingual(top, low, ink), 256, "SKN سكن logo")
-        write(f"skn-arabic-{cw}.svg", arabic_lockup(top, low, ink), 256, "سكن logo")
         write(f"skn-wordmark-{cw}.svg", wordmark(ink), 256, "SKN wordmark")
         symbol_file(f"skn-symbol-{cw}.svg", top, low)
     symbol_file("skn-app-icon.svg", CLAY_LIGHT, WHITE, bg=INK, inset=0.10)        # primary app icon

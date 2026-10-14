@@ -31,11 +31,9 @@ const wa = `https://wa.me/${CONTACT.whatsapp}`;
 ---
 <header class="site-header">
   <div class="container bar">
-    <a class="brand" href={href("home", lang)} aria-label={lang === "ar" ? "سكن، الرئيسية" : "SKN home"}>
-      {/* SKN lockups (brand/skn/masters). Each file carries its clear space inside; the negative margin lines the ink up with the content edge. */}
-      {lang === "ar"
-        ? <img class="logo logo--ar" src="/brand/skn-arabic-color.svg" alt="" width="636" height="256" />
-        : <img class="logo logo--en" src="/brand/skn-horizontal-color.svg" alt="" width="790" height="256" />}
+    <a class="brand" href={href("home", lang)} aria-label={lang === "ar" ? "SKN، الرئيسية" : "SKN home"}>
+      {/* The SKN lockup on both languages (brand/skn). The file carries its clear space inside; the negative margin lines the ink up with the content edge. */}
+      <img class="logo" src="/brand/skn-horizontal-color.svg" alt="" width="790" height="256" />
     </a>
     <nav class="nav" aria-label={lang === "ar" ? "القائمة الرئيسية" : "Main"}>
       <ul>
@@ -93,10 +91,8 @@ const wa = `https://wa.me/${CONTACT.whatsapp}`;
   .site-header { position: sticky; top: 0; z-index: 20; background: rgb(255 255 255 / 0.94); backdrop-filter: saturate(1.4) blur(10px); border-block-end: 1px solid var(--line); }
   .bar { display: flex; align-items: center; gap: var(--s6); min-height: 68px; }
   .brand { flex: none; display: block; }
-  /* Sized so the symbol is ~24px tall in both lockups (the Arabic file is taller because of «سكن»'s ascender and descender). */
-  .logo { width: auto; display: block; margin-inline-start: -7px; }
-  .logo--en { height: 40px; }
-  .logo--ar { height: 52px; margin-block: -6px; }
+  /* 40px file = a ~24px symbol. */
+  .logo { width: auto; height: 40px; display: block; margin-inline-start: -7px; }
   .nav { flex: 1; }
   .nav > ul { display: flex; gap: var(--s5); list-style: none; margin: 0; padding: 0; align-items: center; }
   .top, .dd summary { white-space: nowrap; text-decoration: none; color: var(--ink-2); font-weight: 600; font-size: 0.95rem; padding-block: var(--s2); cursor: pointer; }
@@ -135,7 +131,7 @@ const wa = `https://wa.me/${CONTACT.whatsapp}`;
     .wa-t { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
     .actions .cta { min-height: 44px; padding-inline: var(--s3); font-size: 0.88rem; }
     .lang { display: none; } .bar { gap: var(--s3); }
-    .logo--en { height: 34px; margin-inline-start: -6px; } .logo--ar { height: 44px; margin-inline-start: -6px; }
+    .logo { height: 34px; margin-inline-start: -6px; }
   }
   @media (max-width: 440px) { html[lang="en"] .cta-l { display: none; } html[lang="en"] .cta-s { display: inline; } }
   @media (max-width: 360px) { .actions .cta { font-size: 0.82rem; padding-inline: var(--s2); } }

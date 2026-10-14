@@ -18,9 +18,9 @@ export const CONTACT = {
   isPlaceholder: true,
 };
 
-// SKN in Latin text, سكن in Arabic text. The formal company name behind the letters is still open; don't expand it.
+// The brand is "SKN" on every page, Arabic included. «سكن» appears only inside the bilingual logo (footer); `logoAr` exists for that logo's alt text.
+// The formal company name behind the letters is still open; don't expand it.
 export const BRAND = {
   name: "SKN",
-  nameAr: "سكن",
-  alternateNames: ["سكن"],
+  logoAr: "سكن",
 };

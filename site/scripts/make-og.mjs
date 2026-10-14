@@ -10,7 +10,7 @@ const pub = join(process.cwd(), "public");
 const b64 = (f) => readFileSync(join(pub, f)).toString("base64");
 const font = (f) => `url(data:font/woff2;base64,${b64("fonts/" + f)})`;
 const cards = {
-  ar: { dir: "rtl", line: "كل سكن عمّالك في مكان واحد", sub: "سكن عمّال مرخّص · النقل · الإعاشة", logo: "brand/skn-arabic-color.svg", h: 103 },
+  ar: { dir: "rtl", line: "كل سكن عمّالك في مكان واحد", sub: "سكن عمّال مرخّص · النقل · الإعاشة", logo: "brand/skn-horizontal-color.svg", h: 78 },
   en: { dir: "ltr", line: "All your crew housing. One hub.", sub: "Licensed worker housing · Transport · Meals", logo: "brand/skn-horizontal-color.svg", h: 78 },
 };
 const browser = await chromium.launch();

@@ -56,7 +56,7 @@ const solo = pageKey !== "request";
       {pageKey === "about" && (
         <section>
           <dl class="facts">
-            <div><dt>{L("الاسم", "Name")}</dt><dd>{BRAND.name} · {BRAND.nameAr}</dd></div>
+            <div><dt>{L("الاسم", "Name")}</dt><dd>{BRAND.name}</dd></div>
             <div><dt>{L("وش نسوي", "What we do")}</dt><dd>{L("نوفّر للشركات سكن عمّال مرخّص، مع النقل والإعاشة وإدارة السكن، ونشغّل المباني لملّاكها.", "Licensed worker housing for companies, with transport, meals and management, and building operation for owners.")}</dd></div>
             <div><dt>{L("المدن", "Cities")}</dt><dd>{ACTIVE_CITIES.map((c) => c.name[lang]).join(L("، ", ", "))}</dd></div>
           </dl>

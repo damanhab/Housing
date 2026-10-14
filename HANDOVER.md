@@ -22,7 +22,7 @@ Read this first if you're picking up the project, reviewing a pull request or co
 
 ## Standing decisions (don't undo without the founder)
 
-0. **Brand is SKN (سكن), 14 Oct 2026.** "Three floors and a door" logo, Readex Pro (Arabic + Latin), the same Clay / Ink / Sand / Light clay palette. Use only the files in `brand/skn/`. The website was migrated on 14 Oct 2026.
+0. **Brand is SKN, 14 Oct 2026** (written SKN in Arabic too; «سكن» only inside the bilingual logo). "Three floors and a door" logo, Readex Pro (Arabic + Latin), the same Clay / Ink / Sand / Light clay palette. Use only the files in `brand/skn/`. The website was migrated on 14 Oct 2026.
 1. **A service, not listings.** Visitors tell us what they need; they don't browse buildings.
 2. **Company and services first.** The home page opens with the slogan, the company intro and services. The request form (with its live "what your request needs" readout) lives in its own section lower down, never in the hero or a sticky sidebar.
 3. **Slogans:** «كل سكن عمّالك في مكان واحد» / "All your crew housing. One hub." (home); «مبناك مليان، وبالك مرتاح» / "A full building, without the headache" (owners).
@@ -66,6 +66,13 @@ Read this first if you're picking up the project, reviewing a pull request or co
 - Branches: work on a feature branch and open a PR to `main`; the founder pulls locally with `git pull` / `git switch <branch>`.
 
 ## Log
+
+### 14 Oct 2026: SKN everywhere; «سكن» only in the bilingual logo; clearer watermark
+- **Founder decision:** the brand is written **SKN on every page, Arabic included**. «سكن» appears in one place only: the wide bilingual logo (SKN | سكن), used in the footer.
+- Brand files: the Arabic-only lockup (`skn-arabic-*`) is retired; `build.py` no longer makes it; `guidelines.md`, `overview.png`, `PRODUCT.md` and `DESIGN.md` updated.
+- Website: Arabic header and the clay band now use the SKN lockup; Arabic titles end "| SKN"; Arabic copy says "SKN" (e.g. «SKN شركة سعودية…»); copyright, structured data, share card and llms/robots text use SKN. `BRAND.nameAr` replaced by `BRAND.logoAr` (alt text of the bilingual logo only).
+- The rules-band watermark was a cropped corner of the symbol that read as stray blocks (founder screenshot). It is now the whole symbol, faint (8 %), under the heading and links; hidden on phones.
+- Checked: build clean, 36 pages, no broken links, no sideways scroll, header within the content edges at every width.
 
 ### 14 Oct 2026: site migrated to SKN (سكن); brand files audited
 - **Brand audit first** (`brand/skn/`, made by another agent). Found and fixed in `build.py`, then rebuilt every master, render, `overview.png` and the web icons:

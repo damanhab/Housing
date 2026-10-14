@@ -1,4 +1,4 @@
-/* SKN (سكن): global styles. Tokens follow brand/skn/guidelines.md and DESIGN.md. */
+/* SKN: global styles. Tokens follow brand/skn/guidelines.md and DESIGN.md. */
 /* Readex Pro: one variable family for Arabic and Latin (wght 160-700, HEXP pinned to 0), split by script so each page loads only what it uses. */
 @font-face { font-family: "Readex Pro"; src: url("/fonts/readex-pro-arabic.woff2") format("woff2"); font-weight: 160 700; font-display: swap;
   unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200F, U+2010-2011, U+204F, U+2E41, U+00AB, U+00BB; }

@@ -1,11 +1,11 @@
 import { IS_PROD, SITE_URL } from "../lib/site";
 
-const TEST = `# SKN (سكن): INTERNAL TEST BUILD. Not for indexing.
+const TEST = `# SKN: INTERNAL TEST BUILD. Not for indexing.
 User-agent: *
 Disallow: /
 `;
 
-const PROD = `# SKN (سكن): robots.txt
+const PROD = `# SKN: robots.txt
 User-agent: *
 Allow: /
 Disallow: /api/

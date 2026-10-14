@@ -103,7 +103,7 @@ components:
     padding: "16px"
 ---
 
-# Design System: SKN (سكن)
+# Design System: SKN
 
 > **Rebrand, 14 Oct 2026:** the brand is now **SKN (سكن)**: the "three floors" logo, set in **Readex Pro** for Arabic and Latin. Colours are unchanged. Source of truth: `brand/skn/guidelines.md`. The sections below are updated to match; where older notes mention the house, the resident dot or Nunito/Almarai, the SKN rules win.
 
@@ -237,11 +237,12 @@ Firm and friendly: heavy labels, solid fills, clear states.
 - Openly licensed stock or our own photos only, credited in `site/public/images/CREDITS.md`. Never AI-generated images presented as our buildings.
 
 ### Brand marks (SKN, 14 Oct 2026)
-- **Header:** `skn-horizontal-color.svg` (symbol + SKN) on English pages and `skn-arabic-color.svg` (symbol on the right + «سكن») on Arabic pages. Both are sized so the symbol is about 24px tall (files 40px and 52px tall; 34px and 44px on phones). Each lockup file carries its clear space inside, so a small negative inline-start margin lines the ink up with the content edge. The bilingual lockup is used in the footer (reversed) only; it doesn't fit the header alongside the nav.
-- **Brand name in running Arabic text:** write «سكن» in guillemets where the plain word would read as "housing" (e.g. «سكن» شركة سعودية…). Titles use "… | سكن".
-- **Clay brand band:** the one full-clay section closing the home page, using `skn-horizontal-on-clay.svg` / `skn-arabic-on-clay.svg`, a white button and a white-outline WhatsApp button.
+- **Name:** SKN on every page, Arabic included. «سكن» appears only inside the bilingual lockup (footer). Arabic copy writes "SKN" in Latin capitals; titles end "… | SKN".
+- **Header:** `skn-horizontal-color.svg` (symbol + SKN) on both Arabic and English pages, 40px tall (symbol ~24px; 34px tall on phones). On Arabic pages it sits at the right, as the RTL start. The file carries its clear space inside, so a small negative inline-start margin lines the ink up with the content edge.
+- **Footer:** `skn-bilingual-reversed.svg`, the one place «سكن» appears.
+- **Clay brand band:** the one full-clay section closing the home page, using `skn-horizontal-on-clay.svg` (both languages), a white button and a white-outline WhatsApp button.
 - **Step markers:** the house markers are retired. Use simple square tiles (Ink, 10px radius) with the number in white Readex Pro Bold; step 1 is Clay.
-- **Watermark:** if used, one very faint symbol (three floors, white at about 4.5 % opacity) bleeding off the corner of the ink rules band. Nowhere else.
+- **Watermark:** one whole symbol (three floors, white at about 7 % opacity, ~120px) sitting under the rules band's heading and links. Never cropped or bled off an edge: a partial symbol reads as stray blocks. Nowhere else.
 - **Favicons and PWA:** copy `brand/skn/web-icons/*` into `site/public/` and use `head-snippet.html`.
 - **Share cards:** `site/public/og-ar.jpg` / `og-en.jpg` (1200×630), made by `site/scripts/make-og.mjs`. Regenerate them with the SKN logo and Readex Pro.
 - **Retired:** the SakanHub house-n, the resident dot, and all `brand/logo/final/` files.

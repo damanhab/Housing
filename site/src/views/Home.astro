@@ -34,7 +34,7 @@ const steps = [
 ];
 
 const jsonld = [
-  { "@context": "https://schema.org", "@type": "WebSite", "@id": `${SITE_URL}/#site`, url: absUrl("home", lang, SITE_URL), name: L("سكن", "SKN"), inLanguage: lang, publisher: { "@id": `${SITE_URL}/#org` } },
+  { "@context": "https://schema.org", "@type": "WebSite", "@id": `${SITE_URL}/#site`, url: absUrl("home", lang, SITE_URL), name: "SKN", inLanguage: lang, publisher: { "@id": `${SITE_URL}/#org` } },
   {
     "@context": "https://schema.org", "@type": "Service",
     serviceType: L("سكن العمّال", "Worker accommodation"),
@@ -71,7 +71,7 @@ const jsonld = [
       <Photo slot="intro" lang={lang} ratio="4 / 3" />
       <div class="intro-copy">
         <h2 id="intro-h">{L("نهتم بسكن طاقمك من أول يوم", "We look after your crew's housing from day one")}</h2>
-        <p class="lead">{L("«سكن» شركة سعودية متخصّصة في سكن العمّال. نختار لك المبنى المناسب في مدينتك، ونتأكد من ترخيصه، ونتابع السكن بعد ما يستلمه طاقمك.", "SKN is a Saudi workforce-housing company. We find the right building in your city, make sure it's licensed, and keep looking after it once your crew moves in.")}</p>
+        <p class="lead">{L("SKN شركة سعودية متخصّصة في سكن العمّال. نختار لك المبنى المناسب في مدينتك، ونتأكد من ترخيصه، ونتابع السكن بعد ما يستلمه طاقمك.", "SKN is a Saudi workforce-housing company. We find the right building in your city, make sure it's licensed, and keep looking after it once your crew moves in.")}</p>
         <ul class="facts-row stagger">
           <li><b>{L("مبانٍ شريكة", "Partner buildings")}</b><span>{L("ومبانٍ نشغّلها بأنفسنا", "plus buildings we run ourselves")}</span></li>
           <li><b>{L("طلب واحد", "One request")}</b><span>{L("وفريق واحد يتابع معك", "and one team on your side")}</span></li>
@@ -112,6 +112,7 @@ const jsonld = [
           <a class="link-arrow light" href={href("regulations", lang)}>{L("دليل الاشتراطات", "Regulations guide")}<Icon name="arrow" class="flip" /></a>
           <a class="link-arrow light" href={href("calculator", lang)}>{UI.nav.calculator[lang]}<Icon name="arrow" class="flip" /></a>
         </div>
+        <img class="rules-mark" src="/brand/skn-symbol-white.svg" alt="" aria-hidden="true" width="256" height="256" loading="lazy" />
       </div>
       <div>
         <dl class="rules">{RULES.map((r) => (<div><dt>{r.label[lang]}</dt><dd>{r.value[lang]}</dd></div>))}</dl>
@@ -202,9 +203,7 @@ const jsonld = [
 
   <section class="brand-band" aria-labelledby="band-h">
     <div class="container band-inner">
-      {lang === "ar"
-        ? <img class="band-logo band-logo--ar" src="/brand/skn-arabic-on-clay.svg" alt="سكن" width="636" height="256" loading="lazy" />
-        : <img class="band-logo band-logo--en" src="/brand/skn-horizontal-on-clay.svg" alt="SKN" width="790" height="256" loading="lazy" />}
+      <img class="band-logo" src="/brand/skn-horizontal-on-clay.svg" alt="SKN" width="790" height="256" loading="lazy" />
       <div class="band-copy">
         <h2 id="band-h">{L("سكّن طاقمك بضغطة", "House your crew in a tap")}</h2>
         <div class="band-cta">
@@ -260,10 +259,11 @@ const jsonld = [
   .step-n { width: 48px; height: 48px; position: relative; margin-block-end: var(--s2); display: grid; place-items: center; border-radius: 10px; background: var(--ink); color: var(--white); font-weight: 700; font-size: 1.15rem; line-height: 1; }
   .steps li:first-child .step-n { background: var(--clay); }
 
-  /* Faint SKN symbol behind the compliance band */
+  /* Compliance band */
   .rules-band { position: relative; overflow: hidden; }
-  .rules-band::after { content: ""; position: absolute; inset-inline-start: -70px; bottom: -90px; width: 340px; height: 340px; background: url("/brand/skn-symbol-white.svg") center / contain no-repeat; opacity: 0.045; pointer-events: none; }
-  @media (max-width: 1000px) { .rules-band::after { display: none; } }
+  /* The SKN symbol, whole and faint, under the heading and links. Never cropped: a partial symbol reads as stray blocks. */
+  .rules-mark { width: 120px; height: auto; opacity: 0.08; margin-block-start: var(--s7); margin-inline-start: -14px; pointer-events: none; }
+  @media (max-width: 1000px) { .rules-mark { display: none; } }
   .rules-band > .container { position: relative; z-index: 1; }
   .steps p { color: var(--ink-2); max-width: 30ch; }
 
@@ -307,10 +307,8 @@ const jsonld = [
   /* The one full clay section: brand sign-off with the on-clay lockup (brand/logo/final/guidelines.md: "Clay banners, hero blocks"). */
   .brand-band { background: var(--clay); color: var(--white); padding-block: var(--s9); }
   .band-inner { display: flex; align-items: center; justify-content: space-between; gap: var(--s7); flex-wrap: wrap; }
-  /* Same symbol size in both lockups (the Arabic file is taller); the negative margin pulls back the file's clear space. */
-  .band-logo { width: auto; margin-inline-start: -14px; }
-  .band-logo--en { height: clamp(84px, 5vw + 56px, 120px); }
-  .band-logo--ar { height: clamp(110px, 6.5vw + 73px, 156px); }
+  /* The negative margin pulls back the file's built-in clear space. */
+  .band-logo { width: auto; height: clamp(84px, 5vw + 56px, 120px); margin-inline-start: -14px; }
   .band-copy { display: grid; gap: var(--s5); justify-items: start; }
   .brand-band h2 { color: var(--white); font-size: var(--step-4); max-width: 14ch; }
   .band-cta { display: flex; flex-wrap: wrap; gap: var(--s3); }

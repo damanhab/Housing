@@ -18,7 +18,6 @@ const org = {
   "@type": "Organization",
   "@id": `${SITE_URL}/#org`,
   name: BRAND.name,
-  alternateName: BRAND.alternateNames,
   url: SITE_URL,
   logo: `${SITE_URL}/icon-512.png`,
   areaServed: { "@type": "Country", name: "Saudi Arabia" },
@@ -53,7 +52,7 @@ const graph = [org, ...(breadcrumb ? [breadcrumb] : []), ...jsonld];
   <meta name="theme-color" content="#1D2433" />
   <link rel="preload" href={lang === "ar" ? "/fonts/readex-pro-arabic.woff2" : "/fonts/readex-pro-latin.woff2"} as="font" type="font/woff2" crossorigin />
   <meta property="og:type" content="website" />
-  <meta property="og:site_name" content={lang === "ar" ? `${BRAND.nameAr} | ${BRAND.name}` : BRAND.name} />
+  <meta property="og:site_name" content={BRAND.name} />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:url" content={canonical} />
@@ -61,7 +60,7 @@ const graph = [org, ...(breadcrumb ? [breadcrumb] : []), ...jsonld];
   <meta property="og:image" content={`${SITE_URL}/og-${lang}.jpg`} />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content={lang === "ar" ? "سكن: كل سكن عمّالك في مكان واحد" : "SKN: All your crew housing. One hub."} />
+  <meta property="og:image:alt" content={lang === "ar" ? "SKN: كل سكن عمّالك في مكان واحد" : "SKN: All your crew housing. One hub."} />
   <meta name="twitter:card" content="summary_large_image" />
   <script type="application/ld+json" set:html={JSON.stringify(graph.length === 1 ? graph[0] : graph)} />
   <script is:inline>
