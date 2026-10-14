@@ -39,3 +39,19 @@
 | Runner-up with MCP | Vercel (`mcp.vercel.com`) or Netlify (`@netlify/mcp`) | Vercel Pro $20/user/month for commercial use (Hobby is non-commercial); Netlify has a free tier | Vercel's MCP started read-only, so check whether it can deploy. Netlify's official MCP can create and deploy sites. Moving would mean re-doing the Cloudflare password gate (`site/functions/_middleware.js`). |
 
 **`.sa` domains can't be bought by an agent.** They go through a SaudiNIC-accredited Saudi registrar (≈ SAR 99–200/yr, e.g. Hyyat, ProHost, stc Cloud) and need a Saudi CR and Nafath verification. The founder registers them, then points the nameservers to Cloudflare; after that an agent can do the rest through the Cloudflare MCP/API.
+
+## Stronger names than `sknhousing` (checked 14 Oct 2026)
+
+Free on **.com, .sa and .com.sa** (.com by RDAP; .sa by DNS, confirm at the registrar):
+
+| Name | Why |
+|---|---|
+| **`skncrew`** | Top pick. Short (7 letters), uses the site's own word ("crew"), and reads as workforce, not skincare, which also distances it from SKN Clinics. |
+| **`sknbeds`** | The product in one word ("licensed beds"); strong for B2B. |
+| `sknksa` | Short and local, but says nothing about housing (could still read as the clinics). |
+| `useskn`, `joinskn` | App-style; fine for a product, weaker for a Saudi B2B operator. |
+| `sknstay`, `sknliving` | Hospitality tone; more resident-facing than buyer-facing. |
+| `sknsaudi`, `skn-saudi` | Clear but long. |
+| `skncamp` | Avoid: "labour camp" has a negative ring. |
+
+Taken on .com (most still free on .sa): `goskn`, `myskn`, `getskn`, `tryskn`, `sknhq`, `skngroup`, `sknapp`, `sknhome(s)`, `sknbed`, `sknplus`, `sknteam`, `sknbase`, `sknpro`, `sknco`, `theskn`, `sknnow`, `skn24`, `sknworks`.
