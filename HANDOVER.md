@@ -67,6 +67,9 @@ Read this first if you're picking up the project, reviewing a pull request or co
 
 ## Log
 
+### 14 Oct 2026: rules-band watermark, final
+- Founder asked for the watermark large again, in the corner, hidden only a little. It is now a 380px faint symbol in the bottom corner under the heading, with ~20px of the symbol past each edge (all three floors and the door visible). Hidden on stacked layouts (under 1000px), where it would sit behind the rules table.
+
 ### 14 Oct 2026: SKN everywhere; «سكن» only in the bilingual logo; clearer watermark
 - **Founder decision:** the brand is written **SKN on every page, Arabic included**. «سكن» appears in one place only: the wide bilingual logo (SKN | سكن), used in the footer.
 - Brand files: the Arabic-only lockup (`skn-arabic-*`) is retired; `build.py` no longer makes it; `guidelines.md`, `overview.png`, `PRODUCT.md` and `DESIGN.md` updated.

@@ -242,7 +242,7 @@ Firm and friendly: heavy labels, solid fills, clear states.
 - **Footer:** `skn-bilingual-reversed.svg`, the one place «سكن» appears.
 - **Clay brand band:** the one full-clay section closing the home page, using `skn-horizontal-on-clay.svg` (both languages), a white button and a white-outline WhatsApp button.
 - **Step markers:** the house markers are retired. Use simple square tiles (Ink, 10px radius) with the number in white Readex Pro Bold; step 1 is Clay.
-- **Watermark:** one whole symbol (three floors, white at about 7 % opacity, ~120px) sitting under the rules band's heading and links. Never cropped or bled off an edge: a partial symbol reads as stray blocks. Nowhere else.
+- **Watermark:** one large, faint SKN symbol (white at 6 %, 380px file) in the bottom corner under the rules band's heading, tucked only slightly (~20px) past the edges so all three floors and the door stay readable. Hidden when the band stacks (under 1000px). Nowhere else.
 - **Favicons and PWA:** copy `brand/skn/web-icons/*` into `site/public/` and use `head-snippet.html`.
 - **Share cards:** `site/public/og-ar.jpg` / `og-en.jpg` (1200×630), made by `site/scripts/make-og.mjs`. Regenerate them with the SKN logo and Readex Pro.
 - **Retired:** the SakanHub house-n, the resident dot, and all `brand/logo/final/` files.

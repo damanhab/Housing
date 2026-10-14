@@ -112,7 +112,6 @@ const jsonld = [
           <a class="link-arrow light" href={href("regulations", lang)}>{L("دليل الاشتراطات", "Regulations guide")}<Icon name="arrow" class="flip" /></a>
           <a class="link-arrow light" href={href("calculator", lang)}>{UI.nav.calculator[lang]}<Icon name="arrow" class="flip" /></a>
         </div>
-        <img class="rules-mark" src="/brand/skn-symbol-white.svg" alt="" aria-hidden="true" width="256" height="256" loading="lazy" />
       </div>
       <div>
         <dl class="rules">{RULES.map((r) => (<div><dt>{r.label[lang]}</dt><dd>{r.value[lang]}</dd></div>))}</dl>
@@ -261,9 +260,11 @@ const jsonld = [
 
   /* Compliance band */
   .rules-band { position: relative; overflow: hidden; }
-  /* The SKN symbol, whole and faint, under the heading and links. Never cropped: a partial symbol reads as stray blocks. */
-  .rules-mark { width: 120px; height: auto; opacity: 0.08; margin-block-start: var(--s7); margin-inline-start: -14px; pointer-events: none; }
-  @media (max-width: 1000px) { .rules-mark { display: none; } }
+  /* A large, faint SKN symbol in the corner under the heading, tucked just slightly off the edges so it still reads as the whole logo.
+     The SVG has 12% padding around the symbol: at 380px that is ~46px, plus ~20px of the symbol itself past each edge. */
+  .rules-band::after { content: ""; position: absolute; inset-inline-start: -66px; bottom: -66px; width: 380px; height: 380px; background: url("/brand/skn-symbol-white.svg") center / contain no-repeat; opacity: 0.06; pointer-events: none; }
+  /* Stacked layout: the table sits under the heading, so the mark would land behind it. */
+  @media (max-width: 1000px) { .rules-band::after { display: none; } }
   .rules-band > .container { position: relative; z-index: 1; }
   .steps p { color: var(--ink-2); max-width: 30ch; }
 
