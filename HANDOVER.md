@@ -67,6 +67,11 @@ Read this first if you're picking up the project, reviewing a pull request or co
 
 ## Log
 
+### 14 Oct 2026: domain and hosting check
+- Notes in `docs/domain-and-hosting.md`. `skn.sa` is taken; `skn.com.sa` is **SKN Clinics (عيادات SKN للتجميل)**, an established Saudi brand: a trademark question for the IP lawyer before committing to "SKN". `skn.com` is for sale through a broker.
+- Free (checked): `sknhousing.com`, `skncrew.com`, `sknliving.com`, `skn.co` (likely premium), and by DNS `sknhousing.sa` / `sknhousing.com.sa`.
+- Recommendation: stay on Cloudflare (free Pages hosting, at-cost `.com`, an official MCP server and the new Registrar API for agents). `.sa` names need a Saudi registrar, a CR and Nafath, so the founder buys those by hand.
+
 ### 14 Oct 2026: rules-band watermark, final
 - Founder asked for the watermark large again, in the corner, hidden only a little. It is now a 380px faint symbol in the bottom corner under the heading, with ~20px of the symbol past each edge (all three floors and the door visible). Hidden on stacked layouts (under 1000px), where it would sit behind the rules table.
 
