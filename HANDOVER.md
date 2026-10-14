@@ -22,7 +22,7 @@ Read this first if you're picking up the project, reviewing a pull request or co
 
 ## Standing decisions (don't undo without the founder)
 
-0. **Brand is SKN (سكن), 14 Oct 2026.** "Three floors and a door" logo, Readex Pro (Arabic + Latin), the same Clay / Ink / Sand / Light clay palette. Use only the files in `brand/skn/`. The site still shows SakanHub until it is migrated (see Open items).
+0. **Brand is SKN (سكن), 14 Oct 2026.** "Three floors and a door" logo, Readex Pro (Arabic + Latin), the same Clay / Ink / Sand / Light clay palette. Use only the files in `brand/skn/`. The website was migrated on 14 Oct 2026.
 1. **A service, not listings.** Visitors tell us what they need; they don't browse buildings.
 2. **Company and services first.** The home page opens with the slogan, the company intro and services. The request form (with its live "what your request needs" readout) lives in its own section lower down, never in the hero or a sticky sidebar.
 3. **Slogans:** «كل سكن عمّالك في مكان واحد» / "All your crew housing. One hub." (home); «مبناك مليان، وبالك مرتاح» / "A full building, without the headache" (owners).
@@ -35,12 +35,11 @@ Read this first if you're picking up the project, reviewing a pull request or co
 9. **No internal notes on pages** (no "placeholder"/"draft" banners). The one exception is the Resources page, which says it will hold SEO articles once the site is built.
 10. **Regulations page** carries a short source note under the title (MOMAH requirements + Balady), plus a full Sources section.
 11. **Photos:** Unsplash stock, fetched through the official Unsplash API and credited in `site/public/images/CREDITS.md`; no on-page credit (founder decision; the Unsplash License doesn't require one). To be replaced with our own buildings later. No AI images presented as our buildings. API keys are never committed; the founder holds them.
-12. **Visual direction:** "the category standard at full craft" (Stripe / Careem / Tabby bar). Clay `#C8502A` is only for buttons, the logo house and active states. Pages are flat; only the request panel and menus lift.
+12. **Visual direction:** "the category standard at full craft" (Stripe / Careem / Tabby bar). Clay `#C8502A` is only for buttons, the logo's top floor and active states. Pages are flat; only the request panel and menus lift.
 
 ## Open items
 
-- **Website migration to SKN:** the site still uses the SakanHub logo, Nunito/Almarai and "SakanHub" in copy. It must move to `brand/skn/` (logo, web icons, Readex Pro) and the name SKN / سكن.
-- **SKN corporate name** (what the letters stand for), domains and social handles: not decided or checked. `sakanhub.sa` and the site's SakanHub URLs are on hold.
+- **SKN corporate name** (what the letters stand for), domains and social handles: not decided or checked. The site uses `skn.sa` / `hello@skn.sa` as marked placeholders (`site/src/lib/site.ts`, `site/astro.config.mjs`) until a domain is chosen.
 - **Product names and slogans after the rename:** "SakanHub Places" and "One hub" came from the old name. Use "SKN" plainly until the founder decides.
 
 - **Meals (الإعاشة): kept for now** (founder, 7 Oct 2026). Earlier the founder considered dropping meals as a service. Regulation only requires a central kitchen *or* a catering service (`research/background/regulation-block-a.md` §3.2), so buildings with a shared kitchen stay compliant without it. Revisit with the founder before changing.
@@ -67,6 +66,23 @@ Read this first if you're picking up the project, reviewing a pull request or co
 - Branches: work on a feature branch and open a PR to `main`; the founder pulls locally with `git pull` / `git switch <branch>`.
 
 ## Log
+
+### 14 Oct 2026: site migrated to SKN (سكن); brand files audited
+- **Brand audit first** (`brand/skn/`, made by another agent). Found and fixed in `build.py`, then rebuilt every master, render, `overview.png` and the web icons:
+  - lockups were laid out on advance widths, not ink, so clear space was uneven (horizontal: 48 px left vs 68 px right at 256 px);
+  - the bilingual rule sat off-centre (57 vs 46 px), and the symbol-to-letters gap varied between lockups (45 % / 51 % of cap height against the 42 % spec);
+  - the Arabic lockup ignored its own 6 % scale when placing «سكن»;
+  - the 16 px favicon was blurry (floors on half pixels, door lost) and the Apple touch icon had transparent corners (iOS shows black).
+  Now every lockup has equal margins on all four sides, a centred rule, a 42 % ink-to-ink gap; favicons are drawn on the pixel grid; the Apple icon is full-bleed. The logo design itself is unchanged.
+- **Website:** no trace of SakanHub left in the build (checked the whole `dist/`).
+  - Logos: header uses the English or Arabic lockup per language (symbol ~24 px); footer the bilingual reversed lockup; the clay band the on-clay lockup; step markers are square Ink tiles (step 1 Clay); the rules-band watermark and photo placeholders use the three-floors symbol.
+  - Type: Readex Pro self-hosted as two variable woff2 subsets (Arabic 25 KB, Latin 30 KB; HEXP pinned to 0), all weights capped at 700. Nunito and Almarai files removed.
+  - Favicons, Apple icon, PWA manifest from `brand/skn/web-icons/`; share cards (`og-ar.jpg`, `og-en.jpg`) regenerated with the SKN logo and Readex Pro.
+  - Copy: titles end "| سكن" / "| SKN"; in running Arabic the brand is «سكن» in guillemets so it doesn't read as the word "housing". WhatsApp pre-filled messages open with «السلام عليكم» / "Hello SKN".
+  - Readex Pro sets English wider than Nunito: nav links went to weight 600 and English header gaps tightened so the bar fits; the English hero lede widened; Arabic headings got 1.3 line-height for the marks; a calculator overflow on phones fixed.
+  - Checked: all 36 pages load, no broken links, no sideways scroll at 360/390/1366/1440 px, header inside the content edges from 360 to 1920 px in both languages.
+- **Placeholders to confirm:** the domain (`skn.sa` in `site/src/lib/site.ts` and `astro.config.mjs`) and the email `hello@skn.sa` are guesses until the founder picks a domain. The review-login default username changed from `sakanhub` to `skn` (only matters if `REVIEW_USER` isn't set in Cloudflare). Unsplash credit links now use `utm_source=skn`; match it to the Unsplash app name if that differs.
+- **Still open from the brand guide:** the slogan "One hub" came from the old name (kept for now, founder to review).
 
 ### 14 Oct 2026: rebrand to SKN (سكن)
 - **Pitch deck:** a 12-slide investor and client deck (still in SakanHub branding) is published as a Slides artifact, with a PDF in `docs/pitch/SakanHub-Pitch-Deck.pdf`.

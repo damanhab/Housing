@@ -31,13 +31,11 @@ const wa = `https://wa.me/${CONTACT.whatsapp}`;
 ---
 <header class="site-header">
   <div class="container bar">
-    <a class="brand" href={href("home", lang)} aria-label={lang === "ar" ? "سكن هب، الرئيسية" : "SakanHub home"}>
-      <picture>
-        <source media="(min-width: 1480px)" srcset="/brand/sakanhub-horizontal-color.svg" width="1448" height="202" />
-        {lang === "ar"
-          ? <img src="/brand/sakanhub-arabic-color.svg" alt="" width="635" height="189" />
-          : <img src="/brand/sakanhub-wordmark-color.svg" alt="" width="804" height="165" />}
-      </picture>
+    <a class="brand" href={href("home", lang)} aria-label={lang === "ar" ? "سكن، الرئيسية" : "SKN home"}>
+      {/* SKN lockups (brand/skn/masters). Each file carries its clear space inside; the negative margin lines the ink up with the content edge. */}
+      {lang === "ar"
+        ? <img class="logo logo--ar" src="/brand/skn-arabic-color.svg" alt="" width="636" height="256" />
+        : <img class="logo logo--en" src="/brand/skn-horizontal-color.svg" alt="" width="790" height="256" />}
     </a>
     <nav class="nav" aria-label={lang === "ar" ? "القائمة الرئيسية" : "Main"}>
       <ul>
@@ -94,20 +92,14 @@ const wa = `https://wa.me/${CONTACT.whatsapp}`;
 <style>
   .site-header { position: sticky; top: 0; z-index: 20; background: rgb(255 255 255 / 0.94); backdrop-filter: saturate(1.4) blur(10px); border-block-end: 1px solid var(--line); }
   .bar { display: flex; align-items: center; gap: var(--s6); min-height: 68px; }
-  .brand { flex: none; }
-  .brand { display: block; }
-  .brand img { height: 30px; width: auto; display: block; }
-  html[lang="ar"] .brand img { height: 34px; }
-  @media (min-width: 1480px) {
-    .brand img, html[lang="ar"] .brand img { height: 34px; }
-    /* English labels run longer: tighter gaps and a slightly smaller lockup keep the bar inside the 1200px container. */
-    html[lang="en"] .bar { gap: var(--s5); }
-    html[lang="en"] .nav > ul { gap: var(--s4); }
-    html[lang="en"] .brand img { height: 28px; }
-  }
+  .brand { flex: none; display: block; }
+  /* Sized so the symbol is ~24px tall in both lockups (the Arabic file is taller because of «سكن»'s ascender and descender). */
+  .logo { width: auto; display: block; margin-inline-start: -7px; }
+  .logo--en { height: 40px; }
+  .logo--ar { height: 52px; margin-block: -6px; }
   .nav { flex: 1; }
   .nav > ul { display: flex; gap: var(--s5); list-style: none; margin: 0; padding: 0; align-items: center; }
-  .top, .dd summary { white-space: nowrap; text-decoration: none; color: var(--ink-2); font-weight: 700; font-size: 0.95rem; padding-block: var(--s2); cursor: pointer; }
+  .top, .dd summary { white-space: nowrap; text-decoration: none; color: var(--ink-2); font-weight: 600; font-size: 0.95rem; padding-block: var(--s2); cursor: pointer; }
   .top:hover, .dd summary:hover, .top[aria-current="page"], .dd summary.current { color: var(--ink); }
   .top[aria-current="page"], .dd summary.current { box-shadow: inset 0 -2px 0 var(--clay); }
   .dd { position: relative; }
@@ -119,7 +111,10 @@ const wa = `https://wa.me/${CONTACT.whatsapp}`;
   .dd-panel a { display: block; padding: var(--s2) var(--s3); border-radius: 8px; text-decoration: none; font-weight: 700; color: var(--ink); }
   .dd-panel a:hover, .dd-panel a[aria-current="page"] { background: var(--sand); }
   .actions { display: flex; align-items: center; gap: var(--s3); }
-  .lang { font-weight: 800; text-decoration: none; color: var(--ink); font-size: 0.95rem; padding: var(--s2); }
+  /* Readex Pro sets English wider than Arabic: tighter gaps keep the English bar inside the 1200px container. */
+  html[lang="en"] .bar { gap: var(--s5); }
+  html[lang="en"] .nav > ul { gap: var(--s4); }
+  .lang { font-weight: 700; text-decoration: none; color: var(--ink); font-size: 0.95rem; padding: var(--s2); }
   html[lang="ar"] .lang { font-family: var(--font-en); }
   html[lang="en"] .lang { font-family: var(--font-ar); }
   .cta-s { display: none; }
@@ -131,7 +126,7 @@ const wa = `https://wa.me/${CONTACT.whatsapp}`;
   .menu-panel { position: absolute; inset-inline-end: 0; top: calc(100% + 8px); width: min(88vw, 320px); max-height: 80vh; overflow: auto; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-2); padding: var(--s4); display: grid; gap: var(--s3); }
   .menu-panel ul { list-style: none; margin: 0; padding: 0; display: grid; }
   .menu-panel li a { display: block; padding: var(--s3) var(--s2); text-decoration: none; font-weight: 700; border-block-end: 1px solid var(--line); }
-  .m-label { font-size: 0.8rem; font-weight: 800; color: var(--ink-3); padding-inline: var(--s2); }
+  .m-label { font-size: 0.8rem; font-weight: 700; color: var(--ink-3); padding-inline: var(--s2); }
   @media (max-width: 1240px) { .nav { display: none; } .bar { justify-content: space-between; } .menu { display: block; } }
   /* Phones: WhatsApp stays in the bar as a 44px icon button (KSA buyers' first channel); everything else is in the menu. */
   @media (max-width: 720px) {
@@ -140,7 +135,7 @@ const wa = `https://wa.me/${CONTACT.whatsapp}`;
     .wa-t { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
     .actions .cta { min-height: 44px; padding-inline: var(--s3); font-size: 0.88rem; }
     .lang { display: none; } .bar { gap: var(--s3); }
-    .brand img { height: 26px; } html[lang="ar"] .brand img { height: 30px; }
+    .logo--en { height: 34px; margin-inline-start: -6px; } .logo--ar { height: 44px; margin-inline-start: -6px; }
   }
   @media (max-width: 440px) { html[lang="en"] .cta-l { display: none; } html[lang="en"] .cta-s { display: inline; } }
   @media (max-width: 360px) { .actions .cta { font-size: 0.82rem; padding-inline: var(--s2); } }

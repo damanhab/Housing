@@ -6,7 +6,7 @@ export async function onRequest({ request, env, next }) {
   const [scheme, encoded] = auth.split(" ");
   if (scheme === "Basic" && encoded) {
     const [user, pass] = atob(encoded).split(":");
-    if (user === (env.REVIEW_USER || "sakanhub") && pass === env.REVIEW_PASS) {
+    if (user === (env.REVIEW_USER || "skn") && pass === env.REVIEW_PASS) {
       const res = await next();
       const out = new Response(res.body, res);
       out.headers.set("X-Robots-Tag", "noindex, nofollow, noarchive");
@@ -15,6 +15,6 @@ export async function onRequest({ request, env, next }) {
   }
   return new Response("Authentication required", {
     status: 401,
-    headers: { "WWW-Authenticate": 'Basic realm="SakanHub review", charset="UTF-8"', "X-Robots-Tag": "noindex" },
+    headers: { "WWW-Authenticate": 'Basic realm="SKN review", charset="UTF-8"', "X-Robots-Tag": "noindex" },
   });
 }

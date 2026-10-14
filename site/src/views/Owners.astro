@@ -11,7 +11,7 @@ interface Props { lang: Lang }
 const { lang } = Astro.props;
 const L = (ar: string, en: string) => (lang === "ar" ? ar : en);
 const crumbs = [{ key: "owners" as const, name: L("لملّاك العقارات", "For building owners") }];
-const wa = `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(L("السلام عليكم، عندي عقار وأبي تقييمه لسكن العمّال.", "Hello SakanHub, I own a building and would like it assessed for worker housing."))}`;
+const wa = `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(L("السلام عليكم، عندي عقار وأبي تقييمه لسكن العمّال.", "Hello SKN, I own a building and would like it assessed for worker housing."))}`;
 ---
 <Base lang={lang} pageKey="owners" crumbs={crumbs}>
   <PageHead lang={lang} crumbs={crumbs}

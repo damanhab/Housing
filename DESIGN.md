@@ -156,6 +156,8 @@ A warm-neutral system with one decisive accent, taken directly from the final br
 **Character:** One family designed for both scripts, so Arabic and English pages carry the same weight and rhythm. Wide, open and light; it matches the logo lettering. Weight carries the hierarchy (400 for reading, 700 for anything to scan) rather than many sizes. Readex Pro tops out at 700; never fake heavier weights. Keep the `HEXP` axis at 0. Self-host the variable font (`brand/skn/fonts/ReadexPro-VF.ttf`, subset to Arabic + Latin as woff2).
 
 ### Hierarchy
+- **Arabic headings** use a line height of 1.3 (Latin 1.15): Readex Pro's Arabic marks (shadda, tanween) need the extra room.
+- **Nav links** are 600, so the English bar fits the 1200px container; buttons and labels stay 700.
 - **Display** (700, clamp 2.3–3.9rem, 1.15): one H1 per page.
 - **Headline** (700, clamp 1.8–2.6rem, 1.15): section headings.
 - **Title** (700, clamp 1.15–1.3rem): card and list headings; also the support line under section heads, at regular weight.
@@ -235,7 +237,8 @@ Firm and friendly: heavy labels, solid fills, clear states.
 - Openly licensed stock or our own photos only, credited in `site/public/images/CREDITS.md`. Never AI-generated images presented as our buildings.
 
 ### Brand marks (SKN, 14 Oct 2026)
-- **Header:** `skn-horizontal-color.svg` (symbol + SKN) on English pages and `skn-arabic-color.svg` (symbol on the right + «سكن») on Arabic pages, about 32px tall. The bilingual lockup (`skn-bilingual-color.svg`) goes in the footer and on wide screens if there's room.
+- **Header:** `skn-horizontal-color.svg` (symbol + SKN) on English pages and `skn-arabic-color.svg` (symbol on the right + «سكن») on Arabic pages. Both are sized so the symbol is about 24px tall (files 40px and 52px tall; 34px and 44px on phones). Each lockup file carries its clear space inside, so a small negative inline-start margin lines the ink up with the content edge. The bilingual lockup is used in the footer (reversed) only; it doesn't fit the header alongside the nav.
+- **Brand name in running Arabic text:** write «سكن» in guillemets where the plain word would read as "housing" (e.g. «سكن» شركة سعودية…). Titles use "… | سكن".
 - **Clay brand band:** the one full-clay section closing the home page, using `skn-horizontal-on-clay.svg` / `skn-arabic-on-clay.svg`, a white button and a white-outline WhatsApp button.
 - **Step markers:** the house markers are retired. Use simple square tiles (Ink, 10px radius) with the number in white Readex Pro Bold; step 1 is Clay.
 - **Watermark:** if used, one very faint symbol (three floors, white at about 4.5 % opacity) bleeding off the corner of the ink rules band. Nowhere else.

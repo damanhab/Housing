@@ -46,11 +46,12 @@ const graph = [org, ...(breadcrumb ? [breadcrumb] : []), ...jsonld];
   <link rel="alternate" hreflang="en" href={alt.en} />
   <link rel="alternate" hreflang="x-default" href={alt.ar} />
   <link rel="alternate" type="text/markdown" href={href(pageKey, lang).replace(/\/$/, "") + ".md"} />
-  <link rel="icon" href="/favicon.ico" sizes="32x32" />
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
   <meta name="theme-color" content="#1D2433" />
-  <link rel="preload" href={lang === "ar" ? "/fonts/almarai-extrabold.woff2" : "/fonts/nunito-latin-var.woff2"} as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href={lang === "ar" ? "/fonts/readex-pro-arabic.woff2" : "/fonts/readex-pro-latin.woff2"} as="font" type="font/woff2" crossorigin />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content={lang === "ar" ? `${BRAND.nameAr} | ${BRAND.name}` : BRAND.name} />
   <meta property="og:title" content={title} />
@@ -60,7 +61,7 @@ const graph = [org, ...(breadcrumb ? [breadcrumb] : []), ...jsonld];
   <meta property="og:image" content={`${SITE_URL}/og-${lang}.jpg`} />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content={lang === "ar" ? "سكن هب: كل سكن عمّالك في مكان واحد" : "SakanHub: All your crew housing. One hub."} />
+  <meta property="og:image:alt" content={lang === "ar" ? "سكن: كل سكن عمّالك في مكان واحد" : "SKN: All your crew housing. One hub."} />
   <meta name="twitter:card" content="summary_large_image" />
   <script type="application/ld+json" set:html={JSON.stringify(graph.length === 1 ? graph[0] : graph)} />
   <script is:inline>

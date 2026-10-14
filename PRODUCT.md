@@ -90,7 +90,7 @@ Success means a company gets licensed beds in the right city quickly, and owners
 - **Photography:** generic or openly licensed stock photos (e.g. Unsplash / Pexels licences) are acceptable for the initial site. Replace them with real building photos later. AI-generated imagery presented as our real buildings is not acceptable.
 - **Cleaning:** say **periodic cleaning** only; frequency is undecided (founder, 6 Oct 2026). The regulation requires a contracted cleaning company or dedicated staff with a cleaning log (`research/background/regulation-block-a.md` §3.2).
 - **Service-line facts grounded in regulation:** a full-time Saudi supervisor, a bed / bedding / lockable wardrobe per person, catering or a central kitchen. These are licensing requirements, so a licensed SakanHub bed includes them (`research/background/regulation-block-a.md` §3.2).
-- **Usable facts:** the regulation facts above (cite MOMAH / Balady / RCJY / MODON), the brand assets, and the domain decision `sakanhub.sa`.
+- **Usable facts:** the regulation facts above (cite MOMAH / Balady / RCJY / MODON), the brand assets. The SKN domain is not decided yet; the site uses `skn.sa` as a marked placeholder (`site/src/lib/site.ts`).
 
 ## Product Principles
 

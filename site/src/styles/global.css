@@ -1,8 +1,9 @@
-/* SakanHub — global styles. Tokens follow brand/logo/final/guidelines.md. */
-@font-face { font-family: "Nunito"; src: url("/fonts/nunito-latin-var.woff2") format("woff2"); font-weight: 200 1000; font-display: swap; }
-@font-face { font-family: "Almarai"; src: url("/fonts/almarai-regular.woff2") format("woff2"); font-weight: 400; font-display: swap; }
-@font-face { font-family: "Almarai"; src: url("/fonts/almarai-bold.woff2") format("woff2"); font-weight: 700; font-display: swap; }
-@font-face { font-family: "Almarai"; src: url("/fonts/almarai-extrabold.woff2") format("woff2"); font-weight: 800; font-display: swap; }
+/* SKN (سكن): global styles. Tokens follow brand/skn/guidelines.md and DESIGN.md. */
+/* Readex Pro: one variable family for Arabic and Latin (wght 160-700, HEXP pinned to 0), split by script so each page loads only what it uses. */
+@font-face { font-family: "Readex Pro"; src: url("/fonts/readex-pro-arabic.woff2") format("woff2"); font-weight: 160 700; font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200F, U+2010-2011, U+204F, U+2E41, U+00AB, U+00BB; }
+@font-face { font-family: "Readex Pro"; src: url("/fonts/readex-pro-latin.woff2") format("woff2"); font-weight: 160 700; font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2190-2199, U+2212, U+2215, U+FEFF, U+FFFD; }
 
 :root {
   --clay: #C8502A;
@@ -21,8 +22,9 @@
   --ok: #2E7D5B;
   --err: #B3261E;
 
-  --font-ar: "Almarai", "Nunito", system-ui, "Segoe UI", Tahoma, sans-serif;
-  --font-en: "Nunito", "Almarai", system-ui, "Segoe UI", sans-serif;
+  /* One family for both scripts; the two names stay so components can still say which script they mean. */
+  --font-ar: "Readex Pro", system-ui, "Segoe UI", Tahoma, sans-serif;
+  --font-en: "Readex Pro", system-ui, "Segoe UI", sans-serif;
 
   --step--1: clamp(0.84rem, 0.82rem + 0.1vw, 0.9rem);
   --step-0: clamp(1rem, 0.97rem + 0.15vw, 1.0625rem);
@@ -52,11 +54,13 @@ html[lang="ar"] body { font-family: var(--font-ar); }
 html[lang="en"] body { font-family: var(--font-en); }
 ::selection { background: var(--clay); color: var(--white); }
 
-h1, h2, h3, h4 { margin: 0; line-height: 1.15; text-wrap: balance; font-weight: 800; color: var(--ink); }
+h1, h2, h3, h4 { margin: 0; line-height: 1.15; text-wrap: balance; font-weight: 700; color: var(--ink); }
 html[lang="en"] h1, html[lang="en"] h2 { letter-spacing: -0.02em; }
+/* Readex Pro Arabic carries tall marks (shadda, tanween): give Arabic headings a little more leading than Latin. */
+html[lang="ar"] :is(h1, h2, h3, h4) { line-height: 1.3; }
 h1 { font-size: var(--step-4); }
 h2 { font-size: var(--step-3); }
-h3 { font-size: var(--step-1); font-weight: 800; }
+h3 { font-size: var(--step-1); font-weight: 700; }
 p { margin: 0; text-wrap: pretty; }
 a { color: inherit; text-decoration-color: color-mix(in srgb, currentColor 35%, transparent); text-underline-offset: 0.22em; text-decoration-thickness: 1.5px; }
 a:hover { text-decoration-color: currentColor; }
@@ -83,7 +87,7 @@ time { white-space: nowrap; direction: ltr; display: inline-block; }
   --bg: var(--clay); --fg: var(--white);
   display: inline-flex; align-items: center; justify-content: center; gap: var(--s2);
   min-height: 48px; padding: 0 var(--s5); border-radius: 10px; border: 1px solid transparent;
-  background: var(--bg); color: var(--fg); font: inherit; font-weight: 800; font-size: var(--step-0);
+  background: var(--bg); color: var(--fg); font: inherit; font-weight: 700; font-size: var(--step-0);
   text-decoration: none; cursor: pointer; white-space: nowrap;
   transition: background-color 160ms var(--ease-out), transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
   box-shadow: 0 1px 2px rgb(158 60 29 / 0.25);
@@ -100,13 +104,13 @@ time { white-space: nowrap; direction: ltr; display: inline-block; }
 .btn svg { width: 18px; height: 18px; flex: none; }
 html[dir="rtl"] .flip { transform: scaleX(-1); }
 
-.link-arrow { display: inline-flex; align-items: center; gap: var(--s2); font-weight: 800; text-decoration: none; color: var(--ink); }
+.link-arrow { display: inline-flex; align-items: center; gap: var(--s2); font-weight: 700; text-decoration: none; color: var(--ink); }
 .link-arrow svg { width: 16px; height: 16px; transition: transform 200ms var(--ease-out); }
 .link-arrow:hover svg { transform: translateX(3px); }
 html[dir="rtl"] .link-arrow:hover svg { transform: translateX(-3px) scaleX(-1); }
 
 /* Skip link */
-.skip { position: absolute; inset-inline-start: var(--s4); top: -100px; z-index: 50; background: var(--ink); color: var(--white); padding: var(--s3) var(--s4); border-radius: 8px; font-weight: 800; }
+.skip { position: absolute; inset-inline-start: var(--s4); top: -100px; z-index: 50; background: var(--ink); color: var(--white); padding: var(--s3) var(--s4); border-radius: 8px; font-weight: 700; }
 .skip:focus { top: var(--s4); }
 
 /* Inner pages: a two-column body (content + sticky request aside) */
@@ -120,17 +124,17 @@ html[dir="rtl"] .link-arrow:hover svg { transform: translateX(-3px) scaleX(-1); 
 .facts { margin: 0; display: grid; border-block-start: 1px solid var(--line); }
 .facts > div { display: grid; grid-template-columns: minmax(10rem, 0.8fr) 1.2fr; gap: var(--s4); padding-block: var(--s4); border-block-end: 1px solid var(--line); }
 .facts dt { color: var(--ink-2); }
-.facts dd { margin: 0; font-weight: 800; }
+.facts dd { margin: 0; font-weight: 700; }
 .list-check { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s3); }
 .list-check li { display: flex; gap: var(--s3); align-items: baseline; }
 .list-check li::before { content: ""; flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--ink); transform: translateY(-2px); }
 .list-check li.off { color: var(--ink-3); }
 .list-check li.off::before { background: var(--line-strong); }
-.tbd { font-family: var(--font-en); font-weight: 800; font-size: 0.75rem; letter-spacing: 0.04em; padding: 2px 9px; border-radius: 999px; border: 1px dashed var(--line-strong); color: var(--ink-3); margin-inline-start: var(--s2); }
+.tbd { font-family: var(--font-en); font-weight: 700; font-size: 0.75rem; letter-spacing: 0.04em; padding: 2px 9px; border-radius: 999px; border: 1px dashed var(--line-strong); color: var(--ink-3); margin-inline-start: var(--s2); }
 .source { font-size: var(--step--1); color: var(--ink-3); }
 .ordered { margin: 0; padding: 0; list-style: none; counter-reset: o; display: grid; gap: var(--s4); }
 .ordered li { counter-increment: o; display: grid; grid-template-columns: 36px 1fr; gap: var(--s3); align-items: start; }
-.ordered li::before { content: counter(o); width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--line-strong); display: grid; place-items: center; font-weight: 800; font-size: 0.9rem; font-variant-numeric: tabular-nums; }
+.ordered li::before { content: counter(o); width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--line-strong); display: grid; place-items: center; font-weight: 700; font-size: 0.9rem; font-variant-numeric: tabular-nums; }
 @media (max-width: 1000px) { .body-grid { grid-template-columns: 1fr; } .body-grid > aside { position: static; } }
 @media (max-width: 640px) { .facts > div { grid-template-columns: 1fr; gap: var(--s1); } }
 

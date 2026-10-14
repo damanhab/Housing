@@ -1,7 +1,7 @@
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
-  site: "https://sakanhub.sa",
+  site: "https://skn.sa",
   output: "static",
   trailingSlash: "always",
   build: { format: "directory" },

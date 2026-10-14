@@ -18,7 +18,7 @@ const hasWebp = webp !== img.file && existsSync(join(process.cwd(), "public", "i
         <img src={`/images/${img.file}`} alt={img.alt[lang]} style={img.pos ? `object-position: ${img.pos}` : undefined} loading={eager ? "eager" : "lazy"} decoding="async" fetchpriority={eager ? "high" : undefined} />
       </picture>
     : <div class="ph" role="img" aria-label={img.alt[lang]}>
-        <svg viewBox="0 0 120 80" aria-hidden="true"><path d="M44 62V40l16-14 16 14v22" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="60" cy="58" r="4.5" fill="currentColor"/></svg>
+        <svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="27.33" fill="currentColor"/><rect y="36.33" width="100" height="27.33" fill="currentColor"/><rect y="72.67" width="39" height="27.33" fill="currentColor"/><rect x="61" y="72.67" width="39" height="27.33" fill="currentColor"/></svg>
       </div>}
 </figure>
 <style>
@@ -26,5 +26,5 @@ const hasWebp = webp !== img.file && existsSync(join(process.cwd(), "public", "i
   .photo picture { display: block; width: 100%; height: 100%; }
   .photo img { width: 100%; height: 100%; object-fit: cover; }
   .ph { width: 100%; height: 100%; display: grid; place-items: center; color: var(--line-strong); background: linear-gradient(160deg, var(--sand-2), var(--sand)); }
-  .ph svg { width: 22%; min-width: 64px; }
+  .ph svg { width: 14%; min-width: 40px; max-width: 72px; }
 </style>

@@ -93,7 +93,7 @@ const jsonld = [{
   .calc { display: grid; gap: var(--s5); }
   .rooms { display: grid; gap: var(--s3); }
   .room { display: flex; gap: var(--s3); align-items: end; }
-  .room label { flex: 1; display: grid; gap: var(--s2); font-weight: 800; font-size: 0.92rem; }
+  .room label { flex: 1; display: grid; gap: var(--s2); font-weight: 700; font-size: 0.92rem; }
   input { min-height: 48px; padding: 0 var(--s4); border: 1px solid var(--line-strong); border-radius: 10px; font: inherit; font-weight: 700; color: var(--ink); background: var(--white); width: 100%; }
   input:focus-visible { outline: none; border-color: var(--clay); box-shadow: 0 0 0 3px var(--clay-wash); }
   input.small { width: 7rem; }
@@ -101,10 +101,10 @@ const jsonld = [{
   .rm:hover { background: var(--sand); color: var(--ink); }
   .rm :global(svg) { width: 18px; height: 18px; }
   .calc-actions { display: flex; flex-wrap: wrap; gap: var(--s4); align-items: center; justify-content: space-between; }
-  .inline { display: flex; align-items: center; justify-content: space-between; gap: var(--s4); font-weight: 800; font-size: 0.92rem; }
+  .inline { display: flex; align-items: center; justify-content: space-between; gap: var(--s4); font-weight: 700; font-size: 0.92rem; }
   .result { position: sticky; top: 96px; background: var(--ink); color: #E9ECF2; border-radius: var(--radius-lg); padding: var(--s6); display: grid; gap: var(--s3); }
   .r-label { color: #B9C0CE; font-weight: 700; }
-  .r-big { font-size: clamp(3.5rem, 2.5rem + 4vw, 5.5rem); font-weight: 800; line-height: 1; color: var(--white); }
+  .r-big { font-size: clamp(3.5rem, 2.5rem + 4vw, 5.5rem); font-weight: 700; line-height: 1; color: var(--white); }
   .r-unit { color: #B9C0CE; margin-block-start: -6px; }
   .result .facts { border-color: #39425A; }
   .result .facts > div { border-color: #39425A; grid-template-columns: 1fr auto; }
@@ -112,6 +112,8 @@ const jsonld = [{
   .result .facts dd { color: var(--white); }
   .result .facts > div.limit dd { color: var(--clay-light); }
   .result .source { color: #9AA3B5; }
-  .result .btn { margin-block-start: var(--s3); }
-  @media (max-width: 1000px) { .calc-wrap { grid-template-columns: 1fr; } .result { position: static; } }
+  .result .btn { margin-block-start: var(--s3); white-space: normal; text-align: center; }
+  @media (max-width: 560px) { .result { padding: var(--s5); } }
+  .calc-wrap > *, .calc, .room label, .inline { min-width: 0; }
+  @media (max-width: 1000px) { .calc-wrap { grid-template-columns: minmax(0, 1fr); } .result { position: static; } }
 </style>

@@ -40,7 +40,7 @@ export function llmsTxt(): string {
   return [
     `# ${BRAND.name} (${BRAND.nameAr})`,
     "",
-    "> SakanHub is a Saudi workforce-housing service: companies send one request (city, headcount, start date) and SakanHub arranges licensed worker accommodation (سكن عمال / السكن الجماعي للأفراد), with transport and catering, in Riyadh, Khobar and Dammam. Every bed is licensed and matched to the company's Qiwa headcount.",
+    "> SKN (سكن) is a Saudi workforce-housing service: companies send one request (city, headcount, start date) and SKN arranges licensed worker accommodation (سكن عمال / السكن الجماعي للأفراد), with transport and catering, in Riyadh, Khobar and Dammam. Every bed is licensed and matched to the company's Qiwa headcount.",
     "",
     "## Key facts",
     `- Name: ${BRAND.name} (Arabic: ${BRAND.nameAr}). Website: ${SITE_URL}`,

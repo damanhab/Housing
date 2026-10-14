@@ -15,7 +15,7 @@ const L = (ar: string, en: string) => (lang === "ar" ? ar : en);
 const titles: Partial<Record<PageKey, [string, string, string?]>> = {
   faq: [L("أسئلة شائعة عن سكن العمّال", "Worker housing FAQ"), L("أكثر الأسئلة اللي تجينا، وإجاباتها باختصار.", "The questions we hear most, answered briefly."), L("أسئلة شائعة", "FAQ")],
   glossary: [L("مصطلحات السكن الجماعي", "Worker housing glossary"), L("كل مصطلح بسطر واحد.", "Each term in one line."), L("المصطلحات", "Glossary")],
-  about: [L("من نحن", "About SakanHub"), L("شركة سعودية متخصّصة في سكن العمّال.", "A Saudi workforce-housing company.")],
+  about: [L("من نحن", "About SKN"), L("شركة سعودية متخصّصة في سكن العمّال.", "A Saudi workforce-housing company.")],
   resources: [L("مقالات وأدلة", "Resources"), L("أدلة عملية عن سكن العمّال في السعودية.", "Practical guides on worker housing in Saudi Arabia.")],
   request: [L("اطلب سكن لطاقمك", "Request housing for your crew"), L("أربع معلومات بس، ونتواصل معك.", "Four details, and we'll be in touch.")],
   thanks: [L("وصلنا طلبك", "We have your request"), L("بنتصل فيك على الرقم اللي أرسلته.", "We'll call you on the number you sent.")],
@@ -59,7 +59,6 @@ const solo = pageKey !== "request";
             <div><dt>{L("الاسم", "Name")}</dt><dd>{BRAND.name} · {BRAND.nameAr}</dd></div>
             <div><dt>{L("وش نسوي", "What we do")}</dt><dd>{L("نوفّر للشركات سكن عمّال مرخّص، مع النقل والإعاشة وإدارة السكن، ونشغّل المباني لملّاكها.", "Licensed worker housing for companies, with transport, meals and management, and building operation for owners.")}</dd></div>
             <div><dt>{L("المدن", "Cities")}</dt><dd>{ACTIVE_CITIES.map((c) => c.name[lang]).join(L("، ", ", "))}</dd></div>
-            <div><dt>{L("الموقع", "Website")}</dt><dd dir="ltr">sakanhub.sa</dd></div>
           </dl>
         </section>
       )}
@@ -116,6 +115,6 @@ const solo = pageKey !== "request";
   .res-h { font-size: var(--step-1); margin-block: var(--s6) var(--s3); }
   .res-list { list-style: none; margin: 0; padding: 0; border-block-start: 1px solid var(--line); }
   .res-list li { display: flex; justify-content: space-between; align-items: center; gap: var(--s4); padding-block: var(--s4); border-block-end: 1px solid var(--line); }
-  .res-t { font-weight: 800; color: var(--ink-3); }
+  .res-t { font-weight: 700; color: var(--ink-3); }
   .res-list .tbd { font-family: inherit; letter-spacing: 0; white-space: nowrap; }
 </style>

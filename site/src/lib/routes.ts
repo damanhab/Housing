@@ -21,7 +21,7 @@ export const ROUTES: Route[] = [
   {
     key: "home",
     slug: { ar: "", en: "" },
-    title: { ar: "سكن هب | كل سكن عمّالك في مكان واحد", en: "SakanHub | All your crew housing. One hub." },
+    title: { ar: "سكن | كل سكن عمّالك في مكان واحد", en: "SKN | All your crew housing. One hub." },
     description: {
       ar: "سكن عمّال مرخّص ومريح للشركات في الرياض والخبر والدمام، مع النقل والإعاشة وإدارة السكن.",
       en: "Comfortable, licensed worker housing for companies in Riyadh, Khobar and Dammam, with transport, meals and housing management.",
@@ -34,17 +34,17 @@ export const ROUTES: Route[] = [
   {
     key: "companies",
     slug: { ar: "للشركات", en: "companies" },
-    title: { ar: "سكن العمّال للشركات | سكن هب", en: "Worker housing for companies | SakanHub" },
+    title: { ar: "سكن العمّال للشركات | سكن", en: "Worker housing for companies | SKN" },
     description: {
       ar: "نوفّر لعمّال شركتك سكناً مرخّصاً يطابق عددهم في قوى، ونتولّى النقل والإعاشة والتشغيل.",
       en: "Licensed housing for your workers, matched to your Qiwa headcount, with transport, meals and day-to-day running handled.",
     },
-    summary: { ar: "كيف تحصل الشركات على سكن عمّال مرخّص عبر سكن هب.", en: "How companies get licensed worker housing through SakanHub." },
+    summary: { ar: "كيف تحصل الشركات على سكن عمّال مرخّص عن طريق «سكن».", en: "How companies get licensed worker housing through SKN." },
   },
   {
     key: "owners",
     slug: { ar: "لملاك-العقارات", en: "owners" },
-    title: { ar: "حوّل عمارتك إلى سكن عمّال مرخّص | سكن هب", en: "Turn your building into licensed worker housing | SakanHub" },
+    title: { ar: "حوّل عمارتك إلى سكن عمّال مرخّص | سكن", en: "Turn your building into licensed worker housing | SKN" },
     description: {
       ar: "عندك عمارة أو مجمّع؟ نرخّصه سكن عمّال، ونشغّله عنك، ونجيب له شركات تسكّن فيه عمّالها.",
       en: "Own a building or compound? We work out its licensed capacity, get it ready for licensing, then run it and fill it.",
@@ -54,7 +54,7 @@ export const ROUTES: Route[] = [
   {
     key: "svc-housing",
     slug: { ar: "خدمات/السكن", en: "services/housing" },
-    title: { ar: "سكن عمّال مرخّص ومؤثّث | سكن هب", en: "Licensed, furnished worker housing | SakanHub" },
+    title: { ar: "سكن عمّال مرخّص ومؤثّث | سكن", en: "Licensed, furnished worker housing | SKN" },
     description: {
       ar: "غرف مؤثّثة في مبانٍ مرخّصة للسكن الجماعي، بطاقة محسوبة حسب الاشتراطات، ومشرف سعودي، ونظافة دورية.",
       en: "Furnished rooms in buildings licensed for group housing, sized to the rules, with a Saudi supervisor and periodic cleaning.",
@@ -64,7 +64,7 @@ export const ROUTES: Route[] = [
   {
     key: "svc-transport",
     slug: { ar: "خدمات/النقل", en: "services/transport" },
-    title: { ar: "نقل العمّال بين السكن والموقع | سكن هب", en: "Worker transport to site | SakanHub" },
+    title: { ar: "نقل العمّال بين السكن والموقع | سكن", en: "Worker transport to site | SKN" },
     description: {
       ar: "باصات توصل عمّالك من السكن إلى مواقع العمل وترجعهم، حسب ورديّات شركتك.",
       en: "Buses that take your crew from housing to site and back, timed to your shifts.",
@@ -74,7 +74,7 @@ export const ROUTES: Route[] = [
   {
     key: "svc-catering",
     slug: { ar: "خدمات/الإعاشة", en: "services/catering" },
-    title: { ar: "إعاشة ووجبات العمّال | سكن هب", en: "Meals and catering for workers | SakanHub" },
+    title: { ar: "إعاشة ووجبات العمّال | سكن", en: "Meals and catering for workers | SKN" },
     description: {
       ar: "وجبات تناسب أذواق عمّالك وجنسياتهم، من مطبخ مركزي أو مقدّم إعاشة، كما تشترط أنظمة السكن الجماعي.",
       en: "Meals planned around your crew's tastes, from a central kitchen or caterer, as group-housing rules require.",
@@ -84,7 +84,7 @@ export const ROUTES: Route[] = [
   {
     key: "svc-management",
     slug: { ar: "خدمات/إدارة-السكن", en: "services/management" },
-    title: { ar: "إدارة وتشغيل سكن العمّال | سكن هب", en: "Worker housing management | SakanHub" },
+    title: { ar: "إدارة وتشغيل سكن العمّال | سكن", en: "Worker housing management | SKN" },
     description: {
       ar: "نشغّل السكن عنك: إشراف وصيانة ونظافة وأمن، وتجديد الرخصة وشهادات إثبات السكن في وقتها.",
       en: "We run the housing for you: supervision, maintenance, cleaning, security, and licence and certificate renewals on time.",
@@ -99,7 +99,7 @@ export const ROUTES: Route[] = [
   {
     key: "regulations",
     slug: { ar: "دليل-اشتراطات-السكن-الجماعي", en: "saudi-worker-housing-regulations" },
-    title: { ar: "اشتراطات سكن العمّال ورخصة السكن الجماعي | سكن هب", en: "Saudi worker housing regulations | SakanHub" },
+    title: { ar: "اشتراطات سكن العمّال ورخصة السكن الجماعي | سكن", en: "Saudi worker housing regulations | SKN" },
     description: {
       ar: "دليل مختصر لرخصة السكن الجماعي: من تلزمه، وكيف تُحسب الطاقة الاستيعابية، والربط بين بلدي وقوى.",
       en: "A short guide to group-housing licensing in Saudi Arabia: who must comply, how capacity is calculated, and the Balady–Qiwa link.",
@@ -112,7 +112,7 @@ export const ROUTES: Route[] = [
   {
     key: "calculator",
     slug: { ar: "حاسبة-الطاقة-الاستيعابية", en: "worker-housing-capacity-calculator" },
-    title: { ar: "حاسبة الطاقة الاستيعابية لسكن العمّال | سكن هب", en: "Worker housing capacity calculator | SakanHub" },
+    title: { ar: "حاسبة الطاقة الاستيعابية لسكن العمّال | سكن", en: "Worker housing capacity calculator | SKN" },
     description: {
       ar: "اعرف كم عاملاً يستوعب مبناك نظاماً: 4 م² لكل شخص، و10 أشخاص كحدّ أقصى للغرفة، ودورة مياه لكل 8.",
       en: "Work out how many workers your rooms can legally house: 4 m² per person, 10 per room maximum, one sanitary set per 8.",
@@ -125,7 +125,7 @@ export const ROUTES: Route[] = [
   {
     key: "resources",
     slug: { ar: "مقالات", en: "resources" },
-    title: { ar: "مقالات وأدلة عن سكن العمّال | سكن هب", en: "Worker housing resources | SakanHub" },
+    title: { ar: "مقالات وأدلة عن سكن العمّال | سكن", en: "Worker housing resources | SKN" },
     description: {
       ar: "مقالات وأدلة عملية عن سكن العمّال في السعودية: الترخيص، والعقود، والإعاشة، والتشغيل.",
       en: "Practical articles and guides on worker housing in Saudi Arabia: licensing, contracts, catering and operations.",
@@ -135,17 +135,17 @@ export const ROUTES: Route[] = [
   {
     key: "faq",
     slug: { ar: "الاسئلة-الشائعة", en: "faq" },
-    title: { ar: "أسئلة شائعة عن سكن العمّال | سكن هب", en: "Worker housing FAQ | SakanHub" },
+    title: { ar: "أسئلة شائعة عن سكن العمّال | سكن", en: "Worker housing FAQ | SKN" },
     description: {
-      ar: "إجابات واضحة عن رخصة السكن الجماعي، والطاقة الاستيعابية، وبدل السكن، وطلب السكن من سكن هب.",
-      en: "Clear answers on group-housing licences, capacity, housing allowances and requesting housing from SakanHub.",
+      ar: "إجابات واضحة عن رخصة السكن الجماعي، والطاقة الاستيعابية، وبدل السكن، وطلب السكن من «سكن».",
+      en: "Clear answers on group-housing licences, capacity, housing allowances and requesting housing from SKN.",
     },
     summary: { ar: "أسئلة شائعة وإجاباتها.", en: "Frequently asked questions, answered." },
   },
   {
     key: "glossary",
     slug: { ar: "مصطلحات", en: "glossary" },
-    title: { ar: "مصطلحات السكن الجماعي | سكن هب", en: "Worker housing glossary | SakanHub" },
+    title: { ar: "مصطلحات السكن الجماعي | سكن", en: "Worker housing glossary | SKN" },
     description: {
       ar: "معاني المصطلحات: رخصة السكن الجماعي، شهادة إثبات السكن، الطاقة الاستيعابية، بلدي، قوى، الهيئة الملكية.",
       en: "Plain definitions: group-housing licence, housing proof certificate, capacity, Balady, Qiwa, RCJY, MODON.",
@@ -155,17 +155,17 @@ export const ROUTES: Route[] = [
   {
     key: "about",
     slug: { ar: "من-نحن", en: "about" },
-    title: { ar: "من نحن | سكن هب", en: "About SakanHub" },
+    title: { ar: "من نحن | سكن", en: "About SKN" },
     description: {
-      ar: "سكن هب شركة سعودية متخصّصة في سكن العمّال: نوفّر للشركات سكناً مرخّصاً، ونشغّل المباني لملّاكها.",
-      en: "SakanHub is a Saudi workforce-housing company: licensed housing for companies, and building operation for owners.",
+      ar: "«سكن» شركة سعودية متخصّصة في سكن العمّال: نوفّر للشركات سكناً مرخّصاً، ونشغّل المباني لملّاكها.",
+      en: "SKN is a Saudi workforce-housing company: licensed housing for companies, and building operation for owners.",
     },
-    summary: { ar: "من نحن.", en: "About SakanHub." },
+    summary: { ar: "من نحن.", en: "About SKN." },
   },
   {
     key: "request",
     slug: { ar: "طلب-سكن", en: "request" },
-    title: { ar: "اطلب سكناً لعمّالك | سكن هب", en: "Request worker housing | SakanHub" },
+    title: { ar: "اطلب سكناً لعمّالك | سكن", en: "Request worker housing | SKN" },
     description: {
       ar: "أرسل طلب السكن: المدينة وعدد العمّال وموعد البدء ورقم جوالك، ونتواصل معك.",
       en: "Send a housing request: city, headcount, start date and your number, and we'll get back to you.",
@@ -175,7 +175,7 @@ export const ROUTES: Route[] = [
   {
     key: "thanks",
     slug: { ar: "تم-استلام-طلبك", en: "thank-you" },
-    title: { ar: "وصلنا طلبك | سكن هب", en: "Request received | SakanHub" },
+    title: { ar: "وصلنا طلبك | سكن", en: "Request received | SKN" },
     description: { ar: "وصلنا طلبك وبنتواصل معك.", en: "We have your request and will be in touch." },
     summary: { ar: "", en: "" },
     inSitemap: false,
@@ -183,7 +183,7 @@ export const ROUTES: Route[] = [
   {
     key: "privacy",
     slug: { ar: "الخصوصية", en: "privacy" },
-    title: { ar: "سياسة الخصوصية | سكن هب", en: "Privacy policy | SakanHub" },
+    title: { ar: "سياسة الخصوصية | سكن", en: "Privacy policy | SKN" },
     description: {
       ar: "كيف نجمع بيانات طلبات السكن ونستخدمها ونحميها وفق نظام حماية البيانات الشخصية.",
       en: "How we collect, use and protect housing-request data under Saudi Arabia's Personal Data Protection Law.",
@@ -197,7 +197,7 @@ function cityRoute(id: string, ar: string, en: string, hidden = false): Route[] 
   return [{
     key: `city-${id}` as PageKey,
     slug: { ar: arSlug, en: `worker-housing-${id}` },
-    title: { ar: `سكن عمّال في ${ar} | سكن هب`, en: `Worker housing in ${en} | SakanHub` },
+    title: { ar: `سكن عمّال في ${ar} | سكن`, en: `Worker housing in ${en} | SKN` },
     description: {
       ar: `سكن عمّال مرخّص في ${ar} لشركتك، مع النقل والإعاشة، ومسار الترخيص الصحيح للمدينة.`,
       en: `Licensed worker housing in ${en} for your company, with transport, meals and the right licensing track for the city.`,
@@ -219,6 +219,6 @@ export function href(key: PageKey, lang: Lang): string {
 }
 
 /** Percent-encoded absolute URL (for sitemap, canonical, hreflang). */
-export function absUrl(key: PageKey, lang: Lang, site = "https://sakanhub.sa"): string {
+export function absUrl(key: PageKey, lang: Lang, site = "https://skn.sa"): string {
   return site + encodeURI(href(key, lang));
 }

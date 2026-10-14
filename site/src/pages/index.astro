@@ -1,14 +1,15 @@
 ---
 // Root: Arabic is the default language (x-default). Static hosts should also 301 "/" -> "/ar/".
+import { SITE_URL, BRAND } from "../lib/site";
 ---
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="refresh" content="0; url=/ar/" />
-  <link rel="canonical" href="https://sakanhub.sa/ar/" />
+  <link rel="canonical" href={`${SITE_URL}/ar/`} />
   <meta name="robots" content="noindex" />
-  <title>سكن هب | SakanHub</title>
+  <title>{BRAND.nameAr} | {BRAND.name}</title>
 </head>
-<body><a href="/ar/">سكن هب</a> · <a href="/en/">SakanHub</a></body>
+<body><a href="/ar/">{BRAND.nameAr}</a> · <a href="/en/">{BRAND.name}</a></body>
 </html>
