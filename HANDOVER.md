@@ -1,11 +1,11 @@
-# Handover: SakanHub (سكن هب)
+# Handover: SKN (سكن), formerly SakanHub
 
 Read this first if you're picking up the project, reviewing a pull request or continuing a session. It records what was decided with the founder, why, and what is still open. **Update it at the end of every working session** with a dated entry, newest at the top of the log.
 
 ## What this is
 
-- **SakanHub** is a Saudi workforce-housing company: companies get licensed worker housing (plus transport, meals and management), and building owners get their buildings licensed, run and filled. Main competitor: Mnzil.
-- This repo holds the **website** (`site/`, Astro, Arabic first + English), the **brand** (`brand/logo/final/`) and the **research** (`research/`, `docs/`).
+- **SKN (سكن)** — renamed from SakanHub on 14 Oct 2026 — is a Saudi workforce-housing company: companies get licensed worker housing (plus transport, meals and management), and building owners get their buildings licensed, run and filled. Main competitor: Mnzil.
+- This repo holds the **website** (`site/`, Astro, Arabic first + English), the **brand** (`brand/skn/`; the old SakanHub files in `brand/logo/final/` are retired) and the **research** (`research/`, `docs/`).
 - The site is an **internal preview** for the founder. It is noindex, password-protected on Cloudflare, and not public.
 
 ## Where the source of truth lives
@@ -18,10 +18,11 @@ Read this first if you're picking up the project, reviewing a pull request or co
 | Regulation facts | `research/background/regulation-block-a.md` |
 | Strategy and positioning vs Mnzil | `research/opportunity-summary.md`, `research/brand-sakanhub.md` |
 | SEO / AI-search plan | `docs/landing-page-seo-plan.md` |
-| Logo rules | `brand/logo/final/guidelines.md` |
+| Brand: name, logo, colours, typeface | `brand/skn/guidelines.md` (SKN, 14 Oct 2026) |
 
 ## Standing decisions (don't undo without the founder)
 
+0. **Brand is SKN (سكن), 14 Oct 2026.** "Three floors and a door" logo, Readex Pro (Arabic + Latin), the same Clay / Ink / Sand / Light clay palette. Use only the files in `brand/skn/`. The site still shows SakanHub until it is migrated (see Open items).
 1. **A service, not listings.** Visitors tell us what they need; they don't browse buildings.
 2. **Company and services first.** The home page opens with the slogan, the company intro and services. The request form (with its live "what your request needs" readout) lives in its own section lower down, never in the hero or a sticky sidebar.
 3. **Slogans:** «كل سكن عمّالك في مكان واحد» / "All your crew housing. One hub." (home); «مبناك مليان، وبالك مرتاح» / "A full building, without the headache" (owners).
@@ -37,6 +38,10 @@ Read this first if you're picking up the project, reviewing a pull request or co
 12. **Visual direction:** "the category standard at full craft" (Stripe / Careem / Tabby bar). Clay `#C8502A` is only for buttons, the logo house and active states. Pages are flat; only the request panel and menus lift.
 
 ## Open items
+
+- **Website migration to SKN:** the site still uses the SakanHub logo, Nunito/Almarai and "SakanHub" in copy. It must move to `brand/skn/` (logo, web icons, Readex Pro) and the name SKN / سكن.
+- **SKN corporate name** (what the letters stand for), domains and social handles: not decided or checked. `sakanhub.sa` and the site's SakanHub URLs are on hold.
+- **Product names and slogans after the rename:** "SakanHub Places" and "One hub" came from the old name. Use "SKN" plainly until the founder decides.
 
 - **Meals (الإعاشة): kept for now** (founder, 7 Oct 2026). Earlier the founder considered dropping meals as a service. Regulation only requires a central kitchen *or* a catering service (`research/background/regulation-block-a.md` §3.2), so buildings with a shared kitchen stay compliant without it. Revisit with the founder before changing.
 - **Contact details:** phone, WhatsApp, email and CR number are still placeholders (`site/src/lib/site.ts`).
@@ -62,6 +67,13 @@ Read this first if you're picking up the project, reviewing a pull request or co
 - Branches: work on a feature branch and open a PR to `main`; the founder pulls locally with `git pull` / `git switch <branch>`.
 
 ## Log
+
+### 14 Oct 2026: rebrand to SKN (سكن)
+- **Pitch deck:** a 12-slide investor and client deck (still in SakanHub branding) is published as a Slides artifact, with a PDF in `docs/pitch/SakanHub-Pitch-Deck.pdf`.
+- **New name:** SKN, «سكن» written in Latin capitals. The founder explored acronyms; the formal name behind the letters is still open.
+- **New logo:** "three floors and a door" (concept 3A), in 3B-style colours: Ink floors, Clay top floor. Chosen over K-based marks, monograms, an emblem and Arabic-led symbols.
+- **Typeface:** Readex Pro (one family for Arabic and Latin), chosen over Unbounded, Alexandria and Cairo. The founder found it modern and light. Research behind it: Saudi brands now pair Arabic and Latin as equals (Saudia, Riyadh Air, Tamara 2025); three-letter names are common (BSF, STC, SNB); earth tones are current (Diriyah Tan, 2025).
+- **Files:** `brand/skn/` (build script, masters in six colourways, web icons, renders, overview, guidelines, font + OFL). `PRODUCT.md` and `DESIGN.md` are updated. The website is **not** migrated yet.
 
 ### 7 Oct 2026: Dyafa profile
 - The founder shared Dyafa's 2026 company profile; it's stored at `research/sources/dyafa-company-profile.pdf`, with a summary note in `research/competitor-dyafa.md`.

@@ -1,5 +1,5 @@
 ---
-name: SakanHub
+name: SKN
 description: Licensed worker housing in Saudi Arabia, requested in one step.
 colors:
   clay: "#C8502A"
@@ -19,30 +19,30 @@ colors:
   err: "#B3261E"
 typography:
   display:
-    fontFamily: "Almarai (ar) / Nunito (en), system-ui, sans-serif"
+    fontFamily: "Readex Pro, system-ui, sans-serif"
     fontSize: "clamp(2.3rem, 1.75rem + 2.6vw, 3.9rem)"
-    fontWeight: 800
+    fontWeight: 700
     lineHeight: 1.15
     letterSpacing: "-0.02em (en only)"
   headline:
-    fontFamily: "Almarai (ar) / Nunito (en), system-ui, sans-serif"
+    fontFamily: "Readex Pro, system-ui, sans-serif"
     fontSize: "clamp(1.8rem, 1.5rem + 1.4vw, 2.6rem)"
-    fontWeight: 800
+    fontWeight: 700
     lineHeight: 1.15
   title:
-    fontFamily: "Almarai (ar) / Nunito (en), system-ui, sans-serif"
+    fontFamily: "Readex Pro, system-ui, sans-serif"
     fontSize: "clamp(1.15rem, 1.08rem + 0.35vw, 1.3rem)"
-    fontWeight: 800
+    fontWeight: 700
     lineHeight: 1.15
   body:
-    fontFamily: "Almarai (ar) / Nunito (en), system-ui, sans-serif"
+    fontFamily: "Readex Pro, system-ui, sans-serif"
     fontSize: "clamp(1rem, 0.97rem + 0.15vw, 1.0625rem)"
     fontWeight: 400
     lineHeight: 1.6
   label:
-    fontFamily: "Almarai (ar) / Nunito (en), system-ui, sans-serif"
+    fontFamily: "Readex Pro, system-ui, sans-serif"
     fontSize: "0.92rem"
-    fontWeight: 800
+    fontWeight: 700
     lineHeight: 1.3
 rounded:
   control: "10px"
@@ -103,7 +103,9 @@ components:
     padding: "16px"
 ---
 
-# Design System: SakanHub
+# Design System: SKN (سكن)
+
+> **Rebrand, 14 Oct 2026:** the brand is now **SKN (سكن)**: the "three floors" logo, set in **Readex Pro** for Arabic and Latin. Colours are unchanged. Source of truth: `brand/skn/guidelines.md`. The sections below are updated to match; where older notes mention the house, the resident dot or Nunito/Almarai, the SKN rules win.
 
 ## Overview
 
@@ -118,7 +120,7 @@ Arabic is the primary language and English is its mirror. Every layout is writte
 **Key Characteristics:**
 - White and sand grounds, ink type, hairline borders.
 - Clay used only where something should be pressed or recognised as the brand.
-- Rounded, heavy-weight type (Almarai / Nunito ExtraBold) for headings and labels.
+- One bilingual family, Readex Pro: Bold 700 for headings and labels, Regular 400 for text. Modern, light, open.
 - One lifted object per screen: the request panel.
 - Real photography (openly licensed stock until we have our own buildings) in rounded frames, carrying the human side of the brand.
 - Rule-derived numbers set large, sources set small.
@@ -128,9 +130,9 @@ Arabic is the primary language and English is its mirror. Every layout is writte
 A warm-neutral system with one decisive accent, taken directly from the final brand palette.
 
 ### Primary
-- **Clay** (#C8502A): the primary button, the house in the logo, active-nav underline, focus rings and text selection. Hover deepens to **Clay Hover** (#B34522), press to **Clay Press** (#9E3C1D).
+- **Clay** (#C8502A): the primary button, the top floor of the logo symbol, active-nav underline, focus rings and text selection. Hover deepens to **Clay Hover** (#B34522), press to **Clay Press** (#9E3C1D).
 - **Clay Wash** (#FBEDE7): the soft halo around focused fields and the brief highlight when the licensing track changes. Never a section background.
-- **Light Clay** (#F08A5D): the logo's house on ink only. Never on white or sand.
+- **Light Clay** (#F08A5D): the logo's top floor on ink only. Never on white or sand.
 
 ### Neutral
 - **Ink** (#1D2433): headings, body text, selected chips, the dark rules band and the footer.
@@ -148,21 +150,21 @@ A warm-neutral system with one decisive accent, taken directly from the final br
 
 ## Typography
 
-**Display Font:** Almarai ExtraBold (Arabic) / Nunito ExtraBold (Latin), with system-ui fallback
-**Body Font:** Almarai Regular (Arabic) / Nunito Regular (Latin)
+**Display Font:** Readex Pro Bold 700 (Arabic and Latin), with system-ui fallback
+**Body Font:** Readex Pro Regular 400 (Arabic and Latin); SemiBold 600 for sub-heads and chips
 
-**Character:** Both faces are rounded and firm, matching the logo's lettering. Weight carries the hierarchy (400 for reading, 800 for anything to scan) rather than many sizes.
+**Character:** One family designed for both scripts, so Arabic and English pages carry the same weight and rhythm. Wide, open and light; it matches the logo lettering. Weight carries the hierarchy (400 for reading, 700 for anything to scan) rather than many sizes. Readex Pro tops out at 700; never fake heavier weights. Keep the `HEXP` axis at 0. Self-host the variable font (`brand/skn/fonts/ReadexPro-VF.ttf`, subset to Arabic + Latin as woff2).
 
 ### Hierarchy
-- **Display** (800, clamp 2.3–3.9rem, 1.15): one H1 per page.
-- **Headline** (800, clamp 1.8–2.6rem, 1.15): section headings.
-- **Title** (800, clamp 1.15–1.3rem): card and list headings; also the support line under section heads, at regular weight.
+- **Display** (700, clamp 2.3–3.9rem, 1.15): one H1 per page.
+- **Headline** (700, clamp 1.8–2.6rem, 1.15): section headings.
+- **Title** (700, clamp 1.15–1.3rem): card and list headings; also the support line under section heads, at regular weight.
 - **Body** (400, clamp 1–1.06rem, 1.6): running text, capped at 64ch on guide pages.
-- **Label** (800, 0.92rem): form labels, readout title, chip text (700).
-- **Figure** (800, Title-to-Headline size, tabular numerals): readout and rule numbers.
+- **Label** (700, 0.92rem): form labels, readout title, chip text (600).
+- **Figure** (700, Title-to-Headline size, tabular numerals): readout and rule numbers.
 
 ### Named Rules
-**The Weight-Not-Size Rule.** If something needs to be found at a glance, make it 800; don't add a new size.
+**The Weight-Not-Size Rule.** If something needs to be found at a glance, make it 700; don't add a new size.
 
 **The Numbers Read Left-to-Right Rule.** Figures such as "4 m²" and "1/8" keep LTR direction inside Arabic text.
 
@@ -191,13 +193,13 @@ Flat by default. Sections are separated by ground colour and hairlines, not shad
 
 ## Shapes
 
-Gently rounded throughout, never sharp and never bubbly. Controls are 10px, cards and the readout 12px, the request panel 18px, and chips are full pills. Borders are 1px hairlines. Circles appear only as list dots, numbered steps and the logo's resident dot.
+Gently rounded throughout, never sharp and never bubbly. Controls are 10px, cards and the readout 12px, the request panel 18px, and chips are full pills. Borders are 1px hairlines. Circles appear only as list dots, and numbered steps. The logo symbol is square-cornered by design; UI shapes stay gently rounded.
 
 ## Components
 
 ### Buttons
 Firm and friendly: heavy labels, solid fills, clear states.
-- **Shape:** gently rounded (10px), min height 48px, 24px side padding, label 800.
+- **Shape:** gently rounded (10px), min height 48px, 24px side padding, label 700.
 - **Primary:** clay fill, white label, a faint clay drop shadow. Hover deepens; press deepens further and nudges down 1px.
 - **Ghost:** transparent with a strong hairline and ink label (WhatsApp, secondary actions). Hover fills sand.
 - **Ink / Light:** ink fill on light grounds, white fill on ink bands, for secondary actions where clay would compete.
@@ -229,16 +231,17 @@ Firm and friendly: heavy labels, solid fills, clear states.
 - Rounded frame (18px; 12px inside cards), `object-fit: cover`, set ratios (hero 5:4, cards 16:10, asides 4:5). A slot can set `pos` (object-position) when the subject sits off-centre.
 - Every photo ships as a 1200px WebP twin next to the JPEG.
 - **Art direction:** realistic and decent (never luxury, never grim), people and places that read Saudi / Gulf / South Asian, and on topic for the section it sits in.
-- Until a file exists, a sand gradient block with a faint house mark holds the space.
+- Until a file exists, a sand gradient block with a faint SKN symbol holds the space.
 - Openly licensed stock or our own photos only, credited in `site/public/images/CREDITS.md`. Never AI-generated images presented as our buildings.
 
-### Brand marks (7 Oct 2026)
-- **Header:** the bilingual horizontal lockup (SakanHub | سكن هب) from 1480px wide (28px tall in English so the bar stays inside the container); below that, the Arabic wordmark on Arabic pages and the Latin wordmark on English pages.
-- **Clay brand band:** the one full-clay section, closing the home page: stacked on-clay lockup, «سكّن طاقمك بضغطة» / "House your crew in a tap", a white button and a white-outline WhatsApp button.
-- **Step markers:** the brand house (icon file used unaltered as a CSS mask) with the step number inside, above the resident dot. Clay for step 1, ink for the rest.
-- **Watermark:** one very faint white house (4.5% opacity) bleeding off the corner of the ink rules band. Nowhere else.
-- **Share cards:** `site/public/og-ar.jpg` / `og-en.jpg` (1200×630), made by `site/scripts/make-og.mjs`. Regenerate after changing the logo, slogan or hero photo.
-- Not used: the resident dot as a nav marker (founder declined).
+### Brand marks (SKN, 14 Oct 2026)
+- **Header:** `skn-horizontal-color.svg` (symbol + SKN) on English pages and `skn-arabic-color.svg` (symbol on the right + «سكن») on Arabic pages, about 32px tall. The bilingual lockup (`skn-bilingual-color.svg`) goes in the footer and on wide screens if there's room.
+- **Clay brand band:** the one full-clay section closing the home page, using `skn-horizontal-on-clay.svg` / `skn-arabic-on-clay.svg`, a white button and a white-outline WhatsApp button.
+- **Step markers:** the house markers are retired. Use simple square tiles (Ink, 10px radius) with the number in white Readex Pro Bold; step 1 is Clay.
+- **Watermark:** if used, one very faint symbol (three floors, white at about 4.5 % opacity) bleeding off the corner of the ink rules band. Nowhere else.
+- **Favicons and PWA:** copy `brand/skn/web-icons/*` into `site/public/` and use `head-snippet.html`.
+- **Share cards:** `site/public/og-ar.jpg` / `og-en.jpg` (1200×630), made by `site/scripts/make-og.mjs`. Regenerate them with the SKN logo and Readex Pro.
+- **Retired:** the SakanHub house-n, the resident dot, and all `brand/logo/final/` files.
 
 ### Reveal on scroll
 - Every section after the first fades up (20px, 600ms ease-out) once it is 15% into the viewport; lists marked `stagger` follow item by item (70ms apart, after 120ms). Founder request, 7 Oct 2026.
@@ -259,16 +262,16 @@ The page's working centre: city chips, worker stepper, start date, phone, add-on
 - A failed send never shows a false "thank you"; it reopens the request in WhatsApp.
 
 ### Rules Table
-Label/value rows divided by hairlines, label in Slate Ink, value at 800. On ink bands the hairlines become #39425A and values turn white. A small source line always follows.
+Label/value rows divided by hairlines, label in Slate Ink, value at 700. On ink bands the hairlines become #39425A and values turn white. A small source line always follows.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** keep clay to buttons, the logo house, active and focus states.
+- **Do** keep clay to buttons, the logo's top floor, active and focus states.
 - **Do** show regulation numbers exactly (4 m² per person, max 10 per room, 1 sanitary set per 8) with their source (MOMAH / Balady, RCJY / MODON).
 - **Do** use logical properties (inline-start/end) so every component mirrors between Arabic and English.
 - **Do** keep text contrast at WCAG 2.2 AA or better, including small notes.
-- **Do** use the final logo files from `brand/logo/final/` as they are.
+- **Do** use the SKN logo files from `brand/skn/masters/` and `brand/skn/web-icons/` as they are.
 
 ### Don't:
 - **Don't** put a kicker or eyebrow label above a heading; the heading carries itself.

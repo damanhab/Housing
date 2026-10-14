@@ -22,7 +22,7 @@ Details are in `docs/landing-page-seo-plan.md` §6.
 
 ## Product Purpose
 
-SakanHub (سكن هب) is a Saudi workforce-housing platform and operator. Companies find, book and manage housing for their workers in one place:
+SKN (سكن; formerly SakanHub) is a Saudi workforce-housing platform and operator. Companies find, book and manage housing for their workers in one place:
 - partner buildings;
 - SakanHub-operated buildings ("SakanHub Places");
 - transport, catering and building management.
@@ -64,12 +64,14 @@ Success means a company gets licensed beds in the right city quickly, and owners
 
 ## Brand Commitments
 
-- **Name:** "SakanHub" (one word, capital H) and «سكن هب», always together where space allows.
-- **Logo and identity are final:** `brand/logo/final/` (masters, web icons, `guidelines.md`, `overview.png`).
-  - The **n is a home and the dot is the resident**. The icon is the same squarish house.
+- **Rebrand (founder, 14 Oct 2026): the brand is now SKN (سكن).** It replaces "SakanHub / سكن هب" everywhere. The source of truth is `brand/skn/guidelines.md`.
+- **Name:** **SKN** in Latin text (three capitals, no dots), **سكن** in Arabic text. The formal company name behind the letters is still open, so don't expand the acronym.
+- **Logo is final:** `brand/skn/` (masters, web icons, `guidelines.md`, `overview.png`).
+  - **Three floors and a door:** a building of three floors, one per letter, with a Clay top floor (the roof over the crew) and a door cut into the ground floor.
   - Never redraw or retype the logo.
-- **Colours:** Clay `#C8502A` (the home, accent), Ink `#1D2433` (text), Light clay `#F08A5D` (on dark only), Sand `#F6F3EE` (backgrounds). Sharing the orange family with Mnzil is a deliberate choice (like Keeta / HungerStation).
-- **Logo lettering:** Nunito ExtraBold + Almarai ExtraBold (SIL OFL, files in `brand/logo/fonts/`).
+  - The old SakanHub house-n logo (`brand/logo/final/`) is retired.
+- **Colours (unchanged):** Clay `#C8502A` (top floor of the symbol, accent), Ink `#1D2433` (letters, text), Light clay `#F08A5D` (on dark only), Sand `#F6F3EE` (main background). Sharing the orange family with Mnzil is a deliberate choice (like Keeta / HungerStation).
+- **Typeface:** **Readex Pro**, one family for Arabic and Latin (SIL OFL, `brand/skn/fonts/`). Bold 700 for the wordmark and headings, Regular 400 for text. The founder chose it for its modern, light feel (14 Oct 2026). Nunito and Almarai are retired.
 - **Voice:**
   - Confident and direct, but **never invent facts or numbers**. Qualitative claims only ("works with industry leaders", "a leading platform"); no "100+ companies".
   - **No AI-slop wording** (seamless, unlock, empower, revolutionise, filler tricolons).

@@ -1,5 +1,7 @@
 # Brand Platform — SakanHub (سكن هب)
 
+> **Superseded in part (14 Oct 2026):** the brand is now **SKN (سكن)**. The name, logo and type in this file are history; see `brand/skn/guidelines.md`. The positioning thinking still applies.
+
 **Status:** Lead candidate (founder pick, 6 Oct 2026). Not yet reserved.
 **Last updated:** 6 October 2026 (visual identity finalised)
 
