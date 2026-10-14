@@ -16,7 +16,9 @@
   - A square as tall as the capitals of "SKN".
   - Three equal floors; the gaps between them are 9 % of the square.
   - The door is 22 % of the square wide and runs the full height of the ground floor.
-  - The symbol sits 42 % of the cap height to the left of the letters.
+  - The symbol sits 42 % of the cap height to the left of the letters, measured ink to ink (the same gap in every lockup).
+  - Every lockup file has the same clear margin (30 % of the cap height) on all four sides of the ink, so files can be aligned edge to edge.
+  - Bilingual: the vertical rule sits centred between "SKN" and «سكن», 36 % of the cap height of space on each side.
 - **Lettering:** "SKN" and «سكن» in **Readex Pro Bold** (700), outlined. Latin tracking +24 units. The Arabic is set 6 % larger so it matches the capitals visually.
 - **Masters:** `masters/`, rebuilt with `python build.py` (needs `fonttools` and `uharfbuzz`). Never retype the logo.
 
@@ -33,7 +35,7 @@
 | Symbol only (stamps, patterns, small UI) | `skn-symbol-*.svg` | as above |
 | App icon, social avatar (primary) | `skn-app-icon.svg` (Ink tile) | — |
 | App icon alternatives | `skn-app-icon-clay.svg`, `skn-app-icon-sand.svg` | — |
-| Browser tab, PWA | `web-icons/` (favicon.ico/svg, 180/192/512, maskable, manifest, `head-snippet.html`) | — |
+| Browser tab, PWA | `web-icons/` (favicon.ico/svg, 180/192/512, maskable, manifest, `head-snippet.html`). 16, 32 and 48 px are drawn on the pixel grid; the Apple touch icon is full-bleed because iOS rounds it. | — |
 | One-colour print, embroidery | `*-mono-ink.svg`, `*-black.svg`, `*-white.svg` | — |
 
 Every lockup exists in six colourways: `color`, `reversed`, `on-clay`, `mono-ink`, `black`, `white`. PNG previews are in `renders/`; the one-page summary is `overview.png`.

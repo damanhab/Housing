@@ -1,3 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="t"><title id="t">SKN symbol</title>
-<rect width="256" height="256" rx="56.3" fill="#1D2433"/><rect x="56.32" y="56.32" width="143.36" height="39.19" fill="#F08A5D"/><rect x="56.32" y="108.41" width="143.36" height="39.19" fill="#FFFFFF"/><rect x="56.32" y="160.49" width="55.91" height="39.19" fill="#FFFFFF"/><rect x="143.77" y="160.49" width="55.91" height="39.19" fill="#FFFFFF"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" shape-rendering="crispEdges" role="img" aria-labelledby="t"><title id="t">SKN</title><rect width="16" height="16" rx="3" fill="#1D2433"/><rect x="3" y="4" width="10" height="2" fill="#F08A5D"/><rect x="3" y="7" width="10" height="2" fill="#FFFFFF"/><rect x="3" y="10" width="4" height="2" fill="#FFFFFF"/><rect x="9" y="10" width="4" height="2" fill="#FFFFFF"/></svg>
