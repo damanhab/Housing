@@ -10,7 +10,7 @@
 |---|---|
 | `skn.sa` | Registered to «شركة ان المحدودة» (SaudiNIC WHOIS, checked by the founder 14 Oct 2026); only a "Hello World!" placeholder page on Cloudflare DNS, DNSSEC off. Not the clinics, as far as the record shows: a possible purchase. |
 | `skn.com.sa` | **«عيادات SKN للتجميل» (SKN Clinics)**, an established Saudi brand. See the trademark note below. |
-| `skn.com` | Registered; listed for sale by a domain broker (expect a high price) |
+| `skn.com` | For sale through the broker Grails (grails.com/domain/skn-com). No listed price: quote on request, valid 7 days, paid via Escrow.com (buyer pays fees). Grails says ~85 % of its portfolio sells for US$100,000–250,000; 3-letter .coms usually sit at the top of that range or above. Pitched at skincare and beauty. |
 | `skn.ai`, `skn.app`, `skn.tech`, `skn.org` | Registered; parked at marketplaces (Atom / Afternic), so probably for sale |
 | `skn.io`, `skn.net`, `skn.xyz`, `skn.homes`, `getskn.com`, `sknsa.com`, `sknhub.com` | Registered |
 
