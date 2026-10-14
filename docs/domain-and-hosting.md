@@ -12,7 +12,11 @@
 | `skn.com.sa` | **«عيادات SKN للتجميل» (SKN Clinics)**, an established Saudi brand. See the trademark note below. |
 | `skn.com` | For sale through the broker Grails (grails.com/domain/skn-com). No listed price: quote on request, valid 7 days, paid via Escrow.com (buyer pays fees). Grails says ~85 % of its portfolio sells for US$100,000–250,000; 3-letter .coms usually sit at the top of that range or above. Pitched at skincare and beauty. |
 | `skn.ai`, `skn.app`, `skn.tech`, `skn.org` | Registered; parked at marketplaces (Atom / Afternic), so probably for sale |
-| `skn.io`, `skn.net`, `skn.xyz`, `skn.homes`, `getskn.com`, `sknsa.com`, `sknhub.com` | Registered |
+| `skn.io` | Personal site of "Seth W. Klein" (a blog), in use. Unlikely to sell cheaply. |
+| `skn.net` | Held since 1998 (Namecheap, renewed to 2029), DNS on Hetzner; no website answers. Probably the same owner as `skn.io` (initials). Long-held and not listed for sale. |
+| `getskn.com` | Held since 2007 (Namecheap, to 2027); the site returns 404. Parked but not listed for sale: you could make an offer. |
+| `sknhub.com` | Live: a login page for "Skillanation Hub" (GoDaddy, fully locked). In use; not an option. |
+| `skn.xyz`, `skn.homes`, `sknsa.com` | Registered |
 
 **Free (as of this check)**
 
