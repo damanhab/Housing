@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "generatedAt": "2026-10-07T04:44:16.406756Z",
-  "title": "Design System: SakanHub",
+  "title": "Design System: SKN (سكن)",
   "extensions": {
     "colorMeta": {
       "clay": {
@@ -261,7 +261,7 @@
       "refersTo": "button-primary",
       "description": "The one clay action per view.",
       "html": "<button class=\"ds-btn\">Request housing</button>",
-      "css": ":host{--clay:#C8502A;--clay-hover:#B34522;--clay-wash:#FBEDE7;--ink:#1D2433;--ink-2:#4A5265;--ink-3:#6B7283;--sand:#F6F3EE;--line:#E3DED6;--line-strong:#CFC8BD;font-family:Nunito,Almarai,system-ui,sans-serif} .ds-btn{display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:10px;border:1px solid transparent;background:var(--clay);color:#fff;font:inherit;font-weight:800;cursor:pointer;box-shadow:0 1px 2px rgb(158 60 29/.25);transition:background-color 160ms cubic-bezier(.16,1,.3,1),transform 160ms}.ds-btn:hover{background:var(--clay-hover)}.ds-btn:active{background:#9E3C1D;transform:translateY(1px)}.ds-btn:focus-visible{outline:2.5px solid var(--clay);outline-offset:3px}"
+      "css": ":host{--clay:#C8502A;--clay-hover:#B34522;--clay-wash:#FBEDE7;--ink:#1D2433;--ink-2:#4A5265;--ink-3:#6B7283;--sand:#F6F3EE;--line:#E3DED6;--line-strong:#CFC8BD;font-family:'Readex Pro',system-ui,sans-serif} .ds-btn{display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:10px;border:1px solid transparent;background:var(--clay);color:#fff;font:inherit;font-weight:700;cursor:pointer;box-shadow:0 1px 2px rgb(158 60 29/.25);transition:background-color 160ms cubic-bezier(.16,1,.3,1),transform 160ms}.ds-btn:hover{background:var(--clay-hover)}.ds-btn:active{background:#9E3C1D;transform:translateY(1px)}.ds-btn:focus-visible{outline:2.5px solid var(--clay);outline-offset:3px}"
     },
     {
       "name": "Ghost Button",
@@ -269,7 +269,7 @@
       "refersTo": "button-ghost",
       "description": "Secondary actions such as WhatsApp.",
       "html": "<button class=\"ds-ghost\">WhatsApp</button>",
-      "css": ":host{--clay:#C8502A;--clay-hover:#B34522;--clay-wash:#FBEDE7;--ink:#1D2433;--ink-2:#4A5265;--ink-3:#6B7283;--sand:#F6F3EE;--line:#E3DED6;--line-strong:#CFC8BD;font-family:Nunito,Almarai,system-ui,sans-serif} .ds-ghost{min-height:48px;padding:0 24px;border-radius:10px;border:1px solid var(--line-strong);background:transparent;color:var(--ink);font:inherit;font-weight:800;cursor:pointer}.ds-ghost:hover{background:var(--sand)}.ds-ghost:focus-visible{outline:2.5px solid var(--clay);outline-offset:3px}"
+      "css": ":host{--clay:#C8502A;--clay-hover:#B34522;--clay-wash:#FBEDE7;--ink:#1D2433;--ink-2:#4A5265;--ink-3:#6B7283;--sand:#F6F3EE;--line:#E3DED6;--line-strong:#CFC8BD;font-family:'Readex Pro',system-ui,sans-serif} .ds-ghost{min-height:48px;padding:0 24px;border-radius:10px;border:1px solid var(--line-strong);background:transparent;color:var(--ink);font:inherit;font-weight:700;cursor:pointer}.ds-ghost:hover{background:var(--sand)}.ds-ghost:focus-visible{outline:2.5px solid var(--clay);outline-offset:3px}"
     },
     {
       "name": "City Chip",
@@ -277,7 +277,7 @@
       "refersTo": "chip",
       "description": "Single-choice city selector; selected is ink.",
       "html": "<div class=\"ds-chips\"><button class=\"ds-chip\" aria-pressed=\"true\">Jubail</button><button class=\"ds-chip\">Dammam</button></div>",
-      "css": ":host{--clay:#C8502A;--clay-hover:#B34522;--clay-wash:#FBEDE7;--ink:#1D2433;--ink-2:#4A5265;--ink-3:#6B7283;--sand:#F6F3EE;--line:#E3DED6;--line-strong:#CFC8BD;font-family:Nunito,Almarai,system-ui,sans-serif} .ds-chips{display:flex;gap:8px}.ds-chip{min-height:40px;padding:0 16px;border-radius:999px;border:1px solid var(--line-strong);background:#fff;color:var(--ink);font:inherit;font-weight:700;cursor:pointer}.ds-chip:hover{border-color:var(--ink-3)}.ds-chip[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:#fff}.ds-chip:focus-visible{outline:2.5px solid var(--clay);outline-offset:2px}"
+      "css": ":host{--clay:#C8502A;--clay-hover:#B34522;--clay-wash:#FBEDE7;--ink:#1D2433;--ink-2:#4A5265;--ink-3:#6B7283;--sand:#F6F3EE;--line:#E3DED6;--line-strong:#CFC8BD;font-family:'Readex Pro',system-ui,sans-serif} .ds-chips{display:flex;gap:8px}.ds-chip{min-height:40px;padding:0 16px;border-radius:999px;border:1px solid var(--line-strong);background:#fff;color:var(--ink);font:inherit;font-weight:700;cursor:pointer}.ds-chip:hover{border-color:var(--ink-3)}.ds-chip[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:#fff}.ds-chip:focus-visible{outline:2.5px solid var(--clay);outline-offset:2px}"
     },
     {
       "name": "Text Field",
@@ -285,7 +285,7 @@
       "refersTo": "input",
       "description": "Form field with clay focus halo.",
       "html": "<input class=\"ds-input\" placeholder=\"05XXXXXXXX\">",
-      "css": ":host{--clay:#C8502A;--clay-hover:#B34522;--clay-wash:#FBEDE7;--ink:#1D2433;--ink-2:#4A5265;--ink-3:#6B7283;--sand:#F6F3EE;--line:#E3DED6;--line-strong:#CFC8BD;font-family:Nunito,Almarai,system-ui,sans-serif} .ds-input{width:100%;min-height:48px;padding:0 16px;border:1px solid var(--line-strong);border-radius:10px;background:#fff;color:var(--ink);font:inherit;font-weight:700}.ds-input::placeholder{color:var(--ink-3);font-weight:400}.ds-input:hover{border-color:var(--ink-3)}.ds-input:focus-visible{outline:none;border-color:var(--clay);box-shadow:0 0 0 3px var(--clay-wash)}"
+      "css": ":host{--clay:#C8502A;--clay-hover:#B34522;--clay-wash:#FBEDE7;--ink:#1D2433;--ink-2:#4A5265;--ink-3:#6B7283;--sand:#F6F3EE;--line:#E3DED6;--line-strong:#CFC8BD;font-family:'Readex Pro',system-ui,sans-serif} .ds-input{width:100%;min-height:48px;padding:0 16px;border:1px solid var(--line-strong);border-radius:10px;background:#fff;color:var(--ink);font:inherit;font-weight:700}.ds-input::placeholder{color:var(--ink-3);font-weight:400}.ds-input:hover{border-color:var(--ink-3)}.ds-input:focus-visible{outline:none;border-color:var(--clay);box-shadow:0 0 0 3px var(--clay-wash)}"
     },
     {
       "name": "Request Readout",
@@ -293,7 +293,7 @@
       "refersTo": "readout",
       "description": "Signature: rule-derived estimate for the visitor's request.",
       "html": "<div class=\"ds-ro\"><p>What your request needs</p><dl><div><dt>4</dt><dd>rooms minimum</dd></div><div><dt>5</dt><dd>sanitary sets</dd></div><div><dt>160</dt><dd>m² sleeping area</dd></div><div><dt>RCJY / Balady</dt><dd>Licensing track</dd></div></dl></div>",
-      "css": ":host{--clay:#C8502A;--clay-hover:#B34522;--clay-wash:#FBEDE7;--ink:#1D2433;--ink-2:#4A5265;--ink-3:#6B7283;--sand:#F6F3EE;--line:#E3DED6;--line-strong:#CFC8BD;font-family:Nunito,Almarai,system-ui,sans-serif} .ds-ro{background:var(--sand);border-radius:12px;padding:16px;color:var(--ink)}.ds-ro p{margin:0 0 12px;font-weight:800;font-size:.92rem}.ds-ro dl{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0}.ds-ro dt{font-weight:800;font-size:1.6rem;line-height:1.1;font-variant-numeric:tabular-nums}.ds-ro div:last-child dt{font-size:1rem;padding-top:6px}.ds-ro dd{margin:0;font-size:.86rem;color:var(--ink-2)}"
+      "css": ":host{--clay:#C8502A;--clay-hover:#B34522;--clay-wash:#FBEDE7;--ink:#1D2433;--ink-2:#4A5265;--ink-3:#6B7283;--sand:#F6F3EE;--line:#E3DED6;--line-strong:#CFC8BD;font-family:'Readex Pro',system-ui,sans-serif} .ds-ro{background:var(--sand);border-radius:12px;padding:16px;color:var(--ink)}.ds-ro p{margin:0 0 12px;font-weight:700;font-size:.92rem}.ds-ro dl{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0}.ds-ro dt{font-weight:700;font-size:1.6rem;line-height:1.1;font-variant-numeric:tabular-nums}.ds-ro div:last-child dt{font-size:1rem;padding-top:6px}.ds-ro dd{margin:0;font-size:.86rem;color:var(--ink-2)}"
     },
     {
       "name": "Rules Table",
@@ -301,7 +301,7 @@
       "refersTo": "rules",
       "description": "Label/value rows with hairlines and a source line.",
       "html": "<dl class=\"ds-rules\"><div><dt>Floor space</dt><dd>4 m² per person</dd></div><div><dt>Room limit</dt><dd>Max 10 per room</dd></div></dl>",
-      "css": ":host{--clay:#C8502A;--clay-hover:#B34522;--clay-wash:#FBEDE7;--ink:#1D2433;--ink-2:#4A5265;--ink-3:#6B7283;--sand:#F6F3EE;--line:#E3DED6;--line-strong:#CFC8BD;font-family:Nunito,Almarai,system-ui,sans-serif} .ds-rules{margin:0;border-top:1px solid var(--line)}.ds-rules div{display:grid;grid-template-columns:.8fr 1.2fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}.ds-rules dt{color:var(--ink-2)}.ds-rules dd{margin:0;font-weight:800;color:var(--ink)}"
+      "css": ":host{--clay:#C8502A;--clay-hover:#B34522;--clay-wash:#FBEDE7;--ink:#1D2433;--ink-2:#4A5265;--ink-3:#6B7283;--sand:#F6F3EE;--line:#E3DED6;--line-strong:#CFC8BD;font-family:'Readex Pro',system-ui,sans-serif} .ds-rules{margin:0;border-top:1px solid var(--line)}.ds-rules div{display:grid;grid-template-columns:.8fr 1.2fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}.ds-rules dt{color:var(--ink-2)}.ds-rules dd{margin:0;font-weight:700;color:var(--ink)}"
     }
   ],
   "narrative": {
@@ -310,7 +310,7 @@
     "keyCharacteristics": [
       "White and sand grounds, ink type, hairline borders.",
       "Clay used only where something should be pressed or recognised as the brand.",
-      "Rounded, heavy-weight type (Almarai / Nunito ExtraBold) for headings and labels.",
+      "One bilingual family, Readex Pro: Bold 700 for headings and labels, Regular 400 for text.",
       "One lifted object per screen: the request panel.",
       "Rule-derived numbers set large, sources set small."
     ],
