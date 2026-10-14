@@ -16,13 +16,14 @@
 | `skn.net` | Held since 1998 (Namecheap, renewed to 2029), DNS on Hetzner; no website answers. Probably the same owner as `skn.io` (initials). Long-held and not listed for sale. |
 | `getskn.com` | Held since 2007 (Namecheap, to 2027); the site returns 404. Parked but not listed for sale: you could make an offer. |
 | `sknhub.com` | Live: a login page for "Skillanation Hub" (GoDaddy, fully locked). In use; not an option. |
-| `skn.xyz`, `skn.homes`, `sknsa.com` | Registered |
+| `skn.xyz`, `skn.homes` | Registered |
+| `sknsa.com` (no hyphen) | Registered since 2020, expires 5 Dec 2026, NameBright DNS (a parking/marketplace host). |
 
 **Free (as of this check)**
 
 | Domain | How checked |
 |---|---|
-| `sknhousing.com`, `skn-housing.com`, `skncrew.com`, `sknliving.com` | RDAP: available |
+| `sknhousing.com`, `skn-housing.com`, `skncrew.com`, `sknliving.com`, `skn-sa.com` | RDAP: available |
 | `skn.co` | RDAP: available. Three-letter `.co` names are often priced as premium. |
 | `skn.work` | RDAP: available |
 | `sknhousing.sa`, `sknhousing.com.sa`, `skn-housing.sa`, `skngroup.sa`, `skn.net.sa` | DNS: no delegation |
