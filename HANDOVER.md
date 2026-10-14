@@ -67,6 +67,9 @@ Read this first if you're picking up the project, reviewing a pull request or co
 
 ## Log
 
+### 14 Oct 2026: SKN site on main
+- The founder approved: `claude/sharp-newton-335b82` fast-forwarded into `main`. The production preview https://housing-4v1.pages.dev/ar/ now shows the SKN site (checked: Arabic and English pages, favicon and fonts load; no SakanHub left).
+
 ### 14 Oct 2026: domain chosen, sknliving
 - The founder chose **`sknliving`**. It is free on `.sa`, `.com.sa`, `.com` and every other ending checked (`docs/domain-and-hosting.md`). Plan: `sknliving.sa` main (the founder registers it through a Saudi registrar: CR + Nafath), `sknliving.com` defensive (an agent can buy it through Cloudflare's Registrar API), both on Cloudflare nameservers.
 - The site's canonical URL and contact email now use `sknliving.sa` / `hello@sknliving.sa` (still marked TBD until registered).
