@@ -13,7 +13,7 @@ export const LANGS: Lang[] = ["ar", "en"];
 export const CONTACT = {
   phone: "+966 5X XXX XXXX",          // [TBD]
   whatsapp: "9665XXXXXXXX",            // [TBD] digits only, used in wa.me links
-  email: "hello@sknliving.com",        // [TBD] mailbox not set up yet
+  email: "hello@SKNliving.com",        // [TBD] mailbox not set up yet. Written with SKN in capitals (brand rule); email is case-insensitive.
   cr: "[TBD]",
   isPlaceholder: true,
 };
@@ -23,4 +23,6 @@ export const CONTACT = {
 export const BRAND = {
   name: "SKN",
   logoAr: "سكن",
+  // Rule: whenever the domain is written out (site copy, docs), it is "SKNliving.com". Links and config stay lowercase (SITE_URL).
+  domain: "SKNliving.com",
 };

@@ -7,6 +7,7 @@
 
 - **SKN** is the brand. It is «سكن» (sakan, "home / housing") written in three Latin capitals.
 - Write it **SKN** everywhere, in Arabic text too (all caps, no dots, set left-to-right inside Arabic sentences). Founder decision, 14 Oct 2026.
+- **Domain:** write it **SKNliving.com**: "SKN" in capitals, "living" in lower case, wherever it appears as text (website copy, footers, docs, decks, print, email signatures). Only URLs in code and config stay all-lowercase (`https://sknliving.com`).
 - «سكن» appears in **one place only**: the bilingual lockup (`skn-bilingual-*`), the wide logo with both "SKN" and «سكن». Don't write «سكن» as the brand name in copy, titles or other logos.
 - The full corporate name behind the letters is not decided yet. Don't expand the acronym anywhere until it is.
 

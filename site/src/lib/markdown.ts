@@ -28,7 +28,7 @@ export function pageMarkdown(key: PageKey, lang: Lang): string {
       "طريقة الحساب: لكل غرفة الأقل بين (المساحة ÷ 4) و10. المجموع يقارن مع (دورات المياه × 8) ومع (مساحة صالة الطعام ÷ 0.7)، والأقل هو الطاقة.",
       "Method: per room, the lower of (area ÷ 4) and 10. The total is compared with (sanitary sets × 8) and (dining area ÷ 0.7); the lowest is the capacity."), "");
   }
-  out.push(`---`, `${BRAND.name} · ${SITE_URL}`);
+  out.push(`---`, `${BRAND.name} · ${BRAND.domain}`);
   return out.join("\n");
 }
 
@@ -43,7 +43,7 @@ export function llmsTxt(): string {
     "> SKN is a Saudi workforce-housing service: companies send one request (city, headcount, start date) and SKN arranges licensed worker accommodation (سكن عمال / السكن الجماعي للأفراد), with transport and catering, in Riyadh, Khobar and Dammam. Every bed is licensed and matched to the company's Qiwa headcount.",
     "",
     "## Key facts",
-    `- Name: ${BRAND.name} (used in Arabic too). Website: ${SITE_URL}`,
+    `- Name: ${BRAND.name} (used in Arabic too). Website: ${BRAND.domain} (${SITE_URL})`,
     "- Service: worker / labour accommodation for companies; licensing and operation for building owners",
     "- Cities: Riyadh, Khobar, Dammam",
     "",

@@ -39,7 +39,7 @@ Read this first if you're picking up the project, reviewing a pull request or co
 
 ## Open items
 
-- **SKN corporate name** (what the letters stand for) and social handles: not decided or checked. **Main domain: `sknliving.com`**, not registered yet; the site uses `https://sknliving.com` and `hello@sknliving.com` (`site/src/lib/site.ts`, `site/astro.config.mjs`).
+- **SKN corporate name** (what the letters stand for) and social handles: not decided or checked. **Main domain: `SKNliving.com`**, not registered yet; the site uses `https://sknliving.com` (URLs stay lowercase) and `hello@SKNliving.com` (`site/src/lib/site.ts`, `site/astro.config.mjs`).
 - **Product names and slogans after the rename:** "SakanHub Places" and "One hub" came from the old name. Use "SKN" plainly until the founder decides.
 
 - **Meals (الإعاشة): kept for now** (founder, 7 Oct 2026). Earlier the founder considered dropping meals as a service. Regulation only requires a central kitchen *or* a catering service (`research/background/regulation-block-a.md` §3.2), so buildings with a shared kitchen stay compliant without it. Revisit with the founder before changing.
@@ -67,8 +67,11 @@ Read this first if you're picking up the project, reviewing a pull request or co
 
 ## Log
 
-### 14 Oct 2026: main domain is sknliving.com
-- The founder chose **`sknliving.com`** as the main domain (still free when re-checked). The site's canonical URL and email now use `https://sknliving.com` / `hello@sknliving.com`.
+### 14 Oct 2026: how the domain is written
+- Founder rule: the domain is written **SKNliving.com** wherever it appears as text (website, docs, print, email `hello@SKNliving.com`). URLs in code/config stay lowercase (`https://sknliving.com`). Recorded in `brand/skn/guidelines.md`, `PRODUCT.md`, `DESIGN.md`; the site reads it from `BRAND.domain` in `site/src/lib/site.ts`.
+
+### 14 Oct 2026: main domain is SKNliving.com
+- The founder chose **`SKNliving.com`** as the main domain (still free when re-checked). The site's canonical URL and email now use `https://sknliving.com` / `hello@SKNliving.com`.
 - To do (founder, needs the Cloudflare account): register it at Cloudflare Registrar, then add it under the Pages project → Custom domains. The cloud agent has no Cloudflare credentials, so it can't buy it. With an API token stored as an environment secret, an agent could use the Registrar API.
 - `.sa` is optional later, redirected to the .com.
 
@@ -76,13 +79,13 @@ Read this first if you're picking up the project, reviewing a pull request or co
 - The founder approved: `claude/sharp-newton-335b82` fast-forwarded into `main`. The production preview https://housing-4v1.pages.dev/ar/ now shows the SKN site (checked: Arabic and English pages, favicon and fonts load; no SakanHub left).
 
 ### 14 Oct 2026: domain chosen, sknliving
-- The founder chose **`sknliving`**. It is free on `.sa`, `.com.sa`, `.com` and every other ending checked (`docs/domain-and-hosting.md`). Plan: `sknliving.sa` main (the founder registers it through a Saudi registrar: CR + Nafath), `sknliving.com` defensive (an agent can buy it through Cloudflare's Registrar API), both on Cloudflare nameservers.
+- The founder chose **`sknliving`**. It is free on `.sa`, `.com.sa`, `.com` and every other ending checked (`docs/domain-and-hosting.md`). Plan: `sknliving.sa` main (the founder registers it through a Saudi registrar: CR + Nafath), `SKNliving.com` defensive (an agent can buy it through Cloudflare's Registrar API), both on Cloudflare nameservers.
 - The site's canonical URL and contact email now use `sknliving.sa` / `hello@sknliving.sa` (still marked TBD until registered).
 - The SKN Clinics trademark check is still open.
 
 ### 14 Oct 2026: domain and hosting check
 - Notes in `docs/domain-and-hosting.md`. `skn.sa` is held by «شركة ان المحدودة» with only a "Hello World!" placeholder, a possible purchase; `skn.com.sa` is **SKN Clinics (عيادات SKN للتجميل)**, an established Saudi brand: a trademark question for the IP lawyer before committing to "SKN". `skn.com` is for sale through a broker.
-- Free (checked): `sknhousing.com`, `skncrew.com`, `sknliving.com`, `skn.co` (likely premium), and by DNS `sknhousing.sa` / `sknhousing.com.sa`.
+- Free (checked): `sknhousing.com`, `skncrew.com`, `SKNliving.com`, `skn.co` (likely premium), and by DNS `sknhousing.sa` / `sknhousing.com.sa`.
 - Recommendation: stay on Cloudflare (free Pages hosting, at-cost `.com`, an official MCP server and the new Registrar API for agents). `.sa` names need a Saudi registrar, a CR and Nafath, so the founder buys those by hand.
 
 ### 14 Oct 2026: rules-band watermark, final

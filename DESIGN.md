@@ -237,6 +237,7 @@ Firm and friendly: heavy labels, solid fills, clear states.
 - Openly licensed stock or our own photos only, credited in `site/public/images/CREDITS.md`. Never AI-generated images presented as our buildings.
 
 ### Brand marks (SKN, 14 Oct 2026)
+- **Domain:** written **SKNliving.com** in any visible text (footer email, contact lines, docs). Links stay lowercase.
 - **Name:** SKN on every page, Arabic included. «سكن» appears only inside the bilingual lockup (footer). Arabic copy writes "SKN" in Latin capitals; titles end "… | SKN".
 - **Header:** `skn-horizontal-color.svg` (symbol + SKN) on both Arabic and English pages, 40px tall (symbol ~24px; 34px tall on phones). On Arabic pages it sits at the right, as the RTL start. The file carries its clear space inside, so a small negative inline-start margin lines the ink up with the content edge.
 - **Footer:** `skn-bilingual-reversed.svg`, the one place «سكن» appears.

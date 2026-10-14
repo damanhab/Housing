@@ -65,6 +65,7 @@ Success means a company gets licensed beds in the right city quickly, and owners
 ## Brand Commitments
 
 - **Rebrand (founder, 14 Oct 2026): the brand is now SKN (سكن).** It replaces "SakanHub / سكن هب" everywhere. The source of truth is `brand/skn/guidelines.md`.
+- **Domain:** **SKNliving.com** whenever it's written out (site, docs, print, email: `hello@SKNliving.com`). Only URLs in code/config stay lowercase.
 - **Name:** **SKN** everywhere, Arabic pages and Arabic copy included (three capitals, no dots). «سكن» appears only inside the bilingual lockup logo (founder, 14 Oct 2026). The formal company name behind the letters is still open, so don't expand the acronym.
 - **Logo is final:** `brand/skn/` (masters, web icons, `guidelines.md`, `overview.png`).
   - **Three floors and a door:** a building of three floors, one per letter, with a Clay top floor (the roof over the crew) and a door cut into the ground floor.
