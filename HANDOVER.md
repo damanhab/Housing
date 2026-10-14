@@ -68,7 +68,7 @@ Read this first if you're picking up the project, reviewing a pull request or co
 ## Log
 
 ### 14 Oct 2026: domain and hosting check
-- Notes in `docs/domain-and-hosting.md`. `skn.sa` is taken (placeholder "Hello World!" page, owner unknown); `skn.com.sa` is **SKN Clinics (عيادات SKN للتجميل)**, an established Saudi brand: a trademark question for the IP lawyer before committing to "SKN". `skn.com` is for sale through a broker.
+- Notes in `docs/domain-and-hosting.md`. `skn.sa` is held by «شركة ان المحدودة» with only a "Hello World!" placeholder, a possible purchase; `skn.com.sa` is **SKN Clinics (عيادات SKN للتجميل)**, an established Saudi brand: a trademark question for the IP lawyer before committing to "SKN". `skn.com` is for sale through a broker.
 - Free (checked): `sknhousing.com`, `skncrew.com`, `sknliving.com`, `skn.co` (likely premium), and by DNS `sknhousing.sa` / `sknhousing.com.sa`.
 - Recommendation: stay on Cloudflare (free Pages hosting, at-cost `.com`, an official MCP server and the new Registrar API for agents). `.sa` names need a Saudi registrar, a CR and Nafath, so the founder buys those by hand.
 

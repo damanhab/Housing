@@ -8,7 +8,7 @@
 
 | Domain | Status |
 |---|---|
-| `skn.sa` | Registered, but only a "Hello World!" placeholder page (Cloudflare DNS). Owner unknown; could be bought if the owner is willing. |
+| `skn.sa` | Registered to «شركة ان المحدودة» (SaudiNIC WHOIS, checked by the founder 14 Oct 2026); only a "Hello World!" placeholder page on Cloudflare DNS, DNSSEC off. Not the clinics, as far as the record shows: a possible purchase. |
 | `skn.com.sa` | **«عيادات SKN للتجميل» (SKN Clinics)**, an established Saudi brand. See the trademark note below. |
 | `skn.com` | Registered; listed for sale by a domain broker (expect a high price) |
 | `skn.ai`, `skn.app`, `skn.tech`, `skn.org` | Registered; parked at marketplaces (Atom / Afternic), so probably for sale |
