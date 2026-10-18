@@ -11,10 +11,10 @@ export const LANGS: Lang[] = ["ar", "en"];
 
 // Contact details are TBD by the founder. Placeholders are marked so they cannot ship unnoticed.
 export const CONTACT = {
-  phone: "+966 5X XXX XXXX",          // [TBD]
-  whatsapp: "9665XXXXXXXX",            // [TBD] digits only, used in wa.me links
-  email: "hello@SKNliving.com",        // [TBD] mailbox not set up yet. Written with SKN in capitals (brand rule); email is case-insensitive.
-  cr: "[TBD]",
+  phone: "+966 57 947 5535",          // Founder, 18 Oct 2026 (same line as WhatsApp)
+  whatsapp: "966579475535",            // digits only, used in wa.me links
+  email: "hello@SKNliving.com",        // Forwards via Cloudflare Email Routing. Written with SKN in capitals (brand rule); email is case-insensitive.
+  cr: "[TBD]",                         // isPlaceholder stays true until the CR is in: it hides the CR line
   isPlaceholder: true,
 };
 
