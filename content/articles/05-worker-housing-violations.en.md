@@ -1,5 +1,5 @@
 ---
-status: review           # draft → review → approved (founder sets approved)
+status: approved           # draft → review → approved (founder sets approved)
 lang: en
 pair: 05-worker-housing-violations.ar.md
 title: "Worker housing violations in Saudi Arabia: fines, Qiwa suspensions and how to fix them"
@@ -11,8 +11,6 @@ keywords: ["worker housing fines saudi", "labour accommodation violations saudi"
 author: "[TBD: founder name and short bio]"
 updated: "2026-10-18"
 ---
-
-# Worker housing violations in Saudi Arabia: fines, Qiwa suspensions and how to fix them
 
 **Short answer:** the biggest consequence of a worker housing violation isn't the fine. It's that **Qiwa services stop**, including visa-quota expansion and worker transfers. It can go as far as **suspending the commercial registration** of an establishment without licensed housing for its workers. Fines vary with the type of violation, repetition and the size of the company. The fix is licensed housing that matches your Qiwa headcount.
 
@@ -34,7 +32,7 @@ So the fine is usually the smallest part of the problem. Frozen visas and transf
 
 ## Fines by type of violation
 
-These bands are as reported in the press coverage of the penalty schedule. [check]
+These bands are as reported in press coverage of the penalty schedule (Slaati, April 2025). The updated schedule may change the amounts, so check the latest version on Balady.
 
 | Violation | Fine (SAR) |
 |---|---|

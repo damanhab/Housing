@@ -1,5 +1,5 @@
 ---
-status: review           # draft → review → approved (founder sets approved)
+status: approved           # draft → review → approved (founder sets approved)
 lang: en
 pair: 02-what-is-group-housing.ar.md
 title: "Worker accommodation in Saudi Arabia: what group housing is and who must provide it"
@@ -11,8 +11,6 @@ keywords: ["worker accommodation", "workers accommodation saudi arabia", "group 
 author: "[TBD: founder name and short bio]"
 updated: "2026-10-18"
 ---
-
-# Worker accommodation in Saudi Arabia: what group housing is and who must provide it
 
 **Short answer:** "group housing for individuals" (السكن الجماعي للأفراد) is the official Saudi term for what the market calls worker accommodation or a labour camp. It covers buildings, compounds or cabins where people live without their families, usually the workers of one or more companies. It's regulated by the Ministry of Municipalities and Housing (MOMAH), licensed on the Balady platform, and required for every establishment with **20 or more workers**.
 
@@ -36,7 +34,7 @@ The core regulation is MOMAH's **Health, Technical and Safety Conditions Require
 7. Operating requirements
 8. General provisions, grievances and complaints
 
-There have been several versions. The latest update, covered in the press in September 2026, gave licensed housing up to a year to correct its operating position. [check]
+There have been several versions. The latest update, covered in the press in September 2026, gave licensed housing up to a year to correct its operating position (Amlak, 1 September 2026).
 
 ## The three types of group housing
 

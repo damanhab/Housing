@@ -5,13 +5,15 @@ import Footer from "../components/Footer.astro";
 import { IS_PROD, SITE_URL, BRAND, CONTACT, type Lang } from "../lib/site";
 import { routeByKey, absUrl, href, type PageKey } from "../lib/routes";
 
-interface Props { lang: Lang; pageKey: PageKey; jsonld?: object[]; crumbs?: { key: PageKey; name: string }[] }
-const { lang, pageKey, jsonld = [], crumbs = [] } = Astro.props;
+// `page` overrides the route-based meta for pages that aren't in the route registry (articles).
+interface PageMeta { title: string; description: string; alt: Record<Lang, string>; altPath: Record<Lang, string>; md: string; ogType?: string }
+interface Props { lang: Lang; pageKey: PageKey; jsonld?: object[]; crumbs?: { key: PageKey; name: string }[]; page?: PageMeta }
+const { lang, pageKey, jsonld = [], crumbs = [], page } = Astro.props;
 const route = routeByKey(pageKey);
-const title = route.title[lang];
-const description = route.description[lang];
-const canonical = absUrl(pageKey, lang, SITE_URL);
-const alt = { ar: absUrl(pageKey, "ar", SITE_URL), en: absUrl(pageKey, "en", SITE_URL) };
+const title = page?.title ?? route.title[lang];
+const description = page?.description ?? route.description[lang];
+const alt = page?.alt ?? { ar: absUrl(pageKey, "ar", SITE_URL), en: absUrl(pageKey, "en", SITE_URL) };
+const canonical = alt[lang];
 
 const org = {
   "@context": "https://schema.org",
@@ -44,14 +46,14 @@ const graph = [org, ...(breadcrumb ? [breadcrumb] : []), ...jsonld];
   <link rel="alternate" hreflang="ar" href={alt.ar} />
   <link rel="alternate" hreflang="en" href={alt.en} />
   <link rel="alternate" hreflang="x-default" href={alt.ar} />
-  <link rel="alternate" type="text/markdown" href={href(pageKey, lang).replace(/\/$/, "") + ".md"} />
+  <link rel="alternate" type="text/markdown" href={page?.md ?? href(pageKey, lang).replace(/\/$/, "") + ".md"} />
   <link rel="icon" href="/favicon.ico" sizes="48x48" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
   <meta name="theme-color" content="#1D2433" />
   <link rel="preload" href={lang === "ar" ? "/fonts/readex-pro-arabic.woff2" : "/fonts/readex-pro-latin.woff2"} as="font" type="font/woff2" crossorigin />
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content={page?.ogType ?? "website"} />
   <meta property="og:site_name" content={BRAND.name} />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
@@ -70,7 +72,7 @@ const graph = [org, ...(breadcrumb ? [breadcrumb] : []), ...jsonld];
 </head>
 <body>
   <a class="skip" href="#main">{lang === "ar" ? "انتقل إلى المحتوى" : "Skip to content"}</a>
-  <Header lang={lang} pageKey={pageKey} />
+  <Header lang={lang} pageKey={pageKey} altPath={page?.altPath} />
   <main id="main"><slot /></main>
   <Footer lang={lang} />
   <script>

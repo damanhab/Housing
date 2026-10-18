@@ -1,5 +1,5 @@
 ---
-status: review           # draft → review → approved (founder sets approved)
+status: approved           # draft → review → approved (founder sets approved)
 lang: en
 pair: 04-group-housing-requirements.ar.md
 title: "Labour camp rules in Saudi Arabia: every requirement, with the numbers"
@@ -12,15 +12,13 @@ author: "[TBD: founder name and short bio]"
 updated: "2026-10-18"
 ---
 
-# Labour camp rules in Saudi Arabia: every requirement, with the numbers
-
 **Short answer:** the main Saudi rules for labour camps and worker accommodation are **4 m² of bedroom floor per person**, **no more than 10 people per room**, **one sanitary set per 8 people** or fewer, a full-time Saudi supervisor, a central kitchen or catering, and Civil Defense approval before the licence. The source is MOMAH's regulation, the Health, Technical and Safety Conditions Required in Group Housing for Individuals.
 
 ## The official regulation (PDF)
 
 Its full title is **Health, Technical and Safety Conditions Required in Group Housing for Individuals** (الشروط الصحية والفنية والسلامة اللازم توافرها في المساكن الجماعية للأفراد). The Ministry of Municipalities and Housing publishes it in Arabic: [download the regulation (PDF)](https://momah.gov.sa/sites/default/files/2024-04/dlyl-alshrwt-alshyt-walfnyt-walslamt-allazm-twafrha-fy-almsakn-aljmayt-llafrad-.pdf).
 
-There have been several versions: a 1445H ministerial decision, publication in the Umm Al-Qura gazette in August 2025, and an update covered in the press in September 2026. Before any big decision, make sure you're reading the latest. [check]
+There have been several versions: a 1445H ministerial decision, publication in the Umm Al-Qura gazette in August 2025, and an update covered in the press in September 2026. Before any big decision, make sure you're reading the latest.
 
 ## The key numbers
 

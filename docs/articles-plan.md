@@ -1,6 +1,6 @@
 # Articles plan: first 5 guides (Arabic + English)
 
-Status: **five drafts written (18 Oct 2026), waiting for the founder's review.** Nothing is published until the founder approves the wording.
+Status: **five articles published in both languages (18 Oct 2026).** Nothing is published until the founder approves the wording.
 Drafts live in `content/articles/` (one file per language). Edit them on the PC; when a pair is approved, the agent builds the page.
 
 ## Workflow
@@ -37,7 +37,7 @@ Articles live under `/ar/مقالات/<slug>/` and `/en/resources/<slug>/` (the 
 - `06-worker-bed-cost`: no reportable search volume for price terms, and it needs real prices from the founder.
 - `07-convert-building`: no reportable volume for conversion searches; it moves to the owners batch.
 
-**When the articles go live,** add a "Detailed guides" block to the regulations page linking to articles 1, 2 and 4. The regulations page is now titled as the one-page summary («لائحة السكن الجماعي للأفراد باختصار») so it doesn't compete with them.
+The regulations page links to every published article under «الأدلة بالتفصيل» / "Detailed guides". The regulations page is now titled as the one-page summary («لائحة السكن الجماعي للأفراد باختصار») so it doesn't compete with them.
 
 ## Open inputs from the founder
 - **Article 2:** a real price range per bed per month (by city, with and without meals/transport), or permission to publish market ranges with the date checked.

@@ -1,5 +1,5 @@
 ---
-status: review           # draft → review → approved (founder sets approved)
+status: approved           # draft → review → approved (founder sets approved)
 lang: en
 pair: 03-renting-worker-housing.ar.md
 title: "Staff accommodation in Saudi Arabia: how to rent licensed worker housing"
@@ -11,8 +11,6 @@ keywords: ["staff accommodation", "worker accommodation", "labour accommodation 
 author: "[TBD: founder name and short bio]"
 updated: "2026-10-18"
 ---
-
-# Staff accommodation in Saudi Arabia: how to rent licensed worker housing
 
 **Short answer:** before you rent staff or worker accommodation in Saudi Arabia, check three things. The building has a **valid group housing licence**. Its **licensed capacity** covers your headcount. And the owner will approve a **group housing proof certificate** for you against that licence. Without all three, you can be paying rent and still show a shortfall on Qiwa.
 
@@ -88,7 +86,7 @@ The certificate is what lets Qiwa see your workers are in licensed housing.
 
 ## Staff accommodation or worker accommodation?
 
-The rules don't depend on job titles. If your staff live without their families in housing the company provides, it's group housing for individuals and the same licence applies. Staff living with their families aren't clearly covered in the available sources, so confirm with the authority. [check]
+The rules don't depend on job titles. If your staff live without their families in housing the company provides, it's group housing for individuals and the same licence applies. Staff living with their families aren't clearly covered in the available sources, so confirm with the authority.
 
 ## What drives the price
 

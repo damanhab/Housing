@@ -1,0 +1,77 @@
+---
+// One page per approved article, under the Resources section: /ar/مقالات/<slug>/ and /en/resources/<slug>/.
+import { render } from "astro:content";
+import Base from "../../../layouts/Base.astro";
+import PageHead from "../../../components/PageHead.astro";
+import RequestPanel from "../../../components/RequestPanel.astro";
+import { SITE_URL, type Lang } from "../../../lib/site";
+import { routeByKey, absUrl } from "../../../lib/routes";
+import { getArticles, articleHref, articleAbsUrl, articleFaq, type Article } from "../../../lib/articles";
+
+export async function getStaticPaths() {
+  const list = await getArticles();
+  return list.map((a) => ({ params: { lang: a.lang, hub: routeByKey("resources").slug[a.lang], article: a.slug }, props: { a } }));
+}
+const { a } = Astro.props as { a: Article };
+const lang = a.lang as Lang;
+const other: Lang = lang === "ar" ? "en" : "ar";
+const L = (ar: string, en: string) => (lang === "ar" ? ar : en);
+const { Content } = await render(a.entry);
+const url = articleAbsUrl(lang, a.slug);
+const altPath = { [lang]: articleHref(lang, a.slug), [other]: articleHref(other, a.pair!.slug) } as Record<Lang, string>;
+const alt = { [lang]: url, [other]: articleAbsUrl(other, a.pair!.slug) } as Record<Lang, string>;
+const hubName = L("مقالات", "Resources");
+const crumbs = [{ key: "resources" as const, name: hubName }, { key: "resources" as const, name: a.title }];
+const faq = articleFaq(a);
+const jsonld = [
+  {
+    "@context": "https://schema.org", "@type": "Article",
+    headline: a.title, description: a.description, inLanguage: lang,
+    datePublished: a.updated, dateModified: a.updated,
+    author: { "@id": `${SITE_URL}/#org` }, publisher: { "@id": `${SITE_URL}/#org` },
+    mainEntityOfPage: url, url,
+  },
+  {
+    "@context": "https://schema.org", "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: L("الرئيسية", "Home"), item: absUrl("home", lang, SITE_URL) },
+      { "@type": "ListItem", position: 2, name: hubName, item: absUrl("resources", lang, SITE_URL) },
+      { "@type": "ListItem", position: 3, name: a.title, item: url },
+    ],
+  },
+  ...(faq.length ? [{
+    "@context": "https://schema.org", "@type": "FAQPage",
+    mainEntity: faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+  }] : []),
+];
+---
+<Base lang={lang} pageKey="resources" jsonld={jsonld}
+  page={{ title: a.metaTitle, description: a.description, alt, altPath, md: articleHref(lang, a.slug).replace(/\/$/, "") + ".md", ogType: "article" }}>
+  <PageHead lang={lang} crumbs={crumbs} title={a.title}>
+    {a.updated && <p class="updated">{L("آخر تحديث:", "Last updated:")} <time datetime={a.updated} class="num">{a.updated}</time></p>}
+  </PageHead>
+  <div class="container body-grid">
+    <article class="prose"><Content /></article>
+    <aside><RequestPanel lang={lang} id="article-request" /></aside>
+  </div>
+</Base>
+<style>
+  .updated { font-size: var(--step--1); color: var(--ink-3); margin-block-start: var(--s4); }
+  .prose { max-width: 70ch; color: var(--ink-2); }
+  .prose :global(> * + *) { margin-block-start: var(--s4); }
+  .prose :global(> p:first-child) { font-size: var(--step-1); color: var(--ink); background: var(--sand); border-inline-start: 3px solid var(--clay); border-radius: var(--radius); padding: var(--s4) var(--s5); }
+  .prose :global(h2) { font-size: var(--step-2); color: var(--ink); margin-block-start: var(--s7); }
+  .prose :global(h3) { font-size: var(--step-1); color: var(--ink); margin-block-start: var(--s5); }
+  .prose :global(h2 + *), .prose :global(h3 + *) { margin-block-start: var(--s3); }
+  .prose :global(strong) { color: var(--ink); }
+  .prose :global(a) { color: var(--ink); font-weight: 600; }
+  .prose :global(ul), .prose :global(ol) { padding-inline-start: 1.3em; display: grid; gap: var(--s2); }
+  .prose :global(li::marker) { color: var(--clay); }
+  .prose :global(blockquote) { margin-inline: 0; padding: var(--s4) var(--s5); border: 1px solid var(--line); border-radius: var(--radius); }
+  .prose :global(blockquote p) { margin: 0; }
+  .prose :global(table) { width: 100%; border-collapse: collapse; font-size: var(--step--1); display: block; overflow-x: auto; }
+  .prose :global(th), .prose :global(td) { text-align: start; vertical-align: top; padding: var(--s3); border-block-end: 1px solid var(--line); }
+  .prose :global(th) { color: var(--ink); background: var(--sand); }
+  .prose :global(hr) { border: 0; border-block-start: 1px solid var(--line); margin-block: var(--s7) var(--s5); }
+  .prose :global(hr ~ p) { font-size: var(--step--1); color: var(--ink-3); }
+</style>

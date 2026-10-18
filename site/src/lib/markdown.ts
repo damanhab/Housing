@@ -2,6 +2,7 @@
 import { ROUTES, routeByKey, absUrl, type PageKey } from "./routes";
 import { SITE_URL, BRAND, type Lang } from "./site";
 import { ACTIVE_CITIES as CITIES, TRACK_LABEL, RULES, FAQ, GLOSSARY } from "../data/content";
+import { articleAbsUrl, type Article } from "./articles";
 
 const L = (lang: Lang, ar: string, en: string) => (lang === "ar" ? ar : en);
 const rulesTable = (lang: Lang) =>
@@ -32,7 +33,8 @@ export function pageMarkdown(key: PageKey, lang: Lang): string {
   return out.join("\n");
 }
 
-export function llmsTxt(): string {
+export function llmsTxt(articles: Article[] = []): string {
+  const guides = (lang: Lang) => articles.filter((a) => a.lang === lang).map((a) => `- [${a.title}](${articleAbsUrl(lang, a.slug).replace(/\/$/, "")}.md): ${a.description}`);
   const pick = (keys: PageKey[], lang: Lang) => keys.map((k) => `- [${routeByKey(k).title[lang].replace(/ \| .*$/, "")}](${absUrl(k, lang, SITE_URL).replace(/\/$/, "")}.md): ${routeByKey(k).summary[lang]}`);
   const core: PageKey[] = ["companies", "owners", "regulations", "calculator", "faq", "glossary", "about"];
   const cities = CITIES.map((c) => c.key);
@@ -56,15 +58,18 @@ export function llmsTxt(): string {
     "## Regulations, tools and reference (English)",
     ...pick(core, "en"),
     "",
+    ...(articles.length ? ["## Guides (English)", ...guides("en"), ""] : []),
     "## العربية",
     ...pick(["home", ...svc, ...cities, ...core], "ar"),
+    ...(articles.length ? ["", "### أدلة", ...guides("ar")] : []),
     "",
     "## Optional",
     `- [Full text of core pages](${SITE_URL}/llms-full.txt)`,
   ].join("\n");
 }
 
-export function llmsFullTxt(): string {
+export function llmsFullTxt(articles: Article[] = []): string {
   const keys = ROUTES.filter((r) => r.inSitemap !== false && !r.hidden && r.key !== "request" && r.key !== "privacy").map((r) => r.key);
-  return ["en", "ar"].flatMap((lang) => keys.map((k) => pageMarkdown(k, lang as Lang))).join("\n\n");
+  const guides = articles.map((a) => `# ${a.title}\n\n${a.lang === "ar" ? "الرابط" : "URL"}: ${articleAbsUrl(a.lang, a.slug)}\n\n${a.body.trim()}`);
+  return [...["en", "ar"].flatMap((lang) => keys.map((k) => pageMarkdown(k, lang as Lang))), ...guides].join("\n\n");
 }

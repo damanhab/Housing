@@ -4,8 +4,8 @@ import { CONTACT } from "../lib/site";
 import { href, type PageKey } from "../lib/routes";
 import { UI, ACTIVE_CITIES } from "../data/content";
 import Icon from "./Icon.astro";
-interface Props { lang: Lang; pageKey: PageKey }
-const { lang, pageKey } = Astro.props;
+interface Props { lang: Lang; pageKey: PageKey; altPath?: Record<Lang, string> }
+const { lang, pageKey, altPath } = Astro.props;
 const other: Lang = lang === "ar" ? "en" : "ar";
 const S = UI.services;
 const services: { key: PageKey; label: string }[] = [
@@ -56,7 +56,7 @@ const wa = `https://wa.me/${CONTACT.whatsapp}`;
       </ul>
     </nav>
     <div class="actions">
-      <a class="lang" href={href(pageKey, other)} hreflang={other} lang={other}>{UI.nav.langSwitch[lang]}</a>
+      <a class="lang" href={altPath?.[other] ?? href(pageKey, other)} hreflang={other} lang={other}>{UI.nav.langSwitch[lang]}</a>
       <a class="btn btn--ghost wa" href={wa} rel="noopener" target="_blank" aria-label={UI.nav.whatsapp[lang]}><Icon name="chat" /><span class="wa-t">{UI.nav.whatsapp[lang]}</span></a>
       <a class="btn cta" href={href("request", lang)} aria-label={UI.nav.request[lang]}><span class="cta-l">{UI.nav.request[lang]}</span><span class="cta-s" aria-hidden="true">{UI.nav.requestShort[lang]}</span></a>
       <details class="menu" data-dd>
@@ -71,7 +71,7 @@ const wa = `https://wa.me/${CONTACT.whatsapp}`;
           ))}
           <ul>
             {links.map((l) => <li><a href={href(l.key, lang)}>{l.label}</a></li>)}
-            <li><a href={href(pageKey, other)} hreflang={other} lang={other}>{UI.nav.langSwitch[lang]}</a></li>
+            <li><a href={altPath?.[other] ?? href(pageKey, other)} hreflang={other} lang={other}>{UI.nav.langSwitch[lang]}</a></li>
           </ul>
         </div>
       </details>

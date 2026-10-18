@@ -7,9 +7,11 @@ import type { Lang } from "../lib/site";
 import { SITE_URL } from "../lib/site";
 import { href, absUrl } from "../lib/routes";
 import { RULES, TRACK_LABEL, CITIES, TBD } from "../data/content";
+import { getArticles, articleHref } from "../lib/articles";
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const L = (ar: string, en: string) => (lang === "ar" ? ar : en);
+const guides = (await getArticles()).filter((g) => g.lang === lang);
 const crumbs = [{ key: "regulations" as const, name: L("دليل الاشتراطات", "Regulations guide") }];
 const updated = "2026-10-06";
 // Official sources. MOMAH links checked 7 Oct 2026; re-check quarterly (HANDOVER.md).
@@ -86,6 +88,12 @@ const jsonld = [{
           <li>{L("عندك 90 يوماً لاستكمال المتطلبات، ثم الكشف الفني وسداد الرسوم.", "You get 90 days to finish the requirements, then inspection and fees.")}</li>
         </ol>
       </section>
+      {guides.length > 0 && (
+        <section>
+          <h2>{L("الأدلة بالتفصيل", "Detailed guides")}</h2>
+          <ul class="list-check">{guides.map((g) => <li><a href={articleHref(lang, g.slug)}>{g.title}</a></li>)}</ul>
+        </section>
+      )}
       <section>
         <h2>{L("المصادر", "Sources")}</h2>
         <ul class="list-check source">

@@ -1,5 +1,5 @@
 ---
-status: review           # draft → review → approved (founder sets approved)
+status: approved           # draft → review → approved (founder sets approved)
 lang: en
 pair: 01-group-housing-licence.ar.md
 title: "Saudi group housing licence: who needs it, the steps and renewal"
@@ -11,8 +11,6 @@ keywords: ["saudi group housing licenses", "collective housing license", "group 
 author: "[TBD: founder name and short bio]"
 updated: "2026-10-18"
 ---
-
-# Saudi group housing licence: who needs it, the steps and renewal
 
 **Short answer:** a group housing licence (رخصة سكن جماعي, called "collective housing licence" on Balady) is issued on the **Balady** platform to the owner of a building, or to whoever leases the whole building. It proves the property can house workers up to a set capacity. If your company rents rooms or units inside a building that's already licensed, you don't need a licence: you need a **group housing proof certificate** linked to the owner's licence. Every establishment with **20 or more workers** must have one or the other.
 
@@ -73,7 +71,7 @@ Have these ready before you start:
 - A licence lasts **one year** and can be renewed.
 - Renewal is its own service on Balady.
 - If your headcount grows past the licensed capacity, amending the lease doesn't fix it. You need more licensed housing, and moving to a different building means a new licence.
-- Fees are shown on the platform when you pay. We don't quote a figure here because they depend on the property. [check]
+- Fees are shown on the platform when you pay. We don't quote a figure here because they depend on the property.
 
 ## Industrial cities: MODON and the Royal Commission
 

@@ -9,6 +9,7 @@ import type { Lang } from "../lib/site";
 import { CONTACT, BRAND } from "../lib/site";
 import { type PageKey } from "../lib/routes";
 import { FAQ, GLOSSARY, ACTIVE_CITIES } from "../data/content";
+import { getArticles, articleHref } from "../lib/articles";
 interface Props { lang: Lang; pageKey: PageKey }
 const { lang, pageKey } = Astro.props;
 const L = (ar: string, en: string) => (lang === "ar" ? ar : en);
@@ -24,8 +25,8 @@ const titles: Partial<Record<PageKey, [string, string, string?]>> = {
 const [title, lede, crumb] = titles[pageKey]!;
 const crumbs = pageKey === "thanks" ? [] : [{ key: pageKey, name: crumb ?? title }];
 const cityGuides = ACTIVE_CITIES.map((c) => L(`دليل سكن العمّال في ${c.name.ar}`, `Worker housing in ${c.name.en}: a guide`));
+const guides = pageKey === "resources" ? (await getArticles()).filter((a) => a.lang === lang) : [];
 const planned = [
-  L("دليل رخصة السكن الجماعي خطوة بخطوة", "The group-housing licence, step by step"),
   L("كم تكلفة سرير سكن العمّال شهرياً؟", "What does a worker bed cost per month?"),
   L("كيف تحوّل عمارتك إلى سكن عمّال مرخّص", "Turning a building into licensed worker housing"),
   L("الربط بين بلدي وقوى: وش يعني لمنشأتك", "The Balady–Qiwa link: what it means for you"),
@@ -64,10 +65,15 @@ const solo = pageKey !== "request";
       )}
       {pageKey === "resources" && (
         <section class="res">
-          <p class="res-note">{L("هذه الصفحة ستضم مقالات السيو (SEO) بعد اكتمال بناء الموقع. العناوين أدناه أمثلة على ما نخطّط لكتابته.", "This page will hold our SEO articles once the site is built. The titles below are examples of what we plan to write.")}</p>
-          <h2 class="res-h">{L("أدلة المدن", "City guides")}</h2>
+          {guides.length > 0 && (<>
+            <h2 class="res-h">{L("أدلة سكن العمّال", "Worker housing guides")}</h2>
+            <ul class="guides">{guides.map((g) => (
+              <li><a href={articleHref(lang, g.slug)}><span class="g-t">{g.title}</span><span class="g-d">{g.description}</span></a></li>
+            ))}</ul>
+          </>)}
+          <h2 class="res-h">{L("قريباً: أدلة المدن", "Coming soon: city guides")}</h2>
           <ul class="res-list">{cityGuides.map((p) => <li><span class="res-t">{p}</span><span class="tbd">{L("قريباً", "Soon")}</span></li>)}</ul>
-          <h2 class="res-h">{L("مقالات", "Articles")}</h2>
+          <h2 class="res-h">{L("قريباً: مقالات", "Coming soon: articles")}</h2>
           <ul class="res-list">{planned.map((p) => <li><span class="res-t">{p}</span><span class="tbd">{L("قريباً", "Soon")}</span></li>)}</ul>
         </section>
       )}
@@ -111,6 +117,11 @@ const solo = pageKey !== "request";
   .qa h2 { font-size: var(--step-1); margin-block-end: var(--s2); }
   .facts dd.plain { font-weight: 400; color: var(--ink-2); }
   .res { display: grid; gap: var(--s6); }
+  .guides { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s3); }
+  .guides a { display: grid; gap: var(--s1); padding: var(--s4) var(--s5); border: 1px solid var(--line); border-radius: var(--radius); text-decoration: none; transition: border-color 160ms var(--ease-out), box-shadow 160ms var(--ease-out); }
+  .guides a:hover { border-color: var(--line-strong); box-shadow: var(--shadow-1); }
+  .g-t { font-weight: 700; color: var(--ink); font-size: var(--step-1); }
+  .g-d { color: var(--ink-2); font-size: var(--step--1); }
   .res-note { background: var(--sand); border: 1px dashed var(--line-strong); border-radius: var(--radius); padding: var(--s4) var(--s5); color: var(--ink-2); }
   .res-h { font-size: var(--step-1); margin-block: var(--s6) var(--s3); }
   .res-list { list-style: none; margin: 0; padding: 0; border-block-start: 1px solid var(--line); }
