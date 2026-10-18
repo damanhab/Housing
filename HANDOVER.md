@@ -63,6 +63,9 @@ Read this first if you're picking up the project, reviewing a pull request or co
 
 ## Log
 
+### 18 Oct 2026: article plan
+- First five SEO guides agreed (licence, bed cost, fines, converting a building, requirements). Plan and rules: `docs/articles-plan.md`. Draft skeletons (AR + EN, with keywords, outline and FAQ headings): `content/articles/`. The founder writes and edits them; pages are built only from pairs marked `status: approved`.
+
 ### 18 Oct 2026: sknliving.com live
 - Founder bought **sknliving.com** at Cloudflare Registrar. The agent connected it via the Cloudflare API: proxied CNAMEs `@` and `www` → `housing-4v1.pages.dev`, both added as custom domains on the `housing` Pages project, and a 301 redirect rule `www.sknliving.com` → `https://sknliving.com` (path kept).
 - **Search engines now allowed:** the Pages project's production environment has `SITE_MODE=production`, so `main` builds drop noindex and serve the real robots.txt. Preview branches still build as test (noindex).
