@@ -1,6 +1,6 @@
 # Articles plan: first 5 guides (Arabic + English)
 
-Status: **topics agreed, drafts not written.** Nothing is published until the founder approves the wording.
+Status: **five drafts written (18 Oct 2026), waiting for the founder's review.** Nothing is published until the founder approves the wording.
 Drafts live in `content/articles/` (one file per language). Edit them on the PC; when a pair is approved, the agent builds the page.
 
 ## Workflow
@@ -21,15 +21,23 @@ Drafts live in `content/articles/` (one file per language). Edit them on the PC;
 
 ## The five articles
 
-| # | File | Main keyword (AR / EN) | Reader | Links to |
-|---|---|---|---|---|
-| 1 | `01-group-housing-licence` | رخصة سكن جماعي / group housing license Saudi | HR and operations managers | Regulations page, request form |
-| 2 | `02-worker-bed-cost` | سعر سرير سكن عمال / worker accommodation cost Saudi | Companies comparing quotes | Companies page, city pages, request form |
-| 3 | `03-unlicensed-housing-fines` | غرامات سكن العمال / worker housing fines Saudi | Employers worried about enforcement | Article 1, regulations page, request form |
-| 4 | `04-convert-building` | تحويل عمارة إلى سكن عمال / convert building to worker housing | Building owners | Owners page, calculator, Article 5 |
-| 5 | `05-group-housing-requirements` | اشتراطات السكن الجماعي / worker accommodation requirements Saudi | Facility and HR managers | Calculator, Article 1, regulations page |
+Chosen on search volume (DataForSEO, Saudi Arabia) and Mnzil's gaps: see `research/keyword-research.md`.
 
-Full briefs (keywords, outline, FAQ ideas) are at the top of each draft file.
+| # | File | Main keyword (AR / EN) | Monthly searches (AR / EN) | Slug (AR / EN) |
+|---|---|---|---|---|
+| 1 | `01-group-housing-licence` | رخصة سكن جماعي / saudi group housing license | ~1,450 / 210 | `رخصة-سكن-جماعي` / `saudi-group-housing-license` |
+| 2 | `02-what-is-group-housing` | السكن الجماعي للأفراد / worker accommodation saudi arabia | ~760 / 260 | `السكن-الجماعي-للأفراد` / `what-is-group-housing-saudi` |
+| 3 | `03-renting-worker-housing` | سكن عمال للايجار + سكن الموظفين / staff accommodation | ~650 + 720 / 720 | `سكن-عمال-للايجار` / `staff-accommodation-saudi-arabia` |
+| 4 | `04-group-housing-requirements` | اشتراطات السكن الجماعي + لائحة سكن العمال pdf / labour camp rules saudi arabia | ~570 + 210 / 1,000 (head) | `اشتراطات-السكن-الجماعي` / `labour-camp-rules-saudi-arabia` |
+| 5 | `05-worker-housing-violations` | مخالفات سكن العمال / worker housing fines saudi | ~170 / low | `مخالفات-سكن-العمال` / `worker-housing-violations-saudi` |
+
+Articles live under `/ar/مقالات/<slug>/` and `/en/resources/<slug>/` (the existing Resources section).
+
+**Parked:**
+- `06-worker-bed-cost`: no reportable search volume for price terms, and it needs real prices from the founder.
+- `07-convert-building`: no reportable volume for conversion searches; it moves to the owners batch.
+
+**When the articles go live,** add a "Detailed guides" block to the regulations page linking to articles 1, 2 and 4. The regulations page is now titled as the one-page summary («لائحة السكن الجماعي للأفراد باختصار») so it doesn't compete with them.
 
 ## Open inputs from the founder
 - **Article 2:** a real price range per bed per month (by city, with and without meals/transport), or permission to publish market ranges with the date checked.

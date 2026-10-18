@@ -1,7 +1,7 @@
 ---
 status: draft            # draft → review → approved (founder sets approved)
 lang: ar
-pair: 02-worker-bed-cost.en.md
+pair: 06-worker-bed-cost.en.md
 title: "كم سعر سرير سكن العمال شهرياً؟ دليل التكلفة 2026"
 slug: "سعر-سرير-سكن-العمال"
 meta_title: ""           # ≤ 60 characters, includes the main keyword

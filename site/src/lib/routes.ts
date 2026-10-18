@@ -21,10 +21,10 @@ export const ROUTES: Route[] = [
   {
     key: "home",
     slug: { ar: "", en: "" },
-    title: { ar: "SKN | كل سكن عمّالك في مكان واحد", en: "SKN | All your crew housing. One hub." },
+    title: { ar: "سكن عمال مرخّص للشركات: كل سكن عمّالك في مكان واحد | SKN", en: "Staff and worker accommodation for companies | SKN" },
     description: {
-      ar: "سكن عمّال مرخّص ومريح للشركات في الرياض والخبر والدمام، مع النقل والإعاشة وإدارة السكن.",
-      en: "Comfortable, licensed worker housing for companies in Riyadh, Khobar and Dammam, with transport, meals and housing management.",
+      ar: "سكن عمال مرخّص ومريح للشركات في الرياض والخبر والدمام، مطابق لعدد عمّالك في قوى، مع النقل والإعاشة وإدارة السكن.",
+      en: "Licensed staff and worker accommodation for companies in Riyadh, Khobar and Dammam, matched to Qiwa, with transport, meals and housing management.",
     },
     summary: {
       ar: "سكن عمّال مرخّص للشركات، مع النقل والإعاشة.",
@@ -99,10 +99,10 @@ export const ROUTES: Route[] = [
   {
     key: "regulations",
     slug: { ar: "دليل-اشتراطات-السكن-الجماعي", en: "saudi-worker-housing-regulations" },
-    title: { ar: "اشتراطات سكن العمّال ورخصة السكن الجماعي | SKN", en: "Saudi worker housing regulations | SKN" },
+    title: { ar: "لائحة السكن الجماعي للأفراد باختصار | SKN", en: "Saudi group housing regulation at a glance | SKN" },
     description: {
-      ar: "دليل مختصر لرخصة السكن الجماعي: من تلزمه، وكيف تُحسب الطاقة الاستيعابية، والربط بين بلدي وقوى.",
-      en: "A short guide to group-housing licensing in Saudi Arabia: who must comply, how capacity is calculated, and the Balady–Qiwa link.",
+      ar: "لائحة السكن الجماعي للأفراد في صفحة واحدة: من تلزمه، والأرقام الأساسية، والربط بين بلدي وقوى، وجهة الترخيص لكل مدينة.",
+      en: "Saudi Arabia's group housing regulation on one page: who must comply, the key numbers, the Balady–Qiwa link and the licensing body by city.",
     },
     summary: {
       ar: "دليل اشتراطات السكن الجماعي للأفراد: الترخيص، الطاقة الاستيعابية، الربط مع قوى.",

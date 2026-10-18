@@ -1,7 +1,7 @@
 ---
 status: draft            # draft → review → approved (founder sets approved)
 lang: en
-pair: 04-convert-building.ar.md
+pair: 07-convert-building.ar.md
 title: "Turning your building into licensed worker housing"
 slug: "convert-building-to-worker-housing"
 meta_title: ""           # ≤ 60 characters, includes the main keyword

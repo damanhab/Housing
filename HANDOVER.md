@@ -63,6 +63,12 @@ Read this first if you're picking up the project, reviewing a pull request or co
 
 ## Log
 
+### 18 Oct 2026: keyword research, five article drafts, home title
+- **Keyword research:** DataForSEO (Google Ads volumes, Saudi Arabia) plus a check of Mnzil's rankings. Results: `research/keyword-research.md`. The founder's DataForSEO login is in user environment variables `DATAFORSEO_USERNAME` / `DATAFORSEO_PASSWORD` (never in the repo); about USD 0.25 of the USD 1 credit was used.
+- **Five articles drafted, AR + EN** (`content/articles/01`–`05`, status `review`): licence, what group housing is, renting licensed housing, requirements, violations. The topics changed from the first plan on search volume; see `docs/articles-plan.md`. Each draft has one `[check]` item to confirm before approval, and the author field is still TBD.
+- **Home page:** the title and a small line above the H1 now contain «سكن عمال» (~6,600 searches a month) / "staff and worker accommodation". **Regulations page:** retitled «لائحة السكن الجماعي للأفراد باختصار» so it doesn't compete with articles 1 and 4.
+- Work is on branch `content/first-five-articles`, not yet merged.
+
 ### 18 Oct 2026: article plan
 - First five SEO guides agreed (licence, bed cost, fines, converting a building, requirements). Plan and rules: `docs/articles-plan.md`. Draft skeletons (AR + EN, with keywords, outline and FAQ headings): `content/articles/`. The founder writes and edits them; pages are built only from pairs marked `status: approved`.
 

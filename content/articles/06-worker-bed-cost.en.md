@@ -1,7 +1,7 @@
 ---
 status: draft            # draft → review → approved (founder sets approved)
 lang: en
-pair: 02-worker-bed-cost.ar.md
+pair: 06-worker-bed-cost.ar.md
 title: "What does a worker bed cost per month in Saudi Arabia? (2026)"
 slug: "worker-accommodation-cost-saudi"
 meta_title: ""           # ≤ 60 characters, includes the main keyword

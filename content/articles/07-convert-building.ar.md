@@ -1,7 +1,7 @@
 ---
 status: draft            # draft → review → approved (founder sets approved)
 lang: ar
-pair: 04-convert-building.en.md
+pair: 07-convert-building.en.md
 title: "كيف تحوّل عمارتك إلى سكن عمال مرخّص وتؤجرها للشركات"
 slug: "تحويل-عمارة-الى-سكن-عمال"
 meta_title: ""           # ≤ 60 characters, includes the main keyword
