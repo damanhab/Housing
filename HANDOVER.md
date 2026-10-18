@@ -68,7 +68,7 @@ Read this first if you're picking up the project, reviewing a pull request or co
 - **Search engines now allowed:** the Pages project's production environment has `SITE_MODE=production`, so `main` builds drop noindex and serve the real robots.txt. Preview branches still build as test (noindex).
 - **Email:** Cloudflare Email Routing forwards `hello@SKNliving.com` to the founder's Gmail (forward-only, no separate inbox). Replies go out via Gmail "Send mail as" (smtp.gmail.com + app password). SPF allows Cloudflare and Google; DMARC is `p=none` with reports to hello@.
 - **Contact number:** WhatsApp and phone set to +966 57 947 5535 (`CONTACT` in `site/src/lib/site.ts`). `isPlaceholder` stays true only because the CR number is still TBD.
-- **Email, second recipient:** Abdullah (`Abdullah.aloum+SKN@gmail.com`) added as a destination; the hello@ rule gets him once he clicks Cloudflare's verification email.
+- **Email, second recipient:** Abdullah (`Abdullah.aloumi+SKN@gmail.com`) added as a destination; the hello@ rule gets him once he clicks Cloudflare's verification email.
 - **Google Search Console:** Domain property verified by DNS TXT record (founder added it).
 - Still open: SKN Clinics trademark check; Bing Webmaster import from GSC; tighten DMARC to `p=quarantine` after a few weeks of clean reports.
 
