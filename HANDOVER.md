@@ -63,6 +63,11 @@ Read this first if you're picking up the project, reviewing a pull request or co
 
 ## Log
 
+### 18 Oct 2026: sknliving.com live
+- Founder bought **sknliving.com** at Cloudflare Registrar. The agent connected it via the Cloudflare API: proxied CNAMEs `@` and `www` → `housing-4v1.pages.dev`, both added as custom domains on the `housing` Pages project, and a 301 redirect rule `www.sknliving.com` → `https://sknliving.com` (path kept).
+- **Search engines now allowed:** the Pages project's production environment has `SITE_MODE=production`, so `main` builds drop noindex and serve the real robots.txt. Preview branches still build as test (noindex).
+- Still open: `hello@SKNliving.com` mailbox (Cloudflare Email Routing), SKN Clinics trademark check, submit the sitemap in Google Search Console.
+
 ### 14 Oct 2026: how the domain is written
 - Founder rule: the domain is written **SKNliving.com** wherever it appears as text (website, docs, print, email `hello@SKNliving.com`). URLs in code/config stay lowercase (`https://sknliving.com`). Recorded in `brand/skn/guidelines.md`, `PRODUCT.md`, `DESIGN.md`; the site reads it from `BRAND.domain` in `site/src/lib/site.ts`.
 
