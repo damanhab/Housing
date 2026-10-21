@@ -63,6 +63,12 @@ Read this first if you're picking up the project, reviewing a pull request or co
 
 ## Log
 
+### 21 Oct 2026: website requests are emailed
+- Until today the request form's `/api/request` was a stub: it showed "thanks" but stored and sent nothing.
+- Now: `site/functions/api/request.js` validates, then calls the **`skn-request-mail` Worker** (`workers/request-mail/`, deployed via the API) through the Pages service binding `MAILER`. The Worker emails the request (phone, WhatsApp link, company, city, workers, start, services, industrial area, language, page) from `forms@sknliving.com` to `hello@SKNliving.com`.
+- If sending fails the endpoint returns 502 and the form opens WhatsApp with the same request, so nothing is lost silently.
+- `hello@` routing now goes to the same Worker, which forwards to both founders (azizba90+SKN and Abdullah.aloumi+SKN, both verified). A forward rule can only take one address, hence the Worker. The misspelled Abdullah address was deleted.
+
 ### 18 Oct 2026: keyword research, five article drafts, home title
 - **Keyword research:** DataForSEO (Google Ads volumes, Saudi Arabia) plus a check of Mnzil's rankings. Results: `research/keyword-research.md`. The founder's DataForSEO login is in user environment variables `DATAFORSEO_USERNAME` / `DATAFORSEO_PASSWORD` (never in the repo); about USD 0.25 of the USD 1 credit was used.
 - **Five articles drafted, AR + EN** (`content/articles/01`–`05`, status `review`): licence, what group housing is, renting licensed housing, requirements, violations. The topics changed from the first plan on search volume; see `docs/articles-plan.md`. Each draft has one `[check]` item to confirm before approval, and the author field is still TBD.
