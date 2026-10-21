@@ -65,7 +65,7 @@ Read this first if you're picking up the project, reviewing a pull request or co
 
 ### 21 Oct 2026: website requests are emailed
 - Until today the request form's `/api/request` was a stub: it showed "thanks" but stored and sent nothing.
-- Now: `site/functions/api/request.js` validates, then calls the **`skn-request-mail` Worker** (`workers/request-mail/`, deployed via the API) through the Pages service binding `MAILER`. The Worker emails the request (phone, WhatsApp link, company, city, workers, start, services, industrial area, language, page) from `forms@sknliving.com` to `hello@SKNliving.com`.
+- Now: `site/functions/api/request.js` validates, then calls the **`skn-request-mail` Worker** (`workers/request-mail/`, deployed via the API) through the Pages service binding `MAILER`. The Worker emails the request (phone, WhatsApp link, company, city, workers, start, services, industrial area, language, page) from `forms@sknliving.com` to the hello@ inboxes (both founders), with Reply-To hello@. `send_email` only accepts verified destinations, so it can't send to the hello@ route itself. Tested end to end on 21 Oct 2026.
 - If sending fails the endpoint returns 502 and the form opens WhatsApp with the same request, so nothing is lost silently.
 - `hello@` routing now goes to the same Worker, which forwards to both founders (azizba90+SKN and Abdullah.aloumi+SKN, both verified). A forward rule can only take one address, hence the Worker. The misspelled Abdullah address was deleted.
 

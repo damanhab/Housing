@@ -1,13 +1,13 @@
 // SKN mail Worker. (1) Forwards hello@ mail to the founders. (2) Request mailer: Called by the Pages Function /api/request through a service binding (MAILER).
-// Sends one plain-text email per request to hello@SKNliving.com via Cloudflare Email Routing (send_email binding SEB).
+// Sends each request as plain text to the hello@ inboxes via Cloudflare Email Routing (send_email binding SEB).
 // Deploy: see workers/request-mail/README.md.
 import { EmailMessage } from "cloudflare:email";
 
 const FROM = "forms@sknliving.com";
-const TO = "hello@sknliving.com";
 
-// Incoming mail to hello@ is routed to this Worker and forwarded to every founder inbox (a routing rule allows only one).
-const FORWARD_TO = ["azizba90+SKN@gmail.com", "Abdullah.aloumi+SKN@gmail.com"];
+// The hello@ inboxes. Incoming hello@ mail is forwarded here (a routing rule allows only one address), and requests are
+// sent here directly: send_email only delivers to verified destination addresses, and hello@ is a route, not one.
+const FORWARD_TO = ["azizba90+skn@gmail.com", "abdullah.aloumi+skn@gmail.com"]; // lowercase: must match the verified addresses exactly
 
 const b64 = (s) => btoa(String.fromCharCode(...new TextEncoder().encode(s)));
 const hdr = (s) => `=?UTF-8?B?${b64(s)}?=`;
@@ -33,10 +33,12 @@ export default {
       `Language: ${r.lang || "-"}`,
       `Sent: ${new Date().toISOString()}`,
     ].filter((l) => l !== null);
+    for (const to of FORWARD_TO) {
     const id = `<${crypto.randomUUID()}@sknliving.com>`;
     const raw = [
       `From: SKN website <${FROM}>`,
-      `To: ${TO}`,
+      `To: ${to}`,
+      "Reply-To: hello@sknliving.com",
       `Subject: ${hdr(`طلب سكن جديد | New request: ${r.workers} workers, ${r.city}, ${r.phone}`)}`,
       `Message-ID: ${id}`,
       `Date: ${new Date().toUTCString()}`,
@@ -46,7 +48,8 @@ export default {
       "",
       b64(lines.join("\n")).replace(/.{76}/g, "$&\r\n"),
     ].join("\r\n");
-    await env.SEB.send(new EmailMessage(FROM, TO, raw));
+    await env.SEB.send(new EmailMessage(FROM, to, raw));
+    }
     return Response.json({ ok: true });
   },
 };
